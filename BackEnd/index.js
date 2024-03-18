@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import roomRouter from './src/routes/roomRoute.js';
+import serviceRouter from './src/routes/serviceRoute.js';
 
 dotenv.config();
 const PORT = process.env.API_PORT || 3000;
@@ -20,12 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
 
-app.get('/health', (req, res) => {
-    res.status(200).send('I am very healthy💪');
-});
-
 //routes
 app.use('/api', roomRouter);
+app.use('/api', serviceRouter);
 
 
 app.listen(PORT, () => {
