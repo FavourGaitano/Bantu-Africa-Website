@@ -56,3 +56,12 @@ export const deleteService = async () => {
         
     }
 }
+
+export const updateService = async () => {
+    try {
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+}

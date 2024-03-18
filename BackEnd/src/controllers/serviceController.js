@@ -72,3 +72,12 @@ export const deleteServiceController = async (req, res) => {
     }
 }
 
+export const updateServiceController = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
+
