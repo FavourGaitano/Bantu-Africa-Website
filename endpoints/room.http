@@ -1,0 +1,17 @@
+
+//health check
+GET http://localhost:8000/health
+
+### //get all rooms
+GET http://localhost:8000/api/rooms
+
+### //create room
+POST http://localhost:8000/api/rooms
+Content-Type: application/json
+
+{
+    "RoomName": "Deluxe",
+    "description": "A ggod and spacous room for love birds",
+    "RoomCategory": "Single room",
+    "RoomNumber": 20
+}
