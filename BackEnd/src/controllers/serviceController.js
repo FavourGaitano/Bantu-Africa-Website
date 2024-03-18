@@ -13,7 +13,7 @@ export const getAllServiceController = (req, res) => {
     }
 }
 
-export const createServiceController = (req, res) => {
+export const createServiceController = async (req, res) => {
     try {
         return res.json({
             message: "Create service here"
@@ -25,5 +25,15 @@ export const createServiceController = (req, res) => {
     }
 }
 
-
+export const deleteServiceController = async (req, res) => {
+    try {
+        return res.json({
+            message: "Delete Service here"
+        })
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
 

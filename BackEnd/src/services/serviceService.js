@@ -16,3 +16,12 @@ export const createService = async () => {
         
     }
 }
+
+export const deleteService = async () => {
+    try {
+        
+    } catch (error) {
+        return error.message;
+        
+    }
+}

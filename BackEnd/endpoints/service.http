@@ -1,1 +1,8 @@
 GET http://localhost:8000/api/service
+
+###
+POST http://localhost:8000/api/service
+
+###
+DELETE http://localhost:8000/api/service/:ServiceId
+

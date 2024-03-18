@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { createServiceController, getAllServiceController } from '../controllers/serviceController.js';
-// import { createServices } from '../controllers/serviceController.js';
+import { createServiceController, deleteServiceController, getAllServiceController } from '../controllers/serviceController.js';
 
 const serviceRouter = Router();
 
 serviceRouter.get('/service', getAllServiceController);
 serviceRouter.post('/service', createServiceController);
+serviceRouter.delete('/service/:ServiceId', deleteServiceController);
 
 
 export default serviceRouter;
