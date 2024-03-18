@@ -13,5 +13,17 @@ export const getAllServiceController = (req, res) => {
     }
 }
 
+export const createServiceController = (req, res) => {
+    try {
+        return res.json({
+            message: "Create service here"
+        })
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
+
 
 

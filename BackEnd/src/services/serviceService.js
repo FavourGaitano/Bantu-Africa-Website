@@ -7,3 +7,12 @@ export const getAllService = async () => {
         return error.message;
     }
 };
+
+export const createService = async () => {
+    try {
+        
+    } catch (error) {
+        return error.message;
+        
+    }
+}
