@@ -40,7 +40,7 @@ export const createService = async (newService) => {
             .input("ImageUrl", sql.VarChar, newService.ImageUrl)
             .input("CreatedAt", sql.VarChar, newService.CreatedAt)
             .query(addServiceQuery)
-        
+        console.log("result",result);
         return result
     } catch (error) {
         return error.message;
@@ -48,20 +48,41 @@ export const createService = async (newService) => {
     }
 }
 
-export const deleteService = async () => {
+export const deleteService = async (ServiceId) => {
     try {
-        
-    } catch (error) {
-        return error.message;
-        
-    }
-}
+        const response = await poolRequest()
+            .input("ServiceId", sql.VarChar(255), ServiceId)
+            .query(
+                `DELETE FROM tbl_service WHERE ServiceId = @ServiceId`
+            );
 
-export const updateService = async () => {
-    try {
-        
+        return response;
     } catch (error) {
-        console.log(error)
-        
+        console.log(error);
+        return error;
     }
-}
+};
+
+
+
+export const updateService = async (ServiceId, updatedFields) => {
+    try {
+        const response = await poolRequest()
+            .input("ServiceId", sql.VarChar(255), ServiceId)
+            .input("ServiceName", sql.VarChar(255), updatedFields.ServiceName)
+            .input("Description", sql.VarChar(255), updatedFields.Description)
+            .input("ImageUrl", sql.VarChar(255), updatedFields.ImageUrl)
+            .query(`
+                UPDATE tbl_service 
+                SET ServiceName = @ServiceName, 
+                    Description = @Description, 
+                    ImageUrl = @ImageUrl
+                WHERE ServiceId = @ServiceId
+            `);
+
+        return response;
+    } catch (error) {
+        console.log(error);
+        return error.message;
+    }
+};

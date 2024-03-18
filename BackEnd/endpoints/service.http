@@ -1,3 +1,4 @@
+###
 GET http://localhost:8000/api/service
 
 ###
@@ -5,11 +6,22 @@ POST http://localhost:8000/api/service
 Content-Type: application/json
 
 {
-    "ServiceName": "Kids' clubs and activities",
+    "ServiceName": "Adults Activities",
     "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
     "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
 }
 
 ###
-DELETE http://localhost:8000/api/service/:ServiceId
+PUT http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
+Content-Type: application/json
+
+{
+    "ServiceName": "Adults Activities Updated",
+    "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
+    "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
+}
+
+
+###
+DELETE http://localhost:8000/api/service/df9e6afd-97c8-46d9-a49e-e77f1431ce64
 

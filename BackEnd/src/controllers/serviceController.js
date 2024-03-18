@@ -1,7 +1,7 @@
 
 import {v4} from 'uuid';
 import { serviceValidator } from '../validators/serviceValidator.js';
-import { createService, getAllService } from '../services/serviceService.js';
+import { createService, deleteService, getAllService, updateService } from '../services/serviceService.js';
 
 export const getAllServiceController = async (req, res) => {
     try {
@@ -23,6 +23,7 @@ export const getAllServiceController = async (req, res) => {
 export const createServiceController = async (req, res) => {
     try {
         const { ServiceName, Description, ImageUrl } = req.body;
+        console.log(req.body);
         const {error} = serviceValidator({ ServiceName, Description, ImageUrl})
 
         if(error) {
@@ -62,22 +63,41 @@ export const createServiceController = async (req, res) => {
 
 export const deleteServiceController = async (req, res) => {
     try {
-        return res.json({
-            message: "Delete Service here"
-        })
-        
+        const { ServiceId } = req.params;
+
+        const response = await deleteService(ServiceId);
+
+        if (response.rowsAffected > 0) {
+            return res.status(200).json({ message: "Service deleted successfully" });
+        } else {
+            return res.status(404).json({ message: "Service not found or not deleted" });
+        }
     } catch (error) {
-        console.log(error)
-        
+        console.log(error);
+        return res.status(500).json({ message: "Internal server error" });
     }
-}
+};
+
 
 export const updateServiceController = async (req, res) => {
     try {
-        
-    } catch (error) {
-        console.log(error)
-        
-    }
-}
+        const { ServiceId } = req.params;
+        const { ServiceName, Description, ImageUrl } = req.body;
 
+        const { error } = serviceValidator({ ServiceName, Description, ImageUrl });
+        if (error) {
+            return res.status(400).json({ message: error.message });
+        }
+
+        const response = await updateService(ServiceId, { ServiceName, Description, ImageUrl });
+
+        if (response.rowsAffected > 0) {
+            return res.status(200).json({ message: "Service updated successfully" });
+        } else {
+            return res.status(404).json({ message: "Service not found or not updated" });
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+};
