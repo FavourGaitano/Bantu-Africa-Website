@@ -5,3 +5,5 @@ CREATE TABLE tbl_service (
     ImageUrl VARCHAR(255),
     CreatedAt DATETIME
 );
+
+SELECT * FROM tbl_service
