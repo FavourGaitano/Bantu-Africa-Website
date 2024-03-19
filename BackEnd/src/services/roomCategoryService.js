@@ -34,7 +34,7 @@ export const getRoomCategoriesService = async () => {
       const singleReturnedRoom = await poolRequest()
         .input("RoomCategoryId", sql.VarChar, RoomCategoryId)
         .query("SELECT * FROM RoomCategory WHERE RoomCategoryId = @RoomCategoryId");
-      return singleReturnedRoom;
+      return singleReturnedRoom.recordset;
     } catch (error) {
       console.error("Error fetching single room category:", error);
       throw error;
