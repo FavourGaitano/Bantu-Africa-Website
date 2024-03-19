@@ -52,16 +52,16 @@ export const createRoomController = async (req, res) => {
  
   export const getRoomByIdController = async (req, res) => {
     try {
-        const RoomId = req.params.RoomId; 
-      const room = await getRoomByIdService( RoomId);
-      if (room.length === 0) {
+        const {RoomId} = req.params; 
+      const singleroom = await getRoomByIdService( RoomId);
+      if (singleroom.length === 0) {
         sendNotFound(res, 'Room not found');
     } else {
-        res.status(200).json(room);
+        
+        res.status(200).json(singleroom);
     }
-      res.json(room);
     } catch (error) {
-      res.status(500).json({ error: 'Error fetching single room' });
+      res.status(500).json( error.message);
     }
   };
   
@@ -133,7 +133,7 @@ export const createRoomController = async (req, res) => {
       if (result.message) {
         sendServerError(res, result.message);
     } else {
-        sendDeleteSuccess(res, `Room with id: ${id} was deleted successfully`);
+        sendDeleteSuccess(res, `Room with id: ${roomId} was deleted successfully`);
     }        }
     } catch (error) {
       res.status(500).json({ error: 'Error soft deleting room' });
@@ -152,7 +152,7 @@ export const createRoomController = async (req, res) => {
             if (response.message) {
                 sendServerError(res, response.message);
             } else {
-                sendDeleteSuccess(res, `Room with id: ${id} was deleted successfully`);
+                sendDeleteSuccess(res, `Room with id: ${roomId} was deleted successfully`);
             }
         }
     } catch (error) {
