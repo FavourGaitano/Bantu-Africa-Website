@@ -5,6 +5,11 @@ export const hashPassword = async (password) => {
 export const notAuthorized = (res, message) => {
     return res.status(401).json({ message: message });
 }
+
+export const validationError=(res,message)=>{
+    res.status(400).send(message.details[0].message)
+}
+
 export const sendBadRequest = (res, message) => {
     return res.status(400).json({ message: message });
 }
