@@ -5,6 +5,7 @@ import cors from 'cors';
 import roomRouter from './src/routes/roomRoute.js';
 import serviceRouter from './src/routes/serviceRoute.js';
 import activityRouter from './src/routes/activityRoute.js';
+import roomCategoryRouter from './src/routes/roomCategoryRoute.js';
 
 dotenv.config();
 const PORT = process.env.API_PORT || 3000;
@@ -26,6 +27,7 @@ app.use(cors(corsOptions));
 app.use('/api', roomRouter);
 app.use('/api', serviceRouter);
 app.use('/api', activityRouter);
+app.use('/api', roomCategoryRouter);
 
 
 app.listen(PORT, () => {
