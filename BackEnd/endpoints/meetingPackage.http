@@ -1,0 +1,18 @@
+
+### get all meetingpackages
+GET http://localhost:8000/api/meetingpackage
+
+### create meetingPackage
+POST http://localhost:8000/api/meetingpackage
+Content-Type: application/json
+
+{
+    "PackageName": "Half Day"
+}
+
+### Get one meetingPackage
+Get http://localhost:8000/api/meetingpackage/6990f78c-cf43-4305-8a35-1f41c8483935
+
+### Delete MeetingPackage
+
+Delete http://localhost:8000/api/meetingpackage/6990f78c-cf43-4305-8a35-1f41c8483935
