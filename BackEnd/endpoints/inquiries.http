@@ -1,0 +1,31 @@
+### Create inquiry
+POST http://localhost:3000/api/inquiry
+Content-Type: application/json
+
+{
+    "Email": "polijo5454@irnini.com",
+    "Description": "Can I get some ice please?",
+    "Status": "Fulfilled"
+}
+
+### GET All inquiries
+GET http://localhost:3000/api/inquiries
+
+### Get Inquiries by Email
+GET http://localhost:3000/api/polijo5454@irnini.com/find/inquiries
+
+### Get Inquiries by ID
+GET http://localhost:3000/api/inquiries/find/faa175f5-f995-44db-903b-85838e22996e
+
+### Update Inquiry
+PUT http://localhost:3000/api/inquiry/update/faa175f5-f995-44db-903b-85838e22996e
+Content-Type: application/json
+
+{
+    "Email": "polijo5454@irnini.com",
+    "Description": "Room service please",
+    "Status": "Pending"   
+}
+
+### Delete Inquiry
+DELETE http://localhost:3000/api/inquiry/delete/faa175f5-f995-44db-903b-85838e22996e
