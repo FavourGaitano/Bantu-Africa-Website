@@ -16,5 +16,6 @@ CREATE TABLE Bookings (
     KidsNo INT,
     Total INT,
     IsReserved BIT DEFAULT 0,
-    IsPaid BIT DEFAULT 0
+    IsPaid BIT DEFAULT 0,
+    FOREIGN KEY(RoomId) REFERENCES Room(RoomId)
 )

@@ -20,18 +20,27 @@ Content-Type: application/json
 ### //get single rooms
 GET http://localhost:8000/api/rooms/bda1453a-d5c2-4409-8a4b-0e9c77843317
 
+### //get single rooms
 
-PUT http://localhost:8000/api/rooms/
+PUT http://localhost:8000/api/rooms/update/bda1453a-d5c2-4409-8a4b-0e9c77843317/15b15ff5-1994-407b-a6fe-97e3525ba56f
+
 Content-Type: application/json
 
 {
-    "RoomPhotoUrl": "Deluxe",
+    "RoomPhotoUrl": "Deluxe 23",
     "description": "A ggod and spacous room for love birds",
-    "RoomCategoryId": "Single room",
-    "Occupants": "Single room",
-    "RoomNumber": 20
+    "Occupants": "Single room nice one",
+    "RoomNumber": 25
 }
 
+### soft delete category
+PATCH http://localhost:8000/api/category/rooms/category/softdelete/c48185a8-5762-4076-a1dd-85b0a12979e8
+Content-Type: application/json
+
+{
    
-    # OfferId 
- 
+}
+
+
+### Delete room
+DELETE http://localhost:8000/api/rooms/delete/bda1453a-d5c2-4409-8a4b-0e9c77843317

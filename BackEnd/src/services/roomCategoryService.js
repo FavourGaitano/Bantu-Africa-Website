@@ -34,7 +34,7 @@ export const getRoomCategoriesService = async () => {
       const singleReturnedRoom = await poolRequest()
         .input("RoomCategoryId", sql.VarChar, RoomCategoryId)
         .query("SELECT * FROM RoomCategory WHERE RoomCategoryId = @RoomCategoryId");
-      return singleReturnedRoom;
+      return singleReturnedRoom.recordset;
     } catch (error) {
       console.error("Error fetching single room category:", error);
       throw error;
@@ -52,7 +52,7 @@ export const getRoomCategoriesService = async () => {
         .input("Size", sql.VarChar, updateRoomCategory.Size)
         .input("MealPlan", sql.VarChar, updateRoomCategory.MealPlan)
         .query(
-          "UPDATE RoomCategory SET Name = @Name, Price = @Price, Size = @Size, MealPlan = @MealPlan WHERE RoomCategoryId = @RoomCategoryId"
+          "UPDATE RoomCategory SET RoomCategoryId=@RoomCategoryId, Name = @Name, Price = @Price, Size = @Size, MealPlan = @MealPlan WHERE RoomCategoryId = @RoomCategoryId"
         );
       console.log("Updated room category:", result);
       return result;

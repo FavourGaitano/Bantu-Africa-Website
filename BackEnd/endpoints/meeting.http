@@ -1,0 +1,36 @@
+
+### get all meetings
+GET http://localhost:8000/api/meeting
+
+### create meeting
+POST http://localhost:8000/api/meeting
+Content-Type: application/json
+
+{
+    "Description": "Large",
+    "ConferenceRoomName": "small",
+    "Image": "/path/to/image.jpg",
+    "Price": "45",
+    "PackageId": "d44699a7-42f8-4621-acbc-9bd1a690f6eb",
+    "Quantity": "3"
+}
+
+### Get one meeting
+Get http://localhost:8000/api/meeting/8c23436b-d736-4a98-aa86-71d5dbdafdf7
+
+### Delete Meeting
+
+Delete http://localhost:8000/api/meeting/8c23436b-d736-4a98-aa86-71d5dbdafdf7
+
+### Update meeting
+PUT http://localhost:8000/api/meeting/a110e4d7-d902-4719-b1e9-b17bc3e13f62
+Content-Type: application/json
+
+{
+    "Description": "very small",
+    "ConferenceRoomName": "small",
+    "Image": "/path/to/image.jpg",
+    "Price": "45",
+    "PackageId": "d44699a7-42f8-4621-acbc-9bd1a690f6eb",
+    "Quantity": "3"
+}
