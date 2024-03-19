@@ -38,10 +38,10 @@ export const getRoomsService = async () => {
     }
   };
   
-export const getRoomByIdService = async (singleRoom) => {
+export const getRoomByIdService = async (RoomId) => {
   try {
     const singleReturnedRoom = await poolRequest()
-      .input("RoomId", sql.VarChar, singleRoom.RoomId)
+      .input("RoomId", sql.VarChar, RoomId)
       .query(`SELECT Room.*, RoomCategory.*
               FROM Room 
               INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
@@ -99,6 +99,19 @@ export const getAvailableRoomService = async (availableRoom) => {
       const result = await poolRequest()
         .input("RoomId", sql.VarChar, softdelete.RoomId)
         .query("UPDATE Room SET IsDeleted = 1 WHERE RoomId = @RoomId");
+      console.log("Soft deleted room:", result);
+      return result;
+    } catch (error) {
+      console.error("Error soft deleting room:", error);
+      throw error;
+    }
+  };
+
+  export const isAvailableService = async (softdelete) => {
+    try {
+      const result = await poolRequest()
+        .input("RoomId", sql.VarChar, softdelete.RoomId)
+        .query("UPDATE Room SET isAvailable = 0 WHERE RoomId = @RoomId");
       console.log("Soft deleted room:", result);
       return result;
     } catch (error) {

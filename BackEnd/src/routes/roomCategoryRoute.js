@@ -1,17 +1,13 @@
 import { Router } from 'express';
-import { createRoomCategoryController, deleteRoomCategoryController, softDeleteRoomCategoryController } from '../controllers/roomCategoryController.js';
-import { getRoomByIdController } from '../controllers/roomController.js';
+import { createRoomCategoryController, deleteRoomCategoryController, getCategoriesController, getRoomCategroryByIdController, softDeleteRoomCategoryController, updateRoomCategoryController } from '../controllers/roomCategoryController.js';
 const roomCategoryRouter = Router();
 
 
-roomCategoryRouter.get('/rooms/category', ()=>{
-    console.log("categories");
-});
-
+roomCategoryRouter.get('/rooms/category', getCategoriesController);
 roomCategoryRouter.post('/rooms/category', createRoomCategoryController);
-// roomCategoryRouter.put('/rooms/category/update/:RoomCategoryId', updateRoomCategoryController);
-roomCategoryRouter.patch('/rooms/category/softdelete/:RoomCategoryId',softDeleteRoomCategoryController );
-roomCategoryRouter.get('/rooms/category/:RoomCategoryId', getRoomByIdController);
+roomCategoryRouter.put('/rooms/category/update/:RoomCategoryId', updateRoomCategoryController);
+roomCategoryRouter.patch('/rooms/category/softdelete/:RoomCategoryId',softDeleteRoomCategoryController);
+roomCategoryRouter.get('/rooms/category/:RoomCategoryId', getRoomCategroryByIdController);
 roomCategoryRouter.delete('/rooms/category/:RoomCategoryId', deleteRoomCategoryController);
 
 

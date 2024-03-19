@@ -57,7 +57,7 @@ export const createRoomController = async (req, res) => {
       if (singleroom.length === 0) {
         sendNotFound(res, 'Room not found');
     } else {
-        
+        console.log("singleroom",singleroom);
         res.status(200).json(singleroom);
     }
     } catch (error) {

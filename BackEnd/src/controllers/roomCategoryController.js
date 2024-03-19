@@ -56,7 +56,6 @@ export const createRoomCategoryController = async (req, res) => {
     } else {
         res.status(200).json(roomCategory);
     }
-      res.json(room);
     } catch (error) {
       res.status(500).json({ error: 'Error fetching single room category' });
     }
