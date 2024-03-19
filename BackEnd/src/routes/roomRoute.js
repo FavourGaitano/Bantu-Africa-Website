@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createRoomController, deleteRoomController, getAvailableRoomController, getRoomByIdController, getRoomsController, softDeleteRoomController, updateRoomController } from '../controllers/roomContoller.js';
+import { createRoomController, deleteRoomController, getAvailableRoomController, getRoomByIdController, getRoomsController, softDeleteRoomController, updateRoomController } from '../controllers/roomController.js';
 const roomRouter = Router();
 
 
@@ -10,7 +10,6 @@ roomRouter.patch('/rooms/softdelete/:RoomId', softDeleteRoomController);
 roomRouter.get('/rooms/:RoomId', getRoomByIdController);
 roomRouter.get('/rooms/:RoomId', getAvailableRoomController);
 roomRouter.delete('/rooms/:RoomId', deleteRoomController);
-
 
 
 export default roomRouter;

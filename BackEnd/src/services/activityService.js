@@ -4,8 +4,8 @@ import { poolRequest, closePool, sql } from '../utils/dbConnect.js';
 export const createActivityService = async (newActivity) => {
     try {
         const checkActivityQuery = `
-            SELECT COUNT(*) AS Count
-            FROM Activities
+            SELECT COUNT(*) AS count
+            FROM tbl_activity
             WHERE ActivityId = @ActivityId
         `;
 
@@ -13,12 +13,12 @@ export const createActivityService = async (newActivity) => {
             .input("ActivityId", sql.VarChar, newActivity.ActivityId)
             .query(checkActivityQuery);
 
-        if(checkActivityResult.recordset[0].count > 0) {
-            throw new Error('The activity already exists!')
+        if (checkActivityResult.recordset[0].count > 0) {
+            throw new Error('The activity already exists!');
         }
 
         const addActivityQuery = `
-            INSERT INTO Activities (ActivityId, ActivityName, Description, Category, ImageUrl)
+            INSERT INTO tbl_activity (ActivityId, ActivityName, Description, Category, ImageUrl)
             VALUES (@ActivityId, @ActivityName, @Description, @Category, @ImageUrl)
         `;
 
@@ -28,9 +28,49 @@ export const createActivityService = async (newActivity) => {
             .input("Description", sql.VarChar, newActivity.Description)
             .input("Category", sql.VarChar, newActivity.Category)
             .input("ImageUrl", sql.VarChar, newActivity.ImageUrl)
+            .input("CreatedAt", sql.VarChar, newActivity.CreatedAt)
             .query(addActivityQuery);
 
-        return result
+        console.log("result", result);
+        return result;
+        
+    } catch (error) {
+        return { message: error.message };
+    }
+};
+
+export const getAllActivitiesService = async () => {
+    try {
+        const query = `
+            SELECT * FROM tbl_activity
+        `;
+        
+        const result = await poolRequest().query(query);
+        return result.recordset;
+    } catch (error) {
+        console.log(error);
+        throw new Error("Failed to retrieve activities");
+    }
+};
+
+export const getSingleActivityService = async () => {
+    try {
+        
+    } catch (error) {
+        return error.message;
+        
+    }
+}
+export const updateActivityService = async () => {
+    try {
+        
+    } catch (error) {
+        return error.message;
+    }
+}
+
+export const deleteActivityService = async () => {
+    try {
         
     } catch (error) {
         return error.message;
