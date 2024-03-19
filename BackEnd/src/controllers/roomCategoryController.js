@@ -9,7 +9,8 @@ export const getCategoriesController = async (req, res) => {
         if (roomsCategory.length === 0) {
             sendNotFound(res, 'No room categories found');
         } else {
-            return res.status(200).json()
+            // let result=roomsCategory.recordset
+            return res.status(200).json(roomsCategory)
         }
     } catch (error) {
         sendServerError(res, error);
@@ -46,7 +47,7 @@ export const createRoomCategoryController = async (req, res) => {
 }
 
  
-  export const getRoomByIdController = async (req, res) => {
+  export const getRoomCategroryByIdController = async (req, res) => {
     try {
         const {RoomCategoryId} = req.params; 
       const roomCategory = await getRoomCategoryByIdService(RoomCategoryId);
@@ -119,7 +120,7 @@ export const createRoomCategoryController = async (req, res) => {
       if (result.message) {
         sendServerError(res, result.message);
     } else {
-        sendDeleteSuccess(res, `Room category with id: ${id} was deleted successfully`);
+        sendDeleteSuccess(res, `Room category with id: ${RoomCategoryId} was deleted successfully`);
     }        }
     } catch (error) {
       res.status(500).json({ error: 'Error soft deleting room category' });
@@ -138,7 +139,7 @@ export const createRoomCategoryController = async (req, res) => {
             if (response.message) {
                 sendServerError(res, response.message);
             } else {
-                sendDeleteSuccess(res, `Room category with id: ${id} was deleted successfully`);
+                sendDeleteSuccess(res, `Room category with id: ${RoomCategoryId} was deleted successfully`);
             }
         }
     } catch (error) {

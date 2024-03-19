@@ -2,12 +2,10 @@ import { poolRequest, closePool, sql } from "../utils/dbConnect.js";
 
 export const getRoomCategoriesService = async () => {
     try {
-      const result = await poolRequest().query(`
-          SELECT * FROM RoomCategory
-        `);
+      const result = await poolRequest().query(`SELECT * FROM RoomCategory`);
       return result.recordset;
     } catch (error) {
-      console.error("Error fetching room categories:", error);
+      console.error("Error fetching room categories:", error.error);
       throw error;
     }
   };
