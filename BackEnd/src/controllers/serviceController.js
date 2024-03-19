@@ -80,26 +80,27 @@ export const deleteServiceController = async (req, res) => {
 
 
 export const updateServiceController = async (req, res) => {
-    try {
-        const { ServiceId } = req.params;
-        const { ServiceName, Description, ImageUrl } = req.body;
+   try {
+    const { ServiceId } = req.params;
+    const { ServiceName, Description, ImageUrl } = req.body
 
-        const { error } = serviceValidator({ ServiceName, Description, ImageUrl });
-        if (error) {
-            return res.status(400).json({ message: error.message });
-        }
-
-        const response = await updateService(ServiceId, { ServiceName, Description, ImageUrl });
-
-        if (response.rowsAffected > 0) {
-            return res.status(200).json({ message: "Service updated successfully" });
-        } else {
-            return res.status(404).json({ message: "Service not found or not updated" });
-        }
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({ message: "Internal server error" });
+    const { error } = serviceValidator({ ServiceName, Description, ImageUrl })
+    if(error) {
+        return res.status(400).json({message: error.message})
     }
+
+    const response = await updateService(ServiceId, {ServiceName, Description, ImageUrl});
+    // console.log('this is the response', response);
+    if (response){
+        return res.status(200).json({message: "Service uodated Successfully!"})
+    }else{
+        return res.status(400).json({message: "Failed to update"})
+    }
+    
+   } catch (error) {
+        return res.status(500).json({ message: "Internal server error" });
+   }
+
 };
 
 
