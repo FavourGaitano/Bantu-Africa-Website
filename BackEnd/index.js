@@ -33,7 +33,7 @@ app.use("/api", bookingsRouter);
 app.use("/api", inquiriesRouter);
 app.use("/api", serviceRouter);
 app.use("/api", activityRouter);
-app.use("/api", roomCategoryRouter);
+app.use("/api/category", roomCategoryRouter);
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT} `);
