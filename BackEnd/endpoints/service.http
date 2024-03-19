@@ -11,7 +11,7 @@ POST http://localhost:8000/api/service
 Content-Type: application/json
 
 {
-    "ServiceName": "Adults Activities",
+    "ServiceName": "Accomodation",
     "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
     "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
 }
@@ -21,7 +21,7 @@ PUT http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
 Content-Type: application/json
 
 {
-    "ServiceName": "Adults Activities Updated",
+    "ServiceName": "Updated Activity",
     "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
     "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
 }

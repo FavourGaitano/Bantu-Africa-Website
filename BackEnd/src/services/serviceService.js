@@ -84,25 +84,37 @@ export const deleteService = async (ServiceId) => {
 };
 
 
-export const updateService = async (ServiceId, updatedFields) => {
+export const updateService = async (ServiceId, updatedServices) => {
     try {
-        const response = await poolRequest()
-            .input("ServiceId", sql.VarChar(255), ServiceId)
-            .input("ServiceName", sql.VarChar(255), updatedFields.ServiceName)
-            .input("Description", sql.VarChar(255), updatedFields.Description)
-            .input("ImageUrl", sql.VarChar(255), updatedFields.ImageUrl)
-            .query(`
-                UPDATE tbl_service 
-                SET ServiceName = @ServiceName, 
-                    Description = @Description, 
-                    ImageUrl = @ImageUrl
-                WHERE ServiceId = @ServiceId
-            `);
+        const existingService = await getSingleService(ServiceId);
+        if(!existingService) {
+            return null
+        }
 
-        return response;
+        const query = `
+            UPDATE tbl_service
+            SET ServiceName = @ServiceName,
+                Description = @Description,
+                ImageUrl = @ImageUrl
+            WHERE ServiceId = @ServiceId
+        `;
+
+        const result = await poolRequest()
+            .input("ServiceId", sql.VarChar, ServiceId)
+            .input("ServiceName", sql.VarChar, updatedServices.ServiceName)
+            .input("Description", sql.VarChar, updatedServices.Description)
+            .input("ImageUrl", sql.VarChar, updatedServices.ImageUrl)
+            .query(query);
+
+        if(result.rowsAffected[0] > 0) {
+            return { ...existingService, ...updatedServices};
+        }else{
+            return null
+        }
+        
     } catch (error) {
         console.log(error);
-        return error.message;
+        throw new Error("Failed to update the activity");
     }
 };
 
