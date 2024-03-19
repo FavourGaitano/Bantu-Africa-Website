@@ -1,0 +1,55 @@
+### GET All Bookings
+GET http://localhost:3000/api/bookings
+
+### Create a Booking
+POST http://localhost:3000/api/new/booking
+Content-Type: application/json
+
+{
+    "Email": "polijo5454@irnini.com",
+    "FirstName": "Beyonce",
+    "LastName": "Knowles",
+    "RoomId": "123",
+    "SpecialRequirements": "Put up a huge picture of me on the wall.",
+    "StartDate": "2025-04-02",
+    "EndDate": "2025-04-03",
+    "AdultsNo": 2,
+    "KidsNo": 0,
+    "Total": 25700,
+    "IsReserved": true,
+    "IsPaid": false
+}
+
+### Get Booking By ID
+GET http://localhost:3000/api/bookings/237c31a-3a00-4445-b764-cc50ecb5c829
+
+### Get booking by email
+GET http://localhost:3000/api/polijo5454@irnini.com/bookings
+
+### Get booking by name
+GET http://localhost:3000/api/Beyonce/Knowles
+
+### Get booking by roomID
+GET http://localhost:3000/api/booking/room/fwdwewdwwe
+
+### Update Booking
+PUT http://localhost:3000/api/booking/update/46167e0e-6610-4986-9aaa-3377cc1e5fa5
+Content-Type: application/json
+
+{
+    "Email": "polijo5454@irnini.com",
+    "FirstName": "Beyonce",
+    "LastName": "Knowles",
+    "RoomId": "123",
+    "SpecialRequirements": "Put up a huge picture of me on the wall.",
+    "StartDate": "2025-04-02",
+    "EndDate": "2025-04-03",
+    "AdultsNo": 2,
+    "KidsNo": 3,
+    "Total": 125700,
+    "IsReserved": true,
+    "IsPaid": true
+}
+
+### Delete Booking
+DELETE http://localhost:3000/api/booking/delete/8766e068-d8e4-42a1-bdf4-8c4c44babe3e

@@ -1,0 +1,54 @@
+
+//health check
+GET http://localhost:8000/health
+
+
+
+### //create menu
+POST http://localhost:8000/api/restaurant/menu
+Content-Type: application/json
+
+{
+    "MenuUrl": "FavourB"
+   
+}
+
+### //create offer
+POST http://localhost:8000/api/restaurant/offer
+Content-Type: application/json
+
+{
+    "OfferUrl": "Favour"
+   
+}
+
+### //get restaurant
+GET http://localhost:8000/api/restaurant
+
+
+
+
+### update the menu
+PUT http://localhost:8000/api/restaurant/update/menu/ab3949c7-9d19-4e7c-af10-717fc3651571
+Content-Type: application/json
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxZDNkODU4My04OGRlLTRhOWYtYjc1MC1lYTY1NDc0YTM4MDkiLCJQYXNzd29yZCI6IiQyYiQwOCR0TXVZMjBZaERvNzN3TmtPT1N1LjllRXZmY2pLNzEzWnlCTDdKYU0wYmZRVkRTZVNxSE1MSyIsIkVtYWlsIjoidGl0dXMzQGdtYWlsLmNvbSIsImlhdCI6MTcwODk3NzY3NCwiZXhwIjoxNzA5MDY0MDc0fQ.pBE7xA_6CPnuTVTXYENwAruzraBeZNB2jyaYMzSmxys
+
+{
+    "MenuUrl": "FavourGait"
+}
+
+### update the offer
+PUT http://localhost:8000/api/restaurant/update/offer/ae1dab7b-eaa7-484b-a01b-f38e1f0a0a7d
+Content-Type: application/json
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxZDNkODU4My04OGRlLTRhOWYtYjc1MC1lYTY1NDc0YTM4MDkiLCJQYXNzd29yZCI6IiQyYiQwOCR0TXVZMjBZaERvNzN3TmtPT1N1LjllRXZmY2pLNzEzWnlCTDdKYU0wYmZRVkRTZVNxSE1MSyIsIkVtYWlsIjoidGl0dXMzQGdtYWlsLmNvbSIsImlhdCI6MTcwODk3NzY3NCwiZXhwIjoxNzA5MDY0MDc0fQ.pBE7xA_6CPnuTVTXYENwAruzraBeZNB2jyaYMzSmxys
+
+{
+    "OfferUrl": "Favourjayaa"
+}
+
+
+
+
+
+### Deleting a single menu or offer
+DELETE http://localhost:8000/api/restaurant/delete/ae1dab7b-eaa7-484b-a01b-f38e1f0a0a7d
