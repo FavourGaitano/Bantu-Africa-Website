@@ -10,8 +10,27 @@ POST http://localhost:8000/api/rooms
 Content-Type: application/json
 
 {
-    "RoomName": "Deluxe",
+    "RoomPhotoUrl": "Deluxe",
     "description": "A ggod and spacous room for love birds",
-    "RoomCategory": "Single room",
+    "RoomCategoryId": "15b15ff5-1994-407b-a6fe-97e3525ba56f",
+    "Occupants": "Single room",
     "RoomNumber": 20
 }
+
+### //get single rooms
+GET http://localhost:8000/api/rooms/bda1453a-d5c2-4409-8a4b-0e9c77843317
+
+### //get single rooms
+PUT http://localhost:8000/api/rooms/category/bda1453a-d5c2-4409-8a4b-0e9c77843317/15b15ff5-1994-407b-a6fe-97e3525ba56f
+Content-Type: application/json
+
+{
+    "RoomPhotoUrl": "Deluxe 23",
+    "description": "A ggod and spacous room for love birds",
+    "Occupants": "Single room nice one",
+    "RoomNumber": 25
+}
+
+   
+    # OfferId 
+ 

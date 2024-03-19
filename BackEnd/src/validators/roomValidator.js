@@ -5,8 +5,6 @@ export const roomValidator = (room) => {
         RoomPhotoUrl: joi.string().required(),
         description: joi.string().required(),
         RoomCategoryId: joi.string().required(),
-        OfferId: joi.string().required(),
-        RoomCategory: joi.string().required(),
         Occupants: joi.string().required(),
         RoomNumber: joi.number().required()
     });
@@ -17,7 +15,6 @@ export const updateRoomValidator = (updateRoom) => {
     const updateRoomValidatorSchema = joi.object({
         RoomPhotoUrl: joi.string().required(),
         description: joi.string().required(),
-        RoomCategory: joi.string().required(),
         Occupants: joi.string().required(),
         RoomNumber: joi.number().required()
     });

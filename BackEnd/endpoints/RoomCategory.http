@@ -1,0 +1,33 @@
+
+//health check
+GET http://localhost:8000/health
+
+
+### //get all rooms categories
+GET http://localhost:8000/api/category/rooms/category
+
+
+### Create inquiry
+POST http://localhost:8000/api/category/rooms/category
+Content-Type: application/json
+
+{
+    "Name": "standard",
+    "Size": "Double",
+    "MealPlan": "BB",
+    "Price": 7000
+}
+
+### //get all rooms categories
+GET http://localhost:8000/api/category/rooms/category/c48185a8-5762-4076-a1dd-85b0a12979e8
+
+### Create inquiry
+POST http://localhost:8000/api/category/rooms/category
+Content-Type: application/json
+
+{
+    "Name": "standard",
+    "Size": "Double",
+    "MealPlan": "BB",
+    "Price": 7000
+}
