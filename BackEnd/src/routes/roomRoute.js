@@ -9,7 +9,7 @@ roomRouter.put('/rooms/update/:RoomId/:RoomCategoryId', updateRoomController);
 roomRouter.patch('/rooms/softdelete/:RoomId', softDeleteRoomController);
 roomRouter.get('/rooms/:RoomId', getRoomByIdController);
 roomRouter.get('/rooms/:RoomId', getAvailableRoomController);
-roomRouter.delete('/rooms/:RoomId', deleteRoomController);
+roomRouter.delete('/rooms/delete/:RoomId', deleteRoomController);
 
 
 

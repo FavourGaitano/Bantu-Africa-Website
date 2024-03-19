@@ -86,7 +86,7 @@ export const getAvailableRoomService = async (availableRoom) => {
         .query(
           "UPDATE Room SET RoomPhotoUrl = @RoomPhotoUrl, RoomNumber = @RoomNumber, description = @description, Occupants = @Occupants WHERE RoomId = @RoomId AND RoomCategoryId=@RoomCategoryId"
         );
-      console.log("Updated room:", result);
+      console.log("Updated room one:", result);
       return result;
     } catch (error) {
       console.error("Error updating room:", error);

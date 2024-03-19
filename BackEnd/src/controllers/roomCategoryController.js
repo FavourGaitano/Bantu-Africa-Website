@@ -1,6 +1,6 @@
-import { sendNotFound, sendServerError, sendCreated } from '../helper/helperFunctions.js';
+import { sendNotFound, sendServerError, sendCreated, sendDeleteSuccess } from '../helper/helperFunctions.js';
 import {v4} from 'uuid';
-import { RoomCategorysoftDeleteService, addRoomCategoryService, deleteRoomCategoryService, getRoomCategoriesService, getRoomCategoryByIdService } from '../services/roomCategoryService.js';
+import { RoomCategorysoftDeleteService, addRoomCategoryService, deleteRoomCategoryService, getRoomCategoriesService, getRoomCategoryByIdService, updateRoomCategoryService } from '../services/roomCategoryService.js';
 import { roomCategoryValidator } from '../validators/roomCategoryValidator.js';
 
 export const getCategoriesController = async (req, res) => {    
@@ -70,7 +70,7 @@ export const createRoomCategoryController = async (req, res) => {
             sendNotFound(res, 'Room category not found');
         } else {
             let roomCategory = {};
-            const {RoomCategoryId,
+            const {
                 Name,
                 MealPlan,
                 Size,
@@ -94,8 +94,9 @@ export const createRoomCategoryController = async (req, res) => {
             } else {
                 roomCategory.Price = checkExistingRoom[0].Price;
             }
-                        
-            const response = await updateRoomService( RoomCategoryId,roomCategory);
+              console.log(roomCategory,"roomCategory");
+            const response = await updateRoomCategoryService( {RoomCategoryId,roomCategory});
+            console.log("response");
             if (response.message) {
                 sendServerError(res, response.message);
             } else {
@@ -115,14 +116,22 @@ export const createRoomCategoryController = async (req, res) => {
         if (roomCategoryToDelete.length === 0) {
             sendNotFound(res, 'Room Category not found');
         }else{
+            console.log("roomCategoryToDelete",roomCategoryToDelete);
       const result = await RoomCategorysoftDeleteService(RoomCategoryId);
-      if (result.message) {
-        sendServerError(res, result.message);
-    } else {
-        sendDeleteSuccess(res, `Room category with id: ${RoomCategoryId} was deleted successfully`);
-    }        }
+      if(result.rowAffected>0){
+        console.log("result category",result);
+        if (result.message) {
+          sendServerError(res, result.message);
+      } else {
+          sendDeleteSuccess(res, `Room category with id: ${RoomCategoryId} was deleted successfully`);
+      } 
+      }else{
+        res.status(500).json("Error in deleting");
+
+      }
+           }
     } catch (error) {
-      res.status(500).json({ error: 'Error soft deleting room category' });
+      res.status(500).json(error.message);
     }
   };
   
