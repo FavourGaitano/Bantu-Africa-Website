@@ -10,3 +10,4 @@ CREATE TABLE tbl_room (
     RoomCategory VARCHAR(255),
     CreatedAt DATETIME
 );
+

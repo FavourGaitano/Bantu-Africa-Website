@@ -33,7 +33,7 @@ GET http://localhost:3000/api/Beyonce/Knowles
 GET http://localhost:3000/api/booking/room/fwdwewdwwe
 
 ### Update Booking
-PUT http://localhost:3000/api/booking/update/2375c31a-3a00-4445-b764-cc50ecb5c829
+PUT http://localhost:3000/api/booking/update/c8579ab0-7c7f-4828-8f65-f5c6e54c1cc7
 Content-Type: application/json
 
 {
@@ -41,11 +41,11 @@ Content-Type: application/json
     "FirstName": "Beyonce",
     "LastName": "Knowles",
     "RoomId": "123",
-    "SpecialRequirements": "All white furniture please.",
+    "SpecialRequirements": "Put up a huge picture of me on the wall.",
     "StartDate": "2025-01-01",
-    "EndDate": "2025-02-02",
-    "AdultsNo": 1,
-    "KidsNo": 0,
+    "EndDate": "2025-03-02",
+    "AdultsNo": 2,
+    "KidsNo": 3,
     "Total": 125700,
     "IsReserved": true,
     "IsPaid": false

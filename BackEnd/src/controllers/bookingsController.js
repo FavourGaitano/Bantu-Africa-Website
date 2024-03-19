@@ -21,6 +21,7 @@ import {
   getBookingsService,
   updateBookingService,
 } from "../services/bookingService.js";
+import { getRoomByIdService } from "../services/roomService.js";
 
 export const createBooking = async (req, res) => {
   const {
@@ -62,24 +63,28 @@ export const createBooking = async (req, res) => {
       };
       const totalOccupants = AdultsNo + KidsNo;
       console.log(totalOccupants);
-      //   const roomToBook = await getSingleRoomService(RoomId);
-      //   if (totalOccupants > roomToBook.MaxOccupants) {
-      //     sendBadRequest(
-      //       "The total number of guests exceeds the maximum occupancy for this room. Please select another room."
-      //     );
-      //   } else {}
-      const response = await createBookingService(newBooking);
-      if (response.message) {
-        sendServerError(res, response.message);
-      } else {
-        sendMail(
-          newBooking.FirstName,
-          newBooking.LastName,
-          newBooking.Email,
-          newBooking.StartDate,
-          newBooking.EndDate
+      const roomToBook = await getRoomByIdService(RoomId);
+      if (totalOccupants > roomToBook.Occupants) {
+        sendBadRequest(
+          "The total number of guests exceeds the maximum occupancy for this room. Please select another room."
         );
-        sendCreated(res, "Booking created successfully");
+      }
+      if (!roomToBook.isAvailable) {
+        sendBadRequest("This room is already booked. Please select another");
+      } else {
+        const response = await createBookingService(newBooking);
+        if (response.message) {
+          sendServerError(res, response.message);
+        } else {
+          sendMail(
+            newBooking.FirstName,
+            newBooking.LastName,
+            newBooking.Email,
+            newBooking.StartDate,
+            newBooking.EndDate
+          );
+          sendCreated(res, "Booking created successfully");
+        }
       }
     } catch (error) {
       return error;
@@ -223,12 +228,14 @@ export const updateBooking = async (req, res) => {
           IsReserved,
           IsPaid,
         } = req.body;
+        const CreatedAt = new Date();
         const updatedBooking = {
           Email,
           FirstName,
           LastName,
           RoomId,
           SpecialRequirements,
+          CreatedAt,
           StartDate,
           EndDate,
           AdultsNo,
@@ -272,6 +279,9 @@ export const updateBooking = async (req, res) => {
         }
         if (IsPaid) {
           updatedBooking.IsPaid = IsPaid;
+          // if(IsPaid == true) {
+          //   await
+          // }
         }
         await updateBookingService(BookingId, updatedBooking);
         sendCreated(res, "Booking updated successfully");
