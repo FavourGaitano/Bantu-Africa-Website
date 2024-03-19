@@ -1,5 +1,5 @@
 import {v4} from 'uuid';
-import { createActivityService, getAllActivitiesService } from '../services/activityService.js';
+import { createActivityService, getAllActivitiesService, getSingleActivityService } from '../services/activityService.js';
 import { activityValidator } from '../validators/activityValidator.js';
 
 export const createActivityController = async (req, res) => {
@@ -52,9 +52,21 @@ export const getAllActivitiesController = async (req, res) => {
 };
 
 
-export const getSingleActivity = async (req, res) => {
+export const getSingleActivityController = async (req, res) => {
+    try {
+        const { ActivityId } = req.params;
+        const activity = await getSingleActivityService(ActivityId);
+        
+        if (!activity) {
+            return res.status(404).json({ message: "Activity not found" });
+        }
 
-}
+        return res.status(200).json(activity);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+};
 
 export const updateActivity = async (req, res) => {
     try {

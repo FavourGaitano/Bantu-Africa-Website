@@ -53,14 +53,24 @@ export const getAllActivitiesService = async () => {
     }
 };
 
-export const getSingleActivityService = async () => {
+export const getSingleActivityService = async (activityId) => {
     try {
+        const query = `
+            SELECT * FROM tbl_activity
+            WHERE ActivityId = @ActivityId
+        `;
         
+        const result = await poolRequest()
+            .input("ActivityId", sql.VarChar, activityId)
+            .query(query);
+
+        return result.recordset[0]; 
     } catch (error) {
-        return error.message;
-        
+        console.log(error);
+        throw new Error("Failed to retrieve the activity");
     }
-}
+};
+
 export const updateActivityService = async () => {
     try {
         
