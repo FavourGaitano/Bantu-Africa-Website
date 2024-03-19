@@ -21,7 +21,10 @@ import {
   getBookingsService,
   updateBookingService,
 } from "../services/bookingService.js";
-import { getRoomByIdService } from "../services/roomService.js";
+import {
+  getRoomByIdService,
+  isAvailableService,
+} from "../services/roomService.js";
 
 export const createBooking = async (req, res) => {
   const {
@@ -62,15 +65,26 @@ export const createBooking = async (req, res) => {
         IsPaid,
       };
       const totalOccupants = AdultsNo + KidsNo;
-      console.log(totalOccupants);
       const roomToBook = await getRoomByIdService(RoomId);
+      console.log(roomToBook);
+
       if (totalOccupants > roomToBook.Occupants) {
-        sendBadRequest(
-          "The total number of guests exceeds the maximum occupancy for this room. Please select another room."
-        );
+        // console.log("Check reached");
+        res
+          .status(400)
+          .send(
+            "The total number of guests exceeds the maximum occupancy for this room. Please select another room."
+          );
+        return;
       }
       if (!roomToBook.isAvailable) {
-        sendBadRequest("This room is already booked. Please select another");
+        console.log("Entered date check");
+        res
+          .status(400)
+          .send(
+            "This room is already booked for these dates. Please select another."
+          );
+        return;
       } else {
         const response = await createBookingService(newBooking);
         if (response.message) {
@@ -279,9 +293,10 @@ export const updateBooking = async (req, res) => {
         }
         if (IsPaid) {
           updatedBooking.IsPaid = IsPaid;
-          // if(IsPaid == true) {
-          //   await
-          // }
+          if (IsPaid == true) {
+            console.log("Room id is:", RoomId);
+            await isAvailableService(RoomId);
+          }
         }
         await updateBookingService(BookingId, updatedBooking);
         sendCreated(res, "Booking updated successfully");
