@@ -37,8 +37,8 @@ export const getRoomsService = async () => {
       throw error;
     }
   };
-
-export const getSingleRoomService = async (singleRoom) => {
+  
+export const getRoomByIdService = async (singleRoom) => {
   try {
     const singleReturnedRoom = await poolRequest()
       .input("RoomId", sql.VarChar, singleRoom.RoomId)
@@ -54,19 +54,19 @@ export const getSingleRoomService = async (singleRoom) => {
 };
 
 
-export const getActiveRoomService = async (activeRoom) => {
+export const getAvailableRoomService = async (availableRoom) => {
     try {
-      const activedRoom = await poolRequest()
-        .input("RoomId", sql.VarChar, activeRoom.RoomId)
-        .input("RoomCategoryId", sql.VarChar, activeRoom.RoomCategoryId)
+      const remainingRoom = await poolRequest()
+        .input("RoomId", sql.VarChar, availableRoom.RoomId)
+        .input("RoomCategoryId", sql.VarChar, availableRoom.RoomCategoryId)
         .query(`SELECT Room.*, RoomCategory.*
                 FROM Room 
                 INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
                 WHERE RoomId = @RoomId`);
-                console.log("activedRoom",activedRoom);
-      return activedRoom;
+                console.log("remainingRoom",remainingRoom);
+      return remainingRoom;
     } catch (error) {
-      console.error("Error fetching active room:", error);
+      console.error("Error fetching remaining room:", error);
       throw error; 
     }
   };
@@ -81,10 +81,9 @@ export const getActiveRoomService = async (activeRoom) => {
         .input("RoomNumber", sql.Int, updateRoom.RoomNumber)
         .input("description", sql.VarChar, updateRoom.description)
         .input("RoomCategoryId", sql.VarChar, updateRoom.RoomCategoryId)
-        .input("OfferId", sql.VarChar, updateRoom.OfferId)
         .input("Occupants", sql.VarChar, updateRoom.Occupants)
         .query(
-          "UPDATE Room SET RoomPhotoUrl = @RoomPhotoUrl, RoomNumber = @RoomNumber, description = @description, RoomCategoryId = @RoomCategoryId, OfferId = @OfferId, Occupants = @Occupants WHERE RoomId = @RoomId"
+          "UPDATE Room SET RoomPhotoUrl = @RoomPhotoUrl, RoomNumber = @RoomNumber, description = @description, Occupants = @Occupants WHERE RoomId = @RoomId AND RoomCategoryId=@RoomCategoryId"
         );
       console.log("Updated room:", result);
       return result;

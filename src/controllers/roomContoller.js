@@ -1,9 +1,9 @@
-import { sendNotFound, sendServerError, sendCreated, paginate, orderData } from '../helper/helperFunctions.js';
-import { addRoomService, getRoomsService } from '../services/roomService.js';
+import { sendNotFound, sendServerError, sendCreated } from '../helper/helperFunctions.js';
+import { addRoomService, deleteRoomService, getAvailableRoomService, getRoomByIdService, getRoomsService, softDeleteService, updateRoomService } from '../services/roomService.js';
 import { roomValidator } from '../validators/roomValidator.js';
 import {v4} from 'uuid';
 
-export const getRooms = async (req, res) => {    
+export const getRoomsController = async (req, res) => {    
     try {
         const rooms = await getRoomsService();
         if (rooms.length === 0) {
@@ -17,7 +17,7 @@ export const getRooms = async (req, res) => {
 }
 
 
-export const createRoom = async (req, res) => {
+export const createRoomController = async (req, res) => {
     const { RoomPhotoUrl,RoomNumber,description,RoomCategoryId,OfferId,Occupants } = req.body;
     const { error } = roomValidator(req.body);
     if (error) {
@@ -49,100 +49,116 @@ export const createRoom = async (req, res) => {
     }
 }
 
+ 
+  export const getRoomByIdController = async (req, res) => {
+    try {
+        const RoomId = req.params.RoomId; 
+      const room = await getRoomByIdService( RoomId);
+      if (room.length === 0) {
+        sendNotFound(res, 'Room not found');
+    } else {
+        res.status(200).json(room);
+    }
+      res.json(room);
+    } catch (error) {
+      res.status(500).json({ error: 'Error fetching single room' });
+    }
+  };
+  
+  export const getAvailableRoomController = async (req, res) => {
+    const {  RoomCategoryId } = req.body; 
+    const {RoomId}=req.params
+    try {
+      const room = await getAvailableRoomService( RoomId, RoomCategoryId);
+      console.log("room",room);
+      res.json(room);
+    } catch (error) {
+      res.status(500).json({ error: 'Error fetching active room' });
+    }
+  };
+  
+ 
+  export const updateRoomController = async (req, res) => {
+    try {
+        const {RoomId}= req.params;
+        const {RoomCategoryId}=req.params
+        const checkExistingRoom = await getRoomByIdService(RoomId);
+        if (checkExistingRoom.length === 0) {
+            sendNotFound(res, 'Room not found');
+        } else {
+            let room = {};
+            const { RoomPhotoUrl,RoomNumber,description,Occupants  } = req.body;
+          
+            if (RoomPhotoUrl !== undefined) {
+                room.RoomPhotoUrl = RoomPhotoUrl;
+            } else {
+                room.RoomPhotoUrl = checkExistingRoom[0].RoomPhotoUrl;
+            }
+            if (RoomNumber !== undefined) {
+                room.RoomNumber = RoomNumber;
+            } else {
+                room.RoomNumber = checkExistingRoom[0].RoomNumber;
+            }  if (description !== undefined) {
+                room.description = description;
+            } else {
+                room.description = checkExistingRoom[0].description;
+            }  if (Occupants !== undefined) {
+                room.Occupants = Occupants;
+            } else {
+                room.Occupants = checkExistingRoom[0].Occupants;
+            }
+            
+            
+            const response = await updateRoomService(RoomId, RoomCategoryId,room);
+            if (response.message) {
+                sendServerError(res, response.message);
+            } else {
+                sendCreated(res, 'Room updated successfully');
+            }
+        }
+    } catch (error) {
+        sendServerError(res, error.message);
+    }
+}
+  
+  
+  export const softDeleteRoomController = async (req, res) => {
+    try {
+        const {roomId} = req.params;
+        const roomToDelete = await getRoomByIdService(roomId)
+        if (roomToDelete.length === 0) {
+            sendNotFound(res, 'Room not found');
+        }else{
+      const result = await softDeleteService({ RoomId: roomId });
+      if (result.message) {
+        sendServerError(res, result.message);
+    } else {
+        sendDeleteSuccess(res, `Room with id: ${id} was deleted successfully`);
+    }        }
+    } catch (error) {
+      res.status(500).json({ error: 'Error soft deleting room' });
+    }
+  };
+  
 
-export const getRoomsService = async () => {
+  export const deleteRoomController = async (req, res) => {
     try {
-      const result = await poolRequest().query(`
-          SELECT Room.*, RoomCategory.*
-          FROM Room 
-          INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
-        `);
-      return result.recordset;
+        const roomId = req.params.roomId;
+        const roomToDelete = await getRoomByIdService(roomId)
+        if (roomToDelete.length === 0) {
+            sendNotFound(res, 'Room not found');
+        } else {
+            const response = await deleteRoomService(roomId);
+            if (response.message) {
+                sendServerError(res, response.message);
+            } else {
+                sendDeleteSuccess(res, `Room with id: ${id} was deleted successfully`);
+            }
+        }
     } catch (error) {
-      console.error("Error fetching rooms:", error);
-      throw error;
+        sendServerError(res, error.message);
     }
-  };
-  
-  export const addRoomService = async (room) => {
-    try {
-      const result = await poolRequest()
-        .input("RoomId", sql.VarChar, room.RoomId)
-        .input("RoomPhotoUrl", sql.VarChar, room.RoomPhotoUrl)
-        .input("RoomNumber", sql.Int, room.RoomNumber)
-        .input("description", sql.VarChar, room.description)
-        .input("RoomCategoryId", sql.VarChar, room.RoomCategoryId)
-        .input("OfferId", sql.VarChar, room.OfferId)
-        .input("Occupants", sql.VarChar, room.Occupants)
-        .input("CreatedAt", sql.DateTime, room.CreatedAt)
-        .query(
-          "INSERT INTO Room (RoomId, RoomPhotoUrl, RoomNumber, description, RoomCategoryId, OfferId, Occupants, CreatedAt) VALUES (@RoomId, @RoomPhotoUrl, @RoomNumber, @description, @RoomCategoryId, @OfferId, @Occupants, @CreatedAt)"
-        );
-      return result;
-    } catch (error) {
-      console.error("Error adding room:", error);
-      throw error;
-    }
-  };
-  
-  export const getSingleRoomService = async (singleRoom) => {
-    try {
-      const singleReturnedRoom = await poolRequest()
-        .input("RoomId", sql.VarChar, singleRoom.RoomId)
-        .query(`SELECT Room.*, RoomCategory.*
-                FROM Room 
-                INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
-                WHERE RoomId = @RoomId`);
-      return singleReturnedRoom;
-    } catch (error) {
-      console.error("Error fetching single room:", error);
-      throw error;
-    }
-  };
-  
-  export const updateRoomService = async (updateRoom) => {
-    try {
-      const result = await poolRequest()
-        .input("RoomId", sql.VarChar, updateRoom.RoomId)
-        .input("RoomPhotoUrl", sql.VarChar, updateRoom.RoomPhotoUrl)
-        .input("RoomNumber", sql.Int, updateRoom.RoomNumber)
-        .input("description", sql.VarChar, updateRoom.description)
-        .input("RoomCategoryId", sql.VarChar, updateRoom.RoomCategoryId)
-        .input("OfferId", sql.VarChar, updateRoom.OfferId)
-        .input("Occupants", sql.VarChar, updateRoom.Occupants)
-        .query(
-          "UPDATE Room SET RoomPhotoUrl = @RoomPhotoUrl, RoomNumber = @RoomNumber, description = @description, RoomCategoryId = @RoomCategoryId, OfferId = @OfferId, Occupants = @Occupants WHERE RoomId = @RoomId"
-        );
-      console.log("Updated room:", result);
-      return result;
-    } catch (error) {
-      console.error("Error updating room:", error);
-      throw error;
-    }
-  };
-  
-  export const softDeleteService = async (softdelete) => {
-    try {
-      const result = await poolRequest()
-        .input("RoomId", sql.VarChar, softdelete.RoomId)
-        .query("UPDATE Room SET IsDeleted = 1 WHERE RoomId = @RoomId");
-      console.log("Soft deleted room:", result);
-      return result;
-    } catch (error) {
-      console.error("Error soft deleting room:", error);
-      throw error;
-    }
-  };
-  
-  export const deleteRoomService = async (RoomId) => {
-    try {
-      const deletedRoom = await poolRequest()
-        .input("RoomId", sql.VarChar, RoomId)
-        .query("DELETE FROM Room WHERE RoomId = @RoomId");
-      console.log("Deleted room:", deletedRoom);
-      return deletedRoom;
-    } catch (error) {
-      console.error("Error deleting room:", error);
-      throw error;
-    }
-  };
+}
+
+
+
