@@ -53,7 +53,7 @@ export const getAllActivitiesService = async () => {
     }
 };
 
-export const getSingleActivityService = async (activityId) => {
+export const getSingleActivityService = async (ActivityId) => {
     try {
         const query = `
             SELECT * FROM tbl_activity
@@ -61,7 +61,7 @@ export const getSingleActivityService = async (activityId) => {
         `;
         
         const result = await poolRequest()
-            .input("ActivityId", sql.VarChar, activityId)
+            .input("ActivityId", sql.VarChar, ActivityId)
             .query(query);
 
         return result.recordset[0]; 
@@ -79,10 +79,16 @@ export const updateActivityService = async () => {
     }
 }
 
-export const deleteActivityService = async () => {
+export const deleteActivityService = async (ActivityId) => {
     try {
+        const response = poolRequest()
+        .input("ActivityId", sql.VarChar, ActivityId)
+        .query(`DELETE FROM tbl_activity WHERE ActivityId = @ActivityId`)
+
+        return response;
         
     } catch (error) {
         return error.message;
     }
 }
+

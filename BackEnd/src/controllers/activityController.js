@@ -1,5 +1,5 @@
 import {v4} from 'uuid';
-import { createActivityService, getAllActivitiesService, getSingleActivityService } from '../services/activityService.js';
+import { createActivityService, deleteActivityService, getAllActivitiesService, getSingleActivityService } from '../services/activityService.js';
 import { activityValidator } from '../validators/activityValidator.js';
 
 export const createActivityController = async (req, res) => {
@@ -77,8 +77,16 @@ export const updateActivity = async (req, res) => {
         
     }
 }
-export const deleteActivity = async (req, res) => {
+
+export const deleteActivityController = async (req, res) => {
     try {
+        const {ActivityId} = req.params;
+        const result = await deleteActivityService(ActivityId);
+        if(!result){
+            res.status(404).json({message: "No such activity"})
+        };
+
+        return res.status(200).json({message: "Activity deleted successfully!"});
         
     } catch (error) {
         console.log(error)
