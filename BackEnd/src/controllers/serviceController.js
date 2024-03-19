@@ -1,7 +1,7 @@
 
 import {v4} from 'uuid';
 import { serviceValidator } from '../validators/serviceValidator.js';
-import { createService, deleteService, getAllService, updateService } from '../services/serviceService.js';
+import { createService, deleteService, getAllService, getSingleService, updateService } from '../services/serviceService.js';
 
 export const getAllServiceController = async (req, res) => {
     try {
@@ -95,6 +95,24 @@ export const updateServiceController = async (req, res) => {
             return res.status(200).json({ message: "Service updated successfully" });
         } else {
             return res.status(404).json({ message: "Service not found or not updated" });
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+
+export const getSingleServiceController = async (req, res) => {
+    try {
+        const { ServiceId } = req.params;
+
+        const service = await getSingleService(ServiceId);
+
+        if (service) {
+            return res.status(200).json(service);
+        } else {
+            return res.status(404).json({ message: "Service not found" });
         }
     } catch (error) {
         console.log(error);

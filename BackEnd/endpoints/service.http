@@ -2,6 +2,9 @@
 GET http://localhost:8000/api/service
 
 ###
+GET http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
+
+###
 POST http://localhost:8000/api/service
 Content-Type: application/json
 
@@ -24,4 +27,6 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:8000/api/service/df9e6afd-97c8-46d9-a49e-e77f1431ce64
+
+
 

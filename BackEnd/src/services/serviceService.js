@@ -10,6 +10,26 @@ export const getAllService = async () => {
     }
 };
 
+export const getSingleService = async (ServiceId) => {
+    try {
+        const result = await poolRequest()
+            .input("ServiceId", sql.VarChar(255), ServiceId)
+            .query(
+                `SELECT * FROM tbl_service WHERE ServiceId = @ServiceId`
+            );
+
+        if (result.recordset.length > 0) {
+            return result.recordset[0];
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+};
+
+
 export const createService = async (newService) => {
     try {
         //checking if the service already exist
@@ -62,7 +82,6 @@ export const deleteService = async (ServiceId) => {
         return error;
     }
 };
-
 
 
 export const updateService = async (ServiceId, updatedFields) => {
