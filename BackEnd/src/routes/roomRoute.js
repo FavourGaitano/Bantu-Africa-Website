@@ -12,5 +12,4 @@ roomRouter.get('/rooms/:RoomId', getAvailableRoomController);
 roomRouter.delete('/rooms/:RoomId', deleteRoomController);
 
 
-
 export default roomRouter;

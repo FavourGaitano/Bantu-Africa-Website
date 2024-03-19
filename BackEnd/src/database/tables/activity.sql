@@ -5,3 +5,5 @@ CREATE TABLE tbl_activity (
     Category VARCHAR(255),
     ImageUrl VARCHAR(255)
 )
+
+select * from tbl_activity

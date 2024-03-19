@@ -1,35 +1,31 @@
+        ###ACTIVITIES
 
-        ##SERVIVES
-###
-GET http://localhost:8000/api/service
-
-###
-GET http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
+GET http://localhost:8000/api/activity
 
 ###
-POST http://localhost:8000/api/service
+GET http://localhost:8000/api/activity/9ea2f391-b2e6-4bfb-9f2b-65a773479004
+
+####
+POST http://localhost:8000/api/activity
 Content-Type: application/json
 
 {
-    "ServiceName": "Accomodation",
+    "ActivityName": "Kids Activities",
     "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
+    "Category": "adults",
     "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
 }
 
 ###
-PUT http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
+PUT http://localhost:8000/api/activity/9ea2f391-b2e6-4bfb-9f2b-65a773479004
 Content-Type: application/json
 
 {
-    "ServiceName": "Updated Activity",
+    "ActivityName": "Kids Activities Updated",
     "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
+    "Category": "Kids",
     "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
 }
 
-
 ###
-DELETE http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
-
-
-
-
+DELETE  http://localhost:8000/api/activity/72db20c2-e724-4042-9386-4b932f32f011
