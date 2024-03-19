@@ -31,7 +31,7 @@ export const getRoomCategoriesService = async () => {
   };
   
 
-  export const getSingleRoomCategoryService = async (RoomCategoryId) => {
+  export const getRoomCategoryByIdService = async (RoomCategoryId) => {
     try {
       const singleReturnedRoom = await poolRequest()
         .input("RoomCategoryId", sql.VarChar, RoomCategoryId)
@@ -43,6 +43,7 @@ export const getRoomCategoriesService = async () => {
     }
   };
   
+
 
   export const updateRoomCategoryService = async (updateRoomCategory) => {
     try {
@@ -63,6 +64,19 @@ export const getRoomCategoriesService = async () => {
     }
   };
   
+
+  export const RoomCategorysoftDeleteService = async (softdelete) => {
+    try {
+      const result = await poolRequest()
+        .input("RoomCategoryId", sql.VarChar, softdelete.RoomId)
+        .query("UPDATE RoomCategory SET IsDeleted = 1 WHERE RoomCategoryId = @RoomCategoryId");
+      console.log("Soft deleted room category:", result);
+      return result;
+    } catch (error) {
+      console.error("Error soft deleting room category", error);
+      throw error;
+    }
+  };
 
 
 export const deleteRoomCategoryService = async (RoomCategoryId) => {
