@@ -1,150 +1,119 @@
-import { sendNotFound, sendServerError, sendCreated } from '../helper/helperFunctions.js';
-import {v4} from 'uuid';
-import { RoomCategorysoftDeleteService, addRoomCategoryService, deleteRoomCategoryService, getRoomCategoriesService, getRoomCategoryByIdService } from '../services/roomCategoryService.js';
-import { roomCategoryValidator } from '../validators/roomCategoryValidator.js';
+import { v4 } from "uuid";
 
-export const getCategoriesController = async (req, res) => {    
+import {
+  checkIfValuesIsEmptyNullUndefined,
+  sendBadRequest,
+  sendCreated,
+  sendDeleteSuccess,
+  sendNotFound,
+  sendServerError,
+} from "../helper/helperFunctions.js";
+
+export const createOfferController = async (req, res) => {
+  const { OfferImageUrl, Description } = req.body;
+  const { error } = inquiriesvalidator(req.body);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  } else {
     try {
-        const roomsCategory = await getRoomCategoriesService();
-        if (roomsCategory.length === 0) {
-            sendNotFound(res, 'No room categories found');
-        } else {
-            return res.status(200).json()
-        }
+      const InquiryId = v4();
+      const Status = "Pending";
+      const newInquiry = { InquiryId, Email, Description, Status };
+      const response = await createInquiriesService(newInquiry);
+      if (response.message) {
+        sendServerError(res, response.message);
+      } else {
+        sendCreated(res, "Inquiry created successfully");
+      }
     } catch (error) {
-        sendServerError(res, error);
+      return error;
     }
-}
+  }
+};
 
-
-
-export const createRoomCategoryController = async (req, res) => {
-    const { Name,MealPlan,Size,Price } = req.body;
-    const { error } = roomCategoryValidator(req.body);
-    if (error) {
-        return res.status(400).send(error.details[0].message);
+export const getInquiries = async (req, res) => {
+  try {
+    const data = await getInquiriesService();
+    if (data.length == 0) {
+      sendNotFound(res, "No inquiries found");
     } else {
-        try {
-            const RoomCategoryId = v4();
-
-            const newRoomCategory = {
-                RoomCategoryId,
-                Name,
-                MealPlan,
-                Size,
-                Price            }
-            let response = await addRoomCategoryService(newRoomCategory);
-            if (response.message) {
-                sendServerError(res, response.message);
-            } else {
-                sendCreated(res, 'Room category created successfully');
-            }
-        } catch (error) {
-            sendServerError(res, error.message);
-        }
+      res.status(200).send(data);
     }
-}
+  } catch (error) {
+    return error;
+  }
+};
 
- 
-  export const getRoomByIdController = async (req, res) => {
-    try {
-        const {RoomCategoryId} = req.params; 
-      const roomCategory = await getRoomCategoryByIdService(RoomCategoryId);
-      if (roomCategory.length === 0) {
-        sendNotFound(res, 'Room category not found');
+export const getInquiriesByEmail = async (req, res) => {
+  // console.log(req.params);
+  const { email } = req.params;
+  try {
+    const data = await getInquiriesByEmailService(email);
+    if (!data) {
+      sendNotFound(res, "No inquiries found");
     } else {
-        res.status(200).json(roomCategory);
+      res.status(200).send(data);
     }
-      res.json(room);
-    } catch (error) {
-      res.status(500).json({ error: 'Error fetching single room category' });
-    }
-  };
-  
- 
-  export const updateRoomCategoryController = async (req, res) => {
-    try {
-        const {RoomCategoryId}=req.params
-        const checkExistingRoom = await getRoomCategoryByIdService(RoomCategoryId);
-        if (checkExistingRoom.length === 0) {
-            sendNotFound(res, 'Room category not found');
-        } else {
-            let roomCategory = {};
-            const {RoomCategoryId,
-                Name,
-                MealPlan,
-                Size,
-                Price  } = req.body;
-          
-            if (Name !== undefined) {
-                roomCategory.Name = Name;
-            } else {
-                roomCategory.Name = checkExistingRoom[0].Name;
-            }
-            if (MealPlan !== undefined) {
-                roomCategory.MealPlan = MealPlan;
-            } else {
-                roomCategory.MealPlan = checkExistingRoom[0].MealPlan;
-            }  if (Size !== undefined) {
-                roomCategory.Size = Size;
-            } else {
-                roomCategory.Size = checkExistingRoom[0].Size;
-            }  if (Price !== undefined) {
-                roomCategory.Price = Price;
-            } else {
-                roomCategory.Price = checkExistingRoom[0].Price;
-            }
-                        
-            const response = await updateRoomService( RoomCategoryId,roomCategory);
-            if (response.message) {
-                sendServerError(res, response.message);
-            } else {
-                sendCreated(res, 'Room category updated successfully');
-            }
-        }
-    } catch (error) {
-        sendServerError(res, error.message);
-    }
-}
-  
-  
-  export const softDeleteRoomCategoryController = async (req, res) => {
-    try {
-        const {RoomCategoryId} = req.params;
-        const roomCategoryToDelete = await getRoomCategoryByIdService(RoomCategoryId)
-        if (roomCategoryToDelete.length === 0) {
-            sendNotFound(res, 'Room Category not found');
-        }else{
-      const result = await RoomCategorysoftDeleteService(RoomCategoryId);
-      if (result.message) {
-        sendServerError(res, result.message);
+  } catch (error) {
+    sendServerError(res, error);
+  }
+};
+
+export const getInquiriesById = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const data = await getInquiriesByIdService(id);
+    if (!data) {
+      sendNotFound(res, "Inquiry not found");
     } else {
-        sendDeleteSuccess(res, `Room category with id: ${id} was deleted successfully`);
-    }        }
-    } catch (error) {
-      res.status(500).json({ error: 'Error soft deleting room category' });
+      res.status(200).send(data);
     }
-  };
-  
+  } catch (error) {
+    sendServerError(res, error);
+  }
+};
 
-  export const deleteRoomCategoryController = async (req, res) => {
-    try {
-        const RoomCategoryId = req.params.RoomCategoryId;
-        const roomCategoryToDelete = await getRoomCategoryByIdService(RoomCategoryId)
-        if (roomCategoryToDelete.length === 0) {
-            sendNotFound(res, 'Room category not found');
-        } else {
-            const response = await deleteRoomCategoryService(RoomCategoryId);
-            if (response.message) {
-                sendServerError(res, response.message);
-            } else {
-                sendDeleteSuccess(res, `Room category with id: ${id} was deleted successfully`);
-            }
+export const updateInquiry = async (req, res) => {
+  const InquiryId = req.params.id;
+  try {
+    const inquiryToUpdate = await getInquiriesByIdService(InquiryId);
+    if (!inquiryToUpdate) {
+      sendNotFound(res, "Inquiry to update not found");
+    } else {
+      if (checkIfValuesIsEmptyNullUndefined) {
+        const { Email, Description, Status } = req.body;
+        const updatedInquiry = { Email, Description, Status };
+        if (Email) {
+          updateInquiry.Email == Email;
         }
-    } catch (error) {
-        sendServerError(res, error.message);
+        if (Description) {
+          updatedInquiry.Description = Description;
+        }
+        if (Status) {
+          updatedInquiry.Status = Status;
+        }
+        await updateInquiryService(InquiryId, updatedInquiry);
+        sendCreated(res, "inquiry updated successfully");
+      } else {
+        sendBadRequest(res, "Please provide a complete field");
+      }
     }
-}
+  } catch (error) {
+    sendServerError(res, error);
+  }
+};
 
-
-
+export const deleteInquiry = async (req, res) => {
+  const InquiryId = req.params.id;
+  try {
+    const inquiryToDelete = await getInquiriesByIdService(InquiryId);
+    if (!inquiryToDelete) {
+      sendNotFound(res, "Inquiry to delete not found");
+    } else {
+      await deleteInquiryService(InquiryId);
+      sendDeleteSuccess(res, "Inquiry deleted successfully");
+    }
+  } catch (error) {
+    sendServerError(res, error);
+  }
+};

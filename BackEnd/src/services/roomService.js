@@ -69,27 +69,6 @@ export const getAvailableRoomService = async (availableRoom) => {
   }
 };
 
-export const updateRoomService = async (updateRoom) => {
-  try {
-    const result = await poolRequest()
-      .input("RoomId", sql.VarChar, updateRoom.RoomId)
-      .input("RoomPhotoUrl", sql.VarChar, updateRoom.RoomPhotoUrl)
-      .input("RoomNumber", sql.Int, updateRoom.RoomNumber)
-      .input("description", sql.VarChar, updateRoom.description)
-      .input("RoomCategoryId", sql.VarChar, updateRoom.RoomCategoryId)
-      .input("Occupants", sql.VarChar, updateRoom.Occupants)
-      .query(
-        "UPDATE Room SET RoomPhotoUrl = @RoomPhotoUrl, RoomNumber = @RoomNumber, description = @description, Occupants = @Occupants WHERE RoomId = @RoomId AND RoomCategoryId=@RoomCategoryId"
-      );
-    console.log("Updated room:", result);
-    return result;
-  } catch (error) {
-    console.error("Error updating room:", error);
-    throw error;
-  }
-};
-
-
   export const updateRoomService = async (updateRoom) => {
     try {
       const result = await poolRequest()
@@ -122,7 +101,6 @@ export const updateRoomService = async (updateRoom) => {
       throw error;
     }
   };
-
   export const isAvailableService = async (softdelete) => {
     try {
       const result = await poolRequest()
