@@ -1,0 +1,34 @@
+
+### get all gallerys
+GET http://localhost:8000/api/gallery
+
+### create gallery
+POST http://localhost:8000/api/gallery
+Content-Type: application/json
+
+{
+    "Description" : "Presidential Suite",
+        "Category": "accommodation",
+        "PictureUrl": "bit.ly"
+   
+}
+
+###
+GET http://localhost:8000/api/gallery/category/accommodation
+
+### Get one gallery
+Get http://localhost:8000/api/gallery/e8b5f044-20d8-422d-a3ce-64ea6a3532c4
+
+### Delete gallery
+
+Delete http://localhost:8000/api/gallery/8c23436b-d736-4a98-aa86-71d5dbdafdf7
+
+### Update gallery
+PUT http://localhost:8000/api/gallery/aee4768c-e365-4a2c-9163-d1f735817de9
+Content-Type: application/json
+
+{
+   "Description" : "PresidentialSuite",
+        "Category": "PresidentialSuite",
+        "PictureUrl": "pictureUrl1234"
+}
