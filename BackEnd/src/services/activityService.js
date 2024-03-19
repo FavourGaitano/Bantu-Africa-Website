@@ -71,13 +71,43 @@ export const getSingleActivityService = async (ActivityId) => {
     }
 };
 
-export const updateActivityService = async () => {
+export const updateActivityService = async (activityId, updatedActivityData) => {
     try {
-        
+        // Check if the activity exists
+        const existingActivity = await getSingleActivityService(activityId);
+
+        if (!existingActivity) {
+            return null; // Return null if the activity doesn't exist
+        }
+
+        // Update the existing activity with the new data
+        const query = `
+            UPDATE tbl_activity
+            SET ActivityName = @ActivityName,
+                Description = @Description,
+                Category = @Category,
+                ImageUrl = @ImageUrl
+            WHERE ActivityId = @ActivityId
+        `;
+
+        const result = await poolRequest()
+            .input("ActivityName", sql.VarChar, updatedActivityData.ActivityName)
+            .input("Description", sql.VarChar, updatedActivityData.Description)
+            .input("Category", sql.VarChar, updatedActivityData.Category)
+            .input("ImageUrl", sql.VarChar, updatedActivityData.ImageUrl)
+            .input("ActivityId", sql.VarChar, activityId)
+            .query(query);
+
+        if (result.rowsAffected[0] > 0) {
+            return { ...existingActivity, ...updatedActivityData };
+        } else {
+            return null;
+        }
     } catch (error) {
-        return error.message;
+        console.log(error);
+        throw new Error("Failed to update the activity");
     }
-}
+};
 
 export const deleteActivityService = async (ActivityId) => {
     try {

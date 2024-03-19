@@ -1,5 +1,5 @@
 import {v4} from 'uuid';
-import { createActivityService, deleteActivityService, getAllActivitiesService, getSingleActivityService } from '../services/activityService.js';
+import { createActivityService, deleteActivityService, getAllActivitiesService, getSingleActivityService, updateActivityService } from '../services/activityService.js';
 import { activityValidator } from '../validators/activityValidator.js';
 
 export const createActivityController = async (req, res) => {
@@ -68,15 +68,45 @@ export const getSingleActivityController = async (req, res) => {
     }
 };
 
-export const updateActivity = async (req, res) => {
+export const updateActivityController = async (req, res) => {
     try {
-        
+        const { ActivityId } = req.params;
+        const { ActivityName, Description, Category, ImageUrl } = req.body;
+        console.log("requested body",req.body);
+
+        const {error} = activityValidator({ ActivityName, Description, Category, ImageUrl })
+        if(error) {
+            return res.status(400).json({ message: error.message })
+        }
+
+        const response = await updateActivityService(ActivityId, { ActivityName, Description, Category, ImageUrl })
+        if(response) {
+            return res.status(200).json({message: "Activity updated successfully!"})
+        }
     } catch (error) {
         console.log(error);
         return res.status(500).json({message: "Internal server error"})
         
     }
 }
+
+// export const updateActivityController = async (req, res) => {
+//     try {
+//         const { activityId } = req.params;
+//         const updatedActivityData = req.body;
+
+//         const updatedActivity = await updateActivityService(activityId, updatedActivityData);
+
+//         if (!updatedActivity) {
+//             return res.status(404).json({ message: "Activity not found" });
+//         }
+
+//         return res.status(200).json(updatedActivity);
+//     } catch (error) {
+//         console.log(error);
+//         return res.status(500).json({ message: "Internal server error" });
+//     }
+// };
 
 export const deleteActivityController = async (req, res) => {
     try {

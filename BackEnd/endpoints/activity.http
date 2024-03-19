@@ -1,6 +1,5 @@
         ###ACTIVITIES
 
-
 GET http://localhost:8000/api/activity
 
 ###
@@ -11,9 +10,20 @@ POST http://localhost:8000/api/activity
 Content-Type: application/json
 
 {
-    "ActivityName": "Men Activities",
+    "ActivityName": "Kids Activities",
     "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
     "Category": "adults",
+    "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
+}
+
+###
+PUT http://localhost:8000/api/activity/9ea2f391-b2e6-4bfb-9f2b-65a773479004
+Content-Type: application/json
+
+{
+    "ActivityName": "Adults Activities Updated",
+    "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
+    "Category": "Adults",
     "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
 }
 
