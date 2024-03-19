@@ -1,6 +1,16 @@
 import { poolRequest, closePool, sql } from '../utils/dbConnect.js';
 import logger from "../utils/logger.js";
 
+export const getRestaurantService = async () => {
+  try {
+      const result = await poolRequest().query("SELECT * FROM Restaurant");
+      return result.recordset;
+  } catch (error) {
+      return error.message;
+  }
+};
+
+
 export const addMenuService = async (restaurant) => {
     try {
         const result = await poolRequest()
@@ -43,10 +53,10 @@ export const updateMenuService = async (updateMenu) => {
     console.log("update menu",updateMenu);
     try {
       const updatedMenu=await poolRequest()
-      .input('RestaurantId', sql.VarChar,updatedMenu.RestaurantId)
-      .input('MenuUrl', sql.VarChar,updatedMenu.MenuUrl)
+      .input('RestaurantId', sql.VarChar,updateMenu.RestaurantId)
+      .input('MenuUrl', sql.VarChar,updateMenu.MenuUrl)
     .query(`UPDATE Restaurant SET MenuUrl = @MenuUrl WHERE RestaurantId = @RestaurantId`)
-  console.log("updated",updatedMenu);
+  console.log("updated",updateMenu);
     return updatedMenu
     
     } catch (error) {
@@ -58,16 +68,36 @@ export const updateOfferService = async (updateOffer) => {
     console.log("update offer",updateOffer);
     try {
       const updatedOffer=await poolRequest()
-      .input('RestaurantId', sql.VarChar,updatedOffer.RestaurantId)
-      .input('OfferUrl', sql.VarChar,updatedOffer.OfferUrl)
+      .input('RestaurantId', sql.VarChar,updateOffer.RestaurantId)
+      .input('OfferUrl', sql.VarChar,updateOffer.OfferUrl)
     .query(`UPDATE Restaurant SET OfferUrl = @OfferUrl WHERE RestaurantId = @RestaurantId`)
-  console.log("updated",updatedOffer);
+  
     return updatedOffer
     
     } catch (error) {
       return error
     }
 };
+
+
+
+export const getSingleMenuService=async(RestaurantId)=>{
+    const singleMenu= await poolRequest()
+    .input('RestaurantId', sql.VarChar,RestaurantId)
+    .query('SELECT * FROM Restaurant WHERE RestaurantId = @RestaurantId')
+    console.log('single menu',singleMenu);
+    return singleMenu
+}
+
+export const getSingleOfferService=async(RestaurantId)=>{
+    const singleOffer= await poolRequest()
+    .input('RestaurantId', sql.VarChar,RestaurantId)
+    .query('SELECT * FROM Restaurant WHERE RestaurantId = @RestaurantId')
+    console.log('single offer',singleOffer);
+    return singleOffer
+}
+
+
 
 export const deleteMenuService=async(RestaurantId)=>{
     const deletedMenu= await poolRequest()
@@ -77,10 +107,4 @@ export const deleteMenuService=async(RestaurantId)=>{
     return deletedMenu.recordset;
 }
 
-export const deleteUserServices=async(UserId)=>{
-    const deletedUser= await poolRequest()
-    .input('UserId', sql.VarChar,UserId)
-    .query('DELETE FROM Users WHERE UserId = @UserId')
-    console.log(' yeah',deletedUser.recordset);
-    return deletedUser.recordset;
-}
+

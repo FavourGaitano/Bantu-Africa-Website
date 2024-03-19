@@ -47,9 +47,9 @@ export const authenticateloginUserService = async (user) => {
       .input("Email", sql.VarChar, user.Email)
       .query("SELECT * FROM Users WHERE Email=@Email");
     if (userFoundResponse.recordset[0]) {
-    
+      console.log("Password",user.Password,userFoundResponse.recordset[0].Password);
       if(await bcrypt.compare(user.Password,userFoundResponse.recordset[0].Password)){
-        console.log("Generating token");
+      
 
         let token=jwt.sign({
           UserId:userFoundResponse.recordset[0].UserId,
@@ -58,18 +58,18 @@ export const authenticateloginUserService = async (user) => {
         },process.env.SECRET_KEY,{ expiresIn: "24h" })
         console.log("Token is",token);
 
-        console.error("Error generating token:", error);
         const {Password,...user}=userFoundResponse.recordset[0]
         return {user,token:`JWT ${token}`}
   
       }else{
-        return { error: 'Invalid Credentials' };
+        console.log(error.message);
+        return  error.message;
       }
     } else {
       return { error: "Invalid Credentials" };
     }
   } catch (error) {
-    logger.error("Login Error", error);
+    console.log("Login Error", error.message);
     return { error: "Invalid Credentials" };
   }
 };

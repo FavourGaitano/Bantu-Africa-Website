@@ -40,4 +40,4 @@ export  const updateUserValidator=(updateduser)=>{
     })
   
     return updateUserPassValidatorSchema.validate(updateduser);
-  }
+}

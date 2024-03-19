@@ -1,4 +1,4 @@
-import { sendNotFound, sendServerError, sendCreated, paginate, orderData } from '../helper/helperFunctions.js';
+import { sendNotFound, sendServerError, sendCreated, paginate, orderData, notAuthorized } from '../helper/helperFunctions.js';
 import { addUserService, 
         getUsersService, 
         getUserByEmailService,
@@ -92,6 +92,7 @@ export const loginUserController=async(req,res)=>{
       // Successful login
       res.status(200).json({ user,message:"Logged In successfully!" });
     } catch (error) {
+      console.log("This is controller error",error.message);
       return sendServerError(res, "Internal server error");
     }
 }
