@@ -80,6 +80,8 @@ export const createRoomController = async (req, res) => {
  
   export const updateRoomController = async (req, res) => {
     try {
+        const { RoomPhotoUrl,RoomNumber,description,Occupants  } = req.body;
+        console.log("req.body",req.body);
         const {RoomId}= req.params;
         const {RoomCategoryId}=req.params
         const checkExistingRoom = await getRoomByIdService(RoomId);
@@ -87,7 +89,7 @@ export const createRoomController = async (req, res) => {
             sendNotFound(res, 'Room not found');
         } else {
             let room = {};
-            const { RoomPhotoUrl,RoomNumber,description,Occupants  } = req.body;
+            
           
             if (RoomPhotoUrl !== undefined) {
                 room.RoomPhotoUrl = RoomPhotoUrl;
@@ -107,9 +109,10 @@ export const createRoomController = async (req, res) => {
             } else {
                 room.Occupants = checkExistingRoom[0].Occupants;
             }
+            console.log("room checking",room);
             
-            
-            const response = await updateRoomService(RoomId, RoomCategoryId,room);
+            const response = await updateRoomService({RoomId, RoomCategoryId},room);
+            console.log("response",response);
             if (response.message) {
                 sendServerError(res, response.message);
             } else {
