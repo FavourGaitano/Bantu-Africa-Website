@@ -82,6 +82,8 @@ export const updateActivityController = async (req, res) => {
         const response = await updateActivityService(ActivityId, { ActivityName, Description, Category, ImageUrl })
         if(response) {
             return res.status(200).json({message: "Activity updated successfully!"})
+        }else{
+            return res.status(400).json({message: "Failed to update!"})
         }
     } catch (error) {
         console.log(error);
@@ -90,23 +92,6 @@ export const updateActivityController = async (req, res) => {
     }
 }
 
-// export const updateActivityController = async (req, res) => {
-//     try {
-//         const { activityId } = req.params;
-//         const updatedActivityData = req.body;
-
-//         const updatedActivity = await updateActivityService(activityId, updatedActivityData);
-
-//         if (!updatedActivity) {
-//             return res.status(404).json({ message: "Activity not found" });
-//         }
-
-//         return res.status(200).json(updatedActivity);
-//     } catch (error) {
-//         console.log(error);
-//         return res.status(500).json({ message: "Internal server error" });
-//     }
-// };
 
 export const deleteActivityController = async (req, res) => {
     try {
