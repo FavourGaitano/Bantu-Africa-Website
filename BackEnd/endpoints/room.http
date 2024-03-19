@@ -10,8 +10,13 @@ POST http://localhost:8000/api/rooms
 Content-Type: application/json
 
 {
-    "RoomName": "Deluxe",
+    "RoomPhotoUrl": "Deluxe",
     "description": "A ggod and spacous room for love birds",
-    "RoomCategory": "Single room",
+    "RoomCategoryId": "Single room",
+    "Occupants": "Single room",
     "RoomNumber": 20
 }
+
+   
+    # OfferId 
+ 

@@ -1,0 +1,20 @@
+
+//health check
+GET http://localhost:8000/health
+
+### //get all rooms categories
+GET http://localhost:8000/api/rooms
+
+### //create room category
+POST http://localhost:8000/api/rooms
+Content-Type: application/json
+
+{
+    "RoomPhotoUrl": "Deluxe",
+    "description": "A ggod and spacous room for love birds",
+    "RoomCategoryId": "Single room",
+    "Occupants": "Single room",
+    "RoomNumber": 20
+}
+
+ 

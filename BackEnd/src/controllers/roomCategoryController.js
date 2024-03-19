@@ -119,7 +119,7 @@ export const createRoomCategoryController = async (req, res) => {
       if (result.message) {
         sendServerError(res, result.message);
     } else {
-        sendDeleteSuccess(res, `Room category with id: ${id} was deleted successfully`);
+        sendDeleteSuccess(res, `Room category with id: ${RoomCategoryId} was deleted successfully`);
     }        }
     } catch (error) {
       res.status(500).json({ error: 'Error soft deleting room category' });
@@ -138,7 +138,7 @@ export const createRoomCategoryController = async (req, res) => {
             if (response.message) {
                 sendServerError(res, response.message);
             } else {
-                sendDeleteSuccess(res, `Room category with id: ${id} was deleted successfully`);
+                sendDeleteSuccess(res, `Room category with id: ${RoomCategoryId} was deleted successfully`);
             }
         }
     } catch (error) {
