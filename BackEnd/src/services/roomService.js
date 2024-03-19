@@ -46,7 +46,8 @@ export const getRoomByIdService = async (singleRoom) => {
               FROM Room 
               INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
               WHERE RoomId = @RoomId`);
-    return singleReturnedRoom;
+              console.log("single",singleReturnedRoom.recordset);
+    return singleReturnedRoom.recordset;
   } catch (error) {
     console.error("Error fetching single room:", error);
     throw error;

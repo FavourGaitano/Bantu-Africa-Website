@@ -3,18 +3,17 @@
 GET http://localhost:8000/health
 
 ### //get all rooms categories
-GET http://localhost:8000/api/rooms
+GET http://localhost:8000/api/rooms/category15b15ff5-1994-407b-a6fe-97e3525ba56f
 
-### //create room category
-POST http://localhost:8000/api/rooms
+
+
+### Create inquiry
+POST http://localhost:8000/api/rooms/category
 Content-Type: application/json
 
 {
-    "RoomPhotoUrl": "Deluxe",
-    "description": "A ggod and spacous room for love birds",
-    "RoomCategoryId": "Single room",
-    "Occupants": "Single room",
-    "RoomNumber": 20
+    "Name": "Deluxe",
+    "Size": "Double",
+    "MealPlan": "BB",
+    "Price": 20
 }
-
- 

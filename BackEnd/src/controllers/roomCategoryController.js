@@ -9,7 +9,8 @@ export const getCategoriesController = async (req, res) => {
         if (roomsCategory.length === 0) {
             sendNotFound(res, 'No room categories found');
         } else {
-            return res.status(200).json()
+            // let result=roomsCategory.recordset
+            return res.status(200).json(roomsCategory)
         }
     } catch (error) {
         sendServerError(res, error);
@@ -46,7 +47,7 @@ export const createRoomCategoryController = async (req, res) => {
 }
 
  
-  export const getRoomByIdController = async (req, res) => {
+  export const getRoomCategroryByIdController = async (req, res) => {
     try {
         const {RoomCategoryId} = req.params; 
       const roomCategory = await getRoomCategoryByIdService(RoomCategoryId);
