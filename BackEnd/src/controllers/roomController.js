@@ -9,7 +9,7 @@ export const getRoomsController = async (req, res) => {
         if (rooms.length === 0) {
             sendNotFound(res, 'No rooms found');
         } else {
-            return res.status(200).json({rooms:rooms})
+            return res.status(200).json(rooms)
         }
     } catch (error) {
         sendServerError(res, error);

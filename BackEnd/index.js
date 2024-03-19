@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import roomRouter from './src/routes/roomRoute.js';
+import roomCategoryRouter from './src/routes/roomCategoryRoute.js';
 
 dotenv.config();
 const PORT = process.env.API_PORT || 3000;
@@ -26,6 +27,7 @@ app.get('/health', (req, res) => {
 
 //routes
 app.use('/api', roomRouter);
+app.use('/api', roomCategoryRouter);
 
 
 app.listen(PORT, () => {
