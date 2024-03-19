@@ -1,0 +1,16 @@
+
+### Fetching/getting all notifications
+GET http://localhost:8000/api/notifications/
+
+### Fetching/getting all individual user notifications
+GET http://localhost:8000/api/notifications/user/6
+
+### Fetching/getting all individual user notifications
+patch http://localhost:8000/api/notifications/12
+Content-Type: application/json
+
+{
+     "is_read": true 
+}
+### Fetching/getting all individual user notifications
+DELETE http://localhost:8000/api/notifications/1/f7548ef7-eb73-4b5b-8a58-aed672cb5ff3

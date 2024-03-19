@@ -1,119 +1,89 @@
-import { v4 } from "uuid";
+import { v4 } from 'uuid';
+import {sendCreated, sendDeleteSuccess, sendNotFound, sendServerError,validationError} from '../helper/helperFunctions.js'
+import { addOfferService, deleteOfferService, getOffersService, getSingleOfferService, updateOfferService } from "../services/offersService.js";
+import { offerValidator, updateOfferValidator } from '../validators/offerValidator.js';
 
-import {
-  checkIfValuesIsEmptyNullUndefined,
-  sendBadRequest,
-  sendCreated,
-  sendDeleteSuccess,
-  sendNotFound,
-  sendServerError,
-} from "../helper/helperFunctions.js";
-
-export const createOfferController = async (req, res) => {
-  const { OfferImageUrl, Description } = req.body;
-  const { error } = inquiriesvalidator(req.body);
-  if (error) {
-    return res.status(400).send(error.details[0].message);
-  } else {
-    try {
-      const InquiryId = v4();
-      const Status = "Pending";
-      const newInquiry = { InquiryId, Email, Description, Status };
-      const response = await createInquiriesService(newInquiry);
-      if (response.message) {
-        sendServerError(res, response.message);
-      } else {
-        sendCreated(res, "Inquiry created successfully");
-      }
-    } catch (error) {
-      return error;
+export const addOfferController = async (req, res) => {
+  try {
+    const { OfferImageUrl } = req.body;
+    const { error } = offerValidator({ OfferImageUrl });
+    if (error) {
+      return validationError(res, error.message);
     }
+
+    const OfferId = v4();
+    const newOffer = { OfferId, OfferImageUrl };
+    const response = await addOfferService(newOffer);
+
+    if (response.message) {
+      return sendServerError(res, response.message);
+    } else {
+      return sendCreated(res, "Offer created successfully");
+    }
+  } catch (error) {
+    return sendServerError(res, error.message);
   }
 };
 
-export const getInquiries = async (req, res) => {
+export const getAllOffersController = async (req, res) => {
   try {
-    const data = await getInquiriesService();
-    if (data.length == 0) {
-      sendNotFound(res, "No inquiries found");
-    } else {
-      res.status(200).send(data);
+    const data = await getOffersService();
+    console.log("data",data.recordset);
+    if (!data.recordset || data.recordset.length === 0) {
+      return sendNotFound(res, "No offers found");
     }
+    return res.status(200).json(data.recordset);
   } catch (error) {
-    return error;
+    return sendServerError(res, error.message);
   }
 };
 
-export const getInquiriesByEmail = async (req, res) => {
-  // console.log(req.params);
-  const { email } = req.params;
+export const getOneOfferController = async (req, res) => {
   try {
-    const data = await getInquiriesByEmailService(email);
-    if (!data) {
-      sendNotFound(res, "No inquiries found");
+    const { OfferId } = req.params;
+    const data = await getSingleOfferService(OfferId);
+    if (data.length !== 0) {
+      return res.status(200).json(data[0]);
     } else {
-      res.status(200).send(data);
+      return sendNotFound(res, "Offer not found");
     }
   } catch (error) {
-    sendServerError(res, error);
+    return sendServerError(res, error.message);
   }
 };
 
-export const getInquiriesById = async (req, res) => {
-  const id = req.params.id;
+export const updateOfferController = async (req, res) => {
   try {
-    const data = await getInquiriesByIdService(id);
-    if (!data) {
-      sendNotFound(res, "Inquiry not found");
-    } else {
-      res.status(200).send(data);
+    const { OfferId } = req.params;
+    const { OfferImageUrl } = req.body;
+    const { error } = updateOfferValidator({ OfferImageUrl });
+    if (error) {
+      return validationError(res, error.message);
     }
+    const offerToUpdate = await getSingleOfferService(OfferId);
+    if (!offerToUpdate) {
+      sendNotFound(res, "offer to update not found");
+    } else {
+    const response = await updateOfferService( { OfferId,OfferImageUrl });
+    console.log("response",response);
+   
+      return res.status(200).json({ message: "Offer updated successfully" });
+  }
   } catch (error) {
-    sendServerError(res, error);
+    return sendServerError(res, error.message);
   }
 };
 
-export const updateInquiry = async (req, res) => {
-  const InquiryId = req.params.id;
+export const deleteOfferController = async (req, res) => {
   try {
-    const inquiryToUpdate = await getInquiriesByIdService(InquiryId);
-    if (!inquiryToUpdate) {
-      sendNotFound(res, "Inquiry to update not found");
+    const { OfferId } = req.params;
+    const response = await deleteOfferService(OfferId);
+    if (response.rowsAffected === 1) {
+      return sendDeleteSuccess(res, "Offer deleted successfully");
     } else {
-      if (checkIfValuesIsEmptyNullUndefined) {
-        const { Email, Description, Status } = req.body;
-        const updatedInquiry = { Email, Description, Status };
-        if (Email) {
-          updateInquiry.Email == Email;
-        }
-        if (Description) {
-          updatedInquiry.Description = Description;
-        }
-        if (Status) {
-          updatedInquiry.Status = Status;
-        }
-        await updateInquiryService(InquiryId, updatedInquiry);
-        sendCreated(res, "inquiry updated successfully");
-      } else {
-        sendBadRequest(res, "Please provide a complete field");
-      }
+      return sendNotFound(res, "Offer not found or not deleted");
     }
   } catch (error) {
-    sendServerError(res, error);
-  }
-};
-
-export const deleteInquiry = async (req, res) => {
-  const InquiryId = req.params.id;
-  try {
-    const inquiryToDelete = await getInquiriesByIdService(InquiryId);
-    if (!inquiryToDelete) {
-      sendNotFound(res, "Inquiry to delete not found");
-    } else {
-      await deleteInquiryService(InquiryId);
-      sendDeleteSuccess(res, "Inquiry deleted successfully");
-    }
-  } catch (error) {
-    sendServerError(res, error);
+    return sendServerError(res, error.message);
   }
 };

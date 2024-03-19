@@ -11,6 +11,8 @@ import inquiriesRouter from "./src/routes/inquiriesRouter.js";
 import serviceRouter from "./src/routes/serviceRoute.js";
 import activityRouter from "./src/routes/activityRoute.js";
 import roomCategoryRouter from "./src/routes/roomCategoryRoute.js";
+import offerRouter from './src/routes/offerRoutes.js';
+import notificationRouter from './src/routes/notificationRoute.js';
 
 
 dotenv.config();
@@ -40,6 +42,8 @@ app.use("/api", inquiriesRouter);
 app.use("/api", serviceRouter);
 app.use("/api", activityRouter);
 app.use("/api/category", roomCategoryRouter);
+app.use("/api", offerRouter);
+app.use("/api", notificationRouter);
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT} `);
