@@ -1,0 +1,33 @@
+
+### get all Event
+GET http://localhost:8000/api/upcommingEvent
+
+### create Event
+POST http://localhost:8000/api/upcommingEvent
+Content-Type: application/json
+
+{
+    "Name": "Mugithi",
+    "Description": "Party",
+    "PosterUrl": "/path/to/image.jpg",
+    "Date": "31012023"
+}
+
+### Get one Event
+Get http://localhost:8000/api/upcommingEvent/255e16f4-f2a7-4255-9e51-98308826754e
+
+### Delete Event
+
+Delete http://localhost:8000/api/upcommingEvent/255e16f4-f2a7-4255-9e51-98308826754e
+
+### Update Event
+
+PUT http://localhost:8000/api/upcommingEvent/255e16f4-f2a7-4255-9e51-98308826754e
+Content-Type: application/json
+
+{
+    "Name": "Mugithi Night",
+    "Description": "Party",
+    "PosterUrl": "/path/to/image.jpg",
+    "Date": "31012023"
+}
