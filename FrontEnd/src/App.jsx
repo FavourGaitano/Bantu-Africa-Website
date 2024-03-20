@@ -1,12 +1,21 @@
+
 import "./App.scss";
-// import Home from "./pages/landing/Home";
+import Home from "./pages/landing/Home";
 import Room from "./pages/rooms/Room";
+import Restaurant from './pages/restaurant/Restaurant'
+
 
 function App() {
   return (
     <div className="main-app">
-      {/* <Home /> */}
+
+      <Home />
       <Room/>
+
+     
+      <Restaurant />
+  
+
     </div>
   );
 }
