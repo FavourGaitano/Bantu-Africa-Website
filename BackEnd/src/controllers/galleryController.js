@@ -107,7 +107,7 @@ export const deletePicture = async (req, res) => {
   }
 };
 
-export const updateGallery = async (req, res) => {
+export const updateGalleryController = async (req, res) => {
   try {
     const { PictureId } = req.params;
     const { Description, Category, PictureUrl } = req.body;
