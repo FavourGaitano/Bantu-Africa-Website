@@ -45,6 +45,10 @@ app.use("/api", activityRouter);
 app.use("/api/category", roomCategoryRouter);
 app.use("/api", offerRouter);
 app.use("/api", notificationRouter);
+app.use("/api", gallery);
+app.use("/api", meetingRouter);
+app.use("/api", meetingpackageRouter);
+app.use("/api", upCommingEventRouter);
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT} `);

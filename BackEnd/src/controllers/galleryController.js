@@ -107,7 +107,7 @@ export const deletePicture = async (req, res) => {
   }
 };
 
-export const updateGallery = async (req, res) => {
+export const updateGalleryController = async (req, res) => {
   try {
     const { PictureId } = req.params;
     const { Description, Category, PictureUrl } = req.body;
@@ -132,4 +132,6 @@ export const updateGallery = async (req, res) => {
     console.error(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-};
+}
+
+;

@@ -4,7 +4,9 @@ import {
   getGallery,
   getPictureByCategory,
   getonepicture,
-  updateGallery,
+
+  updateGalleryController,
+
   uploadPicture,
 } from "../controllers/galleryController.js";
 
@@ -15,6 +17,6 @@ gallery.post("/gallery", uploadPicture);
 gallery.get("/gallery/:PictureId", getonepicture);
 gallery.get("/gallery/category/:Category", getPictureByCategory);
 gallery.delete("/gallery/:PictureId", deletePicture);
-gallery.put("/gallery/:PictureId", updateGallery);
+gallery.put("/gallery/:PictureId", updateGalleryController);
 
 export default gallery;
