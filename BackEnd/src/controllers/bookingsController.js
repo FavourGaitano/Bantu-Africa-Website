@@ -298,8 +298,31 @@ export const updateBooking = async (req, res) => {
             await isAvailableService(RoomId);
           }
         }
-        await updateBookingService(BookingId, updatedBooking);
-        sendCreated(res, "Booking updated successfully");
+        const totalOccupants = AdultsNo + KidsNo;
+        const roomToBook = await getRoomByIdService(RoomId);
+        // console.log(roomToBook);
+
+        if (totalOccupants > roomToBook.Occupants) {
+          // console.log("Check reached");
+          res
+            .status(400)
+            .send(
+              "The total number of guests exceeds the maximum occupancy for this room. Please select another room."
+            );
+          return;
+        }
+        if (!roomToBook.isAvailable) {
+          console.log("Entered date check");
+          res
+            .status(400)
+            .send(
+              "This room is already booked for these dates. Please select another."
+            );
+          return;
+        } else {
+          await updateBookingService(BookingId, updatedBooking);
+          sendCreated(res, "Booking updated successfully");
+        }
       } else {
         sendBadRequest(res, "Please provide a complete field");
       }
