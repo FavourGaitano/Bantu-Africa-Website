@@ -1,0 +1,77 @@
+.main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .room-superior-content {
+        width: 90%;
+        display: flex;
+        margin: auto;
+        padding: 3rem 2.5rem;
+        background-color: var(--gray-color);
+        gap: 3rem;
+      
+        .room-photo {
+          width: 100%;
+        }
+      
+        .room-items {
+          display: flex;
+          flex-direction: column;
+          align-items: center; 
+          gap: 2rem;
+          margin: 3rem 0;
+          .room-desc {
+            width: 70%;
+            text-align: center;
+            line-height: 1.8;
+    
+          }
+      
+          .room-find-more-btn {
+            margin-top: 1rem;
+            button {
+              border: 1px solid var(--primary-color); 
+              padding: 1rem 2rem;
+              background-color: var(--gray-color);
+              color: var(--primary-color);
+            }
+          }
+        }
+      }
+      .room-deluxe-content {
+        width: 90%;
+        display: flex;
+        margin: 3rem auto;
+        // background-color: yellow;
+        gap: 3rem;
+        .room-photo {
+            width: 100%;
+          }
+        
+          .room-items {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            gap: 2rem;
+            .room-desc {
+              width: 70%;
+              text-align: center;
+              line-height: 1.8;
+      
+            }
+        
+            .room-find-more-btn {
+              margin-top: 1rem;
+              button {
+                border: 1px solid var(--primary-color); 
+                padding: 1rem 2rem;
+                background-color: white;
+                color: var(--primary-color);
+              }
+            }
+          }
+    }
+  }
+  
+ 
+  
