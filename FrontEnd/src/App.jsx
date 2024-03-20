@@ -1,12 +1,14 @@
-import "./App.scss";
-// import Home from "./pages/landing/Home";
-import GaleryPage from "./pages/Gallery/GaleryPage";
+
+import './App.scss'
+import Restaurant from './pages/restaurant/Restaurant'
+import Home from "./pages/landing/Home";
 
 function App() {
   return (
     <div className="main-app">
-      {/* <Home /> */}
-      <GaleryPage />
+      {/* <h2>This is our main entry file</h2> */}
+      <Restaurant />
+      <Home />
     </div>
   );
 }
