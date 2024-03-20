@@ -1,4 +1,5 @@
 .navbar {
+  font-family: "Futura Std", sans-serif;
   display: flex;
   flex-direction: column;
   //   position: fixed;
@@ -28,8 +29,9 @@
       }
     }
     .book {
+      font-family: "Futura Std", sans-serif;
       margin-right: 40px;
-      width: 12%;
+      width: 120px;
       height: 70%;
       display: flex;
       border-radius: 5px;
