@@ -1,6 +1,7 @@
 import React from "react";
 import "./GalleryPage.scss";
 import image1 from "../../assets/Images/Rooms/Dilux.jpg";
+import Navbar from "../../components/shared/Navbar";
 
 const GaleryPage = () => {
   const images = [
@@ -13,24 +14,27 @@ const GaleryPage = () => {
   ];
 
   return (
-    <div className="gallery">
-      <div className="galleryinfo">
-        <h2>Gallery</h2>
-        <p>Here is the Photo Gallery of our Bantu Hotel.</p>
-      </div>
-      <ul>
-        <li>Rooms</li>
-        <li>Restaurant</li>
-        <li>Fun Activities</li>
-        <li>Other Services</li>
-      </ul>
-      <div className="galleryimages">
-        {images.map((image, index) => (
-          <div key={index} className="image_card">
-            <img src={image.url} alt={image.alt} />
-          </div>
-        ))}
-        {/* <div className="image_card">hhh</div> */}
+    <div>
+      <Navbar />
+      <div className="gallery">
+        <div className="galleryinfo">
+          <h2>Gallery</h2>
+          <p>Here is the Photo Gallery of our Bantu Hotel.</p>
+        </div>
+        <ul>
+          <li>Rooms</li>
+          <li>Restaurant</li>
+          <li>Fun Activities</li>
+          <li>Other Services</li>
+        </ul>
+        <div className="galleryimages">
+          {images.map((image, index) => (
+            <div key={index} className="image_card">
+              <img src={image.url} alt={image.alt} />
+            </div>
+          ))}
+          {/* <div className="image_card">hhh</div> */}
+        </div>
       </div>
     </div>
   );
