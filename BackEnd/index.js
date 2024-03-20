@@ -34,7 +34,8 @@ app.get("/health", (req, res) => {
 });
 
 //routes
-app.use('/api', roomRouter);
+app.use('/api', 
+);
 app.use('/api', userRouter);
 app.use ('/api', restaurantRouter);
 app.use("/api", bookingsRouter);
