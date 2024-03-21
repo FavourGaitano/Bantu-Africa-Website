@@ -5,6 +5,10 @@ import Event from "./pages/event/Event";
 import Room from "./pages/rooms/Room";
 // import Restaurant from './pages/restaurant/Restaurant'
 
+import './App.scss'
+import Restaurant from './pages/restaurant/Restaurant'
+import Home from "./pages/landing/Home";
+import AdminSidebar from './components/AdminSidebar/AdminSidebar'
 
 function App() {
   return (
@@ -15,6 +19,7 @@ function App() {
       {/* <Restaurant /> */}
   <Event/>
 
+      {/* <AdminSidebar /> */}
     </div>
   );
 }

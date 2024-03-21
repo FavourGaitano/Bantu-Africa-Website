@@ -2,10 +2,13 @@ import React from 'react'
 import './Restaurant.scss'
 import RestaurantContent from '../../components/restaurant/RestaurantContent'
 import image from '../../assets/Restaurant/image 8.png'
+import Navbar from '../../components/shared/Navbar'
+
 
 const Restaurant = () => {
   return (
     <div className="main">
+        {/* <Navbar/>    */}
         <div className="image">
             <img
                 src={image}
