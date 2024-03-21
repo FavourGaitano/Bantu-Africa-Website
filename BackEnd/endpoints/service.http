@@ -1,19 +1,19 @@
 
-        ##SERVIVES
-###
-GET http://localhost:8000/api/service
+        ##SERVICES
+### Get services
+GET http://localhost:3000/api/service
 
 ###
 GET http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
 
-###
-POST http://localhost:8000/api/service
+### Create a Service
+POST http://localhost:3000/api/service
 Content-Type: application/json
 
 {
-    "ServiceName": "Accomodation",
-    "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
-    "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
+    "ServiceName": "Cuisine",
+    "Description": "Bantu Africa’s signature restaurant boasts organic farm-to-table cuisine, aptly paying homage to the local farming community. The celebrated chefs deliver a wide variety of local and international dishes across the resort’s four themed restaurants, offering the perfect fusion of European luxury and Kenyan cuisine.",
+    "ImageUrl": "https://photos.google.com/share/AF1QipMDqFBfV8ZmUvaxS1U0r2YTEGYID4maxpZ-dGaIIdSq0jb-QuobmNwHpamUnNj0sA/photo/AF1QipOJADTCHwE44ST5mq-FATgqgvMcYlcSljONno6m?key=U2VsbHlPREk5d0lsaEtTU1l3VTQ5TUxlWWFVaU1B"
 }
 
 ###
@@ -28,7 +28,7 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
+DELETE http://localhost:3000/api/service/bf67a55a-091c-4fc8-9613-998da25e72b7
 
 
 

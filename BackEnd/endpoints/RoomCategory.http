@@ -11,15 +11,15 @@ GET http://localhost:3000/api/category/rooms/category
 ### //get all rooms categories
 GET http://localhost:8000/api/category/rooms/category
 
-### Create inquiry
+### Create category
 POST http://localhost:3000/api/category/rooms/category
 Content-Type: application/json
 
 {
-    "Name": "Deluxe",
-    "Size": "Double",
-    "MealPlan": "BB",
-    "Price": 10000
+    "Name": "Superior",
+    "Size": "Single",
+    "MealPlan": "FB",
+    "Price": 12000
 }
 
 ### //get all rooms categories
@@ -53,14 +53,14 @@ Content-Type: application/json
 
 
 ### update category
-PUT http://localhost:8000/api/category/rooms/category/update/c48185a8-5762-4076-a1dd-85b0a12979e8
+PUT http://localhost:3000/api/category/rooms/category/update/22c62669-fb1d-4520-b257-6e77116c4daf
 Content-Type: application/json
 
 {
-    "Name": "presidential one",
-    "Size": "8 rooms",
-    "MealPlan": "BB",
-    "Price": 80000
+    "Name": "Standard",
+    "Size": "Single",
+    "MealPlan": "HB",
+    "Price": 7500
 }
 
 
