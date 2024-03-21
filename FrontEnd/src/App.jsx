@@ -7,8 +7,9 @@ import Room from "./pages/rooms/Room";
 
 import './App.scss'
 import Restaurant from './pages/restaurant/Restaurant'
-import Home from "./pages/landing/Home";
+// import Home from "./pages/landing/Home";
 import AdminSidebar from './components/AdminSidebar/AdminSidebar'
+import AdultsActivitiesPage from "./pages/Activities/Adults/AdultsActivitiesPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       {/* <Home /> */}
       {/* <Room/> */}
       {/* <Restaurant /> */}
+      {/* <AdultsActivitiesPage /> */}
   <Event/>
 
       {/* <AdminSidebar /> */}
