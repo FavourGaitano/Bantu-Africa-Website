@@ -1,0 +1,107 @@
+:root {
+  --primary-color: #ccae10;
+  --secondary-color: #5e292f;
+  --gray-color: #f6f6f6;
+  --white-color: white;
+  --light-gray: #6f6f74;
+  --primary-font-family: "Futura Std";
+}
+
+
+
+
+
+.room-container{
+  overflow: hidden;
+  .room-hero{
+    height: 100vh;
+  }
+  .main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .room-superior-content,
+    .room-deluxe-content {
+      width: 90%;
+      display: flex;
+      margin: auto;
+      padding: 1rem 2.5rem;
+      background-color: var(--gray-color);
+      gap: 3rem;
+  
+      .slide-from-left2 {
+              animation: slideFromLeft2 1s ease-in-out forwards;
+           }
+        
+           @keyframes slideFromLeft2 {
+            from {
+              transform: translateX(3%);
+             }
+             to {
+               transform: translateX(0);
+             }
+            }
+        
+      .slide-from-left {
+        animation: slideFromLeft 1s ease-in-out forwards;
+        opacity: 0; 
+      }
+  
+      @keyframes slideFromLeft {
+        from {
+          transform: translateX(-3%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+  
+      .room-items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin: 3rem 0;
+        opacity: 0; 
+  
+        animation: fadeIn 1s ease-in-out forwards;
+  
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+  
+        .room-desc {
+          width: 80%;
+          text-align: center;
+          line-height: 1.8;
+          font-family: var(--primary-font-family);
+          font-size: 1.1rem;
+          color: var(--light-gray);
+        }
+  
+        .room-find-more-btn {
+          margin-top: 1rem;
+          button {
+            border: 1px solid var(--primary-color);
+            padding: 1rem 2rem;
+            background-color: var(--gray-color);
+            color: var(--primary-color);
+            font-family: var(--primary-font-family);
+            font-size: 1.1rem;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+
