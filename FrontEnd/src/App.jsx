@@ -1,8 +1,13 @@
- main
+
 import Home from "./pages/landing/Home";
 import AdminSidebar from './components/AdminSidebar/AdminSidebar'
 import ContactUsForm from './components/ContactUsForm/ContactUsForm';
-import AdminSidebar from "./components/AdminSidebar/AdminSidebar";
+import Event from './pages/event/Event';
+import AboutUs from './pages/AboutUs/AboutUs';
+import Gallery from './pages/Gallery/GalleryPage';
+import Restaurant from './pages/restaurant/Restaurant';
+import AdultsActivitiesPage from './pages/Activities/Adults/AdultsActivitiesPage';
+import AdminLogin from "./components/AdminLogin/AdminLogin";
 
 function App() {
   return (
@@ -15,6 +20,9 @@ function App() {
       {/* <AdminSidebar /> */}
       {/* <ContactUsForm/> */}
       {/* <AboutUs /> */}
+      {/* <Gallery /> */}
+      {/* <AdultsActivitiesPage /> */}
+      <AdminLogin/>
     </div>
   );
 }
