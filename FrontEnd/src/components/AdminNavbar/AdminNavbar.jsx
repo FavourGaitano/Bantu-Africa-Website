@@ -15,7 +15,7 @@ const AdminNavbar = () => {
         </div>
         <div className="container">
             <div className="search-container">
-                <div type="text" className="search-bar" placeholder="Search..."></div>
+                <input type="text" className="search-bar" placeholder="Search..."/>
             </div>
         </div>
         <div className="header-list">
@@ -36,7 +36,10 @@ const AdminNavbar = () => {
                 </ul>
             </nav>
             <div className="header-list-icon">
-                {/* <a><i className="fa fa-bag-shopping"></i></a> */}
+                <a><i className="fa-solid fa-bell"></i></a>
+                <a><i class="fa-regular fa-user"></i></a>
+                
+
             </div>
 
         </div>
