@@ -19,6 +19,11 @@ function App() {
   <Event/>/
 
       {/* <AdminSidebar /> */}
+      {/* <ContactUsForm/> */}
+      {/* <AboutUs /> */}
+      {/* <Gallery /> */}
+      {/* <AdultsActivitiesPage /> */}
+      <AdminLogin/>
       <AboutUs />
     </div>
   );
