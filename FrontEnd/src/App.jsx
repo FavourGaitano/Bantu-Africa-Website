@@ -16,7 +16,7 @@ function App() {
       {/* <Home /> */}
       {/* <Room/> */}
       {/* <Restaurant /> */}
-  <Event/>
+  <Event/>/
 
       {/* <AdminSidebar /> */}
       <AboutUs />
