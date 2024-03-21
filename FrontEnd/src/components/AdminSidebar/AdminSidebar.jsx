@@ -11,8 +11,8 @@ const AdminSidebar = () => {
         <div className="sidebar">
         
             <div className="sidebar-content">
-                {/* <a href="#profile"><i className="fas fa-user"></i>Profile</a> */}
-                <p>Management</p>
+                
+                <p></p>
                 <a><i className="fas fa-users"></i>Admins</a>
                 <a><i class="fa-solid fa-bed"></i>Rooms & Suites</a>
                 <a><i class="fa-solid fa-hotel"></i>Bookings</a>

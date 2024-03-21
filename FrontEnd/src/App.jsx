@@ -1,3 +1,9 @@
+
+import './App.scss'
+import BookingPage from './pages/Booking/BookingPage';
+import Restaurant from './pages/restaurant/Restaurant'
+// import Home from "./pages/landing/Home";
+import ContactUsForm from './components/ContactUsForm/ContactUsForm';
 import Home from "./pages/landing/Home";
 import AdminSidebar from "./components/AdminSidebar/AdminSidebar";
 import AboutUs from "./pages/AboutUs/AboutUs";
@@ -8,13 +14,14 @@ import Meeting from "./pages/Meetings/Meeting";
 function App() {
   return (
     <div className="main-app">
+
       {/* <Home /> */}
-      {/* <Room /> */}
+      {/* <Room/> */}
       {/* <Restaurant /> */}
-      {/* <Event /> */}
+  <Event/>
+
       {/* <AdminSidebar /> */}
-      {/* <AboutUs /> */}
-      <Meeting />
+      <AboutUs />
     </div>
   );
 }
