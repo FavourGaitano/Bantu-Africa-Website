@@ -1,18 +1,21 @@
-import React from 'react'
-import './Hero.scss'
-const Hero = ({heroImgUrl,msg}) => {
+import React from "react";
+import "./Hero.scss";
+const Hero = ({ heroImgUrl, msg }) => {
   return (
-    <div className="hero-image-content">
-     
-     <div className='hero-img' style={{ backgroundImage: `url(${heroImgUrl})` }}>
-      </div>    
+    
+    <div >
+       <div className="hero-container-img">
+        <img src={heroImgUrl} alt="hero" />
+      </div>
 
-    <div className="hero-banner">
-      <h2>{msg}</h2>
-      
+      <div className="hero-banner">
+        <p className="name">{msg}</p>
+      </div>
+     
     </div>
-    </div>
-  )
-}
+  );
+};
 
 export default Hero;
+
+

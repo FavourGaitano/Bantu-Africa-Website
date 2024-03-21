@@ -22,6 +22,7 @@ const Carousel = () => {
   };
 
   const nextSlide = () => {
+    console.log("Clicked!");
     setCurrentPhoto((oldPhoto) => {
       const result = (oldPhoto + 1) % photo.length;
       return result;
@@ -32,7 +33,7 @@ const Carousel = () => {
   useEffect(() => {
     let carouselId = setInterval(() => {
       nextSlide();
-    }, 5000);
+    }, 7000);
     return () => {
       clearInterval(carouselId);
     };
@@ -43,21 +44,25 @@ const Carousel = () => {
       {photoArray &&
         photoArray.map((photo, index) => (
           <div
-            className="carousel-photo"
-            style={{
-              transform: `translateX(${100 * (index - currentPhoto)}%)`,
-              opacity: index === currentPhoto ? 1 : 0,
-              visibility: index === currentPhoto ? "visible" : "hidden",
-            }}
+            className={`carousel-photo ${
+              index === currentPhoto ? "active" : ""
+            }`}
+            // style={{
+            //   transform: `translateX(${100 * (index - currentPhoto)}%)`,
+            //   opacity: index === currentPhoto ? 1 : 0,
+            //   visibility: index === currentPhoto ? "visible" : "hidden",
+            // }}
             key={index}
           >
-            <button onClick={prevSlide} className="left">
-              <img src={prev} alt="prev-icon" />
-            </button>
-            <img src={photo} alt="slider-image" />
-            <button onClick={nextSlide} className="right">
-              <img src={next} alt="next-icon" />
-            </button>
+            <img src={photo} alt="slider-image" loading="lazy" />
+            {/* <div className="buttons">
+              <button onClick={prevSlide} className="left">
+                <img src={prev} alt="prev-icon" />
+              </button>
+              <button onClick={nextSlide} className="right">
+                <img src={next} alt="next-icon" />
+              </button>
+            </div> */}
           </div>
         ))}
     </div>

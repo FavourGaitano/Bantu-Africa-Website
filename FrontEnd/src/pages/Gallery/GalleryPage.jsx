@@ -1,24 +1,27 @@
 import React from "react";
 import "./GalleryPage.scss";
 import image1 from "../../assets/Images/Rooms/Dilux.jpg";
-import Navbar from "../../components/shared/Navbar";
+import image2 from "../../assets/Images/Rooms/Single.jpg";
+import image3 from "../../assets/Restaurant/Food1.jpg";
 
-const GaleryPage = () => {
+const GalleryPage = () => {
   const images = [
     { url: image1, alt: "Description" },
     { url: image1, alt: "Description" },
     { url: image1, alt: "Description" },
-    { url: image1, alt: "Description" },
-    { url: image1, alt: "Description" },
-    { url: image1, alt: "Description" },
+    { url: image2, alt: "Description" },
+    { url: image2, alt: "Description" },
+    { url: image2, alt: "Description" },
+    { url: image3, alt: "Description" },
+    { url: image3, alt: "Description" },
+    { url: image3, alt: "Description" },
   ];
 
   return (
     <div>
-      <Navbar />
       <div className="gallery">
         <div className="galleryinfo">
-          <h2>Gallery</h2>
+          <p className="header">Gallery</p>
           <p>Here is the Photo Gallery of our Bantu Hotel.</p>
         </div>
         <ul>
@@ -33,11 +36,10 @@ const GaleryPage = () => {
               <img src={image.url} alt={image.alt} />
             </div>
           ))}
-          {/* <div className="image_card">hhh</div> */}
         </div>
       </div>
     </div>
   );
 };
 
-export default GaleryPage;
+export default GalleryPage;

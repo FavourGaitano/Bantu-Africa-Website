@@ -35,6 +35,8 @@ const Event = () => {
 
   return (
     <div className="event-main-container">
+     
+
       <Hero heroImgUrl={Event3} msg="EVENTS" />
       <main className="event-main-container">
         <section className="main-content">
@@ -54,7 +56,6 @@ const Event = () => {
               </div>
               <div className="event-find-more-btn">
                 <Button msg="DATE: 26/04/2024" />
-                <Button msg="PARTICIPANTS: 10" />
               </div>
             </div>
           </div>
@@ -67,7 +68,6 @@ const Event = () => {
                 </div>
                 <div className="event-find-more-btn">
                   <Button msg="DATE: 26/04/2024" />
-                  <Button style={{ color: "red" }} msg="PARTICIPANTS: 10" />
                 </div>
               </div>
               <div className="event-photo">
@@ -81,7 +81,6 @@ const Event = () => {
                 </div>
                 <div className="event-find-more-btn">
                   <Button msg="DATE: 26/04/2024" />
-                  <Button style={{ color: "red" }} msg="PARTICIPANTS: 10" />
                 </div>
               </div>
               <div className="event-photo">
