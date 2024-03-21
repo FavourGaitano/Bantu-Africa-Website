@@ -1,6 +1,28 @@
 .activities{
-    background-color: blue;
-    height: 70vh;
+    // background-color: blue;
+    height: 100%;
+    position: relative;
+
+    .activity-title {
+      position: absolute; 
+      top: 0;
+      left: 35%;
+      transform: translateX(-50%);
+      height: 20vh;
+      background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(54, 53, 53, 0.5));
+      width: 70vw;
+      margin-left: 40px;
+      margin-top: -150px;
+      z-index: 1; 
+      display: flex;
+      align-items: center;
+
+      h1{
+        font-size: 50px;      
+        color: white;
+        margin-left: 30px;
+      }
+    }
 
     .activity-section{
         background-color: white;
@@ -146,9 +168,5 @@
       }
 
   }
-
-
-
-
     
 }
