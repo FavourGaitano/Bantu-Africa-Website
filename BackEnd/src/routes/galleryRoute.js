@@ -4,19 +4,17 @@ import {
   getGallery,
   getPictureByCategory,
   getonepicture,
-
   updateGalleryController,
-
   uploadPicture,
 } from "../controllers/galleryController.js";
 
-const gallery = Router();
+const galleryRouter = Router();
 
-gallery.get("/gallery", getGallery);
-gallery.post("/gallery", uploadPicture);
-gallery.get("/gallery/:PictureId", getonepicture);
-gallery.get("/gallery/category/:Category", getPictureByCategory);
-gallery.delete("/gallery/:PictureId", deletePicture);
-gallery.put("/gallery/:PictureId", updateGalleryController);
+galleryRouter.get("/gallery", getGallery);
+galleryRouter.post("/gallery", uploadPicture);
+galleryRouter.get("/gallery/:PictureId", getonepicture);
+galleryRouter.get("/gallery/category/:Category", getPictureByCategory);
+galleryRouter.delete("/gallery/:PictureId", deletePicture);
+galleryRouter.put("/gallery/:PictureId", updateGalleryController);
 
-export default gallery;
+export default galleryRouter;
