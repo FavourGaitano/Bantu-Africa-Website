@@ -1,0 +1,57 @@
+.special-offers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 3%;
+  padding-bottom: 2%;
+  background-color: #cfcfd3;
+  font-family: "Futura Std";
+  //   border: 2px solid blue;
+  h3 {
+    font-size: 30px;
+    color: #ccae10;
+    margin-top: 1%;
+  }
+  .offers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1%;
+    width: 95vw;
+    margin: 0 auto;
+    .offer {
+      width: 28.5%;
+      height: 20rem;
+      object-fit: cover;
+      margin-top: 1%;
+      overflow: hidden;
+      position: relative;
+      //   display: flex;
+      //   border: 2px solid black;
+      img {
+        width: 100%;
+        height: 100%;
+        // border-radius: 8px;
+        // box-shadow: 2px 2px 2px black;
+        transition: transform 3s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      .text {
+        position: relative;
+        top: -70%;
+        text-align: center;
+
+        color: white;
+        font-weight: bolder;
+        background-color: black;
+        opacity: 50%;
+        h5 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
