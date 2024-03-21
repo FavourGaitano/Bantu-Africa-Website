@@ -1,221 +1,137 @@
-.booking{
-
+.booking {
     .booking-title {
-        position: absolute; 
-        // top: 0;
-        left: 35%;
-        transform: translateX(-50%);
-        height: 20vh;
-        background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(54, 53, 53, 0.5));
-        width: 70vw;
-        margin-left: 40px;
-        margin-top: -170px;
-        z-index: 1; 
-        display: flex;
-        align-items: center;
+      position: absolute;
+      left: 35%;
+      transform: translateX(-50%);
+      height: 20vh;
+      background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(54, 53, 53, 0.5));
+      width: 70vw;
+      margin-left: 40px;
+      margin-top: -170px;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      margin-left: 50px;
+  
+      h1 {
+        font-size: 50px;
+        color: white;
         margin-left: 50px;
-    
-        h1{
-          font-size: 50px;      
-          color: white;
-          margin-left: 50px;
-        }
+      }
     }
-
-    .options{
-        height: 100vh;
+  
+    .options {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      gap: 70px;
+  
+      .select {
+        margin-top: 50px;
+        height: 10vh;
+        width: 40vw;
+        border: 2px solid rgb(218, 217, 217);
         display: flex;
+        border-radius: 5px;
+        align-items: center;
         justify-content: center;
-        gap: 70px;
-
-        .select {
-            margin-top: 50px;
-            height: 10vh;
-            width: 40vw;
-            border: 2px solid rgb(218, 217, 217);
-            display: flex;
-            border-radius: 5px;
-            align-items: center;
-            justify-content: center;
-          }
-          
-          .select-navbar {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-          }
-          
+  
+        .select-navbar {
+          display: flex;
+          list-style-type: none;
+          justify-content: space-evenly;
+          align-items: center;
+          gap: 30px;
+  
           .list {
             cursor: pointer;
             font-size: 20px;
             position: relative;
-          }
-          
-          .list:hover .dropdown {
-            display: block;
-          }
-          
-          .dropdown {
-            display: none;
-            position: absolute;
-            top: calc(100% + 5px);
-            left: 0;
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            border-radius: 5px;
-            padding: 0;
-            margin: 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            z-index: 1;
-          }
-          
-          .dropdown li {
-            list-style: none;
-            padding: 10px;
-            font-size: 16px;
-            color: #333333;
-            transition: background-color 0.3s;
-          }
-          
-          .dropdown li:hover {
-            background-color: #f5f5f5;
-          }
-          
-          .dropdown li:first-child {
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-          }
-          
-          .dropdown li:last-child {
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-          }
-          
-          
-          
-          .select .select-navbar {
-            display: flex;
-            list-style-type: none;
-            justify-content: space-evenly;
-            align-items: center;
-            gap: 30px;
-          }
-          
-          .select .select-navbar .list {
-            cursor: pointer;
-            font-size: 20px;
-            position: relative; 
-          }
-          
-          .select .select-navbar .list:hover .dropdown {
-            display: block;
-          }
-          
-          .select .select-navbar .list .dropdown {
-            display: none;
-            position: absolute;
-            top: calc(100% + 10px); 
-            left: 0;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            z-index: 1; 
-          }
-          
-          .select .select-navbar .list .dropdown li {
-            cursor: pointer;
-          }
-          
-          .select .select-navbar .list .dropdown li:hover {
-            background-color: #e0e0e0; /* Change background color on hover */
-          }
-          
-          
-          .select .select-navbar {
-            display: flex;
-            list-style-type: none;
-            justify-content: space-evenly;
-            align-items: center;
-            gap: 30px;
-          }
-          
-          .select .select-navbar .list {
-            cursor: pointer;
-            font-size: 20px;
-            position: relative; 
-          }
-          
-          .select .select-navbar .list:hover .dropdown {
-            display: block;
-          }
-          
-          .select .select-navbar .list .dropdown {
-            display: none;
-            position: absolute;
-            top: calc(100% + 10px); 
-            left: 0;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            z-index: 1; 
-          }
-          
-          .select .select-navbar .list .dropdown li {
-            cursor: pointer;
-          }
-          
-          .select .select-navbar .list .dropdown li:hover {
-            background-color: #e0e0e0;
-          }
-          
-
-        .stay{
-            margin-top: 50px;
-            height: 40vh;
-            width: 30vw;
-            border: 2px solid rgb(230, 229, 229);
-
-            h2{
-                text-align: center;
-                margin-top: 10px;
+  
+            &:hover .dropdown {
+              display: block;
             }
-            .check{
-                display: flex;
-                justify-content: space-around;
-
-                .check-in{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
+  
+            .dropdown {
+              display: none;
+              position: absolute;
+              top: calc(100% + 5px);
+              left: 0;
+              background-color: #ffffff;
+              border: 1px solid #cccccc;
+              border-radius: 5px;
+              padding: 0;
+              margin: 0;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+              z-index: 1;
+  
+              li {
+                list-style: none;
+                padding: 10px;
+                font-size: 16px;
+                color: #333333;
+                transition: background-color 0.3s;
+  
+                &:hover {
+                  background-color: #f5f5f5;
                 }
-
-                .check-out{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
+  
+                &:first-child {
+                  border-top-left-radius: 5px;
+                  border-top-right-radius: 5px;
                 }
+  
+                &:last-child {
+                  border-bottom-left-radius: 5px;
+                  border-bottom-right-radius: 5px;
+                }
+              }
             }
-
-            .details{
-                margin-top: 20px;
-
-                .people-no{
-                    span{
-                        font-size: 20px;
-                        font-weight: bolder;
-                        margin-left: 50px;
-                    }
-                }
-                .total{
-                    margin-top: 20px;
-                    display: flex;
-                    justify-content: space-around;
-                }
-            }
+          }
         }
+      }
+  
+      .stay {
+        margin-top: 50px;
+        height: 40vh;
+        width: 30vw;
+        border: 2px solid rgb(230, 229, 229);
+  
+        h2 {
+          text-align: center;
+          margin-top: 10px;
+        }
+  
+        .check {
+          display: flex;
+          justify-content: space-around;
+  
+          .check-in,
+          .check-out {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+        }
+  
+        .details {
+          margin-top: 20px;
+  
+          .people-no {
+            span {
+              font-size: 20px;
+              font-weight: bolder;
+              margin-left: 50px;
+            }
+          }
+  
+          .total {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+          }
+        }
+      }
     }
-
-}
-
+  }
+  

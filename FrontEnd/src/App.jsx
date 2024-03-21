@@ -12,11 +12,11 @@ function App() {
       {/* <h2>This is our main entry file</h2> */}
       {/* <Restaurant /> */}
       {/* <Home /> */}
-      {/* <BookingPage /> */}
+      <BookingPage />
 
       {/* <Home /> */}
       {/* <Room/> */}
-      <Restaurant />
+      {/* <Restaurant /> */}
       {/* <Event/> */}
       {/* <AdminSidebar /> */}
       {/* <ContactUsForm/> */}
