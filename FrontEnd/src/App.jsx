@@ -1,5 +1,7 @@
  main
 import Home from "./pages/landing/Home";
+import AdminSidebar from './components/AdminSidebar/AdminSidebar'
+import ContactUsForm from './components/ContactUsForm/ContactUsForm';
 import AdminSidebar from "./components/AdminSidebar/AdminSidebar";
 
 function App() {
@@ -9,10 +11,10 @@ function App() {
       {/* <Home /> */}
       {/* <Room/> */}
       {/* <Restaurant /> */}
-  <Event/>
-
+      {/* <Event/> */}
       {/* <AdminSidebar /> */}
-      <AboutUs />
+      {/* <ContactUsForm/> */}
+      {/* <AboutUs /> */}
     </div>
   );
 }
