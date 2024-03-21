@@ -47,7 +47,7 @@ const SpecialOffers = () => {
         {offers &&
           offers.map((offer, index) => (
             <div className="offer" key={index}>
-              <img src={offer.img} alt={offer.title} />
+              <img src={offer.img} alt={offer.title} loading="lazy" />
               <div className="text">
                 <h5>{offer.title}</h5>
                 <p>{offer.caption}</p>

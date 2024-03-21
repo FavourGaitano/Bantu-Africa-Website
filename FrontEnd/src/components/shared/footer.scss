@@ -3,6 +3,7 @@
   justify-content: center;
   background-image: url("../../assets/mount-kenya.jpg");
   //   background-position: center;
+  font-family: "Futura Std";
   background-size: cover;
   width: 100%;
   .content {
@@ -19,14 +20,23 @@
         opacity: 80%;
         color: white;
         width: 30%;
-        padding: 7px;
+        padding: 10px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        gap: 10%;
+        h4 {
+          color: #d5b833;
+        }
+      }
+      .one {
+        gap: 7%;
+      }
+      .two {
+        gap: 7%;
       }
       .three {
-        // border: 2px solid red;
-        padding-bottom: 20%;
+        gap: 12%;
+        // padding-bottom: 20%;
       }
     }
     .copyright {
@@ -37,14 +47,19 @@
       display: flex;
       align-items: flex-start;
       justify-content: center;
+      //   border: 2px solid red;
+      font-family: "Futura Std";
+      font-weight: bolder;
+      font-size: 15px;
+      letter-spacing: 2px;
+      //   color: white;
       span {
-        font-weight: bolder;
-        font-family: "Futura Std";
         img {
           height: 20px;
           width: 20px;
           position: relative;
           bottom: -5px;
+          left: -3px;
         }
       }
     }

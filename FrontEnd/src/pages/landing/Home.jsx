@@ -12,6 +12,7 @@ const Home = () => {
   return (
     <div className="home-page">
       <Navbar />
+
       <Carousel />
       <MarketingCards />
       <SpecialOffers />

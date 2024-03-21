@@ -15,10 +15,15 @@
       width: 300rem;
       height: 27rem;
       object-fit: contain;
+      overflow: hidden;
+      position: relative;
       img {
         height: 100%;
         width: 100%;
-        box-shadow: 2px 2px 2px 2px black;
+        transition: transform 3s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
       }
     }
     .desc {
@@ -30,7 +35,7 @@
         margin-bottom: 5%;
         margin-top: 70px;
         text-align: center;
-        font-size: 20px;
+        font-size: 25px;
       }
       button {
         font-family: "Futura Std", sans-serif;
@@ -63,11 +68,16 @@
     .image {
       width: 300rem;
       height: 26rem;
-      object-fit: cover;
+      object-fit: fit;
+      position: relative;
+      overflow: hidden;
       img {
         height: 100%;
         width: 100%;
-        box-shadow: 2px 2px 2px 2px black;
+        transition: transform 3s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
       }
     }
     .desc {

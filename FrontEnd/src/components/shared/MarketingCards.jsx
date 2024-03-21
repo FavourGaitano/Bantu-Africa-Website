@@ -13,7 +13,7 @@ const MarketingCards = () => {
     <div className="cards">
       <div className="accom-card">
         <div className="image">
-          <img src={bed} alt="no-img" />
+          <img src={bed} alt="no-img" loading="lazy" />
         </div>
         <div className="desc">
           <h4>Accommodation</h4>
@@ -23,7 +23,7 @@ const MarketingCards = () => {
       </div>
       <div className="cuisine-card">
         <div className="image">
-          <img src={food} alt="no-img" />
+          <img src={food} alt="no-img" loading="lazy" />
         </div>
         <div className="desc">
           <h4>Cuisine</h4>
