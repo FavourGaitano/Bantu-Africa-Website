@@ -2,14 +2,15 @@ import "./App.scss";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Restaurant from "./pages/restaurant/Restaurant";
 import Home from "./pages/landing/Home";
-import GalleryPage from "./pages/Gallery/GalleryPage";
+import AdminSidebar from './components/AdminSidebar/AdminSidebar'
+
 function App() {
   return (
     <div className="main-app">
-      {/* <Home /> */}
-      <AboutUs />
+      {/* <h2>This is our main entry file</h2> */}
       {/* <Restaurant /> */}
-      {/* <GalleryPage /> */}
+      {/* <Home /> */}
+      {/* <AdminSidebar /> */}
     </div>
   );
 }
