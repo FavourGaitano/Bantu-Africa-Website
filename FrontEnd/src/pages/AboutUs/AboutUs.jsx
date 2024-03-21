@@ -17,7 +17,9 @@ const AboutUs = () => {
 
       <div className="aboutinfo">
         <div className="aboutBantu">
-          <p className="header">Luxury Hotel in Nyeri Kenya, Bantu Hotel</p>
+          <p className="aboutheader">
+            Luxury Hotel in Nyeri Kenya, Bantu Hotel
+          </p>
           <p className="text">
             Bantu Africa, nestled in the heart of Mount Kenya, embraces the
             essence of hospitality, harking back to a time when weary travelers

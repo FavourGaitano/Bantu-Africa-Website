@@ -1,6 +1,6 @@
  main
 import Home from "./pages/landing/Home";
-import AdminSidebar from './components/AdminSidebar/AdminSidebar'
+import AdminSidebar from "./components/AdminSidebar/AdminSidebar";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
   <Event/>
 
       {/* <AdminSidebar /> */}
+      <AboutUs />
     </div>
   );
 }
