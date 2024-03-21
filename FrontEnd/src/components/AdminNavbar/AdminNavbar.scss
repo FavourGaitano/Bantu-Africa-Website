@@ -1,6 +1,7 @@
 *{
     padding:0;
     margin:0;
+    font-family: 'Futura Std';
 }
 .header{
     
@@ -10,9 +11,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.342);
+    background-color: rgba(61, 51, 39, 0.83);
     padding: 20px 80px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 5px 15px rgba(61, 51, 39, 0.06);
     z-index: 999;
     position:fixed;
     top: 0;
@@ -34,9 +35,10 @@
         font-family: 'Futura Std';  
         margin: 0;
         display: flex;
-        justify-content: center;
+        justify-content: flex;
         align-items: center;
         height: 27px;
+        margin-left:-30vw;
 
         .search-container{
 
@@ -44,13 +46,14 @@
 
             .search-bar{
 
-                height:4vh;
+                height:2.5vh;
                 width: 400px;
                 padding: 10px;
                 border: none;
                 border-radius: 20px;
-                background-color: rgba(255, 255, 255, 0.7); /* Use rgba for transparent background */
+                background-color: rgba(255, 255, 255, 0.9); /* Use rgba for transparent background */
                 outline: none;
+                
 
 
                 &::placeholder{
@@ -124,9 +127,25 @@
     }
 
     .header-list-icon{
-        color: #1a1a1a;
-        padding-left: 20px;
-        font-size: 30px;
+        color: white;
+        
+        font-size: 25px;
         transition: 0.3s ease;
+
+        a{
+            padding-left: 20px;
+
+            i{
+                .fas fa-user{
+                    width:50px;
+                }
+            }
+
+            
+        }
+
+        a:hover{
+            color:#3D3327;
+        }
     }
 }
