@@ -1,6 +1,7 @@
 .aboutusimage {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 
   img {
     width: 100%;
@@ -8,6 +9,19 @@
     object-fit: cover;
     margin: 0;
     padding: 0;
+
+    transform: scale(1);
+
+    animation: zoomIn 10s ease forwards;
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.25);
+      }
+    }
   }
 }
 

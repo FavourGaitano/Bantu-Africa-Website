@@ -12,7 +12,7 @@ const AboutUs = () => {
       </div>
 
       <div className="banner">
-        <p className="name">About Us</p>
+        <p className="name">ABOUT US</p>
       </div>
 
       <div className="aboutinfo">
