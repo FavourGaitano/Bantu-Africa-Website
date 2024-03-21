@@ -1,0 +1,108 @@
+.aboutusimage {
+  margin: 0;
+  padding: 0;
+
+  img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.banner {
+  background-color: rgba(43, 42, 42, 0.65);
+  width: 75vw;
+  height: 20vh;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  padding-inline: 50px;
+
+  .name {
+    font-family: "Futura Std";
+    color: #ffffff;
+    font-size: 34px;
+    line-height: 41px;
+    font-weight: 400;
+    padding-top: 58px;
+  }
+}
+
+.aboutinfo {
+  margin-top: 4%;
+  justify-content: center;
+  .aboutBantu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .aboutheader {
+      font-family: "Futura Std";
+      color: #6c2e3b;
+      font-weight: 400;
+      font-size: 34px;
+    }
+
+    .text {
+      margin-top: 1%;
+      max-width: 70%;
+      font-family: "Gotham Book";
+    }
+  }
+
+  .virtues {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 4%;
+
+    .mission,
+    .vision,
+    .values {
+      width: 23%;
+      padding: 2%;
+    }
+
+    ul {
+      list-style-type: "> ";
+
+      font-family: Gotham Book;
+    }
+
+    li {
+      padding: 10px;
+    }
+
+    .mission {
+      p {
+        font-family: "Futura Std";
+        color: #6c2e3b;
+        font-weight: 600;
+        font-size: 18px;
+      }
+    }
+
+    .vision {
+      p {
+        font-family: "Futura Std";
+        color: #6c2e3b;
+        font-weight: 600;
+        font-size: 18px;
+      }
+    }
+
+    .values {
+      p {
+        font-family: "Futura Std";
+        color: #6c2e3b;
+        font-weight: 600;
+        font-size: 18px;
+      }
+    }
+  }
+}

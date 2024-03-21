@@ -3,6 +3,7 @@ import './App.scss'
 import BookingPage from './pages/Booking/BookingPage';
 // import Restaurant from './pages/restaurant/Restaurant'
 import Home from "./pages/landing/Home";
+import AdminSidebar from "./components/AdminSidebar/AdminSidebar";
 
 function App() {
   return (
@@ -11,6 +12,14 @@ function App() {
       {/* <Restaurant /> */}
       {/* <Home /> */}
       <BookingPage />
+
+      {/* <Home /> */}
+      {/* <Room/> */}
+      {/* <Restaurant /> */}
+  {/* <Event/> */}
+
+      {/* <AdminSidebar /> */}
+      {/* <AboutUs /> */}
     </div>
   );
 }
