@@ -1,11 +1,25 @@
-import React from 'react'
+import React from "react";
+import "./RoomImageCard.scss"; 
 
-function RoomImageCard({roomImg}) {
+function RoomImageCard({ roomImg }) {
   return (
-    <div className='room-image'>
-      <img style={{width:"100%"}} src={roomImg} alt="" />
-    </div>
-  )
+    
+      <div className="room-image">
+        <div className="image-container">
+          
+            <img
+              style={{ width: "50rem", height: "27rem" }}
+              src={roomImg}
+              alt=""
+            />
+            <div className="overlay"></div>
+         
+          
+
+        </div>
+      </div>
+   
+  );
 }
 
-export default RoomImageCard
+export default RoomImageCard;
