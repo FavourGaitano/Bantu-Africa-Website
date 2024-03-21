@@ -4,14 +4,15 @@
   flex-direction: column;
   //   position: fixed;
 
-  width: 100vw;
+  width: 100%;
   //height: 15vh;
   overflow-x: hidden;
   //   border: 2px solid salmon;
-  padding-left: 13px;
+  //   padding-left: 13px;
   .banner {
     width: 100%;
     height: 50%;
+    margin: 0 auto;
     background-color: #5e292f;
     display: flex;
     align-items: center;
@@ -57,6 +58,9 @@
   .nav {
     display: flex;
     opacity: 80%;
+    margin: 0 auto;
+    width: 95vw;
+    // border: 2px solid red;
     .logo {
       display: flex;
       .image {

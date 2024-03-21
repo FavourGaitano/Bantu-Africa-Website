@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 98%;
+  width: 100%;
   margin-top: 3%;
   background-color: #cfcfd3;
   font-family: "Futura Std";
@@ -17,6 +17,8 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 1%;
+    width: 95vw;
+    margin: 0 auto;
     .offer {
       width: 27%;
       height: 20rem;

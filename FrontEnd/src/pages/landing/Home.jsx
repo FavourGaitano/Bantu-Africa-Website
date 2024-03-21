@@ -6,6 +6,7 @@ import Navbar from "../../components/shared/Navbar";
 import MarketingCards from "../../components/shared/MarketingCards";
 import SpecialOffers from "../../components/home/SpecialOffers";
 import Footer from "../../components/shared/Footer";
+import Map from "../../components/home/Map";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Carousel />
       <MarketingCards />
       <SpecialOffers />
+      <Map />
       <Footer />
     </div>
   );

@@ -1,14 +1,18 @@
 .cards {
+  width: 95vw;
+  margin: 0 auto;
+  //   border: 2px solid salmon;
+
   .accom-card {
     font-family: "Futura Std", sans-serif;
     display: flex;
     gap: 5%;
     height: 27rem;
-    width: 97vw;
+    width: 100%;
     margin-top: 3%;
     //   margin-bottom: 3%;
     .image {
-      width: 400rem;
+      width: 300rem;
       height: 27rem;
       object-fit: contain;
       img {
@@ -18,7 +22,6 @@
       }
     }
     .desc {
-      //   border: 2px solid salmon;
       display: flex;
       flex-direction: column;
       h4 {
@@ -54,7 +57,7 @@
     flex-direction: row-reverse;
     gap: 5%;
     height: 26rem;
-    width: 97vw;
+    width: 100%;
     margin-top: 3%;
     //   margin-bottom: 3%;
     .image {
