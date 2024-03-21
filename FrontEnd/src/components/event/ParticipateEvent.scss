@@ -1,0 +1,27 @@
+.event-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    gap: 1rem;
+    .attend{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0;
+        h4{
+        //   color: var(--secondary-color);
+          font-size: 2rem;
+          font-weight: 800;
+        }
+        .event-desc {
+          width: 70%;
+        //   text-align: center;
+        color: var(--light-gray); 
+          line-height: 1.8;
+          font-family: var(--primary-font-family);  
+          font-size: 20px;
+    
+        }
+    }      
+  }
