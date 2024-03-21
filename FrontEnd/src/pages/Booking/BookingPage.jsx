@@ -1,9 +1,14 @@
 import React from 'react'
+import Navbar from '../../components/shared/Navbar'
+import Carousel from '../../components/shared/Carousel'
+import Booking from '../../components/Booking/Booking'
 
 const BookingPage = () => {
   return (
-    <div>
-        <h1>Booking page</h1>
+    <div className='booking-page'>
+        <Navbar />
+        <Carousel />
+        <Booking />
     </div>
   )
 }

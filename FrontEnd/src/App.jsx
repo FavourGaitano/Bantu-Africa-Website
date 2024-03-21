@@ -1,13 +1,13 @@
-
-import Home from "./pages/landing/Home";
-import AdminSidebar from './components/AdminSidebar/AdminSidebar'
-import ContactUsForm from './components/ContactUsForm/ContactUsForm';
-import Event from './pages/event/Event';
-import AboutUs from './pages/AboutUs/AboutUs';
-import Gallery from './pages/Gallery/GalleryPage';
-import Restaurant from './pages/restaurant/Restaurant';
-import AdultsActivitiesPage from './pages/Activities/Adults/AdultsActivitiesPage';
-import AdminLogin from "./components/AdminLogin/AdminLogin";
+import "./App.scss";
+import BookingPage from "./pages/Booking/BookingPage";
+import Restaurant from "./pages/restaurant/Restaurant";
+// import Home from "./pages/landing/Home";
+import ContactUsForm from "./components/ContactUsForm/ContactUsForm";
+import AdminSidebar from "./components/AdminSidebar/AdminSidebar";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import Event from "./pages/event/Event";
+import Room from "./pages/rooms/Room";
+import Meeting from "./pages/Meetings/Meeting";
 
 function App() {
   return (
@@ -16,13 +16,15 @@ function App() {
       {/* <Home /> */}
       {/* <Room/> */}
       {/* <Restaurant /> */}
-      {/* <Event/> */}
+  <Event/>/
+
       {/* <AdminSidebar /> */}
       {/* <ContactUsForm/> */}
       {/* <AboutUs /> */}
       {/* <Gallery /> */}
       {/* <AdultsActivitiesPage /> */}
       <AdminLogin/>
+      <AboutUs />
     </div>
   );
 }
