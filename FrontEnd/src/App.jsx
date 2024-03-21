@@ -1,9 +1,8 @@
-
-import './App.scss'
-import BookingPage from './pages/Booking/BookingPage';
-import Restaurant from './pages/restaurant/Restaurant'
+import "./App.scss";
+import BookingPage from "./pages/Booking/BookingPage";
+import Restaurant from "./pages/restaurant/Restaurant";
 // import Home from "./pages/landing/Home";
-import ContactUsForm from './components/ContactUsForm/ContactUsForm';
+import ContactUsForm from "./components/ContactUsForm/ContactUsForm";
 import AdminSidebar from "./components/AdminSidebar/AdminSidebar";
 
 function App() {
