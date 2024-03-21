@@ -1,0 +1,11 @@
+
+
+.contact-container{
+    width: 100vw;
+    .contact-items{
+        display: flex;
+         .contact-form-items{
+            width: 50%;
+         }
+    }
+}

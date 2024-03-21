@@ -11,6 +11,7 @@ import KidsActivitiesPage from "../pages/Activities/Kids/KidsActivities";
 import GalleryPage from "../pages/Gallery/GalleryPage";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import { Route, Routes } from 'react-router-dom';
+import Contact from '../pages/contact/Contact';
 
 
 const Main = () => {
@@ -28,7 +29,7 @@ const Main = () => {
         {/* <Route path='/meetings' element={<Meetings/>}/> */}
         <Route path='/event' element={<Event/>}/>
         <Route path='/about' element={<AboutUs/>}/>
-       
+        <Route path='/contact' element={<Contact/>}/>
      
       </Routes>
     </div>

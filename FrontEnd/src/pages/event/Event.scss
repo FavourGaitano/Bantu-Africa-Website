@@ -39,17 +39,14 @@
     // font-weight:600;
     // color: #5E292F;
     .event-superior-content {
-        width: 90%;
+        width: 100%;
         display: flex;
         margin: auto;
         padding: 3rem 2.5rem;
         background-color: var(--gray-color);
         gap: 2rem;
       
-        .event-photo {
-          // width: 250rem;
-          // background-color: green;
-        }
+     
       
         .event-items {
           display: flex;
@@ -88,7 +85,7 @@
         }
       }
       .event-deluxe-content {
-        width: 90%;
+        width: 100%;
         display: flex;
         margin: 3rem auto;
         gap: 3rem;
