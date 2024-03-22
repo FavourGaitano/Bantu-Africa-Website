@@ -84,7 +84,9 @@ const Navbar = () => {
             navItems.map((item, index) => (
               <NavLink key={index} to={item.path}>
                 <span>
-                  <h6>{item.text}</h6>
+                  <h6 style={{ listStyle: "none", textDecoration: "none" }}>
+                    {item.text}
+                  </h6>
                 </span>
               </NavLink>
             ))}
