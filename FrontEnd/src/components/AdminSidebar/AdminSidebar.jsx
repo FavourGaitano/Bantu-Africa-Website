@@ -6,7 +6,7 @@ import AdminNavbar from '../AdminNavbar/AdminNavbar'
 
 const AdminSidebar = () => {
   return (
-    <div className="main">
+    <div className="mainSideBar">
         <AdminNavbar />
         <div className="sidebar">
         

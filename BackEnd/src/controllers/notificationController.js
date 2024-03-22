@@ -1,4 +1,4 @@
-import { deleteNotificationService, getAllBookingsNotificationsService, getAllNotificationsService, getAllSingleNotificationsService } from "../services/notificationService.js";
+import { deleteNotificationService, getAllBookingsNotificationsService, getAllNotificationsService, getAllSingleNotificationsService, updateNotificationService } from "../services/notificationService.js";
 
 export const getAllBookingNotificationsController = async (req, res) => {
     try {
@@ -35,10 +35,9 @@ export const getAllBookingNotificationsController = async (req, res) => {
   };
   export const updateNotificationsController = async (req, res) => {
     try {
-      const {is_read}=req.body
       const {NotificationId}=req.params
       console.log(NotificationId);
-      const results = await updateNotificationService({NotificationId,is_read})
+      const results = await updateNotificationService({NotificationId})
       console.log(results);
        if(results.rowsAffected>0){
       res.status(200).json( "Notification has been read" );

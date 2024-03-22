@@ -9,19 +9,10 @@ import {
 
 const upCommingEventRouter = Router();
 
-upCommingEventRouter.get("/upcommingEvent", getupCommingEvents);
-upCommingEventRouter.post("/upcommingEvent", createupCommingEvent);
-upCommingEventRouter.get(
-  "/upcommingEvent/:upcommingEventId",
-  getoneupCommingEvent
-);
-upCommingEventRouter.delete(
-  "/upcommingEvent/:upcommingEventId",
-  deleteupCommingEvent
-);
-upCommingEventRouter.put(
-  "/upcommingEvent/:upcommingEventId",
-  updateupCommingEvent
-);
+upCommingEventRouter.get("/events", getupCommingEvents);
+upCommingEventRouter.post("/events", createupCommingEvent);
+upCommingEventRouter.get("/events/single/:upcommingEventId", getoneupCommingEvent);
+upCommingEventRouter.delete("/events/delete/:upcommingEventId", deleteupCommingEvent);
+upCommingEventRouter.put("/events/update/:upcommingEventId",  updateupCommingEvent);
 
 export default upCommingEventRouter;

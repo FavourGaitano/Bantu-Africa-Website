@@ -1,0 +1,114 @@
+.cards {
+  width: 95vw;
+  margin: 0 auto;
+  //   border: 2px solid salmon;
+
+  .card {
+    font-family: "Futura Std", sans-serif;
+
+    gap: 5%;
+    height: 27rem;
+    width: 100%;
+    margin-top: 3%;
+    //   margin-bottom: 3%;
+    .image {
+      width: 300rem;
+      height: 27rem;
+      object-fit: contain;
+      overflow: hidden;
+      position: relative;
+      img {
+        height: 100%;
+        width: 100%;
+        transition: transform 3s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+    .desc {
+      display: flex;
+      flex-direction: column;
+      h4 {
+        //   border: 2px solid red;
+        color: #ccae10;
+        margin-bottom: 5%;
+        margin-top: 70px;
+        text-align: center;
+        font-size: 25px;
+      }
+      button {
+        font-family: "Futura Std", sans-serif;
+        border: 1px solid #ccae10;
+        color: #ccae10;
+        margin-top: 9%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 250px;
+        margin-left: 18%;
+        font-size: 18px;
+        background-color: #ffff;
+        &:hover {
+          border: 1px solid #5e292f;
+          color: #5e292f;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .cuisine-card {
+    font-family: "Futura Std", sans-serif;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5%;
+    height: 26rem;
+    width: 100%;
+    margin-top: 3%;
+    //   margin-bottom: 3%;
+    .image {
+      width: 300rem;
+      height: 26rem;
+      object-fit: fit;
+      position: relative;
+      overflow: hidden;
+      img {
+        height: 100%;
+        width: 100%;
+        transition: transform 3s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+    .desc {
+      //   border: 2px solid salmon;
+      display: flex;
+      flex-direction: column;
+      h4 {
+        //   border: 2px solid red;
+        color: #ccae10;
+        margin-bottom: 5%;
+        padding-top: 60px;
+        text-align: center;
+        font-size: 25px;
+      }
+      button {
+        font-family: "Futura Std", sans-serif;
+        border: 1px solid #ccae10;
+        color: #ccae10;
+        margin-top: 14%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 250px;
+        margin-left: 15%;
+        font-size: 18px;
+        background-color: #ffff;
+        &:hover {
+          border: 1px solid #5e292f;
+          color: #5e292f;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

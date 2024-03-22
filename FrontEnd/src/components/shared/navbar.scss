@@ -1,16 +1,18 @@
 .navbar {
+  font-family: "Futura Std", sans-serif;
   display: flex;
   flex-direction: column;
-  //   position: fixed;
-
-  width: 100vw;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
   //height: 15vh;
   overflow-x: hidden;
   //   border: 2px solid salmon;
-  padding-left: 13px;
-  .banner {
+  //   padding-left: 13px;
+  .top-banner {
     width: 100%;
     height: 50%;
+    margin: 0 auto;
     background-color: #5e292f;
     display: flex;
     align-items: center;
@@ -20,7 +22,7 @@
       margin-left: 20px;
       display: flex;
       align-items: center;
-      width: 11%;
+      width: 8%;
       justify-content: space-between;
       color: white;
       img {
@@ -28,14 +30,16 @@
       }
     }
     .book {
+      font-family: "Futura Std", sans-serif;
       margin-right: 40px;
-      width: 12%;
+      width: 9%;
       height: 70%;
       display: flex;
       border-radius: 5px;
       align-items: center;
       padding: 5px;
-      justify-content: space-between;
+      gap: 7%;
+      //   justify-content: space-between;
       font-size: smaller;
       color: #5e292f;
     }
@@ -54,9 +58,16 @@
   }
   .nav {
     display: flex;
-    opacity: 80%;
+    opacity: 90%;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #ffff;
+    // border: 2px solid red;
     .logo {
       display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 2%;
       .image {
         width: 20%;
         height: 100%;
@@ -82,6 +93,11 @@
       span {
         // border: 2px solid black;
         font-size: 20px;
+        color: #6f6f74;
+        &:hover {
+          color: #6c2e3b;
+          cursor: pointer;
+        }
       }
     }
   }

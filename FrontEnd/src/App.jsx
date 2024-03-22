@@ -1,28 +1,21 @@
+import "./App.scss";
 
-import './App.scss'
-import BookingPage from './pages/Booking/BookingPage';
-import Restaurant from './pages/restaurant/Restaurant'
-// import Home from "./pages/landing/Home";
-import ContactUsForm from './components/ContactUsForm/ContactUsForm';
-import AdminSidebar from "./components/AdminSidebar/AdminSidebar";
-import Calender from './components/Calender/Calender';
+import Navbar from "./components/shared/Navbar";
+import Footer from "./components/shared/Footer";
+import Main from "./layout/Main";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="main-app">
-      {/* <h2>This is our main entry file</h2> */}
-      {/* <Restaurant /> */}
-      {/* <Home /> */}
-      <BookingPage />
+      <Navbar />
+      <Routes>
+        <Route path="*" element={<Main />} />
+      </Routes>
+      <Footer />
 
-      {/* <Home /> */}
-      {/* <Room/> */}
-      {/* <Restaurant /> */}
-      {/* <Event/> */}
-      {/* <AdminSidebar /> */}
-      {/* <ContactUsForm/> */}
-      {/* <AboutUs /> */}
-      {/* <Calender /> */}
+      {/* <AdminLogin/>
+      <AboutUs /> */}
     </div>
   );
 }

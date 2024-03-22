@@ -10,11 +10,11 @@ POST http://localhost:8000/api/rooms
 Content-Type: application/json
 
 {
-    "RoomPhotoUrl": "Deluxe",
-    "description": "A ggod and spacous room for love birds",
-    "RoomCategoryId": "15b15ff5-1994-407b-a6fe-97e3525ba56f",
-    "Occupants": "Single room",
-    "RoomNumber": 20
+    "RoomPhotoUrl": "https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "RoomNumber": 45,
+    "Description": "A beautiful, spacious room well suited for love birds",
+    "RoomCategoryId": "26a6bcca-7e0f-4490-9431-1e6371e71128",
+    "Occupants": 4
 }
 
 ### //get single rooms
