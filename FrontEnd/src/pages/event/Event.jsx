@@ -52,7 +52,7 @@ const Event = () => {
             <div className="event-items">
               <h2>EVENTS</h2>
               <div className="event-desc">
-                <EventCard />
+                <EventCard desc="Bantu hosts and actively participates in a wide range of global meetings encompassing various topical themes. These gatherings serve as platforms to delve into key factors and trends reshaping the marketplace. Our goal is to foster the exchange of insights and connect like-minded business leaders and entrepreneurs."/>
               </div>
               <div className="event-find-more-btn">
                 <Button msg="DATE: 26/04/2024" />
@@ -64,7 +64,9 @@ const Event = () => {
           <div className="event-deluxe-content">
               <div className="event-items">
                 <div className="event-desc">
-                  <UpcomingEvent />
+                <EventCard desc="Bantu hosts and actively participates in a wide range of global meetings encompassing various topical themes. These gatherings serve as platforms to delve into key factors and trends reshaping the marketplace. Our goal is to foster the exchange of insights and connect like-minded business leaders and entrepreneurs."/>
+
+                  {/* <UpcomingEvent /> */}
                 </div>
                 <div className="event-find-more-btn">
                   <Button msg="DATE: 26/04/2024" />
@@ -77,7 +79,7 @@ const Event = () => {
             <div className="event-deluxe-content">
               <div className="event-items">
                 <div className="event-desc">
-                  <UpcomingEvent />
+                <EventCard desc="Bantu hosts and actively participates in a wide range of global meetings encompassing various topical themes. These gatherings serve as platforms to delve into key factors and trends reshaping the marketplace. Our goal is to foster the exchange of insights and connect like-minded business leaders and entrepreneurs."/>
                 </div>
                 <div className="event-find-more-btn">
                   <Button msg="DATE: 26/04/2024" />
