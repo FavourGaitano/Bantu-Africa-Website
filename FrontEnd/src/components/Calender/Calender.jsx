@@ -64,7 +64,7 @@ const Calender = () => {
           </div>
           <div className="month-selector">
             <button className="arrow" onClick={handlePrevMonth}>
-              <i className="material-icons">chevron_left</i>
+              {/* <i className="material-icons">chevron_left</i> */}
             </button>
             <span className="month-name">
               {new Date(currentYear, currentMonth).toLocaleString("default", {
@@ -73,7 +73,7 @@ const Calender = () => {
               })}
             </span>
             <button className="arrow" onClick={handleNextMonth}>
-              <i className="material-icons">chevron_right</i>
+              {/* <i className="material-icons">chevron_right</i> */}
             </button>
           </div>
         </div>
@@ -108,7 +108,14 @@ const Calender = () => {
             </button>
           ))}
         </div>
- 
+        <div className="button-container">
+          <button
+            className="confirm-button"
+            onClick={() => console.log("Confirmed")}
+          >
+            Book
+          </button>
+        </div>
       </div>
     </div>
   );

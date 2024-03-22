@@ -40,6 +40,19 @@ button {
     border-radius: 10px;
     box-shadow: 0 0 2px 0 rgba(#000, .2), 0 5px 10px 0 rgba(#000, .1);
     padding: 1rem;
+
+    .button-container{
+        display: flex;
+        justify-content: end;
+
+        button{
+            background-color: white;
+            color: #5E292F;
+            border-radius: 5px;
+            padding: 7px 15px;
+            border: 2px solid #CCAE10;
+        }
+    }
 }
 
 .datepicker-top {
@@ -54,13 +67,17 @@ button {
 }
 
 .tag {
-    margin-right: .5rem;
-    margin-top: .5rem;
-    border: 0;
-    background-color: var(--c-bg-secondary);
-    border-radius: 10px;
-    padding: .5em .75em;
-    font-weight: 600;
+    background-color: white;
+    color: #5E292F;
+    border-radius: 5px;
+    padding: 7px 15px;
+    border: 2px solid #CCAE10;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #CCAE10;
+        color: white;
+    }
 }
 
 .month-selector {
@@ -132,7 +149,7 @@ button {
 }
 
 .date.current-day {
-    opacity: 0.7; /* Adjust the opacity as needed */
+    opacity: 0.7; 
 }
 
 .date.current-day.selected {
