@@ -12,14 +12,15 @@ import Meeting from "./pages/Meetings/Meeting";
 function App() {
   return (
     <div className="main-app">
-
       {/* <Home /> */}
       {/* <Room/> */}
       {/* <Restaurant /> */}
-  <Event/>/
+      {/* <Event /> */}
 
       {/* <AdminSidebar /> */}
-      <AboutUs />
+      {/* <AboutUs /> */}
+      {/* <BookingPage /> */}
+      <Meeting />
     </div>
   );
 }

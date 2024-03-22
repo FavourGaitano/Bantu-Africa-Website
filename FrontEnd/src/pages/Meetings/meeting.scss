@@ -28,7 +28,7 @@
 .banner {
   background-color: rgba(43, 42, 42, 0.65);
   width: 75vw;
-  height: 20vh;
+  height: 22vh;
   position: absolute;
   top: 70%;
   left: 50%;
@@ -36,12 +36,81 @@
   z-index: 1;
   padding-inline: 50px;
 
+  .meetingheaderinfo {
+    margin-top: 2%;
+    font-family: "Futura Std";
+    color: #ffffff;
+  }
+
   .name {
     font-family: "Futura Std";
     color: #ffffff;
     font-size: 34px;
     line-height: 41px;
     font-weight: 400;
-    padding-top: 58px;
+    padding-top: 4%;
+  }
+}
+.event-superior-content {
+  width: 90%;
+  display: flex;
+  margin: auto;
+  padding: 3rem 2.5rem;
+  background-color: var(--gray-color);
+  gap: 2rem;
+
+  .event-photo {
+    // width: 250rem;
+    // background-color: green;
+  }
+
+  .event-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    margin: 1rem 0;
+    color: var(--light-gray);
+    h2 {
+      color: var(--primary-color);
+      font-size: 32px;
+      font-weight: 400;
+      margin-bottom: 2%;
+    }
+    .event-desc {
+      font-family: Gotham Book;
+      width: 90%;
+      text-align: center;
+
+      line-height: 1.8;
+      font-family: var(--primary-font-family);
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.event-deluxe-content {
+  width: 90%;
+  display: flex;
+  margin: 3rem auto;
+  gap: 3rem;
+  // .event-photo {
+  //   width: 250rem;
+  //   }
+
+  .event-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    .event-desc {
+      width: 90%;
+      text-align: center;
+      line-height: 1.8;
+      font-family: var(--primary-font-family);
+      font-size: 1.2rem;
+      color: var(--light-gray);
+    }
   }
 }
