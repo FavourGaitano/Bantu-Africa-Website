@@ -8,6 +8,7 @@
 
 }
 
+
 .main-content {
     width: 100%;
     display: flex;
@@ -25,20 +26,27 @@
         text-align: center;
         padding: 1rem 0;
       }
+      .carousel {
+        // Style for arrows
+        .control-arrow {
+          border-color: maroon;
+          &:hover {
+            background-color: maroon;
+            border-color: maroon;
+          }
+        }
+      }
     // font-weight:600;
     // color: #5E292F;
     .event-superior-content {
-        width: 90%;
+        width: 100%;
         display: flex;
         margin: auto;
         padding: 3rem 2.5rem;
         background-color: var(--gray-color);
         gap: 2rem;
       
-        .event-photo {
-          // width: 250rem;
-          // background-color: green;
-        }
+     
       
         .event-items {
           display: flex;
@@ -77,14 +85,11 @@
         }
       }
       .event-deluxe-content {
-        width: 90%;
+        width: 100%;
         display: flex;
         margin: 3rem auto;
         gap: 3rem;
-        // .event-photo {
-        //   width: 250rem;
-        //   }
-        
+            
           .event-items {
             display: flex;
             flex-direction: column;
@@ -128,7 +133,36 @@
       }
 
       
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; 
+}
+
+
+.modal-gallery {
+  max-width: 90%; 
+  max-height: 90%;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+}
+
   }
   
- 
-  
+
+
+

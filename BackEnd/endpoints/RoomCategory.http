@@ -5,29 +5,14 @@ GET http://localhost:8000/health
 
 
 ### //get all rooms categories
-GET http://localhost:3000/api/category/rooms/category
+GET http://localhost:8000/api/category/rooms/category
 
 
 ### //get all rooms categories
 GET http://localhost:8000/api/category/rooms/category
 
-### Create inquiry
-POST http://localhost:3000/api/category/rooms/category
-Content-Type: application/json
-
-{
-    "Name": "Deluxe",
-    "Size": "Double",
-    "MealPlan": "BB",
-    "Price": 10000
-}
-
-### //get all rooms categories
-GET http://localhost:3000/api/category/rooms/category/c48185a8-5762-4076-a1dd-85b0a12979e8
-
 
 ### Create category room
-
 POST http://localhost:8000/api/category/rooms/category
 Content-Type: application/json
 
@@ -40,7 +25,7 @@ Content-Type: application/json
 }
 
 ### //get single rooms categories
-GET http://localhost:8000/api/category/rooms/category/c48185a8-5762-4076-a1dd-85b0a12979e8
+GET http://localhost:8000/api/category/rooms/category/15b15ff5-1994-407b-a6fe-97e3525ba56f
 
 
 ### soft delete category
@@ -52,15 +37,15 @@ Content-Type: application/json
 }
 
 
-### update category
-PUT http://localhost:8000/api/category/rooms/category/update/c48185a8-5762-4076-a1dd-85b0a12979e8
+## update category
+PUT http://localhost:8000/api/category/rooms/category/update/15b15ff5-1994-407b-a6fe-97e3525ba56f
 Content-Type: application/json
 
 {
-    "Name": "presidential one",
-    "Size": "8 rooms",
-    "MealPlan": "BB",
-    "Price": 80000
+    "Name": "presidential",
+    "Size": "4 rooms",
+    "MealPlan": "HB",
+    "Price": 900000
 }
 
 

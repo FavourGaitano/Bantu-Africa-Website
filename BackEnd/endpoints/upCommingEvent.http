@@ -1,9 +1,9 @@
 
 ### get all Event
-GET http://localhost:8000/api/upcommingEvent
+GET http://localhost:8000/api/events
 
 ### create Event
-POST http://localhost:8000/api/upcommingEvent
+POST http://localhost:8000/api/events
 Content-Type: application/json
 
 {
@@ -14,15 +14,15 @@ Content-Type: application/json
 }
 
 ### Get one Event
-Get http://localhost:8000/api/upcommingEvent/255e16f4-f2a7-4255-9e51-98308826754e
+Get http://localhost:8000/api/events/single/255e16f4-f2a7-4255-9e51-98308826754e
 
 ### Delete Event
 
-Delete http://localhost:8000/api/upcommingEvent/255e16f4-f2a7-4255-9e51-98308826754e
+Delete http://localhost:8000/api/events/delete/255e16f4-f2a7-4255-9e51-98308826754e
 
 ### Update Event
 
-PUT http://localhost:8000/api/upcommingEvent/255e16f4-f2a7-4255-9e51-98308826754e
+PUT http://localhost:8000/api/events/update/255e16f4-f2a7-4255-9e51-98308826754e
 Content-Type: application/json
 
 {
