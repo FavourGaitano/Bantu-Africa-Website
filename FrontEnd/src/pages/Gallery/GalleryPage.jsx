@@ -18,10 +18,10 @@ const GalleryPage = () => {
   ];
 
   return (
-    <div>
+    <div className="gallery-page">
       <div className="gallery">
         <div className="galleryinfo">
-          <p className="header">Gallery</p>
+          <p className="gallerheader">Gallery</p>
           <p>Here is the Photo Gallery of our Bantu Hotel.</p>
         </div>
         <ul>

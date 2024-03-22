@@ -35,7 +35,7 @@ const Navbar = () => {
       text: "Meetings & Events",
     },
     {
-      path: "/meeting",
+      path: "/meetings",
       text: "Meetings & Events",
     },
     {
@@ -80,12 +80,14 @@ const Navbar = () => {
           </div>
         </div>
         <div className="menu-items">
-          {navItems && navItems.map((item,index) =>
-           <NavLink key={index} to={item.path}>
-            <span>
-              <h6>{item.text}</h6>
-            </span>
-          </NavLink>)}
+          {navItems &&
+            navItems.map((item, index) => (
+              <NavLink key={index} to={item.path}>
+                <span>
+                  <h6>{item.text}</h6>
+                </span>
+              </NavLink>
+            ))}
         </div>
       </div>
     </div>

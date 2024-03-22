@@ -7,7 +7,7 @@ GET http://localhost:3000/api/service
 GET http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
 
 ### Create a Service
-POST http://localhost:3000/api/service
+POST http://localhost:8000/api/service
 Content-Type: application/json
 
 {
@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/api/service/758005f9-fcc0-4f78-acec-166855bb1461
+PUT http://localhost:8000/api/service/758005f9-fcc0-4f78-acec-166855bb1461
 Content-Type: application/json
 
 {
