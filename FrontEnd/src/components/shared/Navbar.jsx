@@ -6,8 +6,51 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { BsInstagram } from "react-icons/bs";
 import "./navbar.scss";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const navItems = [
+    {
+      path: "/",
+      text: "Home",
+    },
+    {
+      path: "/room",
+      text: "Rooms & Suites",
+    },
+    {
+      path: "/restaurant",
+      text: "Restaurant",
+    },
+    {
+      path: "/activities/adult",
+      text: "Activities",
+    },
+    {
+      path: "/activities/kid",
+      text: "kids",
+    },
+    {
+      path: "/event",
+      text: "Meetings & Events",
+    },
+    {
+      path: "/meeting",
+      text: "Meetings & Events",
+    },
+    {
+      path: "/gallery",
+      text: "Gallery",
+    },
+    {
+      path: "/about",
+      text: "About Us",
+    },
+    {
+      path: "/contact",
+      text: "Contact Us",
+    },
+  ];
   return (
     <div className="navbar">
       <div className="top-banner">
@@ -37,30 +80,12 @@ const Navbar = () => {
           </div>
         </div>
         <div className="menu-items">
-          <span>
-            <h6>Home</h6>
-          </span>
-          <span>
-            <h6>Rooms & Suites</h6>
-          </span>
-          <span>
-            <h6>Restaurant</h6>
-          </span>
-          <span>
-            <h6>Activities</h6>
-          </span>
-          <span>
-            <h6>Meetings & Events</h6>
-          </span>
-          <span>
-            <h6>Gallery</h6>
-          </span>
-          <span>
-            <h6>About Us</h6>
-          </span>
-          <span>
-            <h6>Contact Us</h6>
-          </span>
+          {navItems && navItems.map((item,index) =>
+           <NavLink key={index} to={item.path}>
+            <span>
+              <h6>{item.text}</h6>
+            </span>
+          </NavLink>)}
         </div>
       </div>
     </div>

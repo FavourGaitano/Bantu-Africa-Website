@@ -1,19 +1,19 @@
 
 //health check
-GET http://localhost:3000/health
+GET http://localhost:8000/health
 
 ### //get all rooms
-GET http://localhost:3000/api/rooms
+GET http://localhost:8000/api/rooms
 
 ### //create room
-POST http://localhost:3000/api/rooms
+POST http://localhost:8000/api/rooms
 Content-Type: application/json
 
 {
-    "RoomPhotoUrl": "Deluxe",
-    "RoomNumber": 20,
+    "RoomPhotoUrl": "https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "RoomNumber": 45,
     "Description": "A beautiful, spacious room well suited for love birds",
-    "RoomCategoryId": "a515d485-f643-4469-8b85-db7af1845a1c",
+    "RoomCategoryId": "26a6bcca-7e0f-4490-9431-1e6371e71128",
     "Occupants": 4
 }
 

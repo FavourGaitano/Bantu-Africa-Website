@@ -3,7 +3,6 @@ import "./GalleryPage.scss";
 import image1 from "../../assets/Images/Rooms/Dilux.jpg";
 import image2 from "../../assets/Images/Rooms/Single.jpg";
 import image3 from "../../assets/Restaurant/Food1.jpg";
-import Navbar from "../../components/shared/Navbar";
 
 const GalleryPage = () => {
   const images = [
@@ -20,7 +19,6 @@ const GalleryPage = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="gallery">
         <div className="galleryinfo">
           <p className="header">Gallery</p>

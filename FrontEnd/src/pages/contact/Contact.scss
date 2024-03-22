@@ -1,0 +1,12 @@
+
+
+.contact-container{
+    width: 100vw;
+    .contact-items{
+        display: flex;
+        overflow: hidden;
+         .contact-form-items{
+            width: 50%;
+         }
+    }
+}
