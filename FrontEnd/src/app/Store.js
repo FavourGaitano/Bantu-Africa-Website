@@ -1,18 +1,13 @@
-//import react features
-import {configureStore} from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/query/react';
+import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { servicesApi } from "../features/services/servicesApi";
 
+export const store = configureStore({
+  reducer: {
+    [servicesApi.reducerPath]: servicesApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(servicesApi.middleware),
+});
 
-export const store=configureStore({
-    reducer:{
-        
-    },
-
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware()
-    .concat(
-        
-        )
-    }, 
-)
-
-setupListeners(store.dispatch)
+setupListeners(store.dispatch);

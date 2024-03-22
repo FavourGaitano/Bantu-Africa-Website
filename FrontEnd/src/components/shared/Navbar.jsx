@@ -10,7 +10,7 @@ import "./navbar.scss";
 const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="banner">
+      <div className="top-banner">
         <div className="call">
           <img src={tel} alt="no-icon" />
           <h4>CALL US</h4>
