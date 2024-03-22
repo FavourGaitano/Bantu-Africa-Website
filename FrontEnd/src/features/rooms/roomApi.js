@@ -11,42 +11,43 @@ export const roomApi = createApi({
       providesTags: ['rooms']
     }),
 
-    // getSingleEvents: builder.query({
-    //   query: (EventId) => `events/${EventId}`,
-    //   providesTags: ['events']
-    // }),
+    getSingleRoom: builder.query({
+      query: (RoomId) => `rooms/${RoomId}`,
+      providesTags: ['rooms']
+    }),
 
-    // addEvent: builder.mutation({
-    //   query: (eventPosts) => ({
-    //     url: 'events',
-    //     method: 'POST',
-    //     body: eventPosts
-    //   }),
-    //   invalidatesTags: ['events']
-    // }),
+    addRoom: builder.mutation({
+      query: (room) => ({
+        url: 'rooms',
+        method: 'POST',
+        body: room
+      }),
+      invalidatesTags: ['rooms']
+    }),
 
-    // updateEvent: builder.mutation({
-    //   query: (events) => ({
-    //     url: `eventPosts/update/${events.EventId}`,
-    //     method: 'PUT',
-    //     body: events
-    //   }),
-    //   invalidatesTags: ['events']
-    // }),
+    updateRoom: builder.mutation({
+      query: (room) => ({
+        url: `rooms/update/${room.RoomId}`,
+        method: 'PUT',
+        body: room
+      }),
+      invalidatesTags: ['rooms']
+    }),
 
-    // deleteEvent: builder.mutation({
-    //   query: (EventId) => ({
-    //     url: `events/delete/${EventId}`,
-    //     method: 'DELETE',
-    //   }),
-    //   invalidatesTags: ['events']
-    // })
+    deleteRoom: builder.mutation({
+      query: (RoomId) => ({
+        url: `rooms/delete/${RoomId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['rooms']
+    })
   })
 });
 
 export const {
   useGetRoomsQuery,
-//   useGetSingleEventsQuery,
-//   useAddEventMutation,
-//   useUpdateEventMutation
+  useGetSingleRoomQuery,
+  useAddRoomMutation,
+  useUpdateRoomMutation,
+  useDeleteRoomMutation
 } = roomApi;

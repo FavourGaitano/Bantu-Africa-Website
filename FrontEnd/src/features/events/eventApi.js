@@ -10,23 +10,23 @@ export const eventApi = createApi({
       providesTags: ['events']
     }),
 
-    getSingleEvents: builder.query({
-      query: (EventId) => `events/${EventId}`,
+    getSingleEvent: builder.query({
+      query: (upcommingEventId) => `events/single${upcommingEventId}`,
       providesTags: ['events']
     }),
 
     addEvent: builder.mutation({
-      query: (eventPosts) => ({
+      query: (event) => ({
         url: 'events',
         method: 'POST',
-        body: eventPosts
+        body: event
       }),
       invalidatesTags: ['events']
     }),
 
     updateEvent: builder.mutation({
       query: (events) => ({
-        url: `eventPosts/update/${events.EventId}`,
+        url: `events/update/${events.upcommingEventId}`,
         method: 'PUT',
         body: events
       }),
@@ -34,8 +34,8 @@ export const eventApi = createApi({
     }),
 
     deleteEvent: builder.mutation({
-      query: (EventId) => ({
-        url: `events/delete/${EventId}`,
+      query: (upcommingEventId) => ({
+        url: `events/delete/${upcommingEventId}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['events']
@@ -45,7 +45,7 @@ export const eventApi = createApi({
 
 export const {
   useGetEventsQuery,
-  useGetSingleEventsQuery,
+  useGetSingleEventQuery,
   useAddEventMutation,
   useUpdateEventMutation
 } = eventApi;

@@ -96,7 +96,7 @@ export const createRoomCategoryController = async (req, res) => {
             }
               console.log(roomCategory,"roomCategory");
             const response = await updateRoomCategoryService( {RoomCategoryId,roomCategory});
-            console.log("response");
+            console.log("response",response);
             if (response.message) {
                 sendServerError(res, response.message);
             } else {
@@ -105,7 +105,7 @@ export const createRoomCategoryController = async (req, res) => {
         }
     } catch (error) {
         sendServerError(res, error.message);
-    }
+    } 
 }
   
   
