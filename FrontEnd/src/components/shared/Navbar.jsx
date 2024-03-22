@@ -80,12 +80,16 @@ const Navbar = () => {
           </div>
         </div>
         <div className="menu-items">
-          {navItems && navItems.map((item,index) =>
-           <NavLink key={index} to={item.path}>
-            <span>
-              <h6>{item.text}</h6>
-            </span>
-          </NavLink>)}
+          {navItems &&
+            navItems.map((item, index) => (
+              <NavLink key={index} to={item.path}>
+                <span>
+                  <h6 style={{ listStyle: "none", textDecoration: "none" }}>
+                    {item.text}
+                  </h6>
+                </span>
+              </NavLink>
+            ))}
         </div>
       </div>
     </div>
