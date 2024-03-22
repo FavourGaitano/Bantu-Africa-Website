@@ -13,15 +13,36 @@ const Booking = () => {
             <li className="list">
               Room Type
               <ul className="dropdown">
+                <div className="dropdown-holder">
+                  <li>
+                    Standard Rooms
+                    <ul className="standard-dropdown">
+                      <li>
+                        Single
+                        <ul className="standard-single-dropdown">
+                          <li>BB</li>
+                          <li>HB</li>
+                        </ul>
+                      </li>
+                      <li>Double</li>
+                    </ul>
+                  </li>
+                </div>
+                <li>Superior Rooms</li>
                 <li>Deluxe</li>
-                <li>Superior</li>
-                <li>Standard</li>
-                <li>Presidential</li>
               </ul>
             </li>
-            <li className="list">Guest</li>
-            <li className="list">Check In</li>
-            <li className="list">Check Out</li>
+            <li className="list">
+              Guest
+              <ul className="dropdown">
+                <li>Adults</li>
+                <li>Kids</li>
+              </ul>
+            </li>
+            <li className="list">
+              Check In/Out
+              <div class="calendar-dropdown"></div>
+            </li>
           </ul>
         </div>
         <div className="stay">
