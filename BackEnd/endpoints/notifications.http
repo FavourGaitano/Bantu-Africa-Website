@@ -2,15 +2,15 @@
 ### Fetching/getting all notifications
 GET http://localhost:8000/api/notifications/
 
-### Fetching/getting all individual user notifications
-GET http://localhost:8000/api/notifications/user/6
+### Fetching/getting all booking notifications
+GET http://localhost:8000/api/notifications/bookings/8617f5f0-0d88-456c-a881-b020bcb9603f
 
 ### Fetching/getting all individual user notifications
-patch http://localhost:8000/api/notifications/12
+patch http://localhost:8000/api/notifications/update/1
 Content-Type: application/json
 
 {
-     "is_read": true 
+     
 }
 ### Fetching/getting all individual user notifications
-DELETE http://localhost:8000/api/notifications/1/f7548ef7-eb73-4b5b-8a58-aed672cb5ff3
+DELETE http://localhost:8000/api/notifications/delete/1/8617f5f0-0d88-456c-a881-b020bcb9603f

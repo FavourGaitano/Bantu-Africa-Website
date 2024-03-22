@@ -34,7 +34,7 @@ export const getRoomCategoriesService = async () => {
       const singleReturnedRoom = await poolRequest()
         .input("RoomCategoryId", sql.VarChar, RoomCategoryId)
         .query("SELECT * FROM RoomCategory WHERE RoomCategoryId = @RoomCategoryId");
-      return singleReturnedRoom.recordset;
+      return singleReturnedRoom;
     } catch (error) {
       console.error("Error fetching single room category:", error);
       throw error;
@@ -42,26 +42,26 @@ export const getRoomCategoriesService = async () => {
   };
   
 
-
   export const updateRoomCategoryService = async (updateRoomCategory) => {
     try {
       const result = await poolRequest()
-        .input("RoomCategoryId", sql.VarChar, updateRoomCategory.RoomCategoryId)
-        .input("Name", sql.VarChar, updateRoomCategory.Name)
-        .input("Price", sql.Int, updateRoomCategory.Price)
-        .input("Size", sql.VarChar, updateRoomCategory.Size)
-        .input("MealPlan", sql.VarChar, updateRoomCategory.MealPlan)
-        .query(
-          "UPDATE RoomCategory SET RoomCategoryId=@RoomCategoryId, Name = @Name, Price = @Price, Size = @Size, MealPlan = @MealPlan WHERE RoomCategoryId = @RoomCategoryId"
-        );
-      console.log("Updated room category:", result);
+        .input('RoomCategoryId', sql.VarChar, updateRoomCategory.RoomCategoryId)
+        .input('Name', sql.VarChar, updateRoomCategory.Name)
+        .input('Price', sql.Int, updateRoomCategory.Price)
+        .input('Size', sql.VarChar, updateRoomCategory.Size)
+        .input('MealPlan', sql.VarChar, updateRoomCategory.MealPlan)
+        .query(`UPDATE RoomCategory SET Name = @Name, Price = @Price,Size = @Size,MealPlan = @MealPlan
+                 WHERE RoomCategoryId = @RoomCategoryId`);
+  
+      console.log("updated category", result);
       return result;
     } catch (error) {
-      console.error("Error updating room category:", error);
-      throw error;
+      return error.message;
     }
   };
   
+  
+
 
   export const RoomCategorysoftDeleteService = async (softdelete) => {
     try {

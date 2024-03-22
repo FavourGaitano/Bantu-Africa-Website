@@ -97,7 +97,7 @@ export const getAvailableRoomController = async (req, res) => {
 
 export const updateRoomController = async (req, res) => {
   try {
-    const { RoomPhotoUrl, RoomNumber, description, Occupants } = req.body;
+    const { RoomPhotoUrl, RoomNumber, Description, Occupants } = req.body;
     console.log("req.body", req.body);
     const { RoomId } = req.params;
     const { RoomCategoryId } = req.params;
