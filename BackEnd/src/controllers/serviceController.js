@@ -97,7 +97,7 @@ export const updateServiceController = async (req, res) => {
     });
     // console.log('this is the response', response);
     if (response) {
-      return res.status(200).json({ message: "Service uodated Successfully!" });
+      return res.status(200).json({ message: "Service updated Successfully!" });
     } else {
       return res.status(400).json({ message: "Failed to update" });
     }
