@@ -22,7 +22,7 @@ CREATE TABLE Room (
     Description VARCHAR(255),
     RoomCategoryId VARCHAR(255),
     OfferId VARCHAR(255),
-    Occupants VARCHAR(100),
+    Occupants INT,
     CreatedAt DATETIME,
     FOREIGN KEY (RoomCategoryId) REFERENCES RoomCategory(RoomCategoryId),
     FOREIGN KEY (OfferId) REFERENCES Offer(OfferId),

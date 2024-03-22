@@ -18,9 +18,12 @@ function App() {
       {/* <Event /> */}
 
       {/* <AdminSidebar /> */}
+      {/* <ContactUsForm/> */}
       {/* <AboutUs /> */}
-      {/* <BookingPage /> */}
-      <Meeting />
+      {/* <Gallery /> */}
+      {/* <AdultsActivitiesPage /> */}
+      <AdminLogin/>
+      <AboutUs />
     </div>
   );
 }
