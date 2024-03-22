@@ -13,7 +13,7 @@ function App() {
       {/* <h2>This is our main entry file</h2> */}
       {/* <Restaurant /> */}
       {/* <Home /> */}
-      {/* <BookingPage /> */}
+      <BookingPage />
 
       {/* <Home /> */}
       {/* <Room/> */}
@@ -22,7 +22,7 @@ function App() {
       {/* <AdminSidebar /> */}
       {/* <ContactUsForm/> */}
       {/* <AboutUs /> */}
-      <Calender />
+      {/* <Calender /> */}
     </div>
   );
 }

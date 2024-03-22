@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Booking.scss";
+import Calender from "../Calender/Calender";
 
 const Booking = () => {
+  const [showCalendar, setShowCalendar] = useState(false);
+
+  const toggleCalendar = () => {
+    setShowCalendar(!showCalendar);
+  };
   return (
     <div className="booking">
       <div className="booking-title">
@@ -19,10 +25,10 @@ const Booking = () => {
                     <ul className="standard-dropdown">
                       <li>
                         Single
-                        <ul className="standard-single-dropdown">
+                        {/* <ul className="standard-single-dropdown">
                           <li>BB</li>
                           <li>HB</li>
-                        </ul>
+                        </ul> */}
                       </li>
                       <li>Double</li>
                     </ul>
@@ -40,8 +46,13 @@ const Booking = () => {
               </ul>
             </li>
             <li className="list">
-              Check In/Out
-              <div class="calendar-dropdown"></div>
+              
+              <div className="calendar-dropdown">
+                <button className="check-button" onClick={toggleCalendar}>Check In/Out</button>
+                <div className="cal">
+                  {showCalendar && <Calender />}
+                </div>
+              </div>
             </li>
           </ul>
         </div>

@@ -1,29 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-*, *:after, *:before {
-    box-sizing: border-box;
-}
-    
-:root {
-    --c-theme-primary: #008FFD;
-    --c-theme-primary-accent: #CBE8FF;
-    --c-bg-primary: #D6DAE0;
-    --c-bg-secondary: #EAEBEC;
-    --c-bg-tertiary: #FDFDFD;
-    --c-text-primary: #1F1F25;
-    --c-text-secondary: #999FA6;
-}
 
-body {
-    font-family: "Inter", sans-serif;
-    line-height: 1.5;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--c-bg-primary);
-    color: var(--c-text-primary);
-}
 
 button {
     font: inherit;
@@ -34,9 +11,10 @@ button {
 }
 
 .datepicker {
-    width: 95%;
+    // background-color: red;
+    width: 95vw;
     max-width: 350px;
-    background-color: var(--c-bg-tertiary);
+    background-color: rgb(244, 242, 242);
     border-radius: 10px;
     box-shadow: 0 0 2px 0 rgba(#000, .2), 0 5px 10px 0 rgba(#000, .1);
     padding: 1rem;
@@ -64,6 +42,10 @@ button {
     flex-wrap: wrap;
     margin-bottom: 1rem;
     margin-top: -.5rem;
+
+    h1{
+        margin-left: 70px;
+    }
 }
 
 .tag {

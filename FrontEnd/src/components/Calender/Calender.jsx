@@ -8,6 +8,7 @@ const Calender = () => {
   const [checkOutDate, setCheckOutDate] = useState(null);
   const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
   const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
+  const [calendarOpen, setCalendarOpen] = useState(true); // State to control calendar visibility
 
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
@@ -49,74 +50,84 @@ const Calender = () => {
     return 0;
   };
 
+  const handleCloseCalendar = () => {
+    setCalendarOpen(false); // Close the calendar
+  };
+
   return (
     <div>
-      <div className="datepicker">
-        <div className="datepicker-top">
-          <div className="btn-group">
-            <button className="tag">Checkin</button>
-            <button className="tag">Checkout</button>
-            <button className="tag">
-              {checkInDate && checkOutDate
-                ? `${handleCalculateDays()} days`
-                : ""}
-            </button>
+      {calendarOpen && ( // Render the calendar only if calendarOpen state is true
+        <div className="datepicker">
+          <div className="datepicker-top">
+            <div className="btn-group">
+              <button className="tag">Checkin</button>
+              <button className="tag">Checkout</button>
+              <button className="tag">
+                {checkInDate && checkOutDate
+                  ? `${handleCalculateDays()} days`
+                  : ""}
+              </button>
+              <h1 onClick={handleCloseCalendar}>x</h1> {/* Close button */}
+            </div>
+            <div className="month-selector">
+              <button className="arrow" onClick={handlePrevMonth}>
+                <i className="material-icons">Prev</i>
+              </button>
+              <span className="month-name">
+                {new Date(currentYear, currentMonth).toLocaleString(
+                  "default",
+                  {
+                    month: "long",
+                    year: "numeric",
+                  }
+                )}
+              </span>
+              <button className="arrow" onClick={handleNextMonth}>
+                <i className="material-icons">Next</i>
+              </button>
+            </div>
           </div>
-          <div className="month-selector">
-            <button className="arrow" onClick={handlePrevMonth}>
-              {/* <i className="material-icons">chevron_left</i> */}
-            </button>
-            <span className="month-name">
-              {new Date(currentYear, currentMonth).toLocaleString("default", {
-                month: "long",
-                year: "numeric",
-              })}
-            </span>
-            <button className="arrow" onClick={handleNextMonth}>
-              {/* <i className="material-icons">chevron_right</i> */}
-            </button>
+          <div className="datepicker-calendar">
+            <span className="day">Mo</span>
+            <span className="day">Tu</span>
+            <span className="day">We</span>
+            <span className="day">Th</span>
+            <span className="day">Fr</span>
+            <span className="day">Sa</span>
+            <span className="day">Su</span>
+            {[...Array(firstDayOfMonth).keys()].map((_, index) => (
+              <button key={`empty-${index}`} className="date empty">
+                &nbsp;
+              </button>
+            ))}
+            {[...Array(daysInMonth).keys()].map((day) => (
+              <button
+                key={`day-${day}`}
+                className={`date ${
+                  day + 1 >= checkInDate && day + 1 <= checkOutDate
+                    ? "selected-range"
+                    : day + 1 === checkInDate
+                    ? "check-in"
+                    : day + 1 === checkOutDate
+                    ? "check-out"
+                    : ""
+                }`}
+                onClick={() => handleDateClick(day + 1)}
+              >
+                {day + 1}
+              </button>
+            ))}
           </div>
-        </div>
-        <div className="datepicker-calendar">
-          <span className="day">Mo</span>
-          <span className="day">Tu</span>
-          <span className="day">We</span>
-          <span className="day">Th</span>
-          <span className="day">Fr</span>
-          <span className="day">Sa</span>
-          <span className="day">Su</span>
-          {[...Array(firstDayOfMonth).keys()].map((_, index) => (
-            <button key={`empty-${index}`} className="date empty">
-              &nbsp;
-            </button>
-          ))}
-          {[...Array(daysInMonth).keys()].map((day) => (
+          <div className="button-container">
             <button
-              key={`day-${day}`}
-              className={`date ${
-                day + 1 >= checkInDate && day + 1 <= checkOutDate
-                  ? "selected-range"
-                  : day + 1 === checkInDate
-                  ? "check-in"
-                  : day + 1 === checkOutDate
-                  ? "check-out"
-                  : ""
-              }`}
-              onClick={() => handleDateClick(day + 1)}
+              className="confirm-button"
+              onClick={() => console.log("Confirmed")}
             >
-              {day + 1}
+              Book
             </button>
-          ))}
+          </div>
         </div>
-        <div className="button-container">
-          <button
-            className="confirm-button"
-            onClick={() => console.log("Confirmed")}
-          >
-            Book
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
