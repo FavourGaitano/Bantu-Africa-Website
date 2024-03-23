@@ -7,9 +7,9 @@ POST http://localhost:8000/api/gallery
 Content-Type: application/json
 
 {
-    "Description" : "Presidential Suite",
+    "Description" : "Dilux",
         "Category": "accommodation",
-        "PictureUrl": "bit.ly"
+        "PictureUrl": "https://cdn.pixabay.com/photo/2017/01/14/12/48/hotel-1979406_1280.jpg"
    
 }
 

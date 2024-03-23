@@ -22,7 +22,7 @@ export const getGallery = async (req, res) => {
     if (gallery.length === 0) {
       sendNotFound(res, "No Pictures found");
     } else {
-      return res.status(200).json({ gallery: gallery });
+      return res.status(200).json( gallery );
     }
   } catch (error) {
     sendServerError(res, error);
