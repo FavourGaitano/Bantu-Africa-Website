@@ -8,6 +8,7 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import Event from "./pages/event/Event";
 import Room from "./pages/rooms/Room";
 import Meeting from "./pages/Meetings/Meeting";
+import AdminLogin from "./components/AdminLogin/AdminLogin";
 
 function App() {
   return (
@@ -16,15 +17,15 @@ function App() {
       {/* <Home /> */}
       {/* <Room/> */}
       {/* <Restaurant /> */}
-  <Event/>/
+  {/* <Event/>/ */}
 
       {/* <AdminSidebar /> */}
       {/* <ContactUsForm/> */}
       {/* <AboutUs /> */}
       {/* <Gallery /> */}
       {/* <AdultsActivitiesPage /> */}
-      <AdminLogin/>
-      <AboutUs />
+      {/* <AdminLogin/> */}
+      {/* <AboutUs /> */}
     </div>
   );
 }

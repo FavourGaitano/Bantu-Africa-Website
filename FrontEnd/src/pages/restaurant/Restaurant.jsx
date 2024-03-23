@@ -8,7 +8,7 @@ import Navbar from '../../components/shared/Navbar'
 const Restaurant = () => {
   return (
     <div className="mainRestaurant">
-        <Navbar/>   
+        
         <div className="image">
             <img
                 src={image}
