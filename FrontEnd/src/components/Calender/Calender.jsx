@@ -8,8 +8,7 @@ const Calender = () => {
   const [checkOutDate, setCheckOutDate] = useState(null);
   const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
   const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
-  const [calendarOpen, setCalendarOpen] = useState(true); // State to control calendar visibility
-
+  const [calendarOpen, setCalendarOpen] = useState(true); 
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
@@ -39,36 +38,13 @@ const Calender = () => {
     }
   };
 
-  const handleCalculateDays = () => {
-    if (checkInDate && checkOutDate) {
-      const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-      const startDate = new Date(currentYear, currentMonth, checkInDate);
-      const endDate = new Date(currentYear, currentMonth, checkOutDate);
-      const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
-      return diffDays;
-    }
-    return 0;
-  };
-
-  const handleCloseCalendar = () => {
-    setCalendarOpen(false); // Close the calendar
-  };
-
+ 
   return (
-    <div>
-      {calendarOpen && ( // Render the calendar only if calendarOpen state is true
+    <div style={{width:"100%"}} >
+      {calendarOpen && (
         <div className="datepicker">
           <div className="datepicker-top">
-            <div className="btn-group">
-              <button className="tag">Checkin</button>
-              <button className="tag">Checkout</button>
-              <button className="tag">
-                {checkInDate && checkOutDate
-                  ? `${handleCalculateDays()} days`
-                  : ""}
-              </button>
-              <h1 onClick={handleCloseCalendar}>x</h1> {/* Close button */}
-            </div>
+          
             <div className="month-selector">
               <button className="arrow" onClick={handlePrevMonth}>
                 <i className="material-icons">Prev</i>
