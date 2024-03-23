@@ -28,8 +28,8 @@ export const getAllBookingsNotificationsService = async (BookingId) => {
 export const updateNotificationService=async(updateNotication)=>{
 const updatedNotification=await poolRequest()
 .input("NotificationId",sql.Int, updateNotication.NotificationId)
-.input("is_read",sql.Bit, updateNotication.is_read)
-.query(`UPDATE Notifications SET is_read=@is_read where NotificationId=@NotificationId`)
+.input("IsRead",sql.Bit, updateNotication.IsRead)
+.query(`UPDATE Notifications SET IsRead=1 where NotificationId=@NotificationId`)
 console.log("updatedNotification",updatedNotification);
 return updatedNotification
   }

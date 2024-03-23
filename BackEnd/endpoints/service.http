@@ -1,34 +1,34 @@
 
-        ##SERVIVES
-###
-GET http://localhost:8000/api/service
+        ##SERVICES
+### Get services
+GET http://localhost:3000/api/service
 
 ###
 GET http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
 
-###
+### Create a Service
 POST http://localhost:8000/api/service
 Content-Type: application/json
 
 {
-    "ServiceName": "Accomodation",
-    "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
-    "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
+    "ServiceName": "Camping",
+    "Description": "Hidden deep in the valley is the Chania River Slopes and Camp Site. It combines a camping ground for the adventurous, an informal outdoor bar & barbeque for the fun-seeking, and soon-to-come water sports like canoeing and fresh water rafting for the daring.",
+    "ImageUrl": "https://images.pexels.com/photos/6271630/pexels-photo-6271630.jpeg?auto=compress&cs=tinysrgb&w=600"
 }
 
 ###
-PUT http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
+PUT http://localhost:8000/api/service/758005f9-fcc0-4f78-acec-166855bb1461
 Content-Type: application/json
 
 {
-    "ServiceName": "Updated Activity",
-    "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
-    "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
+    "ServiceName": "Camping",
+    "Description": "Hidden deep in the valley is the Chania River Slopes and Camp Site. It combines a camping ground for the adventurous, an informal outdoor bar & barbeque for the fun-seeking, and soon-to-come water sports like canoeing and fresh water rafting for the daring.",
+    "ImageUrl": "https://images.pexels.com/photos/6271630/pexels-photo-6271630.jpeg?auto=compress&cs=tinysrgb&w=600"
 }
 
 
 ###
-DELETE http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1
+DELETE http://localhost:8000/api/service/bf67a55a-091c-4fc8-9613-998da25e72b7
 
 
 

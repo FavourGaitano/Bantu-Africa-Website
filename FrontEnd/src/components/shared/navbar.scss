@@ -9,7 +9,7 @@
   overflow-x: hidden;
   //   border: 2px solid salmon;
   //   padding-left: 13px;
-  .banner {
+  .top-banner {
     width: 100%;
     height: 50%;
     margin: 0 auto;
@@ -94,6 +94,8 @@
         // border: 2px solid black;
         font-size: 20px;
         color: #6f6f74;
+        text-decoration: underline;
+
         &:hover {
           color: #6c2e3b;
           cursor: pointer;

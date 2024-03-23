@@ -71,6 +71,25 @@ export const getSingleActivityService = async (ActivityId) => {
     }
 };
 
+export const getAllActivitiesByCategoryService =async (Category) => {
+    try {
+        const query = `
+            SELECT * FROM tbl_activity WHERE Category = @Category
+        `;
+
+        const result = await poolRequest()
+            .input("Category", sql.VarChar, Category)
+            .query(query)
+        
+        return result.recordset;
+        
+    } catch (error) {
+        console.log(error)
+        throw new Error("Failed to retrieve the activity");
+        
+    }
+}
+
 export const updateActivityService = async (activityId, updatedActivityData) => {
     try {
         // Check if the activity exists
