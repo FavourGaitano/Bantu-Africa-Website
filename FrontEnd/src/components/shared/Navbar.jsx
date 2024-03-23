@@ -6,9 +6,10 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { BsInstagram } from "react-icons/bs";
 import "./navbar.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate=useNavigate()
   const navItems = [
     {
       path: "/",
@@ -54,11 +55,12 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="top-banner">
+        
         <div className="call">
           <img src={tel} alt="no-icon" />
           <h4>CALL US</h4>
         </div>
-        <button className="book">
+        <button className="book" onClick={()=>{navigate("/booking")}}>
           <img src={calendar} alt="no-icon" />
           <h4>BOOK NOW</h4>
         </button>
