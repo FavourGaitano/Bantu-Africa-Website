@@ -1,0 +1,41 @@
+.stay {
+    margin-top: 50px;
+    height: 40vh;
+    width: 30vw;
+    border: 2px solid rgb(230, 229, 229);
+
+    h2 {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .check {
+      display: flex;
+      justify-content: space-around;
+
+      .check-in,
+      .check-out {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    .details {
+      margin-top: 20px;
+
+      .people-no {
+        span {
+          font-size: 20px;
+          font-weight: bolder;
+          margin-left: 50px;
+        }
+      }
+
+      .total {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+  }
