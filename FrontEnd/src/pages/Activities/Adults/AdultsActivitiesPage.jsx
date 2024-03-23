@@ -5,6 +5,7 @@ import AdultsActivities from '../../../components/Activities/Adults/AdultsActivi
 const AdultsActivitiesPage = () => {
   return (
     <div className='activity-page'>
+      
       <Carousel />
       <AdultsActivities />
     </div>

@@ -14,9 +14,9 @@ POST http://localhost:8000/api/activity
 Content-Type: application/json
 
 {
-    "ActivityName": "Kids Activities",
+    "ActivityName": "Swimming",
     "Description": "Engage your little ones with fun-filled adventures and creative activities at our dedicated Kids' Club",
-    "Category": "adults",
+    "Category": "kids",
     "ImageUrl": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-338504.jpg&fm=jpg"
 }
 

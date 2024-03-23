@@ -7,7 +7,7 @@ export const activityApi = createApi({
     endpoints: (builder) => ({
 
         getActivities: builder.query({
-            query: () => 'activities',
+            query: () => 'activity',
             providesTags: ['activities']
         }),
 
