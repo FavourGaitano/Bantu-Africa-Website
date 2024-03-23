@@ -1,9 +1,11 @@
 import React from 'react'
 import './AdminLogin.scss'
+import image0 from '../../assets/login.png'
 
 const AdminLogin = () => {
   return (
-    <div className="AdminLogin">
+    <div className="AdminLogin" style={{backgroundImage: `url(${image0})`, height: "100vh", width: "100vw", display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundRepeat:'no-repeat', backgroundSize: 'cover' }}>
+
 
         <div className="form-container">
             <p className="title">Welcome back</p>
