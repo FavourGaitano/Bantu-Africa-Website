@@ -6,4 +6,7 @@ CREATE TABLE tbl_activity (
     ImageUrl VARCHAR(255)
 )
 
+SELECT * FROM tbl_activity WHERE Category = 'kids';
+
+
 select * from tbl_activity
