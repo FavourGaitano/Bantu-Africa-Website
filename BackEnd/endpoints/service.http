@@ -28,7 +28,7 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:3000/api/service/bf67a55a-091c-4fc8-9613-998da25e72b7
+DELETE http://localhost:8000/api/service/bf67a55a-091c-4fc8-9613-998da25e72b7
 
 
 

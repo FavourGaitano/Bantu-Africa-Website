@@ -14,8 +14,6 @@ function App() {
       </Routes>
       <Footer />
 
-      {/* <AdminLogin/>
-      <AboutUs /> */}
     </div>
   );
 }

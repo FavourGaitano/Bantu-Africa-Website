@@ -1,7 +1,7 @@
 import { sendNotFound, sendServerError, sendCreated, sendDeleteSuccess } from '../helper/helperFunctions.js';
 import {v4} from 'uuid';
-import { RoomCategorysoftDeleteService, addRoomCategoryService, deleteRoomCategoryService, getRoomCategoriesService, getRoomCategoryByIdService, updateRoomCategoryService } from '../services/roomCategoryService.js';
-import { roomCategoryValidator } from '../validators/roomCategoryValidator.js';
+import { RoomCategorysoftDeleteService, addRoomCategoryService, deleteRoomCategoryService, findRoomCategoryService, getRoomCategoriesService, getRoomCategoryByIdService, updateRoomCategoryService } from '../services/roomCategoryService.js';
+import { roomCategoryValidator, updateCategoryRoomValidator } from '../validators/roomCategoryValidator.js';
 
 export const getCategoriesController = async (req, res) => {    
     try {
@@ -26,6 +26,11 @@ export const createRoomCategoryController = async (req, res) => {
         return res.status(400).send(error.details[0].message);
     } else {
         try {
+            const existingCategory = await findRoomCategoryService({ Name, MealPlan, Size });
+            
+            if (existingCategory) {
+                return res.status(400).send('Category already exists.');
+            }
             const RoomCategoryId = v4();
 
             const newRoomCategory = {
@@ -50,11 +55,12 @@ export const createRoomCategoryController = async (req, res) => {
   export const getRoomCategroryByIdController = async (req, res) => {
     try {
         const {RoomCategoryId} = req.params; 
-      const roomCategory = await getRoomCategoryByIdService(RoomCategoryId);
+      const oneSingleCategory = await getRoomCategoryByIdService(RoomCategoryId);
+      const roomCategory= oneSingleCategory.recordset
       if (roomCategory.length === 0) {
         sendNotFound(res, 'Room category not found');
     } else {
-        res.status(200).json(roomCategory);
+        res.status(200).json(roomCategory[0]);
     }
     } catch (error) {
       res.status(500).json({ error: 'Error fetching single room category' });
@@ -64,60 +70,53 @@ export const createRoomCategoryController = async (req, res) => {
  
   export const updateRoomCategoryController = async (req, res) => {
     try {
-        const {RoomCategoryId}=req.params
+        const { Name, MealPlan, Size, Price } = req.body;
+        const { RoomCategoryId } = req.params;
+        
         const checkExistingRoom = await getRoomCategoryByIdService(RoomCategoryId);
+        
         if (checkExistingRoom.length === 0) {
-            sendNotFound(res, 'Room category not found');
+            return sendNotFound(res, 'Room category not found');
+        }
+
+        const { error } = updateCategoryRoomValidator(req.body);
+        if (error) {
+            return res.status(400).send(error.details[0].message);
+        }
+
+        let roomCategory = {
+            Name: Name !== undefined ? Name : checkExistingRoom[0].Name,
+            MealPlan: MealPlan !== undefined ? MealPlan : checkExistingRoom[0].MealPlan,
+            Size: Size !== undefined ? Size : checkExistingRoom[0].Size,
+            Price: Price !== undefined ? Price : checkExistingRoom[0].Price
+        };
+        
+        console.log({ RoomCategoryId, ...roomCategory }, "roomCategory");
+        const response = await updateRoomCategoryService({ RoomCategoryId, ...roomCategory });
+        
+        if (response.message) {
+            sendServerError(res, response.message);
         } else {
-            let roomCategory = {};
-            const {
-                Name,
-                MealPlan,
-                Size,
-                Price  } = req.body;
-          
-            if (Name !== undefined) {
-                roomCategory.Name = Name;
-            } else {
-                roomCategory.Name = checkExistingRoom[0].Name;
-            }
-            if (MealPlan !== undefined) {
-                roomCategory.MealPlan = MealPlan;
-            } else {
-                roomCategory.MealPlan = checkExistingRoom[0].MealPlan;
-            }  if (Size !== undefined) {
-                roomCategory.Size = Size;
-            } else {
-                roomCategory.Size = checkExistingRoom[0].Size;
-            }  if (Price !== undefined) {
-                roomCategory.Price = Price;
-            } else {
-                roomCategory.Price = checkExistingRoom[0].Price;
-            }
-              console.log(roomCategory,"roomCategory");
-            const response = await updateRoomCategoryService( {RoomCategoryId,roomCategory});
-            console.log("response",response);
-            if (response.message) {
-                sendServerError(res, response.message);
-            } else {
-                sendCreated(res, 'Room category updated successfully');
-            }
+            sendCreated(res, 'Room category updated successfully');
         }
     } catch (error) {
         sendServerError(res, error.message);
-    } 
-}
+    }
+};
+
   
   
   export const softDeleteRoomCategoryController = async (req, res) => {
     try {
         const {RoomCategoryId} = req.params;
         const roomCategoryToDelete = await getRoomCategoryByIdService(RoomCategoryId)
-        if (roomCategoryToDelete.length === 0) {
+        const deletedRoomCategory=roomCategoryToDelete.recordset
+        if (deletedRoomCategory.length === 0) {
             sendNotFound(res, 'Room Category not found');
         }else{
-            console.log("roomCategoryToDelete",roomCategoryToDelete);
+            console.log("roomCategoryToDelete",deletedRoomCategory);
       const result = await RoomCategorysoftDeleteService(RoomCategoryId);
+      console.log(result,"result");
       if(result.rowAffected>0){
         console.log("result category",result);
         if (result.message) {
@@ -140,7 +139,8 @@ export const createRoomCategoryController = async (req, res) => {
     try {
         const RoomCategoryId = req.params.RoomCategoryId;
         const roomCategoryToDelete = await getRoomCategoryByIdService(RoomCategoryId)
-        if (roomCategoryToDelete.length === 0) {
+        const deletedRoomCategory=roomCategoryToDelete.recordset
+        if (deletedRoomCategory.length === 0) {
             sendNotFound(res, 'Room category not found');
         } else {
             const response = await deleteRoomCategoryService(RoomCategoryId);

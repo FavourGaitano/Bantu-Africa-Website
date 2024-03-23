@@ -37,6 +37,39 @@
       .three {
         gap: 12%;
         // padding-bottom: 20%;
+        form {
+          // border: 2px solid yellow;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 3%;
+          align-items: center;
+          input {
+            padding: 5px;
+            width: 80%;
+            border-radius: 2px;
+            border: none;
+          }
+          textarea {
+            border-radius: 2px;
+            padding-left: 5px;
+            padding-top: 10px;
+            width: 80%;
+            height: 40%;
+          }
+          .submit {
+            background-color: #5e292f;
+            color: white;
+            border: none;
+            width: 50%;
+            height: 7%;
+            border-radius: 5px;
+            &:hover {
+              background-color: blue;
+              cursor: pointer;
+            }
+          }
+        }
       }
     }
     .copyright {

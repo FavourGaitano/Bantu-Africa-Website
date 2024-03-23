@@ -3,7 +3,11 @@
 GET http://localhost:8000/api/activity
 
 ###
-GET http://localhost:8000/api/activity/9ea2f391-b2e6-4bfb-9f2b-65a773479004
+GET http://localhost:8000/api/activity/74e1f7e3-e9eb-420e-80da-959d2fd091fa
+
+###
+GET http://localhost:8000/api/activity/category/adults
+
 
 ####
 POST http://localhost:8000/api/activity

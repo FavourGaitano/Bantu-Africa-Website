@@ -4,6 +4,7 @@ import { setupListeners } from "@reduxjs/toolkit/query/react";
 
 import { roomApi } from "../features/rooms/roomApi";
 import { servicesApi } from "../features/services/servicesApi";
+import { inquiryApi } from "../features/inquiries/inquiryApi";
 import { galleryApi } from "../features/gallery/galleryApi";
 
 export const store = configureStore({
