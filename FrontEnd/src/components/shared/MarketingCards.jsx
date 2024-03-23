@@ -27,7 +27,7 @@ const MarketingCards = () => {
 
   if (error || isError || !data) {
     LoadingToast(false);
-    return ErrorToast(error.data.message);
+    return ErrorToast("No services available");
   }
 
   const accommodationDesc =
