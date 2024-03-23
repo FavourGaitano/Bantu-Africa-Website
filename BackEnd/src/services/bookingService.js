@@ -20,6 +20,7 @@ export const createBookingService = async (newBooking) => {
       .query(
         "INSERT INTO Bookings (BookingId, Email, FirstName, LastName, RoomId, SpecialRequirements, CreatedAt, StartDate, EndDate, AdultsNo, KidsNo, Total, IsReserved, IsPaid) VALUES (@BookingId, @Email, @FirstName, @LastName, @RoomId, @SpecialRequirements, @CreatedAt, @StartDate, @EndDate, @AdultsNo, @KidsNo, @Total, @IsReserved, @IsPaid)"
       );
+    console.log("Result is:", result);
     return result;
   } catch (error) {
     return error;

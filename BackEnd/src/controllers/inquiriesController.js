@@ -18,7 +18,7 @@ import {
 } from "../helper/helperFunctions.js";
 
 export const createInquiry = async (req, res) => {
-  const { Email, Description } = req.body;
+  const { Name, Email, Description } = req.body;
   const { error } = inquiriesvalidator(req.body);
   if (error) {
     return res.status(400).send(error.details[0].message);
@@ -26,7 +26,7 @@ export const createInquiry = async (req, res) => {
     try {
       const InquiryId = v4();
       const Status = "Pending";
-      const newInquiry = { InquiryId, Email, Description, Status };
+      const newInquiry = { InquiryId, Name, Email, Description, Status };
       const response = await createInquiriesService(newInquiry);
       if (response.message) {
         sendServerError(res, response.message);
@@ -42,7 +42,8 @@ export const createInquiry = async (req, res) => {
 export const getInquiries = async (req, res) => {
   try {
     const data = await getInquiriesService();
-    if (data.length == 0) {
+
+    if (data.length === 0) {
       sendNotFound(res, "No inquiries found");
     } else {
       res.status(200).send(data);
@@ -57,7 +58,7 @@ export const getInquiriesByEmail = async (req, res) => {
   const { email } = req.params;
   try {
     const data = await getInquiriesByEmailService(email);
-    if (!data) {
+    if (data.length === 0) {
       sendNotFound(res, "No inquiries found");
     } else {
       res.status(200).send(data);
@@ -71,7 +72,7 @@ export const getInquiriesById = async (req, res) => {
   const id = req.params.id;
   try {
     const data = await getInquiriesByIdService(id);
-    if (!data) {
+    if (data.length === 0) {
       sendNotFound(res, "Inquiry not found");
     } else {
       res.status(200).send(data);
@@ -85,14 +86,17 @@ export const updateInquiry = async (req, res) => {
   const InquiryId = req.params.id;
   try {
     const inquiryToUpdate = await getInquiriesByIdService(InquiryId);
-    if (!inquiryToUpdate) {
+    if (inquiryToUpdate.length === 0) {
       sendNotFound(res, "Inquiry to update not found");
     } else {
       if (checkIfValuesIsEmptyNullUndefined) {
-        const { Email, Description, Status } = req.body;
-        const updatedInquiry = { Email, Description, Status };
+        const { Name, Email, Description, Status } = req.body;
+        const updatedInquiry = { Name, Email, Description, Status };
+        if (Name) {
+          updatedInquiry.Name = Name;
+        }
         if (Email) {
-          updateInquiry.Email == Email;
+          updatedInquiry.Email == Email;
         }
         if (Description) {
           updatedInquiry.Description = Description;
@@ -100,8 +104,13 @@ export const updateInquiry = async (req, res) => {
         if (Status) {
           updatedInquiry.Status = Status;
         }
-        await updateInquiryService(InquiryId, updatedInquiry);
-        sendCreated(res, "inquiry updated successfully");
+        const response = await updateInquiryService(InquiryId, updatedInquiry);
+        console.log("res:", response);
+        if (response.rowsAffected == 1) {
+          sendCreated(res, "inquiry updated successfully");
+        } else {
+          sendServerError(res, "Failed to update");
+        }
       } else {
         sendBadRequest(res, "Please provide a complete field");
       }
