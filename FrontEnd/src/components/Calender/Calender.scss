@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+
+
+button {
+    font: inherit;
+    cursor: pointer;
+    &:focus {
+        outline: 0;
+    }
+}
+
+.datepicker {
+    // background-color: red;
+    width: 95vw;
+    max-width: 350px;
+    background-color: rgb(244, 242, 242);
+    border-radius: 10px;
+    box-shadow: 0 0 2px 0 rgba(#000, .2), 0 5px 10px 0 rgba(#000, .1);
+    padding: 1rem;
+
+    .button-container{
+        display: flex;
+        justify-content: end;
+
+        button{
+            background-color: white;
+            color: #5E292F;
+            border-radius: 5px;
+            padding: 7px 15px;
+            border: 2px solid #CCAE10;
+        }
+    }
+}
+
+.datepicker-top {
+    margin-bottom: 1rem;
+}
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    margin-top: -.5rem;
+
+    h1{
+        margin-left: 70px;
+    }
+}
+
+.tag {
+    background-color: white;
+    color: #5E292F;
+    border-radius: 5px;
+    padding: 7px 15px;
+    border: 2px solid #CCAE10;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #CCAE10;
+        color: white;
+    }
+}
+
+.month-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background-color:#FFF;
+    border-radius: 12px;
+    width: 2.5rem;
+    height: 2.5rem;
+    box-shadow: 0 0 2px 0 rgba(#000,.25), 0 0 10px 0 rgba(#000, .15);
+}
+
+.month-name {
+    font-weight: 600;
+}
+
+.datepicker-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-row-gap: 1rem;
+}
+
+.day, .date {
+    justify-self: center;
+}
+
+.day {
+    color: var(--c-text-secondary);
+    font-size: .875em;
+    font-weight: 500;
+    justify-self: center;
+}
+
+.date {
+    border: 0;
+    padding: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+    &:focus {
+        outline: 0;
+        color: var(--c-theme-primary);
+        border: 2px solid var(--c-theme-primary-accent);    
+    }   
+}
+
+.faded {
+    color: var(--c-text-secondary);
+}
+
+.date.selected {
+    background-color: var(--c-theme-primary);
+    color: #FFF;
+}
+
+.date.current-day {
+    opacity: 0.7; 
+}
+
+.date.current-day.selected {
+    opacity: 1;
+    background-color: var(--c-theme-primary);
+    color: #FFF;
+}
