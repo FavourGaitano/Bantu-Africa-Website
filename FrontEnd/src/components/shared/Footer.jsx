@@ -1,8 +1,25 @@
 import React from "react";
 import copyright from "../../assets/copyright.png";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import "./footer.scss";
 
 const Footer = () => {
+  const schema = yup.object().shape({
+    Name: yup.string().required("Please provide your name"),
+    Email: yup.string().required("Please provide your Email"),
+    Description: yup.string().required("Description is required"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   return (
     <div className="footer">
       <div className="content">
