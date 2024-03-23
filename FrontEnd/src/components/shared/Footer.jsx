@@ -4,22 +4,48 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import "./footer.scss";
+import { ErrorToast, LoadingToast, SuccessToast } from "./Toaster";
+import { useAddInquiryMutation } from "../../features/inquiries/inquiryApi.js";
 
 const Footer = () => {
+  const [addInquiry, { isLoading }] = useAddInquiryMutation();
   const schema = yup.object().shape({
     Name: yup.string().required("Please provide your name"),
     Email: yup.string().required("Please provide your Email"),
-    Description: yup.string().required("Description is required"),
+    Description: yup.string().required("Please describe your request"),
   });
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const onSubmit = async (data) => {
+    try {
+      LoadingToast(true);
+      const response = await addInquiry(data).unwrap();
+      console.log("Inquiry res:", response);
+      if (!response.error) {
+        LoadingToast(false);
+        SuccessToast("Inquiry sent successfully");
+        reset();
+      } else {
+        ErrorToast("Error sending inquiry. Please try again later.");
+        reset();
+      }
+    } catch (error) {
+      LoadingToast(false);
+      ErrorToast("An error occurred. Please try again later.");
+    }
+  };
+
+  if (isLoading) {
+    return <div>{LoadingToast(true)}</div>;
+  }
   return (
     <div className="footer">
       <div className="content">
@@ -46,8 +72,34 @@ const Footer = () => {
             <span>About Us</span>
           </div>
           <div className="card three">
-            <h4>STAY IN TOUCH</h4>
-            <input type="text" />
+            <form action="" className="" onSubmit={handleSubmit(onSubmit)}>
+              <h4>GET IN TOUCH</h4>
+              <input
+                type="text"
+                name="Name"
+                id="Name"
+                placeholder="Enter your name..."
+                {...register("Name")}
+              />
+              <p>{errors.Name?.message}</p>
+              <input
+                type="email"
+                name="Email"
+                id="Email"
+                placeholder="Enter your email..."
+                {...register("Email")}
+              />
+              <p>{errors.Email?.message}</p>
+              <textarea
+                type="text"
+                name="Description"
+                id="Description"
+                placeholder="Enter your inquiry..."
+                {...register("Description")}
+              />
+              <p>{errors.Description?.message}</p>
+              <input type="submit" value="Send" className="submit" />
+            </form>
           </div>
           <div className="card four">
             <h4>CONTACT US</h4>
