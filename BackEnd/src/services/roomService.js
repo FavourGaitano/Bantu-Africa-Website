@@ -3,7 +3,7 @@ import { poolRequest, closePool, sql } from "../utils/dbConnect.js";
 export const getRoomsService = async () => {
   try {
     const result = await poolRequest().query(`
-        SELECT Room.*, RoomCategory.*
+        SELECT Room.*, RoomCategory.Name,RoomCategory.Size,RoomCategory.MealPlan,RoomCategory.Price
         FROM Room 
         INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
       `);
@@ -13,6 +13,7 @@ export const getRoomsService = async () => {
     throw error;
   }
 };
+
 
 export const addRoomService = async (room) => {
   try {
@@ -26,7 +27,7 @@ export const addRoomService = async (room) => {
       .input("Occupants", sql.Int, room.Occupants)
       .input("CreatedAt", sql.DateTime, room.CreatedAt)
       .query(
-        "INSERT INTO Room (RoomId, RoomPhotoUrl, RoomNumber, description, RoomCategoryId, OfferId, Occupants, CreatedAt) VALUES (@RoomId, @RoomPhotoUrl, @RoomNumber, @description, @RoomCategoryId, @OfferId, @Occupants, @CreatedAt)"
+        "INSERT INTO Room (RoomId, RoomPhotoUrl, RoomNumber, Description, RoomCategoryId, OfferId, Occupants, CreatedAt) VALUES (@RoomId, @RoomPhotoUrl, @RoomNumber, @Description, @RoomCategoryId, @OfferId, @Occupants, @CreatedAt)"
       );
     return result;
   } catch (error) {
@@ -37,37 +38,32 @@ export const addRoomService = async (room) => {
 
 export const getRoomByIdService = async (RoomId) => {
   try {
-    const singleReturnedRoom = await poolRequest().input(
-      "RoomId",
-      sql.VarChar,
-      RoomId
-    ).query(`SELECT Room.*, RoomCategory.*
+    const singleReturnedRoom = await poolRequest().input("RoomId",sql.VarChar,RoomId)
+    .query(`SELECT Room.*, RoomCategory.Name,RoomCategory.Size,RoomCategory.MealPlan,RoomCategory.Price
 
               FROM Room 
               INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
               WHERE RoomId = @RoomId`);
-    // console.log("single", singleReturnedRoom.recordset);
-    return singleReturnedRoom.recordset[0];
+    // console.log("single", singleReturnedRoom.recordset[0]);
+    return singleReturnedRoom.recordset;
   } catch (error) {
     console.error("Error fetching single room:", error);
     throw error;
   }
 };
 
-export const getAvailableRoomService = async (availableRoom) => {
+export const getAvailableRoomService = async () => {
   try {
-    const remainingRoom = await poolRequest()
-      .input("RoomId", sql.VarChar, availableRoom.RoomId)
-      .input("RoomCategoryId", sql.VarChar, availableRoom.RoomCategoryId)
-      .query(`SELECT Room.*, RoomCategory.*
-                FROM Room 
-                INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
-                WHERE RoomId = @RoomId`);
-    console.log("remainingRoom", remainingRoom);
-    return remainingRoom;
+      const availableRooms = await poolRequest()
+          .query(`SELECT Room.*, RoomCategory.Name, RoomCategory.Size, RoomCategory.MealPlan, RoomCategory.Price
+                   FROM Room 
+                   INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
+                   WHERE Room.isAvailable = 1`);
+        console.log(availableRooms.recordset);
+      return availableRooms.recordset; 
   } catch (error) {
-    console.error("Error fetching remaining room:", error);
-    throw error;
+      console.error("Error fetching available rooms:", error);
+      throw error;
   }
 };
 
@@ -77,11 +73,11 @@ export const updateRoomService = async (updateRoom) => {
       .input("RoomId", sql.VarChar, updateRoom.RoomId)
       .input("RoomPhotoUrl", sql.VarChar, updateRoom.RoomPhotoUrl)
       .input("RoomNumber", sql.Int, updateRoom.RoomNumber)
-      .input("description", sql.VarChar, updateRoom.description)
+      .input("Description", sql.VarChar, updateRoom.Description)
       .input("RoomCategoryId", sql.VarChar, updateRoom.RoomCategoryId)
-      .input("Occupants", sql.VarChar, updateRoom.Occupants)
+      .input("Occupants", sql.Int, updateRoom.Occupants)
       .query(
-        "UPDATE Room SET RoomPhotoUrl = @RoomPhotoUrl, RoomNumber = @RoomNumber, description = @description, Occupants = @Occupants WHERE RoomId = @RoomId AND RoomCategoryId=@RoomCategoryId"
+        "UPDATE Room SET RoomPhotoUrl = @RoomPhotoUrl, RoomNumber = @RoomNumber, Description = @Description, Occupants = @Occupants WHERE RoomId = @RoomId AND RoomCategoryId=@RoomCategoryId"
       );
     console.log("Updated room one:", result);
     return result;
@@ -91,27 +87,29 @@ export const updateRoomService = async (updateRoom) => {
   }
 };
 
-export const softDeleteService = async (softdelete) => {
+export const softDeleteService = async (RoomId) => {
   try {
     const result = await poolRequest()
-      .input("RoomId", sql.VarChar, softdelete.RoomId)
+      .input("RoomId", sql.VarChar, RoomId)
       .query("UPDATE Room SET IsDeleted = 1 WHERE RoomId = @RoomId");
     console.log("Soft deleted room:", result);
     return result;
   } catch (error) {
-    console.error("Error soft deleting room:", error);
+    console.error("Error soft deleting room:", error.message);
     throw error;
   }
 };
-export const isAvailableService = async (softdelete) => {
+
+
+export const isAvailableService = async (RoomId) => {
   try {
     const result = await poolRequest()
-      .input("RoomId", sql.VarChar, softdelete.RoomId)
+      .input("RoomId", sql.VarChar, RoomId)
       .query("UPDATE Room SET isAvailable = 0 WHERE RoomId = @RoomId");
-    console.log("Soft deleted room:", result);
+    console.log("is available:", result);
     return result;
   } catch (error) {
-    console.error("Error soft deleting room:", error);
+    console.error("Error in checking the room availability:", error);
     throw error;
   }
 };

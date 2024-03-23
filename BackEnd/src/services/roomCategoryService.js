@@ -42,6 +42,21 @@ export const getRoomCategoriesService = async () => {
   };
   
 
+  export const findRoomCategoryService = async ({ Name, MealPlan, Size }) => {
+    try {
+        const existingCategory = await poolRequest()
+            .input("Name", sql.VarChar, Name)
+            .input("MealPlan", sql.VarChar, MealPlan)
+            .input("Size", sql.VarChar, Size)
+            .query("SELECT * FROM RoomCategory WHERE Name = @Name AND MealPlan = @MealPlan AND Size = @Size");
+
+        return existingCategory.recordset[0]; 
+    } catch (error) {
+        console.error("Error finding room category:", error);
+        throw error;
+    }
+};
+
   export const updateRoomCategoryService = async (updateRoomCategory) => {
     try {
       const result = await poolRequest()
@@ -63,10 +78,10 @@ export const getRoomCategoriesService = async () => {
   
 
 
-  export const RoomCategorysoftDeleteService = async (softdelete) => {
+  export const RoomCategorysoftDeleteService = async (RoomCategoryId) => {
     try {
       const result = await poolRequest()
-        .input("RoomCategoryId", sql.VarChar, softdelete.RoomId)
+        .input("RoomCategoryId", sql.VarChar, RoomCategoryId)
         .query("UPDATE RoomCategory SET IsDeleted = 1 WHERE RoomCategoryId = @RoomCategoryId");
       console.log("Soft deleted room category:", result);
       return result;

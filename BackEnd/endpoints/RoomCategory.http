@@ -4,9 +4,6 @@ GET http://localhost:8000/health
 
 
 
-### //get all rooms categories
-GET http://localhost:8000/api/category/rooms/category
-
 
 ### //get all rooms categories
 GET http://localhost:8000/api/category/rooms/category
@@ -17,19 +14,19 @@ POST http://localhost:8000/api/category/rooms/category
 Content-Type: application/json
 
 {
-    "Name": "standard",
+    "Name": "Deluxe",
     "Size": "Double",
-    "MealPlan": "BB",
-    "Price": 7000
+    "MealPlan": "BH",
+    "Price": 80000
 
 }
 
 ### //get single rooms categories
-GET http://localhost:8000/api/category/rooms/category/15b15ff5-1994-407b-a6fe-97e3525ba56f
+GET http://localhost:8000/api/category/rooms/category/26a6bcca-7e0f-4490-9431-1e6371e71128
 
 
 ### soft delete category
-PATCH http://localhost:8000/api/category/rooms/category/softdelete/15b15ff5-1994-407b-a6fe-97e3525ba56f
+PATCH http://localhost:8000/api/category/rooms/category/softdelete/26a6bcca-7e0f-4490-9431-1e6371e71128
 Content-Type: application/json
 
 {
@@ -37,18 +34,18 @@ Content-Type: application/json
 }
 
 
-## update category
-PUT http://localhost:8000/api/category/rooms/category/update/15b15ff5-1994-407b-a6fe-97e3525ba56f
+### update category
+PUT http://localhost:8000/api/category/rooms/category/update/26a6bcca-7e0f-4490-9431-1e6371e71128
 Content-Type: application/json
 
 {
-    "Name": "presidential",
-    "Size": "4 rooms",
+    "Name": "Deuxel",
+    "Size": "2",
     "MealPlan": "HB",
-    "Price": 900000
+    "Price": 10000
 }
 
 
 ### Delete category
-DELETE http://localhost:8000/api/category/rooms/category/c48185a8-5762-4076-a1dd-85b0a12979e8
+DELETE http://localhost:8000/api/category/rooms/category/26a6bcca-7e0f-4490-9431-1e6371e71128
 
