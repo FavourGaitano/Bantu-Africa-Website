@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import "./Calender.scss";
+<<<<<<< HEAD
+import { IoChevronBackCircleOutline, IoChevronForwardCircleOutline } from "react-icons/io5";
+=======
 import BookingForm from "../BookingForm/BookingForm";
+>>>>>>> 2fbd0f3fcdaa799a3a07daf991d395c958e52774
 
-const Calender = () => {
-  // Get the current date
+const Calender = ({ onDateSelect,onCheckoutDateSelect }) => {
   const currentDate = new Date();
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
   const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
   const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
-  const [calendarOpen, setCalendarOpen] = useState(true); 
+  const [calendarOpen, setCalendarOpen] = useState(false); 
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
   const [formVisible, setFormVisible] = useState(false);
@@ -17,10 +20,19 @@ const Calender = () => {
   const handleDateClick = (date) => {
     if (!checkInDate) {
       setCheckInDate(date);
+      onDateSelect(date);
     } else if (!checkOutDate) {
-      setCheckOutDate(date);
+      if (date > checkInDate) {
+        setCheckOutDate(date);
+        onCheckoutDateSelect(date); 
+      } else {
+        
+        setCheckOutDate(checkInDate);
+        setCheckInDate(date);
+        onDateSelect(date); 
+      }
     }
-  };
+  }
 
   const handlePrevMonth = () => {
     if (currentMonth === 0) {
@@ -40,83 +52,79 @@ const Calender = () => {
     }
   };
 
-  const toggleFormVisibility = () => {
-    setFormVisible(!formVisible);
+  const handleCheckinClick = () => {
+    setCalendarOpen(true); 
   };
 
- 
   return (
-    <div style={{width:"100%"}} >
-      {calendarOpen && (
-        <div className="datepicker">
-          <div className="datepicker-top">
+    <>
+    <button type="button"
+    className="tag"
+    onClick={handleCheckinClick}
+    disabled={checkInDate !== null} 
+  >
+    Checkin
+  </button>
+    <div style={{ width: "100%" }}>
+      <div className={`datepicker ${calendarOpen ? "" : "disabled"}`}>
+        <div className="datepicker-top">
+          <div className="month-selector">
+          <IoChevronBackCircleOutline className="arrow" onClick={handlePrevMonth} />
+           
+            <span className="month-name">
+              {new Date(currentYear, currentMonth).toLocaleString("default", {
+                month: "long",
+                year: "numeric",
+              })}
+            </span>
+            <IoChevronForwardCircleOutline className="arrow"  onClick={handleNextMonth} />
+
           
-            <div className="month-selector">
-              <button className="arrow" onClick={handlePrevMonth}>
-                <i className="material-icons">Prev</i>
-              </button>
-              <span className="month-name">
-                {new Date(currentYear, currentMonth).toLocaleString(
-                  "default",
-                  {
-                    month: "long",
-                    year: "numeric",
-                  }
-                )}
-              </span>
-              <button className="arrow" onClick={handleNextMonth}>
-                <i className="material-icons">Next</i>
-              </button>
-            </div>
-          </div>
-          <div className="datepicker-calendar">
-            <span className="day">Mo</span>
-            <span className="day">Tu</span>
-            <span className="day">We</span>
-            <span className="day">Th</span>
-            <span className="day">Fr</span>
-            <span className="day">Sa</span>
-            <span className="day">Su</span>
-            {[...Array(firstDayOfMonth).keys()].map((_, index) => (
-              <button key={`empty-${index}`} className="date empty">
-                &nbsp;
-              </button>
-            ))}
-            {[...Array(daysInMonth).keys()].map((day) => (
-              <button
-                key={`day-${day}`}
-                className={`date ${
-                  day + 1 >= checkInDate && day + 1 <= checkOutDate
-                    ? "selected-range"
-                    : day + 1 === checkInDate
-                    ? "check-in"
-                    : day + 1 === checkOutDate
-                    ? "check-out"
-                    : ""
-                }`}
-                onClick={() => handleDateClick(day + 1)}
-              >
-                {day + 1}
-              </button>
-            ))}
-          </div>
-          <div className="button-container">
-            <button
-              className="confirm-button"
-              onClick={() => console.log("Confirmed")}
-            >
-              Book
-            </button>
-            
           </div>
           
          
             
         </div>
-        
-        
-      )}
+        <div className="datepicker-calendar">
+          <span className="day">Mon</span>
+          <span className="day">Tue</span>
+          <span className="day">Wen</span>
+          <span className="day">Thu</span>
+          <span className="day">Fri</span>
+          <span className="day">Sat</span>
+          <span className="day">Sun</span>
+          {[...Array(firstDayOfMonth).keys()].map((_, index) => (
+            <button type="button"
+              key={`empty-${index}`}
+              className="date empty"
+              onClick={() => handleDateClick(null)}
+            >
+              &nbsp;
+            </button>
+          ))}
+          {[...Array(daysInMonth).keys()].map((day) => (
+            <button type="button"
+              key={`day-${day}`}
+              className={`date ${
+                day + 1 >= checkInDate && day + 1 <= checkOutDate
+                  ? "selected-range"
+                  : day + 1 === checkInDate
+                  ? "check-in"
+                  : day + 1 === checkOutDate
+                  ? "check-out"
+                  : ""
+              }`}
+              onClick={() => handleDateClick(day + 1)}
+              disabled={!calendarOpen}
+            >
+              {day + 1}
+            </button>
+          ))}
+        </div>
+      </div>
+     
     </div>
+    </>
   );
 };
 
