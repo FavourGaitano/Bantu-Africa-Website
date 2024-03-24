@@ -3,7 +3,7 @@ import './BookingForm.scss'
 
 const BookingForm = () => {
   return (
-    <div>
+    <div className="BookingForm">
 
         <form className="form">
             <p className="title">Book Now</p>

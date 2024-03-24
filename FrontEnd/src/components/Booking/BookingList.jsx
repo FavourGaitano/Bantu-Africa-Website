@@ -1,6 +1,6 @@
 import React from 'react'
 import './BookingList.scss'
-import BookingForm from '../BookingForm/BookingForm'
+
 
 const BookingList = () => {
   return (
@@ -26,7 +26,8 @@ const BookingList = () => {
               <div className="amount">KESH 40, 209</div>
             </div>
           </div>
-          <BookingForm />
+          
+          
         </div>
   )
 }
