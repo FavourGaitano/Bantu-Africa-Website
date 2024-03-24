@@ -9,28 +9,30 @@ Content-Type: application/json
     "Email": "polijo5454@irnini.com",
     "FirstName": "Beyonce",
     "LastName": "Knowles",
-    "RoomId": "bda1453a-d5c2-4409-8a4b-0e9c77843317",
+    "RoomId": "58c47eeb-c132-4fd5-a893-b180b635c524",
     "SpecialRequirements": "Put up a huge picture of me on the wall.",
-    "StartDate": "2025-04-02",
-    "EndDate": "2025-04-03",
+    "StartDate": "2025-04-05",
+    "EndDate": "2025-04-06",
     "AdultsNo": 0,
     "KidsNo": 0,
     "Total": 25700,
     "IsReserved": true,
-    "IsPaid": false
+    "IsPaid": false,
+    "Name": "Deluxe",
+    "Size": "Double"
 }
 
 ### Get Booking By ID
-GET http://localhost:3000/api/bookings/237c31a-3a00-4445-b764-cc50ecb5c829
+GET http://localhost:8000/api/bookings/237c31a-3a00-4445-b764-cc50ecb5c829
 
 ### Get booking by email
-GET http://localhost:3000/api/polijo5454@irnini.com/bookings
+GET http://localhost:8000/api/polijo5454@irnini.com/bookings
 
 ### Get booking by name
-GET http://localhost:3000/api/Beyonce/Knowles
+GET http://localhost:8000/api/Beyonce/Knowles
 
 ### Get booking by roomID
-GET http://localhost:3000/api/booking/room/123
+GET http://localhost:8000/api/booking/room/58c47eeb-c132-4fd5-a893-b180b635c524
 
 ### Update Booking
 PUT http://localhost:3000/api/booking/update/46167e0e-6610-4986-9aaa-3377cc1e5fa5
