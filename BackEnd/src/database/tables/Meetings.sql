@@ -11,3 +11,9 @@ CREATE TABLE Meetings (
 
 ALTER TABLE Meetings
 ADD Quantity INT;
+
+
+SELECT Meetings. *, MeetingPackages.PackageName AS PackageName
+FROM Meetings
+JOIN MeetingPackages ON Meetings.PackageId = MeetingPackages.PackageId
+WHERE Meetings.ConferenceId = @ConferenceId;

@@ -11,7 +11,7 @@ const AboutUs = () => {
         <img src={image2} alt="Single" />
       </div>
 
-      <div className="banner">
+      <div className="aboutusbanner">
         <p className="name">ABOUT US</p>
       </div>
 

@@ -43,7 +43,7 @@ const Navbar = () => {
       text: "Meetings & Events",
     },
     {
-      path: "/meeting",
+      path: "/meetings",
       text: "Meetings & Events",
     },
     {
