@@ -7,12 +7,20 @@ POST http://localhost:8000/api/meetingpackage
 Content-Type: application/json
 
 {
-    "PackageName": "Half Day"
+    "PackageName": "2 Day"
 }
 
 ### Get one meetingPackage
-Get http://localhost:8000/api/meetingpackage/6990f78c-cf43-4305-8a35-1f41c8483935
+Get http://localhost:8000/api/meetingpackage/352bf3c2-c182-4a32-bf55-45246b8c69d3
+
+### update meetingPackage
+PUT http://localhost:8000/api/meetingpackage/352bf3c2-c182-4a32-bf55-45246b8c69d3
+Content-Type: application/json
+
+{
+    "PackageName": "HalfDay"
+}
 
 ### Delete MeetingPackage
 
-Delete http://localhost:8000/api/meetingpackage/6990f78c-cf43-4305-8a35-1f41c8483935
+Delete http://localhost:8000/api/meetingpackage/24d446f4-5e5b-451b-b87d-6e31ba8189e3

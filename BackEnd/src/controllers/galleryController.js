@@ -22,7 +22,7 @@ export const getGallery = async (req, res) => {
     if (gallery.length === 0) {
       sendNotFound(res, "No Pictures found");
     } else {
-      return res.status(200).json( gallery );
+      return res.status(200).json(gallery);
     }
   } catch (error) {
     sendServerError(res, error);
@@ -60,20 +60,25 @@ export const uploadPicture = async (req, res) => {
 
 export const getonepicture = async (req, res) => {
   const { PictureId } = req.params;
+  const activity = await getSingleActivityService(ActivityId);
+
 
   try {
     const galleryPicture = await getonepictureService(PictureId);
-    console.log("Get one  Picture:", galleryPicture);
+    console.log("Get one Picture:", galleryPicture);
+
     if (!galleryPicture) {
-      sendNotFound(res, "Picture not found.");
+      // Assuming sendNotFound is correctly implemented to send a 404 response.
+      return res.status(404).jsfon({ message: "Not Found" });
     } else {
       return res.status(200).json({ galleryPicture });
     }
   } catch (error) {
+    console.log(error); // Log the error before sending a response.
+    // Assuming sendServerError is correctly implemented to send a 500 response.
     return res.status(500).json({
       message: "Internal server error",
     });
-    console.log(error);
   }
 };
 
@@ -132,6 +137,4 @@ export const updateGalleryController = async (req, res) => {
     console.error(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
-
-;
+};
