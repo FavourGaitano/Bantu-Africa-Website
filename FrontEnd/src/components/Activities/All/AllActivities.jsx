@@ -61,4 +61,3 @@ const AllActivities = () => {
 
 export default AllActivities;
 
-

@@ -15,9 +15,9 @@ function App() {
       {/* <Routes>
         <Route path="*" element={<Main />} />
       </Routes> */}
-      <AllActivitiesPage />
+      {/* <AllActivitiesPage /> */}
       {/* <KidsActivitiesPage /> */}
-      {/* <AdultsActivitiesPage /> */}
+      <AdultsActivitiesPage />
       {/* <Footer /> */}
 
       {/* <AdminLogin/>
