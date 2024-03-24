@@ -1,119 +1,126 @@
-*{
-    padding:0;
-    margin:0;
-    font-family: 'Futura Std';
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Futura Std";
 }
-.main{
-    .form-container{
+.main {
+  .form-container {
+    max-width: 600px;
+    margin: 30px;
+    background-color: #5e292f;
+    padding: 30px;
+    border-left: 5px solid #ccae10;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - 20px),
+      calc(100% - 20px) 100%,
+      0 100%
+    );
 
-        max-width: 600px;
-        margin: 30px;
-        background-color: #5E292F;
-        padding: 30px;
-        border-left: 5px solid #CCAE10;
-        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+    .form {
+      .heading {
+        display: block;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
 
-        .form{
+      input {
+        height: 4.2vh;
+        color: white;
+        width: 100%;
+        background-color: #3f2024;
+        border: none;
+        outline: none;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-weight: 500;
+        transition: all 0.2s ease-in-out;
+        border-left: 1px solid transparent;
 
-            .heading{
-                display: block;
-                color: white;
-                font-size: 1.5rem;
-                font-weight: 800;
-                margin-bottom: 20px;  
-            }
-
-            input{
-                height:4.2vh;
-                color: white;
-                width: 100%;
-                background-color: #3f2024;
-                border: none;
-                outline: none;
-                padding: 10px;
-                margin-bottom: 20px;
-                font-weight: 500;
-                transition: all 0.2s ease-in-out;
-                border-left: 1px solid transparent;  
-
-                &::placeholder{
-                    color: #cdcfce;   
-                }
-            }
-
-            input:focus{
-                border-left: 5px solid #CCAE10;   
-            }
-
-            textarea{
-                width: 100%;
-                padding: 10px;
-                border: none;
-                outline: none;
-                background-color: #3f2024;
-                color: #CCAE10;
-                font-weight: 500;
-                resize: none;
-                max-height: 150px;
-                margin-bottom: 20px;
-                border-left: 1px solid transparent;
-                transition: all 0.2s ease-in-out;  
-                
-                &::placeholder{
-                    color: #cdcfce;   
-                }
-            }
-
-            textarea:focus{
-                border-left: 5px solid #CCAE10;   
-            }
-
-            .button-container{
-                display: flex;
-                gap: 10px;  
-            }
-
-            .send-button {
-                flex-basis: 100%;
-                background: #CCAE10;
-                padding: 10px;
-                color: #3f2024;
-                text-align: center;
-                font-weight: bold;
-                border: 1px solid transparent;
-                transition: all 0.2s ease-in-out;   
-            }
-
-            .send-button:hover{
-                background: transparent;
-                border: 1px solid #CCAE10;
-                color: #CCAE10;   
-            }
-
-            .reset-button-container{
-                filter: drop-shadow(1px 1px 0px #CCAE10);
-                flex-basis: 30%;   
-
-                .reset-button{
-                    position: relative;
-                    text-align: center;
-                    padding: 10px;
-                    color: #CCAE10;
-                    font-weight: bold;
-                    background: #3f2024;
-                    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-                    transition: all 0.2s ease-in-out;   
-                }
-
-                .reset-button:hover{
-                    background: #CCAE10;
-                    color: #3f2024;  
-                }
-            }
-
-
-
+        &::placeholder {
+          color: #cdcfce;
         }
-    }
-}
+      }
 
+      input:focus {
+        border-left: 5px solid #ccae10;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        outline: none;
+        background-color: #3f2024;
+        color: #ccae10;
+        font-weight: 500;
+        resize: none;
+        max-height: 150px;
+        margin-bottom: 20px;
+        border-left: 1px solid transparent;
+        transition: all 0.2s ease-in-out;
+
+        &::placeholder {
+          color: #cdcfce;
+        }
+      }
+
+      textarea:focus {
+        border-left: 5px solid #ccae10;
+      }
+
+      .button-container {
+        display: flex;
+        gap: 10px;
+      }
+
+      .send-button {
+        flex-basis: 100%;
+        background: #ccae10;
+        padding: 10px;
+        height: 10%;
+        color: #3f2024;
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid transparent;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .send-button:hover {
+        background: transparent;
+        border: 1px solid #ccae10;
+        color: #ccae10;
+      }
+
+      .reset-button-container {
+        filter: drop-shadow(1px 1px 0px #ccae10);
+        flex-basis: 30%;
+
+        .reset-button {
+          position: relative;
+          text-align: center;
+          padding: 10px;
+          color: #ccae10;
+          font-weight: bold;
+          background: #3f2024;
+          clip-path: polygon(
+            0 0,
+            100% 0,
+            100% calc(100% - 10px),
+            calc(100% - 10px) 100%,
+            0 100%
+          );
+          transition: all 0.2s ease-in-out;
+        }
+
+        .reset-button:hover {
+          background: #ccae10;
+          color: #3f2024;
+        }
+      }
+    }
+  }
+}

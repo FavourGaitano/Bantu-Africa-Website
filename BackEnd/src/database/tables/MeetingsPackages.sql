@@ -4,3 +4,4 @@ CREATE TABLE MeetingPackages (
 );
 
 Select * FROM MeetingPackages
+

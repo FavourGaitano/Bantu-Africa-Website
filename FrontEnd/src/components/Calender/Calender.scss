@@ -12,25 +12,14 @@ button {
 
 .datepicker {
     // background-color: red;
-    width: 95vw;
-    max-width: 350px;
-    background-color: rgb(244, 242, 242);
+    width: 100%;
+    // max-width: 350px;
+    // background-color: rgb(244, 242, 242);
     border-radius: 10px;
     box-shadow: 0 0 2px 0 rgba(#000, .2), 0 5px 10px 0 rgba(#000, .1);
     padding: 1rem;
 
-    .button-container{
-        display: flex;
-        justify-content: end;
-
-        button{
-            background-color: white;
-            color: #5E292F;
-            border-radius: 5px;
-            padding: 7px 15px;
-            border: 2px solid #CCAE10;
-        }
-    }
+   
 }
 
 .datepicker-top {
@@ -73,11 +62,11 @@ button {
     align-items: center;
     justify-content: center;
     border: 0;
-    background-color:#FFF;
+    // background-color:#FFF;
     border-radius: 12px;
-    width: 2.5rem;
-    height: 2.5rem;
-    box-shadow: 0 0 2px 0 rgba(#000,.25), 0 0 10px 0 rgba(#000, .15);
+    width: 2rem;
+    height: 2rem;
+    // box-shadow: 0 0 2px 0 rgba(#000,.25), 0 0 10px 0 rgba(#000, .15);
 }
 
 .month-name {
@@ -139,3 +128,4 @@ button {
     background-color: var(--c-theme-primary);
     color: #FFF;
 }
+

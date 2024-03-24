@@ -24,17 +24,19 @@ export const getonemeetingPackageService = async (PackageId) => {
 
 export const deletePackageService = async (PackageId) => {
   try {
-      const result = await poolRequest()
-          .input('PackageId', sql.VarChar, PackageId)
-          .query(`
+    const result = await poolRequest().input(
+      "PackageId",
+      sql.VarChar,
+      PackageId
+    ).query(`
               DELETE FROM MeetingPackages
               WHERE PackageId = @PackageId
           `);
 
-      return result;
+    return result;
   } catch (error) {
-      console.error("Error in deletePackageService:", error);
-      return error;
+    console.error("Error in deletePackageService:", error);
+    return error;
   }
 };
 
@@ -58,6 +60,24 @@ export const createmeetingPackageService = async (meetingpackage) => {
       .input("PackageName", sql.VarChar, meetingpackage.PackageName)
       .query(
         "INSERT INTO MeetingPackages (PackageId, PackageName) VALUES (@PackageId, @PackageName)"
+      );
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const updatemeetingpackageService = async (
+  PackageId,
+  updatedPackage
+) => {
+  const { PackageName } = updatedPackage;
+  try {
+    const result = await poolRequest()
+      .input("PackageId", sql.VarChar(255), PackageId)
+      .input("PackageName", sql.VarChar(255), PackageName)
+      .query(
+        "UPDATE MeetingPackages SET PackageName=@PackageName WHERE PackageId=@PackageId"
       );
     return result;
   } catch (error) {

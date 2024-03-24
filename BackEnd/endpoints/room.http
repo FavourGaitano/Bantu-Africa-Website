@@ -5,36 +5,49 @@ GET http://localhost:8000/health
 ### //get all rooms
 GET http://localhost:8000/api/rooms
 
-### //create room
+### /create room
 POST http://localhost:8000/api/rooms
 Content-Type: application/json
 
 {
     "RoomPhotoUrl": "https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "RoomNumber": 45,
-    "Description": "A beautiful, spacious room well suited for love birds",
-    "RoomCategoryId": "26a6bcca-7e0f-4490-9431-1e6371e71128",
+    "RoomNumber": 25,
+    "Description": "A beautiful, spacious room well suited for friends and small families",
+    "RoomCategoryId": "a515d485-f643-4469-8b85-db7af1845a1c",
     "Occupants": 4
 }
+
+### //get available rooms
+GET http://localhost:8000/api/rooms/room/available
 
 ### //get single rooms
 GET http://localhost:8000/api/rooms/bda1453a-d5c2-4409-8a4b-0e9c77843317
 
+
 ### //get single rooms
 
-PUT http://localhost:8000/api/rooms/update/bda1453a-d5c2-4409-8a4b-0e9c77843317/15b15ff5-1994-407b-a6fe-97e3525ba56f
-
+PUT http://localhost:8000/api/rooms/update/95bd179b-7dc1-4de7-9fab-6bac9ed2f285/15b15ff5-1994-407b-a6fe-97e3525ba56f
 Content-Type: application/json
 
 {
-    "RoomPhotoUrl": "Deluxe 23",
-    "description": "A ggod and spacous room for love birds",
-    "Occupants": "Single room nice one",
-    "RoomNumber": 25
+    "RoomPhotoUrl": "Deluxe10",
+    "Description": "A spacous room for love birds",
+    "Occupants": 6,
+    "RoomNumber": 7
 }
 
-### soft delete category
-PATCH http://localhost:8000/api/category/rooms/category/softdelete/c48185a8-5762-4076-a1dd-85b0a12979e8
+
+
+### marking room as unavailable
+PATCH http://localhost:8000/api/rooms/create/available/bda1453a-d5c2-4409-8a4b-0e9c77843317
+Content-Type: application/json
+
+{
+   
+}
+
+### soft delete room
+PATCH http://localhost:8000/api/rooms/softdelete/bda1453a-d5c2-4409-8a4b-0e9c77843317
 Content-Type: application/json
 
 {

@@ -2,17 +2,24 @@ import {
   sendNotFound,
   sendServerError,
   sendCreated,
+  sendDeleteSuccess,
+  sendBadRequest,
 } from "../helper/helperFunctions.js";
 import {
   addRoomService,
   deleteRoomService,
   getAvailableRoomService,
   getRoomByIdService,
+  getRoomByRoomNumberService,
   getRoomsService,
+  isAvailableService,
   softDeleteService,
   updateRoomService,
 } from "../services/roomService.js";
-import { roomValidator } from "../validators/roomValidator.js";
+import {
+  roomValidator,
+  updateRoomValidator,
+} from "../validators/roomValidator.js";
 import { v4 } from "uuid";
 
 export const getRoomsController = async (req, res) => {
@@ -56,6 +63,15 @@ export const createRoomController = async (req, res) => {
         Occupants,
         CreatedAt,
       };
+      let existingRoom = await getRoomByRoomNumberService(RoomNumber);
+      console.log(existingRoom);
+      if (existingRoom) {
+        sendBadRequest(
+          res,
+          `Room ${RoomNumber} already exists. Please assign another room number.`
+        );
+        return;
+      }
       let response = await addRoomService(newRoom);
       if (response.message) {
         sendServerError(res, response.message);
@@ -72,6 +88,7 @@ export const getRoomByIdController = async (req, res) => {
   try {
     const { RoomId } = req.params;
     const singleroom = await getRoomByIdService(RoomId);
+    console.log("singleroom", singleroom);
     if (singleroom.length === 0) {
       sendNotFound(res, "Room not found");
     } else {
@@ -83,15 +100,35 @@ export const getRoomByIdController = async (req, res) => {
   }
 };
 
-export const getAvailableRoomController = async (req, res) => {
-  const { RoomCategoryId } = req.body;
+export const markRoomUnavailableController = async (req, res) => {
   const { RoomId } = req.params;
+
   try {
-    const room = await getAvailableRoomService(RoomId, RoomCategoryId);
-    console.log("room", room);
-    res.json(room);
+    const result = await isAvailableService(RoomId);
+
+    if (!result) {
+      return res.status(404).send("Room not found");
+    }
+
+    res.status(200).send("Room marked as unavailable");
   } catch (error) {
-    res.status(500).json({ error: "Error fetching active room" });
+    console.error("Error marking room as unavailable:", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+export const getAvailableRoomController = async (req, res) => {
+  try {
+    const availableRooms = await getAvailableRoomService();
+    console.log(availableRooms, "availableRooms");
+    if (!availableRooms || availableRooms.rowAffected == 0) {
+      return res.status(404).send("No available rooms found");
+    }
+
+    res.status(200).json(availableRooms);
+  } catch (error) {
+    console.error("Error fetching available rooms:", error);
+    res.status(500).send("Internal Server Error");
   }
 };
 
@@ -101,43 +138,36 @@ export const updateRoomController = async (req, res) => {
     console.log("req.body", req.body);
     const { RoomId } = req.params;
     const { RoomCategoryId } = req.params;
-    const checkExistingRoom = await getRoomByIdService(RoomId);
-    if (checkExistingRoom.length === 0) {
-      sendNotFound(res, "Room not found");
+
+    const { error } = updateRoomValidator({
+      RoomPhotoUrl,
+      RoomNumber,
+      Description,
+      Occupants,
+    });
+    if (error) {
+      return res.status(400).send(error.details[0].message);
     } else {
-      let room = {};
-
-      if (RoomPhotoUrl !== undefined) {
-        room.RoomPhotoUrl = RoomPhotoUrl;
+      const checkExistingRoom = await getRoomByIdService(RoomId);
+      if (checkExistingRoom.length === 0) {
+        sendNotFound(res, "Room not found");
       } else {
-        room.RoomPhotoUrl = checkExistingRoom[0].RoomPhotoUrl;
-      }
-      if (RoomNumber !== undefined) {
-        room.RoomNumber = RoomNumber;
-      } else {
-        room.RoomNumber = checkExistingRoom[0].RoomNumber;
-      }
-      if (description !== undefined) {
-        room.description = description;
-      } else {
-        room.description = checkExistingRoom[0].description;
-      }
-      if (Occupants !== undefined) {
-        room.Occupants = Occupants;
-      } else {
-        room.Occupants = checkExistingRoom[0].Occupants;
-      }
-      console.log("room checking", room);
-
-      const response = await updateRoomService(
-        { RoomId, RoomCategoryId },
-        room
-      );
-      console.log("response", response);
-      if (response.message) {
-        sendServerError(res, response.message);
-      } else {
-        sendCreated(res, "Room updated successfully");
+        let room = {
+          RoomPhotoUrl,
+          RoomId,
+          RoomCategoryId,
+          RoomNumber,
+          Description,
+          Occupants,
+        };
+        console.log("room updated", room);
+        const response = await updateRoomService(room);
+        console.log("response", response);
+        if (response.message) {
+          sendServerError(res, response.message);
+        } else {
+          sendCreated(res, "Room updated successfully");
+        }
       }
     }
   } catch (error) {
@@ -149,10 +179,10 @@ export const softDeleteRoomController = async (req, res) => {
   try {
     const { roomId } = req.params;
     const roomToDelete = await getRoomByIdService(roomId);
-    if (roomToDelete.length === 0) {
+    if (roomToDelete.rowsAffected === 0) {
       sendNotFound(res, "Room not found");
     } else {
-      const result = await softDeleteService({ RoomId: roomId });
+      const result = await softDeleteService(roomId);
       if (result.message) {
         sendServerError(res, result.message);
       } else {
@@ -163,6 +193,7 @@ export const softDeleteRoomController = async (req, res) => {
       }
     }
   } catch (error) {
+    console.log(error.message);
     res.status(500).json({ error: "Error soft deleting room" });
   }
 };

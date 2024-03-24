@@ -1,27 +1,25 @@
 import React from "react";
 import "./GalleryPage.scss";
+import { useGetPicturesQuery } from "../../features/gallery/galleryApi";
+
 import image1 from "../../assets/Images/Rooms/Dilux.jpg";
-import image2 from "../../assets/Images/Rooms/Single.jpg";
-import image3 from "../../assets/Restaurant/Food1.jpg";
 
 const GalleryPage = () => {
-  const images = [
-    { url: image1, alt: "Description" },
-    { url: image1, alt: "Description" },
-    { url: image1, alt: "Description" },
-    { url: image2, alt: "Description" },
-    { url: image2, alt: "Description" },
-    { url: image2, alt: "Description" },
-    { url: image3, alt: "Description" },
-    { url: image3, alt: "Description" },
-    { url: image3, alt: "Description" },
-  ];
+  const { data: images, error, isLoading } = useGetPicturesQuery();
+  console.log(images);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading images.</div>;
+  }
 
   return (
-    <div>
+    <div className="gallery-page">
       <div className="gallery">
         <div className="galleryinfo">
-          <p className="header">Gallery</p>
+          <p className="gallerheader">Gallery</p>
           <p>Here is the Photo Gallery of our Bantu Hotel.</p>
         </div>
         <ul>
@@ -31,11 +29,16 @@ const GalleryPage = () => {
           <li>Other Services</li>
         </ul>
         <div className="galleryimages">
-          {images.map((image, index) => (
-            <div key={index} className="image_card">
-              <img src={image.url} alt={image.alt} />
-            </div>
-          ))}
+          {images &&
+            Array.isArray(images) &&
+            images.map((image, index) => (
+              <div key={index} className="image_card">
+                <img src={image.PictureUrl} alt={image.alt} />
+                <div className="text">
+                  <p>{image.Description}</p>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
     </div>

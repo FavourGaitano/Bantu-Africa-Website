@@ -36,7 +36,6 @@ const Event = () => {
   return (
     <div className="event-main-container">
      
-
       <Hero heroImgUrl={Event3} msg="EVENTS" />
       <main className="event-main-container">
         <section className="main-content">

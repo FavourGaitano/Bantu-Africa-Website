@@ -1,31 +1,33 @@
 ### Create inquiry
-POST http://localhost:3000/api/inquiry
+POST http://localhost:8000/api/inquiry
 Content-Type: application/json
 
 {
+    "Name": "Hermione Granger",
     "Email": "polijo5454@irnini.com",
-    "Description": "Can I get some ice please?",
-    "Status": "Fulfilled"
+    "Description": "Actually, never mind."
+    
 }
 
 ### GET All inquiries
-GET http://localhost:3000/api/inquiries
+GET http://localhost:8000/api/inquiries
 
 ### Get Inquiries by Email
-GET http://localhost:3000/api/polijo5454@irnini.com/find/inquiries
+GET http://localhost:8000/api/polijo5454@irnini.com/find/inquiries
 
 ### Get Inquiries by ID
-GET http://localhost:3000/api/inquiries/find/faa175f5-f995-44db-903b-85838e22996e
+GET http://localhost:8000/api/inquiries/find/faa175f5-f995-44db-903b-85838e22996e
 
 ### Update Inquiry
-PUT http://localhost:3000/api/inquiry/update/faa175f5-f995-44db-903b-85838e22996e
+PUT http://localhost:8000/api/inquiry/update/b5e32f8b-bc39-409c-b042-9a04dcf05fd5
 Content-Type: application/json
 
 {
+    "Name": "Hermione Granger",
     "Email": "polijo5454@irnini.com",
     "Description": "Room service please",
-    "Status": "Pending"   
+    "Status": "Fulfilled"   
 }
 
 ### Delete Inquiry
-DELETE http://localhost:3000/api/inquiry/delete/faa175f5-f995-44db-903b-85838e22996e
+DELETE http://localhost:8000/api/inquiry/delete/60f0ac97-0d15-4cd5-9c8e-00c6cee06747

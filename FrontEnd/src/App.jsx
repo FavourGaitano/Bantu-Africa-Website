@@ -20,8 +20,6 @@ function App() {
       {/* <AdultsActivitiesPage /> */}
       <Footer />
 
-      {/* <AdminLogin/>
-      <AboutUs /> */}
     </div>
   );
 }

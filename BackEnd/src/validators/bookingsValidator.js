@@ -14,6 +14,8 @@ export const bookingsValidator = (booking) => {
     Total: joi.number().required(),
     IsReserved: joi.boolean(),
     IsPaid: joi.boolean(),
+    Name: joi.string().required(),
+    Size: joi.string().required(),
   });
   return bookingsValidatorSchema.validate(booking);
 };

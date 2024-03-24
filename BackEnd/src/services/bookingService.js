@@ -17,9 +17,12 @@ export const createBookingService = async (newBooking) => {
       .input("Total", sql.Int, newBooking.Total)
       .input("IsReserved", sql.Bit, newBooking.IsReserved)
       .input("IsPaid", sql.Bit, newBooking.IsPaid)
+      .input("Name", sql.VarChar(255), newBooking.Name)
+      .input("Size", sql.VarChar(255), newBooking.Size)
       .query(
         "INSERT INTO Bookings (BookingId, Email, FirstName, LastName, RoomId, SpecialRequirements, CreatedAt, StartDate, EndDate, AdultsNo, KidsNo, Total, IsReserved, IsPaid) VALUES (@BookingId, @Email, @FirstName, @LastName, @RoomId, @SpecialRequirements, @CreatedAt, @StartDate, @EndDate, @AdultsNo, @KidsNo, @Total, @IsReserved, @IsPaid)"
       );
+    // console.log("Result is:", result);
     return result;
   } catch (error) {
     return error;
@@ -77,6 +80,7 @@ export const getBookingsByRoomIdService = async (RoomId) => {
     const result = await poolRequest()
       .input("RoomId", sql.VarChar(255), RoomId)
       .query("SELECT * FROM Bookings WHERE RoomId=@RoomId");
+    console.log(result.recordset[0]);
     return result.recordset[0];
   } catch (error) {
     return error;

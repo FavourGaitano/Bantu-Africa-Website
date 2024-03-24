@@ -22,7 +22,7 @@ export const getMeetings = async (req, res) => {
     if (meetings.length === 0) {
       sendNotFound(res, "No Meeting found");
     } else {
-      return res.status(200).json({ meetings: meetings });
+      return res.status(200).json(meetings);
     }
   } catch (error) {
     sendServerError(res, error);
