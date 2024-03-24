@@ -21,23 +21,27 @@
       .list {
         cursor: pointer;
         font-size: 20px;
-        position: relative;
         height: 10vh;
         display: flex;
         align-items: center;
 
         .calendar-dropdown {
-          .check-button {
-            border: none;
-            border-radius: 5px;
-            padding: 6px 20px;
-            background-color: transparent;
+          display: flex;
+          gap: .8rem;
+          .input-group{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid gray;
             cursor: pointer;
-
-            &:hover {
-              color: white;
-              background-color: #5e292f;
+            padding: 5px;
+            font-size: 1rem;
+            input{
+              border: none;
+              outline: none;
+              cursor: pointer;
             }
+          
           }
 
           .cal {
@@ -137,3 +141,53 @@
       }
     }
   }
+
+
+
+  .select-navbar select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    /* Remove default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Ensure dropdown options overflow is hidden */
+    overflow: hidden;
+  }
+  
+  .select-navbar select:focus {
+    outline: none;
+  }
+  .guest-selector-modal {
+    position: absolute;
+    width: 20vw;
+    // max-width: 300px; 
+    background-color: white; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    margin-top: 10px; 
+  }
+  
+  .guest-selector-container {
+    position: relative;
+  }
+  .button-container{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+margin: 1rem ;
+    button{
+        background-color: white;
+        color: #5E292F;
+        border-radius: 5px;
+        padding: 7px 15px;
+        border: 2px solid #CCAE10;
+    }
+}
+
