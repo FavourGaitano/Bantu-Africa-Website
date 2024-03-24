@@ -2,6 +2,7 @@ import React from 'react'
 import './BookingList.scss'
 
 
+
 const BookingList = () => {
   return (
     <div className="stay">
