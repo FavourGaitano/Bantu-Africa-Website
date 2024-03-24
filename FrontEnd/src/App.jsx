@@ -1,20 +1,21 @@
 import "./App.scss";
 
-import Navbar from "./components/shared/Navbar";
-import Footer from "./components/shared/Footer";
-import Main from "./layout/Main";
+
 import { Route, Routes } from "react-router-dom";
+
+import Main from "./layout/Main";
+import AdminRoute from "./layout/AdminRoute";
 
 function App() {
   return (
     <div className="main-app">
-      <Navbar />
       <Routes>
-        <Route path="*" element={<Main />} />
-      </Routes>
-      <Footer />
+        <Route path="/*" element={<Main/>} />
+        <Route path='/admin/*' element={<AdminRoute/>} />
 
-    </div>
+      </Routes>
+ 
+         </div>
   );
 }
 
