@@ -36,3 +36,19 @@ export const createOtherService = async (newOtherService) => {
         
     }
 };
+
+
+export const getAllOtherServices = async () => {
+    try {
+        const getAllOtherServicesQuery = `
+            SELECT OtherServiceId, OtherServiceName, Description, ImageUrl, CreatedAt
+            FROM tbl_other_service
+        `;
+
+        const result = await poolRequest().query(getAllOtherServicesQuery);
+
+        return result.recordset;
+    } catch (error) {
+        throw error;
+    }
+};

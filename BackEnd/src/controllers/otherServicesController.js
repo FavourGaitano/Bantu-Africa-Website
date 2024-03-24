@@ -1,7 +1,7 @@
 
 import { v4 } from 'uuid';
 import { otherServiceValidator } from '../validators/otherSevicesValidator.js';
-import { createOtherService } from '../services/otherServices.js';
+import { createOtherService, getAllOtherServices } from '../services/otherServices.js';
 
 export const createOtherServiceController = async (req, res) => {
   try {
@@ -40,4 +40,14 @@ export const createOtherServiceController = async (req, res) => {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
+};
+
+export const getAllOtherServicesController = async (req, res) => {
+    try {
+      const otherServices = await getAllOtherServices();
+      return res.status(200).json(otherServices);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: "Internal server error" });
+    }
 };
