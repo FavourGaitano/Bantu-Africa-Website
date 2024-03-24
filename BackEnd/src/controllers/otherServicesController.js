@@ -1,7 +1,7 @@
 
 import { v4 } from 'uuid';
 import { otherServiceValidator } from '../validators/otherSevicesValidator.js';
-import { createOtherService, getAllOtherServices, updateOtherService } from '../services/otherServices.js';
+import { createOtherService, deleteOtherService, getAllOtherServices, updateOtherService } from '../services/otherServices.js';
 
 export const createOtherServiceController = async (req, res) => {
   try {
@@ -64,6 +64,18 @@ export const updateOtherServiceController = async (req, res) => {
   
       const updatedService = await updateOtherService(OtherServiceId, { OtherServiceName, Description, ImageUrl });
       return res.status(200).json({ message: "Other service updated successfully", service: updatedService });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  };
+
+  export const deleteOtherServiceController = async (req, res) => {
+    try {
+      const { OtherServiceId } = req.params; 
+      await deleteOtherService(OtherServiceId);
+  
+      return res.status(200).json({ message: "Other service deleted successfully" });
     } catch (error) {
       console.log(error);
       return res.status(500).json({ message: "Internal server error" });

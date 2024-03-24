@@ -74,3 +74,19 @@ export const updateOtherService = async (OtherServiceId, { OtherServiceName, Des
         throw error;
     }
 };
+
+
+export const deleteOtherService = async (OtherServiceId) => {
+    try {
+        const deleteOtherServiceQuery = `
+            DELETE FROM tbl_other_service
+            WHERE OtherServiceId = @OtherServiceId
+        `;
+
+        await poolRequest()
+            .input("OtherServiceId", sql.VarChar, OtherServiceId)
+            .query(deleteOtherServiceQuery);
+    } catch (error) {
+        throw error;
+    }
+};
