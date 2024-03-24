@@ -7,13 +7,13 @@ POST http://localhost:8000/api/gallery
 Content-Type: application/json
 
 {
-    "Description" : "Dilux",
-        "Category": "accommodation",
-        "PictureUrl": "https://cdn.pixabay.com/photo/2017/01/14/12/48/hotel-1979406_1280.jpg"
-   
+    "Description" : "Zip-Lining",
+        "Category": "FunActivities",
+        "PictureUrl": "https://cdn.pixabay.com/photo/2016/03/21/05/07/zipline-1270003_960_720.jpg"  
 }
 
-###
+###Get Pictures By Category
+
 GET http://localhost:8000/api/gallery/category/accommodation
 
 ### Get one gallery

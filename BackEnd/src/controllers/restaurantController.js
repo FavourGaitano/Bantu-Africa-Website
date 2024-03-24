@@ -7,7 +7,8 @@ import { addMenuService,
         deleteMenuService,
         getSingleMenuService,
         getSingleOfferService,
-        getRestaurantService
+        getRestaurantServiceMenu,
+        getRestaurantServiceOffer
         } from '../services/restaurantService.js';
 import { menuValidator,
         offerValidator,
@@ -16,9 +17,22 @@ import { menuValidator,
          } from '../validators/restaurantValidator.js';
 import {v4} from 'uuid';
 
-export const getRestaurant = async (req, res) => {    
+export const getRestaurantMenu = async (req, res) => {    
   try {
-      const restaurant = await getRestaurantService();
+      const restaurant = await getRestaurantServiceMenu();
+      if (restaurant.length === 0) {
+          sendNotFound(res, 'No details found');
+      } else {
+          return res.status(200).json({restaurant:restaurant})
+      }
+  } catch (error) {
+      sendServerError(res, error);
+  }
+}
+
+export const getRestaurantOffer = async (req, res) => {    
+  try {
+      const restaurant = await getRestaurantServiceOffer();
       if (restaurant.length === 0) {
           sendNotFound(res, 'No details found');
       } else {

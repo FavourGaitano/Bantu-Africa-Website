@@ -14,7 +14,6 @@ export const getRoomsService = async () => {
   }
 };
 
-
 export const addRoomService = async (room) => {
   try {
     const result = await poolRequest()
@@ -38,8 +37,12 @@ export const addRoomService = async (room) => {
 
 export const getRoomByIdService = async (RoomId) => {
   try {
-    const singleReturnedRoom = await poolRequest().input("RoomId",sql.VarChar,RoomId)
-    .query(`SELECT Room.*, RoomCategory.Name,RoomCategory.Size,RoomCategory.MealPlan,RoomCategory.Price
+    const singleReturnedRoom = await poolRequest().input(
+      "RoomId",
+      sql.VarChar,
+      RoomId
+    )
+      .query(`SELECT Room.*, RoomCategory.Name,RoomCategory.Size,RoomCategory.MealPlan,RoomCategory.Price
 
               FROM Room 
               INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
@@ -52,18 +55,71 @@ export const getRoomByIdService = async (RoomId) => {
   }
 };
 
+export const getRoomByRoomNumberService = async (RoomNumber) => {
+  try {
+    const returnedRoom = await poolRequest().input(
+      "RoomNumber",
+      sql.Int,
+      RoomNumber
+    )
+      .query(`SELECT Room.*, RoomCategory.Name,RoomCategory.Size,RoomCategory.MealPlan,RoomCategory.Price
+
+              FROM Room 
+              INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
+              WHERE RoomNumber = @RoomNumber`);
+    // console.log("single", singleReturnedRoom.recordset[0]);
+    return returnedRoom.recordset[0];
+  } catch (error) {
+    console.error("Error fetching single room:", error);
+    throw error;
+  }
+};
+
 export const getAvailableRoomService = async () => {
   try {
-      const availableRooms = await poolRequest()
-          .query(`SELECT Room.*, RoomCategory.Name, RoomCategory.Size, RoomCategory.MealPlan, RoomCategory.Price
+    const availableRooms = await poolRequest()
+      .query(`SELECT Room.*, RoomCategory.Name, RoomCategory.Size, RoomCategory.MealPlan, RoomCategory.Price
                    FROM Room 
                    INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
                    WHERE Room.isAvailable = 1`);
-        console.log(availableRooms.recordset);
-      return availableRooms.recordset; 
+    console.log(availableRooms.recordset);
+    return availableRooms.recordset;
   } catch (error) {
-      console.error("Error fetching available rooms:", error);
-      throw error;
+    console.error("Error fetching available rooms:", error);
+    throw error;
+  }
+};
+
+export const getRoomsAvailableForBookingService = async (Booking) => {
+  const { Name, Size, StartDate, EndDate } = Booking;
+  try {
+    const availableRooms = await poolRequest()
+      .input("Name", sql.VarChar(255), Name)
+      .input("Size", sql.VarChar(255), Size)
+      .input("StartDate", sql.Date, StartDate)
+      .input("EndDate", sql.Date, EndDate)
+      .query(`SELECT r.RoomId, r.RoomNumber, rc.*
+          FROM Room r
+          INNER JOIN RoomCategory rc ON r.RoomCategoryId = rc.RoomCategoryId
+          WHERE r.isAvailable = 1
+          AND r.IsDeleted = 0
+          AND rc.Name=@Name
+          AND rc.Size=@Size
+          AND NOT EXISTS (
+              SELECT 1
+              FROM Bookings b
+              WHERE b.RoomId = r.RoomId
+              AND NOT (
+                  b.EndDate < @StartDate OR
+                  b.StartDate > @EndDate
+              )
+          )
+          `);
+    console.log(availableRooms.recordset);
+    return availableRooms.recordset;
+  } catch (error) {
+    console.error("Error fetching available rooms:", error);
+    throw error;
   }
 };
 
@@ -99,7 +155,6 @@ export const softDeleteService = async (RoomId) => {
     throw error;
   }
 };
-
 
 export const isAvailableService = async (RoomId) => {
   try {

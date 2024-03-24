@@ -2,6 +2,7 @@ import "./App.scss";
 
 
 import { Route, Routes } from "react-router-dom";
+import Menu from "./components/Menu/Menu";
 
 import Main from "./layout/Main";
 import AdminRoute from "./layout/AdminRoute";
@@ -12,8 +13,9 @@ function App() {
       <Routes>
         <Route path="/*" element={<Main/>} />
         <Route path='/admin/*' element={<AdminRoute/>} />
-
+        <Route path="/menu" element={<Menu/>} />
       </Routes>
+   
  
          </div>
   );
