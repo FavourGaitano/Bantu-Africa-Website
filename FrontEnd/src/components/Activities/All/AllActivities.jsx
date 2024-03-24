@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGetActivitiesQuery } from "../../../features/activities/activityApi";
 import "./AllActivities.scss";
+import Modal from "../ActivityModal/ActivityModal";
 
 const AllActivities = () => {
   const { data: activities, error, isLoading } = useGetActivitiesQuery();
+  const [selectedActivity, setSelectedActivity] = useState(null);
+
+  const handleOpenModal = (activity) => {
+    setSelectedActivity(activity);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedActivity(null);
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -33,12 +43,18 @@ const AllActivities = () => {
                 <p>{activity.Description}</p>
               </div>
               <div className="desc-btn">
-                <button>FIND MORE</button>
+                <button onClick={() => handleOpenModal(activity)}>FIND MORE</button>
               </div>
             </div>
           </div>
         ))}
       </div>
+
+      <Modal
+        isOpen={selectedActivity !== null}
+        onClose={handleCloseModal}
+        activity={selectedActivity}
+      />
     </div>
   );
 };
