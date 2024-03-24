@@ -3,7 +3,7 @@ POST http://localhost:8000/api/offer
 Content-Type: application/json
 
 {
-    "OfferImageUrl": "https://images.pexels.com/photos/6249454/pexels-photo-6249454.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    "OfferImageUrl": "https://img.freepik.com/free-vector/gradient-hotel-banner-with-photo_23-2148917525.jpg"
 }
 
 ### get all offers
