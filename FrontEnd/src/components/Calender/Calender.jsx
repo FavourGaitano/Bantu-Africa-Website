@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import "./Calender.scss";
-<<<<<<< HEAD
-import { IoChevronBackCircleOutline, IoChevronForwardCircleOutline } from "react-icons/io5";
-=======
 import BookingForm from "../BookingForm/BookingForm";
->>>>>>> 2fbd0f3fcdaa799a3a07daf991d395c958e52774
 
 const Calender = ({ onDateSelect,onCheckoutDateSelect }) => {
   const currentDate = new Date();
