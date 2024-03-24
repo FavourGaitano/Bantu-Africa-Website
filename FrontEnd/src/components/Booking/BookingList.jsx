@@ -1,6 +1,8 @@
 import React from 'react'
 import './BookingList.scss'
 
+
+
 const BookingList = () => {
   return (
     <div className="stay">
@@ -25,6 +27,8 @@ const BookingList = () => {
               <div className="amount">KESH 40, 209</div>
             </div>
           </div>
+          
+          
         </div>
   )
 }
