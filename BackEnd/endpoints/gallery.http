@@ -17,18 +17,18 @@ Content-Type: application/json
 GET http://localhost:8000/api/gallery/category/accommodation
 
 ### Get one gallery
-Get http://localhost:8000/api/gallery/e8b5f044-20d8-422d-a3ce-64ea6a3532c4
+Get http://localhost:8000/api/gallery/f826f419-6637-47ca-b63d-983dd93693d4
 
 ### Delete gallery
 
 Delete http://localhost:8000/api/gallery/8c23436b-d736-4a98-aa86-71d5dbdafdf7
 
 ### Update gallery
-PUT http://localhost:8000/api/gallery/aee4768c-e365-4a2c-9163-d1f735817de9
+PUT http://localhost:8000/api/gallery/f826f419-6637-47ca-b63d-983dd93693d4
 Content-Type: application/json
 
 {
-   "Description" : "PresidentialSuite",
+   "Description" : "uPDATEDPresidentialSuite",
         "Category": "PresidentialSuite",
         "PictureUrl": "pictureUrl1234"
 }

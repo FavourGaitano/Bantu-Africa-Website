@@ -9,6 +9,7 @@ const Map = () => {
       <iframe
         width="720"
         height="600"
+        loading="lazy"
         frameBorder="0"
         scrolling="no"
         marginHeight="0"

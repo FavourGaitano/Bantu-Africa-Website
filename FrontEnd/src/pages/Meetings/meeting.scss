@@ -60,11 +60,6 @@
   background-color: var(--gray-color);
   gap: 2rem;
 
-  .event-photo {
-    // width: 250rem;
-    // background-color: green;
-  }
-
   .event-items {
     display: flex;
     flex-direction: column;
@@ -88,6 +83,10 @@
       font-size: 1.2rem;
     }
   }
+}
+
+.event-superior-content.reversed {
+  flex-direction: row-reverse;
 }
 
 .event-deluxe-content {
@@ -114,4 +113,27 @@
       color: var(--light-gray);
     }
   }
+}
+.desc-btn {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  button {
+    background-color: white;
+    color: #ccae10;
+    padding: 10px 20px;
+    border: 1px solid #ccae10;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 2%;
+  }
+}
+
+/* Style hover effect for the button */
+.desc-btn button:hover {
+  background-color: #5e292f;
+  color: white;
+  border: none;
 }

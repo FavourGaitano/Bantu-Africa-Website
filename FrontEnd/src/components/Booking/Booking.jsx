@@ -14,7 +14,6 @@ const Booking = () => {
       <div className="options">
         <div className="booking-form" >
           <CreateBooking />
-          
         </div>
         <div className="booking-list" >
           <BookingList />

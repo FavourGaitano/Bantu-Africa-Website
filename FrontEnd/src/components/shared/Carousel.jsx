@@ -22,7 +22,7 @@ const Carousel = () => {
   };
 
   const nextSlide = () => {
-    console.log("Clicked!");
+    // console.log("Clicked!");
     setCurrentPhoto((oldPhoto) => {
       const result = (oldPhoto + 1) % photo.length;
       return result;
