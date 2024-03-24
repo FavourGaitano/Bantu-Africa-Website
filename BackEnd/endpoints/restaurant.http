@@ -9,7 +9,7 @@ POST http://localhost:8000/api/restaurant/menu
 Content-Type: application/json
 
 {
-    "MenuUrl": "FavourB"
+    "MenuUrl": "https://fitsmallbusiness.com/wp-content/uploads/2019/03/Screenshot_of_Simple_Food_Menu.jpg"
    
 }
 
@@ -22,8 +22,11 @@ Content-Type: application/json
    
 }
 
-### //get restaurant
-GET http://localhost:8000/api/restaurant
+### //get restaurant menu
+GET http://localhost:8000/api/restaurant/menu
+
+### //get restaurant offer
+GET http://localhost:8000/api/restaurant/offer
 
 
 
