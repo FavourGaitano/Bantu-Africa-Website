@@ -9,6 +9,7 @@ import { offerApi } from "../features/offers/offerApi";
 import { inquiryApi } from "../features/inquiries/inquiryApi";
 import { galleryApi } from "../features/gallery/galleryApi";
 import { meetingsApi } from "../features/meetings/meetingsApi";
+import { otherServiceApi } from "../features/otherServices/otherServices";
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     [offerApi.reducerPath]: offerApi.reducer,
     [galleryApi.reducerPath]: galleryApi.reducer,
     [meetingsApi.reducerPath]: meetingsApi.reducer,
+    [otherServiceApi.reducerPath]: otherServiceApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -27,9 +29,11 @@ export const store = configureStore({
       activityApi.middleware,
       offerApi.middleware,
       galleryApi.middleware,
-      meetingsApi.middleware
-    ),
+      meetingsApi.middleware,
+      otherServiceApi.middleware
       
+    ),
   });
 
 setupListeners(store.dispatch);
+
