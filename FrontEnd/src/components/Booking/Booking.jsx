@@ -3,7 +3,7 @@ import "./Booking.scss";
 import BookingList from "./BookingList";
 import CreateBooking from "./CreateBooking";
 import Calender from "../Calender/Calender";
-import AdminTable from "../AdminTable/AdminTable";
+
 
 const Booking = () => {
   return (
@@ -14,7 +14,7 @@ const Booking = () => {
       <div className="options">
         <div className="booking-form" >
           <CreateBooking />
-          <AdminTable/>
+          
         </div>
         <div className="booking-list" >
           <BookingList />
