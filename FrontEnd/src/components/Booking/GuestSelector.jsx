@@ -3,12 +3,10 @@ import "./GuestSelector.scss";
 import { IoClose } from "react-icons/io5";
 
 
-function GuestSelector() {
-    const [showGuestSelector, setShowGuestSelector] = useState(true);
+function GuestSelector({ adults, kids, setAdults, setKids,setGuestSelectorOpen }) {
 
-    const [adults, setAdults] = useState(1);
-    const [kids, setKids] = useState(0);
-  
+
+
     const increment = (type) => {
       if (type === "adults") {
         setAdults(adults + 1);
@@ -25,10 +23,10 @@ function GuestSelector() {
       }
     };
   return (
-    <form className="guest-container">
+    <div className="guest-container">
     <div className="guest-top">
       <p>Select Guests</p>
-      <IoClose onClick={() => setShowGuestSelector(false)} />
+      <IoClose onClick={() => setGuestSelectorOpen(false)} />
     </div>
     <div className="adults-card">
       <label htmlFor="adults">Adults:</label>
@@ -48,9 +46,8 @@ function GuestSelector() {
         <button type="button" onClick={() => increment("kids")}>+</button>
       </div>
     </div>
-    <button className="btn-guest" type="submit" >Apply</button>
 
-  </form>
+  </div>
   
   );
 }
