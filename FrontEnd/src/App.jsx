@@ -16,8 +16,8 @@ function App() {
         <Route path="*" element={<Main />} />
       </Routes> */}
       {/* <AllActivitiesPage /> */}
-      {/* <KidsActivitiesPage /> */}
-      <AdultsActivitiesPage />
+      <KidsActivitiesPage />
+      {/* <AdultsActivitiesPage /> */}
       {/* <Footer /> */}
 
       {/* <AdminLogin/>

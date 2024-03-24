@@ -1,9 +1,23 @@
-import React from "react";
-import { useGetKidsActivitiesQuery } from "../../../features/activities/activityApi"; 
+import React, { useState } from "react";
+import { useGetKidsActivitiesQuery } from "../../../features/activities/activityApi";
 import "./KidsActivities.scss";
+import Modal from "../ActivityModal/ActivityModal";
 
 const KidsActivities = () => {
-  const { data: kidsActivities, error, isLoading } = useGetKidsActivitiesQuery();
+  const {
+    data: kidsActivities,
+    error,
+    isLoading,
+  } = useGetKidsActivitiesQuery();
+  const [selectedActivity, setSelectedActivity] = useState(null);
+
+  const handleOpenModal = (activity) => {
+    setSelectedActivity(activity);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedActivity(null);
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -19,7 +33,7 @@ const KidsActivities = () => {
         <h1>KIDS ACTIVITIES</h1>
       </div>
       <div className="activity-section">
-        {kidsActivities.map(activity => (
+        {kidsActivities.map((activity) => (
           <div key={activity.ActivityId} className="activity">
             <div className="activity-image">
               <img src={activity.ImageUrl} alt="No image found" />
@@ -32,12 +46,20 @@ const KidsActivities = () => {
                 <p>{activity.Description}</p>
               </div>
               <div className="desc-btn">
-                <button>FIND MORE</button>
+                <button onClick={() => handleOpenModal(activity)}>
+                  FIND MORE
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
+
+      <Modal
+        isOpen={selectedActivity !== null}
+        onClose={handleCloseModal}
+        activity={selectedActivity}
+      />
     </div>
   );
 };
