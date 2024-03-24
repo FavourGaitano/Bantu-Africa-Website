@@ -23,6 +23,7 @@ import {
 } from "../services/bookingService.js";
 import {
   getRoomByIdService,
+  getRoomsAvailableForBookingService,
   isAvailableService,
 } from "../services/roomService.js";
 
@@ -40,6 +41,8 @@ export const createBooking = async (req, res) => {
     Total,
     IsReserved,
     IsPaid,
+    Name,
+    Size,
   } = req.body;
   const { error } = bookingsValidator(req.body);
   if (error) {
@@ -65,8 +68,27 @@ export const createBooking = async (req, res) => {
         IsPaid,
       };
       const totalOccupants = AdultsNo + KidsNo;
-      const roomToBook = await getRoomByIdService(RoomId);
-      console.log(roomToBook);
+      const availableRooms = await getRoomsAvailableForBookingService({
+        Name,
+        Size,
+        StartDate,
+        EndDate,
+      });
+      if (availableRooms.length === 0) {
+        sendNotFound(
+          res,
+          `Sorry, all our ${Name} ${Size} rooms are booked for these dates`
+        );
+        return;
+      }
+      console.log("AvailableRooms: ", availableRooms);
+      const roomToBook = await getRoomByIdService(availableRooms[0].RoomId);
+      console.log("booked room: ", roomToBook);
+
+      if (roomToBook.length === 0) {
+        sendNotFound(res, "Room not found");
+        return;
+      }
 
       if (totalOccupants > roomToBook.Occupants) {
         // console.log("Check reached");
@@ -77,8 +99,8 @@ export const createBooking = async (req, res) => {
           );
         return;
       }
-      if (!roomToBook.isAvailable) {
-        console.log("Entered date check");
+      if (!roomToBook[0].isAvailable) {
+        // console.log("Entered date check", roomToBook.isAvailable);
         res
           .status(400)
           .send(
@@ -210,12 +232,14 @@ export const getBookingByRoomId = async (req, res) => {
   //   console.log(req.params);
   try {
     const data = await getBookingsByRoomIdService(RoomId);
-    if (data.length == 0) {
+    console.log("data ni: ", data);
+    if (!data || data === undefined) {
       sendNotFound(res, "No booking found");
     } else {
       res.status(200).json(data);
     }
   } catch (error) {
+    console.log(error);
     sendServerError(res, error);
   }
 };
