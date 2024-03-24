@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Calender.scss";
+import BookingForm from "../BookingForm/BookingForm";
 
 const Calender = () => {
   // Get the current date
@@ -11,6 +12,7 @@ const Calender = () => {
   const [calendarOpen, setCalendarOpen] = useState(true); 
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+  const [formVisible, setFormVisible] = useState(false);
 
   const handleDateClick = (date) => {
     if (!checkInDate) {
@@ -36,6 +38,10 @@ const Calender = () => {
     } else {
       setCurrentMonth(currentMonth + 1);
     }
+  };
+
+  const toggleFormVisibility = () => {
+    setFormVisible(!formVisible);
   };
 
  
@@ -101,8 +107,14 @@ const Calender = () => {
             >
               Book
             </button>
+            
           </div>
+          
+         
+            
         </div>
+        
+        
       )}
     </div>
   );
