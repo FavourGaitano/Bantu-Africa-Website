@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import tel from "../../assets/telephone.png";
 import calendar from "../../assets/calendar.png";
 import logo from "../../assets/logo-white.jpg";
@@ -7,9 +7,16 @@ import { FaSquareFacebook } from "react-icons/fa6";
 import { BsInstagram } from "react-icons/bs";
 import "./navbar.scss";
 import { NavLink, useNavigate } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
-  const navigate=useNavigate()
+  const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate();
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
   const navItems = [
     {
       path: "/",
@@ -55,12 +62,21 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="top-banner">
-        
+        {showMenu ? (
+          <FaTimes className="menu-toggle" onClick={toggleMenu} />
+        ) : (
+          <FaBars className="menu-toggle" onClick={toggleMenu} />
+        )}
         <div className="call">
           <img src={tel} alt="no-icon" />
           <h4>CALL US</h4>
         </div>
-        <button className="book" onClick={()=>{navigate("/booking")}}>
+        <button
+          className="book"
+          onClick={() => {
+            navigate("/booking");
+          }}
+        >
           <img src={calendar} alt="no-icon" />
           <h4>BOOK NOW</h4>
         </button>
@@ -70,7 +86,8 @@ const Navbar = () => {
           <BsInstagram />
         </div>
       </div>
-      <div className="nav">
+
+      <div className={`nav ${showMenu ? "show-menu" : ""}`}>
         <div className="logo">
           <div className="image">
             <img src={logo} alt="no-logo" />
