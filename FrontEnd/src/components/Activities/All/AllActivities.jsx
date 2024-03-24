@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import "./AdultsActivities.scss";
-import { useGetAdultsActivitiesQuery } from "../../../features/activities/activityApi";
+import { useGetActivitiesQuery } from "../../../features/activities/activityApi";
+import "./AllActivities.scss";
 import Modal from "../ActivityModal/ActivityModal";
 
-const AdultsActivities = () => {
-  const {
-    data: adultsActivities,
-    error,
-    isLoading,
-  } = useGetAdultsActivitiesQuery();
-
+const AllActivities = () => {
+  const { data: activities, error, isLoading } = useGetActivitiesQuery();
   const [selectedActivity, setSelectedActivity] = useState(null);
 
   const handleOpenModal = (activity) => {
@@ -29,12 +24,13 @@ const AdultsActivities = () => {
   }
 
   return (
-    <div className="activities">
-      <div className="activity-title">
-        <h1>ADULTS ACTIVTIES</h1>
+    <div className="all-activites">
+      <div className="all-activities-title">
+        <h1>ALL ACTIVITIES</h1>
       </div>
-      <div className="activity-section">
-        {adultsActivities.map((activity) => (
+
+      <div className="all-activity-section">
+        {activities.map(activity => (
           <div key={activity.ActivityId} className="activity">
             <div className="activity-image">
               <img src={activity.ImageUrl} alt="No image found" />
@@ -47,9 +43,7 @@ const AdultsActivities = () => {
                 <p>{activity.Description}</p>
               </div>
               <div className="desc-btn">
-                <button onClick={() => handleOpenModal(activity)}>
-                  FIND MORE
-                </button>
+                <button onClick={() => handleOpenModal(activity)}>FIND MORE</button>
               </div>
             </div>
           </div>
@@ -65,4 +59,5 @@ const AdultsActivities = () => {
   );
 };
 
-export default AdultsActivities;
+export default AllActivities;
+

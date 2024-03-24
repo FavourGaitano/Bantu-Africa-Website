@@ -1,9 +1,18 @@
 import { poolRequest, closePool, sql } from '../utils/dbConnect.js';
 import logger from "../utils/logger.js";
 
-export const getRestaurantService = async () => {
+export const getRestaurantServiceMenu = async () => {
   try {
-      const result = await poolRequest().query("SELECT * FROM Restaurant");
+      const result = await poolRequest().query("SELECT * FROM Restaurant WHERE MenuUrl IS NOT NULL");
+      return result.recordset;
+  } catch (error) {
+      return error.message;
+  }
+};
+
+export const getRestaurantServiceOffer = async () => {
+  try {
+      const result = await poolRequest().query("SELECT * FROM Restaurant WHERE OfferUrl IS NOT NULL");
       return result.recordset;
   } catch (error) {
       return error.message;

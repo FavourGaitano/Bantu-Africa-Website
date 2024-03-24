@@ -1,7 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-
-
 export const galleryApi = createApi({
   reducerPath: "galleryApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/api/" }),
@@ -14,6 +12,11 @@ export const galleryApi = createApi({
 
     getPicture: builder.query({
       query: (id) => `gallery/find/${id}`,
+      providesTags: ["gallery"],
+    }),
+
+    getPictureByCategory: builder.query({
+      query: (category) => `gallery/category/${category}`,
       providesTags: ["gallery"],
     }),
 
@@ -51,4 +54,5 @@ export const {
   useAddpictureMutation,
   useUpdatepictureMutation,
   useDeletepictureMutation,
+  useGetPictureByCategoryQuery,
 } = galleryApi;
