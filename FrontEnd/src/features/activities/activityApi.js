@@ -11,6 +11,11 @@ export const activityApi = createApi({
             providesTags: ['activities']
         }),
 
+        getKidsActivities: builder.query({
+            query: () => 'activity',
+            providesTags: ['activities']
+        }),
+
         addActivity: builder.mutation({
             query: (activity) => ({
                 url: 'activity',
@@ -42,6 +47,7 @@ export const activityApi = createApi({
 
 export const { 
     useGetActivitiesQuery,
+    useGetKidsActivitiesQuery,
     useAddActivityMutation,
     useUpdateActivityMutation,
     useDeleteActivityMutation

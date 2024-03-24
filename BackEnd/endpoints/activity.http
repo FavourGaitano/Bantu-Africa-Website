@@ -6,7 +6,7 @@ GET http://localhost:8000/api/activity
 GET http://localhost:8000/api/activity/74e1f7e3-e9eb-420e-80da-959d2fd091fa
 
 ###
-GET http://localhost:8000/api/activity/category/adults
+GET http://localhost:8000/api/activity/category/kids
 
 
 ####
