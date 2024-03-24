@@ -125,3 +125,4 @@ const Calender = ({ onDateSelect,onCheckoutDateSelect }) => {
 };
 
 export default Calender;
+

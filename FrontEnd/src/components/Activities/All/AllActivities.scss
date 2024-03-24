@@ -1,8 +1,8 @@
-.activities {
+.all-activites {
   height: 100%;
   position: relative;
 
-  .activity-title {
+  .all-activities-title {
     position: absolute;
     top: 0;
     left: 35%;
@@ -23,7 +23,8 @@
     }
   }
 
-  .activity-section {
+
+  .all-activity-section {
     background-color: white;
     display: flex;
     flex-wrap: wrap;
@@ -60,8 +61,8 @@
           transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
-        &:hover img {
-          transform: scale(1.1); 
+        &:hover img{
+          transform: scale(1.1);
         }
       }
 
@@ -72,7 +73,7 @@
         width: 35vw;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: center; 
         background-color: inherit;
 
         .description-name {
@@ -125,4 +126,67 @@
       }
     }
   }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.close-button {
+  position: relative;
+  top: -10px;
+  right: -13rem;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333; 
+  z-index: 2;
+  padding: 1px 3px;
+}
+
+.close-button:hover {
+  color: #000; 
+}
+
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.modal-body img {
+  width: 100%; 
+  max-height: 100%; 
+  object-fit: contain; 
+}
+
+.description-text {
+  text-align: center; 
+  max-height: 100px; 
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
