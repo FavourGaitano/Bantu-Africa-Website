@@ -2,7 +2,9 @@ import { poolRequest, closePool, sql } from "../utils/dbConnect.js";
 
 export const getMeetingsService = async () => {
   try {
-    const result = await poolRequest().query("SELECT * FROM Meetings");
+    const result = await poolRequest().query(
+      "SELECT Meetings. *, MeetingPackages.PackageName AS PackageName FROM Meetings JOIN MeetingPackages ON Meetings.PackageId = MeetingPackages.PackageId"
+    );
     return result.recordset;
   } catch (error) {
     return error.message;
@@ -15,6 +17,7 @@ export const getoneMeetingservice = async (ConferenceId) => {
       .input("ConferenceId", sql.VarChar, ConferenceId)
       .query("SELECT * FROM Meetings WHERE ConferenceId = @ConferenceId");
 
+    console.log(result);
     return result.recordset[0];
   } catch (error) {
     console.log("Error fetching m Meeting:", error);

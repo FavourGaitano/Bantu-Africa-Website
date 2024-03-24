@@ -13,6 +13,7 @@ import {
   doesMeetingPackageExist,
   getmeetingPackagesService,
   getonemeetingPackageService,
+  updatemeetingpackageService,
 } from "../services/meetingPackageService.js";
 
 export const getmeetingPackages = async (req, res) => {
@@ -85,6 +86,7 @@ export const deletemeetingPackage = async (req, res) => {
     const { PackageId } = req.params;
 
     const existingPackage = await getonemeetingPackageService(PackageId);
+    console.log(existingPackage);
     if (!existingPackage) {
       return res.status(404).json({ message: "Package not found" });
     }
@@ -100,5 +102,38 @@ export const deletemeetingPackage = async (req, res) => {
   } catch (error) {
     console.error("Error deleting Package:", error);
     return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const updatemeetingPackage = async (req, res) => {
+  const PackageId = req.params;
+  try {
+    const PackageToUpdate = await getonemeetingPackageService(PackageId);
+    if (PackageToUpdate.length === 0) {
+      sendNotFound(res, "Package to update not found");
+    } else {
+      if (checkIfValuesIsEmptyNullUndefined) {
+        const { PackageName } = req.body;
+        const updatedPackage = { PackageName };
+        if (PackageName) {
+          updatedPackage.PackageName = PackageName;
+        }
+
+        const response = await updatemeetingpackageService(
+          PackageId,
+          updatedPackage
+        );
+        console.log("res:", response);
+        if (response.rowsAffected == 1) {
+          sendCreated(res, "Package updated successfully");
+        } else {
+          sendServerError(res, "Failed to update");
+        }
+      } else {
+        sendBadRequest(res, "Please provide a complete field");
+      }
+    }
+  } catch (error) {
+    sendServerError(res, error);
   }
 };

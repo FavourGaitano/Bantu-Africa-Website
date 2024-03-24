@@ -1,7 +1,7 @@
 
         ##SERVICES
 ### Get services
-GET http://localhost:3000/api/service
+GET http://localhost:8000/api/service
 
 ###
 GET http://localhost:8000/api/service/49073f97-3e58-48ae-b4d5-a07b6b00c6c1

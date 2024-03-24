@@ -8,26 +8,26 @@ import { ErrorToast, LoadingToast } from "./Toaster";
 
 const MarketingCards = () => {
   const { data, error, isError, Loading, isLoading } = useGetServicesQuery();
-  console.log(
-    "data: ",
-    data,
-    "Error: ",
-    error,
-    "isError: ",
-    isError,
-    "Loading: ",
-    Loading,
-    "isLoading: ",
-    isLoading
-  );
+  // console.log(
+  //   "data: ",
+  //   data,
+  //   "Error: ",
+  //   error,
+  //   "isError: ",
+  //   isError,
+  //   "Loading: ",
+  //   Loading,
+  //   "isLoading: ",
+  //   isLoading
+  // );
 
   if (Loading || isLoading) {
     return LoadingToast();
   }
 
-  if ((error, isError)) {
+  if (error || isError || !data) {
     LoadingToast(false);
-    return ErrorToast(error.data.message);
+    return ErrorToast("No Services Available");
   }
 
   const accommodationDesc =

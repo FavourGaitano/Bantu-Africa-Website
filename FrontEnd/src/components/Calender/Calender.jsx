@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./Calender.scss";
+<<<<<<< HEAD
 import { IoChevronBackCircleOutline, IoChevronForwardCircleOutline } from "react-icons/io5";
+=======
+import BookingForm from "../BookingForm/BookingForm";
+>>>>>>> 2fbd0f3fcdaa799a3a07daf991d395c958e52774
 
 const Calender = ({ onDateSelect,onCheckoutDateSelect }) => {
   const currentDate = new Date();
@@ -11,6 +15,7 @@ const Calender = ({ onDateSelect,onCheckoutDateSelect }) => {
   const [calendarOpen, setCalendarOpen] = useState(false); 
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+  const [formVisible, setFormVisible] = useState(false);
 
   const handleDateClick = (date) => {
     if (!checkInDate) {
@@ -76,6 +81,9 @@ const Calender = ({ onDateSelect,onCheckoutDateSelect }) => {
 
           
           </div>
+          
+         
+            
         </div>
         <div className="datepicker-calendar">
           <span className="day">Mon</span>
