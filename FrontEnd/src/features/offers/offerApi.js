@@ -2,13 +2,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const offerApi = createApi({
-  reducerPath: "inquireApi",
+  reducerPath: "offerApi",
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/api/' }),
   tagTypes: ['offers'],
   endpoints: (builder) => ({
     getOffers: builder.query({
       query: () => 'offer',
-      providesTags: ['offer']
+      providesTags: ['offers']
     }),
 
     getSingleOffer: builder.query({

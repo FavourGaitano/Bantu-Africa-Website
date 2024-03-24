@@ -66,12 +66,9 @@
                 margin-bottom: 1em;
                 text-align: center;
                 margin-top: 20px;
-                // display: flex;
-                // align-items: center;
               }
 
               .desc-btn{
-                background-color: white;
                 display: flex;
                 justify-content: center;
                 margin-top: 30px;
@@ -97,75 +94,5 @@
         }
 
     }
-
-    .activity-section2{
-      background-color: rgb(240, 239, 239);
-      height: 50vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 70px;
-
-      .activity-image{
-          overflow: hidden;
-          height: 45vh;
-          width: 35vw;
-
-      }
-
-      .activity-description{
-          overflow: hidden;
-          height: 45vh;
-          width: 35vw;
-
-          .description-name {
-              font-size: 1.5em; 
-              font-weight: bold;
-              margin-bottom: 0.5em;
-              margin-top: 25px;
-
-              h3{
-                
-                text-align: center;
-                margin-top: 10px;
-                color: #CCAE10;
-                font-weight: 40px;
-                font-size: 25px;
-              }
-            }
-          
-            .description-text {
-              line-height: 1.4;
-              margin-bottom: 1em;
-              text-align: center;
-              margin-top: 20px;
-            }
-
-            .desc-btn{
-              display: flex;
-              justify-content: center;
-              margin-top: 30px;
-              button {
-                background-color: white; 
-                color: #CCAE10;
-                padding: 10px 20px;
-                border: 1px solid #CCAE10;
-                border-radius: 5px; 
-                cursor: pointer;
-                font-size: 16px;
-                
-              }
-
-            }
-          
-            /* Style hover effect for the button */
-             .desc-btn button:hover {
-               background-color: #5E292F; 
-               color: white;
-               border: none;
-             }
-      }
-
-  }
 
 }
