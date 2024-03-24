@@ -6,6 +6,7 @@ import Main from "./layout/Main";
 import { Route, Routes } from "react-router-dom";
 import AllActivitiesPage from "./pages/Activities/All/AllActivitiesPage";
 import KidsActivitiesPage from "./pages/Activities/Kids/KidsActivities";
+import AdultsActivitiesPage from "./pages/Activities/Adults/AdultsActivitiesPage";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="*" element={<Main />} />
       </Routes> */}
       {/* <AllActivitiesPage /> */}
-      <KidsActivitiesPage />
+      {/* <KidsActivitiesPage /> */}
+      <AdultsActivitiesPage />
       {/* <Footer /> */}
 
       {/* <AdminLogin/>

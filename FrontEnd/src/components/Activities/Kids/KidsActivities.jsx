@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetKidsActivitiesQuery } from "../../../features/activities/activityApi"; // Assuming you have a separate query for kids activities
+import { useGetKidsActivitiesQuery } from "../../../features/activities/activityApi"; 
 import "./KidsActivities.scss";
 
 const KidsActivities = () => {

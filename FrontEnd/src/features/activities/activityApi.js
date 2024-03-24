@@ -12,7 +12,12 @@ export const activityApi = createApi({
         }),
 
         getKidsActivities: builder.query({
-            query: () => 'activity',
+            query: () => 'activity/category/kids',
+            providesTags: ['activities']
+        }),
+
+        getAdultsActivities: builder.query({
+            query: () => 'activity/category/adults',
             providesTags: ['activities']
         }),
 
@@ -48,6 +53,7 @@ export const activityApi = createApi({
 export const { 
     useGetActivitiesQuery,
     useGetKidsActivitiesQuery,
+    useGetAdultsActivitiesQuery,
     useAddActivityMutation,
     useUpdateActivityMutation,
     useDeleteActivityMutation
