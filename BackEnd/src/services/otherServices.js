@@ -52,3 +52,25 @@ export const getAllOtherServices = async () => {
         throw error;
     }
 };
+
+
+export const updateOtherService = async (OtherServiceId, { OtherServiceName, Description, ImageUrl }) => {
+    try {
+        const updateOtherServiceQuery = `
+            UPDATE tbl_other_service
+            SET OtherServiceName = @OtherServiceName, Description = @Description, ImageUrl = @ImageUrl
+            WHERE OtherServiceId = @OtherServiceId
+        `;
+
+        await poolRequest()
+            .input("OtherServiceId", sql.VarChar, OtherServiceId)
+            .input("OtherServiceName", sql.VarChar, OtherServiceName)
+            .input("Description", sql.VarChar, Description)
+            .input("ImageUrl", sql.VarChar, ImageUrl)
+            .query(updateOtherServiceQuery);
+
+        return { OtherServiceId, OtherServiceName, Description, ImageUrl };
+    } catch (error) {
+        throw error;
+    }
+};
