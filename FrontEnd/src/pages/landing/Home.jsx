@@ -15,8 +15,8 @@ const Home = () => {
 
       <Carousel />
       <MarketingCards />
-      {/* <SpecialOffers /> */}
-      <OtherServices />
+      <SpecialOffers />
+      {/* <OtherServices /> */}
       <Map />
      
     </div>

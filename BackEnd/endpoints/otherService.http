@@ -7,10 +7,11 @@ GET http://localhost:8000/api/otherService
 POST http://localhost:8000/api/otherService
 Content-Type: application/json
 
+
 {
-    "OtherServiceName": "test 2",
-    "Description": "Hidden deep in the valley is the Chania River Slopes and Camp Site. It combines a camping ground for the adventurous, an informal outdoor bar & barbeque for the fun-seeking, and soon-to-come water sports like canoeing and fresh water rafting for the daring.",
-    "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgNjKJtXg1Nc22b1nILSeT6TYTJvoRnK9_I5a31J_B-Q&s"
+    "OtherServiceName": "test 3",
+    "Description": "Hidden deep in the valley is the Chania River Slopes.",
+    "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaR632BI0nEvmOzYM0vRYr2FnOT074NYpULT8FbcIUzg&s"
 }
 
 
@@ -20,9 +21,9 @@ Content-Type: application/json
 
 {
     "OtherServiceName": "New other service",
-    "Description": "Hidden deep in the valley is the Chania River Slopes and Camp Site. It combines a camping ground for the adventurous, an informal outdoor bar & barbeque for the fun-seeking, and soon-to-come water sports like canoeing and fresh water rafting for the daring.",
+    "Description": "Hidden deep in the valley is the Chania River Slopes.",
     "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgNjKJtXg1Nc22b1nILSeT6TYTJvoRnK9_I5a31J_B-Q&s"
 }
 
 ###
-DELETE http://localhost:8000/api/otherService/51e570f3-46b5-4e36-acfe-83603b570be2
+DELETE http://localhost:8000/api/otherService/def84963-d2a1-402e-8a7a-269535ec35e5

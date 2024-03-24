@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { useGetOtherServicesQuery } from '../../features/otherServices/otherServices';
+import './OtherServices.scss'
+
 const OtherServices = () => {
   const { data, error, isLoading } = useGetOtherServicesQuery();
 
@@ -17,15 +19,14 @@ const OtherServices = () => {
   }
 
   return (
-    <div>
+    <div className='other-services'>
       <h1>Other Services</h1>
-      <div className="services-container">
+      <div className="other-services-container">
         {data.map((activity, index) => (
           <div key={index} className="service">
             <h2>{activity.ActivityName}</h2>
             <p>{activity.Description}</p>
             <img src={activity.ImageUrl} alt={activity.ActivityName} />
-            <button>FIND OUT MORE</button>
           </div>
         ))}
       </div>
