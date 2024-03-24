@@ -10,6 +10,9 @@ import { inquiryApi } from "../features/inquiries/inquiryApi";
 import { galleryApi } from "../features/gallery/galleryApi";
 import { meetingsApi } from "../features/meetings/meetingsApi";
 import { otherServiceApi } from "../features/otherServices/otherServices";
+import { userApi } from "../features/users/userApi";
+import { bookingsApi } from "../features/bookings/bookingsApi";
+import { restaurantApi } from "../features/restaurant/restaurantApi";
 
 export const store = configureStore({
   reducer: {
@@ -20,8 +23,11 @@ export const store = configureStore({
     [galleryApi.reducerPath]: galleryApi.reducer,
     [meetingsApi.reducerPath]: meetingsApi.reducer,
     [otherServiceApi.reducerPath]: otherServiceApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
+    [bookingsApi.reducerPath]: bookingsApi.reducer,
+    [restaurantApi.reducerPath]: restaurantApi.reducer,
   },
-
+  
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       roomApi.middleware,
@@ -30,9 +36,12 @@ export const store = configureStore({
       offerApi.middleware,
       galleryApi.middleware,
       meetingsApi.middleware,
-      otherServiceApi.middleware
-      
+      otherServiceApi.middleware,
+      userApi.middleware,
+      bookingsApi.middleware,
+      restaurantApi.middleware
     ),
+      
   });
 
 setupListeners(store.dispatch);

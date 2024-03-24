@@ -10,10 +10,10 @@ POST http://localhost:8000/api/users
 Content-Type: application/json
 
 {
-    "FirstName": "Favour",
-    "LastName": "Oyewumi",
-    "Email": "jameskw2605@gmail.com",
-    "Password": "123456"
+    "FirstName": "Isaac",
+    "LastName": "Kilimo",
+    "Email": "isaackilimok2@gmail.com",
+    "Password": "123456@Ik"
 }
 
 ### Login user
@@ -21,8 +21,8 @@ POST http://localhost:8000/api/users/login
 Content-Type: application/json
 
 {
-    "Email": "favourbuyanzi89@gmail.com",
-    "Password": "123456"
+    "Email": "isaackilimok2@gmail.com",
+    "Password": "123456@Ik"
 }
 
 
@@ -52,8 +52,8 @@ Content-Type: application/json
 }
 
 ### getting single user
-GET http://localhost:8000/api/users/single/bc8c9ffc-efd0-47c4-9c7a-0224b4b4ef90
+GET http://localhost:8000/api/users/single/6bdca77d-fa32-42f8-85f9-c1d06d3cafca
 
 
 ### Deleting a single user
-DELETE http://localhost:8000/api/users/delete/bc8c9ffc-efd0-47c4-9c7a-0224b4b4ef90
+DELETE http://localhost:8000/api/users/delete/6bdca77d-fa32-42f8-85f9-c1d06d3cafca
