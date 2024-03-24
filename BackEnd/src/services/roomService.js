@@ -47,13 +47,30 @@ export const getRoomByIdService = async (RoomId) => {
               FROM Room 
               INNER JOIN RoomCategory ON RoomCategory.RoomCategoryId = Room.RoomCategoryId
               WHERE RoomId = @RoomId`);
-    // console.log("single", singleReturnedRoom.recordset[0]);
     return singleReturnedRoom.recordset;
   } catch (error) {
     console.error("Error fetching single room:", error);
     throw error;
   }
 };
+
+export const getRoomByCategoryService = async (Name) => {
+  try {
+    const singleReturnedRoom = await poolRequest()
+      .input("Name", sql.VarChar, Name)
+      .query(`
+        SELECT Room.*, RoomCategory.Name AS CategoryName, RoomCategory.Size, RoomCategory.MealPlan, RoomCategory.Price
+        FROM Room 
+        INNER JOIN RoomCategory ON Room.RoomCategoryId = RoomCategory.RoomCategoryId
+        WHERE RoomCategory.Name = @Name`);
+        
+    return singleReturnedRoom.recordset;
+  } catch (error) {
+    console.error("Error fetching single room:", error);
+    throw error;
+  }
+};
+
 
 export const getRoomByRoomNumberService = async (RoomNumber) => {
   try {

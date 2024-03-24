@@ -21,8 +21,13 @@ Content-Type: application/json
 GET http://localhost:8000/api/rooms/room/available
 
 ### //get single rooms
+GET http://localhost:8000/api/rooms/all/category/Deuxel
+
+
+### //get single rooms
 GET http://localhost:8000/api/rooms/bda1453a-d5c2-4409-8a4b-0e9c77843317
 
+# 
 
 ### //update single rooms
 
