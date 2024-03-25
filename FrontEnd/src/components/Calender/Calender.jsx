@@ -4,7 +4,6 @@ import {
   IoChevronBackCircleOutline,
   IoChevronForwardCircleOutline,
 } from "react-icons/io5";
-import BookingForm from "../BookingForm/BookingForm";
 
 const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
   const currentDate = new Date();
@@ -13,23 +12,21 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
   const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
   const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
   const [calendarOpen, setCalendarOpen] = useState(false);
-  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
-  const [formVisible, setFormVisible] = useState(false);
 
-  const handleDateClick = (date) => {
+  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+  const handleDateClick = (day) => {
+    const clickedDate = new Date(currentYear, currentMonth, day);
+    console.log("Clicked date:", clickedDate);
     if (!checkInDate) {
-      setCheckInDate(date);
-      onDateSelect(date);
-    } else if (!checkOutDate) {
-      if (date > checkInDate) {
-        setCheckOutDate(date);
-        onCheckoutDateSelect(date);
-      } else {
-        setCheckOutDate(checkInDate);
-        setCheckInDate(date);
-        onDateSelect(date);
-      }
+      setCheckInDate(clickedDate);
+      onDateSelect(clickedDate);
+      console.log("Check-in date selected:", clickedDate);
+    } else if (!checkOutDate && clickedDate > checkInDate) {
+      setCheckOutDate(clickedDate);
+      onCheckoutDateSelect(clickedDate);
+      console.log("Check-out date selected:", clickedDate);
     }
   };
 
@@ -63,7 +60,7 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
         onClick={handleCheckinClick}
         disabled={checkInDate !== null}
       >
-        Checkin
+        Pick Dates
       </button>
       <div style={{ width: "100%" }}>
         <div className={`datepicker ${calendarOpen ? "" : "disabled"}`}>
@@ -73,7 +70,6 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
                 className="arrow"
                 onClick={handlePrevMonth}
               />
-
               <span className="month-name">
                 {new Date(currentYear, currentMonth).toLocaleString("default", {
                   month: "long",
@@ -89,7 +85,7 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
           <div className="datepicker-calendar">
             <span className="day">Mon</span>
             <span className="day">Tue</span>
-            <span className="day">Wen</span>
+            <span className="day">Wed</span>
             <span className="day">Thu</span>
             <span className="day">Fri</span>
             <span className="day">Sat</span>
@@ -109,11 +105,14 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
                 type="button"
                 key={`day-${day}`}
                 className={`date ${
-                  day + 1 >= checkInDate && day + 1 <= checkOutDate
+                  checkInDate &&
+                  checkOutDate &&
+                  day >= checkInDate.getDate() &&
+                  day <= checkOutDate.getDate()
                     ? "selected-range"
-                    : day + 1 === checkInDate
+                    : checkInDate && day === checkInDate.getDate()
                     ? "check-in"
-                    : day + 1 === checkOutDate
+                    : checkOutDate && day === checkOutDate.getDate()
                     ? "check-out"
                     : ""
                 }`}

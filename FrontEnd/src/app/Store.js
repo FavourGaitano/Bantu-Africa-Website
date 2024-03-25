@@ -9,6 +9,8 @@ import { offerApi } from "../features/offers/offerApi";
 import { inquiryApi } from "../features/inquiries/inquiryApi";
 import { galleryApi } from "../features/gallery/galleryApi";
 import { meetingsApi } from "../features/meetings/meetingsApi";
+import { userApi } from "../features/users/userApi";
+import { bookingsApi } from "../features/bookings/bookingsApi";
 import { restaurantApi } from "../features/restaurant/restaurantApi";
 
 export const store = configureStore({
@@ -19,9 +21,11 @@ export const store = configureStore({
     [offerApi.reducerPath]: offerApi.reducer,
     [galleryApi.reducerPath]: galleryApi.reducer,
     [meetingsApi.reducerPath]: meetingsApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
+    [bookingsApi.reducerPath]: bookingsApi.reducer,
     [restaurantApi.reducerPath]: restaurantApi.reducer,
   },
-
+  
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       roomApi.middleware,
@@ -30,6 +34,8 @@ export const store = configureStore({
       offerApi.middleware,
       galleryApi.middleware,
       meetingsApi.middleware,
+      userApi.middleware,
+      bookingsApi.middleware,
       restaurantApi.middleware
     ),
       

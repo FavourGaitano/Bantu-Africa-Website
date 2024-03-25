@@ -15,6 +15,7 @@ import {
   createBookingService,
   deleteBookingService,
   getBookingByIdService,
+  getBookingPriceService,
   getBookingsByEmailService,
   getBookingsByNameService,
   getBookingsByRoomIdService,
@@ -26,47 +27,32 @@ import {
   getRoomsAvailableForBookingService,
   isAvailableService,
 } from "../services/roomService.js";
+import { findRoomCategoryService } from "../services/roomCategoryService.js";
 
 export const createBooking = async (req, res) => {
   const {
     Email,
     FirstName,
     LastName,
-    RoomId,
     SpecialRequirements,
     StartDate,
     EndDate,
     AdultsNo,
     KidsNo,
-    Total,
-    IsReserved,
-    IsPaid,
+    MealPlan,
     Name,
     Size,
   } = req.body;
+  console.log("Frontend inputs: ", req.body);
   const { error } = bookingsValidator(req.body);
   if (error) {
-    return res.status(400).send(error.details[0].message);
+    console.log("validation error:", error);
+    return res.status(400).send("Invalid inputs");
   } else {
     try {
       const BookingId = v4();
       const CreatedAt = new Date();
-      const newBooking = {
-        BookingId,
-        Email,
-        FirstName,
-        LastName,
-        RoomId,
-        SpecialRequirements,
-        CreatedAt,
-        StartDate,
-        EndDate,
-        AdultsNo,
-        KidsNo,
-        Total,
-        IsReserved,
-        IsPaid,
-      };
+
       const totalOccupants = AdultsNo + KidsNo;
       const availableRooms = await getRoomsAvailableForBookingService({
         Name,
@@ -81,16 +67,19 @@ export const createBooking = async (req, res) => {
         );
         return;
       }
-      console.log("AvailableRooms: ", availableRooms);
-      const roomToBook = await getRoomByIdService(availableRooms[0].RoomId);
-      console.log("booked room: ", roomToBook);
+
+      // console.log("AvailableRooms: ", availableRooms);
+      const RoomId = availableRooms[0].RoomId;
+
+      const roomToBook = await getRoomByIdService(RoomId);
+      // console.log("booked room: ", roomToBook);
 
       if (roomToBook.length === 0) {
         sendNotFound(res, "Room not found");
         return;
       }
 
-      if (totalOccupants > roomToBook.Occupants) {
+      if (totalOccupants > roomToBook[0].Occupants) {
         // console.log("Check reached");
         res
           .status(400)
@@ -99,28 +88,48 @@ export const createBooking = async (req, res) => {
           );
         return;
       }
-      if (!roomToBook[0].isAvailable) {
-        // console.log("Entered date check", roomToBook.isAvailable);
-        res
-          .status(400)
-          .send(
-            "This room is already booked for these dates. Please select another."
-          );
+
+      const IsReserved = true;
+      const IsPaid = false;
+      const category = await findRoomCategoryService({ Name, MealPlan, Size });
+      console.log("Category is: ", category);
+      if (!category) {
+        sendNotFound("No room fitting the bill found");
+        return;
+      }
+      const Total = category.Price;
+      console.log("Total is: ", Total);
+      const newBooking = {
+        BookingId,
+        Email,
+        FirstName,
+        LastName,
+        RoomId,
+        SpecialRequirements,
+        CreatedAt,
+        StartDate,
+        EndDate,
+        AdultsNo,
+        KidsNo,
+        MealPlan,
+        Total,
+        IsReserved,
+        IsPaid,
+      };
+
+      const response = await createBookingService(newBooking);
+      if (response.message) {
+        sendServerError(res, response.message);
         return;
       } else {
-        const response = await createBookingService(newBooking);
-        if (response.message) {
-          sendServerError(res, response.message);
-        } else {
-          sendMail(
-            newBooking.FirstName,
-            newBooking.LastName,
-            newBooking.Email,
-            newBooking.StartDate,
-            newBooking.EndDate
-          );
-          sendCreated(res, "Booking created successfully");
-        }
+        sendMail(
+          newBooking.FirstName,
+          newBooking.LastName,
+          newBooking.Email,
+          newBooking.StartDate,
+          newBooking.EndDate
+        );
+        sendCreated(res, "Booking created successfully");
       }
     } catch (error) {
       return error;
@@ -167,6 +176,21 @@ export const sendMail = async (
     });
   } catch (error) {
     logger.error(error);
+  }
+};
+
+export const getBookingPrice = async (req, res) => {
+  const { name, mealplan, size } = req.params;
+  try {
+    const price = await getBookingPriceService({ name, mealplan, size });
+    if (!price) {
+      sendNotFound(res, "No such room found");
+      return;
+    } else {
+      res.status(200).json(price);
+    }
+  } catch (error) {
+    sendServerError(res, error);
   }
 };
 
@@ -262,6 +286,7 @@ export const updateBooking = async (req, res) => {
           EndDate,
           AdultsNo,
           KidsNo,
+          MealPlan,
           Total,
           IsReserved,
           IsPaid,
@@ -278,6 +303,7 @@ export const updateBooking = async (req, res) => {
           EndDate,
           AdultsNo,
           KidsNo,
+          MealPlan,
           Total,
           IsReserved,
           IsPaid,
@@ -308,6 +334,9 @@ export const updateBooking = async (req, res) => {
         }
         if (KidsNo) {
           updatedBooking.KidsNo = KidsNo;
+        }
+        if (MealPlan) {
+          updatedBooking.MealPlan = MealPlan;
         }
         if (Total) {
           updatedBooking.Total = Total;

@@ -10,12 +10,14 @@ export const roomApi = createApi({
       query: () => 'rooms',
       providesTags: ['rooms']
     }),
-
+    getRoomsByName: builder.query({
+      query: (room) => `/rooms/all/category/${room.Name}`,
+      providesTags: ['rooms']
+    }),
     getSingleRoom: builder.query({
       query: (RoomId) => `rooms/${RoomId}`,
       providesTags: ['rooms']
     }),
-
     addRoom: builder.mutation({
       query: (room) => ({
         url: 'rooms',
@@ -46,6 +48,7 @@ export const roomApi = createApi({
 
 export const {
   useGetRoomsQuery,
+  useGetRoomsByNameQuery,
   useGetSingleRoomQuery,
   useAddRoomMutation,
   useUpdateRoomMutation,

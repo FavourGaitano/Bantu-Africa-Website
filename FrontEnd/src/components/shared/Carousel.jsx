@@ -25,7 +25,7 @@ const Carousel = () => {
       link: "https://images.pexels.com/photos/3054690/pexels-photo-3054690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
     {
-      link: "https://plus.unsplash.com/premium_photo-1661810803959-f91f5195138e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      link: "https://images.unsplash.com/photo-1675259113512-db50297ce326?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];
   const [currentPhoto, setCurrentPhoto] = useState(0);

@@ -8,22 +8,43 @@ export const createBookingService = async (newBooking) => {
       .input("FirstName", sql.VarChar(255), newBooking.FirstName)
       .input("LastName", sql.VarChar(255), newBooking.LastName)
       .input("RoomId", sql.VarChar(255), newBooking.RoomId)
-      .input("SpecialRequirements", sql.VarChar, newBooking.SpecialRequirements)
+      .input(
+        "SpecialRequirements",
+        sql.VarChar(255),
+        newBooking.SpecialRequirements
+      )
       .input("CreatedAt", sql.DateTime, newBooking.CreatedAt)
       .input("StartDate", sql.Date, newBooking.StartDate)
       .input("EndDate", sql.Date, newBooking.EndDate)
       .input("AdultsNo", sql.Int, newBooking.AdultsNo)
       .input("KidsNo", sql.Int, newBooking.KidsNo)
+      .input("MealPlan", sql.VarChar(255), newBooking.MealPlan)
       .input("Total", sql.Int, newBooking.Total)
       .input("IsReserved", sql.Bit, newBooking.IsReserved)
       .input("IsPaid", sql.Bit, newBooking.IsPaid)
       .input("Name", sql.VarChar(255), newBooking.Name)
       .input("Size", sql.VarChar(255), newBooking.Size)
       .query(
-        "INSERT INTO Bookings (BookingId, Email, FirstName, LastName, RoomId, SpecialRequirements, CreatedAt, StartDate, EndDate, AdultsNo, KidsNo, Total, IsReserved, IsPaid) VALUES (@BookingId, @Email, @FirstName, @LastName, @RoomId, @SpecialRequirements, @CreatedAt, @StartDate, @EndDate, @AdultsNo, @KidsNo, @Total, @IsReserved, @IsPaid)"
+        "INSERT INTO Bookings (BookingId, Email, FirstName, LastName, RoomId, SpecialRequirements, CreatedAt, StartDate, EndDate, AdultsNo, KidsNo, MealPlan, Total, IsReserved, IsPaid) VALUES (@BookingId, @Email, @FirstName, @LastName, @RoomId, @SpecialRequirements, @CreatedAt, @StartDate, @EndDate, @AdultsNo, @KidsNo, @MealPlan, @Total, @IsReserved, @IsPaid)"
       );
     // console.log("Result is:", result);
     return result;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getBookingPriceService = async ({ Name, MealPlan, Size }) => {
+  try {
+    const roomBooked = await poolRequest()
+      .input("Name", sql.VarChar(255), Name)
+      .input("MealPlan", sql.VarChar(255), MealPlan)
+      .input("Size", sql.VarChar(255), Size)
+      .query(
+        "SELECT * FROM RoomCategory WHERE Name=@Name AND MealPlan=@MealPlan AND Size=@Size"
+      );
+    console.log("roomBooked", roomBooked);
+    return roomBooked.recordset[0].Price;
   } catch (error) {
     return error;
   }
@@ -99,6 +120,7 @@ export const updateBookingService = async (BookingId, updatedBooking) => {
     EndDate,
     AdultsNo,
     KidsNo,
+    MealPlan,
     Total,
     IsReserved,
     IsPaid,
@@ -116,11 +138,12 @@ export const updateBookingService = async (BookingId, updatedBooking) => {
       .input("EndDate", sql.Date, EndDate)
       .input("AdultsNo", sql.Int, AdultsNo)
       .input("KidsNo", sql.Int, KidsNo)
+      .input("MealPlan", sql.VarChar(255), MealPlan)
       .input("Total", sql.Int, Total)
       .input("IsReserved", sql.Bit, IsReserved)
       .input("IsPaid", sql.Bit, IsPaid)
       .query(
-        "UPDATE Bookings SET Email=@Email, FirstName=@FirstName, LastName=@LastName, RoomId=@RoomId, SpecialRequirements=@SpecialRequirements, CreatedAt=@CreatedAt, StartDate=@StartDate, EndDate=@EndDate, AdultsNo=@AdultsNo, KidsNo=@KidsNo, Total=@Total, IsReserved=@IsReserved, IsPaid=@IsPaid WHERE BookingId=@BookingId"
+        "UPDATE Bookings SET Email=@Email, FirstName=@FirstName, LastName=@LastName, RoomId=@RoomId, SpecialRequirements=@SpecialRequirements, CreatedAt=@CreatedAt, StartDate=@StartDate, EndDate=@EndDate, AdultsNo=@AdultsNo, KidsNo=@KidsNo, MealPlan=@MealPlan, Total=@Total, IsReserved=@IsReserved, IsPaid=@IsPaid WHERE BookingId=@BookingId"
       );
     return result;
   } catch (error) {

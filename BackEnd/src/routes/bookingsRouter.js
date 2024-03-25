@@ -4,6 +4,7 @@ import {
   deleteBooking,
   getBookingById,
   getBookingByRoomId,
+  getBookingPrice,
   getBookings,
   getBookingsByEmail,
   getBookingsByName,
@@ -14,6 +15,7 @@ import {
 const bookingsRouter = Router();
 
 bookingsRouter.post("/new/booking", createBooking);
+bookingsRouter.get("/booking/:name/:size/:mealplan", getBookingPrice);
 bookingsRouter.get("/bookings", getBookings);
 bookingsRouter.get("/bookings/:id", getBookingById);
 bookingsRouter.get("/:email/bookings", getBookingsByEmail);

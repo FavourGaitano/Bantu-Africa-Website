@@ -8,11 +8,15 @@ import Button from "../../components/shared/Button";
 import SuperiorRoomImg from "../../assets/roomWFlowers.jpg";
 import LazyLoad from "react-lazyload";
 import Hero from "../../components/rooms/Hero";
-import { useGetRoomsQuery } from "../../features/rooms/roomApi";
+import { useGetRoomsByNameQuery, useGetRoomsQuery } from "../../features/rooms/roomApi";
+import { useParams } from "react-router-dom";
 
 const Room = () => {
-  const{data:rooms}=useGetRoomsQuery()
-  console.log("rooms",rooms);
+  const Name=useParams()
+  const{data:rooms}=useGetRoomsQuery();
+  const {data: categoryRooms}=useGetRoomsByNameQuery(Name)
+  console.log("category rooms",categoryRooms);
+  // console.log("rooms",rooms);
   return (
     <div className="room-container">
       {/* <Navbar /> */}
