@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### Get one meeting
-Get http://localhost:8000/api/meeting/
+Get http://localhost:8000/api/meeting/470740a7-2e27-4321-aa3c-8e4cfa4cf402
 
 ### Delete Meeting
 
@@ -35,3 +35,4 @@ Content-Type: application/json
     "PackageId": "2f424c65-3a63-4075-8c73-534ebbd20300",
     "Quantity": "3"
 }
+

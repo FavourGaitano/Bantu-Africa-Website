@@ -16,6 +16,7 @@ import {
 } from "../services/meetingService.js";
 import { meetingValidator } from "../validators/MeetingsValidators/meetingsvalidator.js";
 
+
 export const getMeetings = async (req, res) => {
   try {
     const meetings = await getMeetingsService();
@@ -70,6 +71,8 @@ export const createMeeting = async (req, res) => {
 
 export const getoneMeeting = async (req, res) => {
   const { ConferenceId } = req.params;
+  
+  console.log(ConferenceId);
 
   try {
     const meeting = await getoneMeetingservice(ConferenceId);

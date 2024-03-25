@@ -7,6 +7,7 @@ import MarketingCards from "../../components/shared/MarketingCards";
 import SpecialOffers from "../../components/home/SpecialOffers";
 import Footer from "../../components/shared/Footer";
 import Map from "../../components/home/Map";
+import OtherServices from "../../components/OtherServices/OtherServices";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Carousel />
       <MarketingCards />
       <SpecialOffers />
+      {/* <OtherServices /> */}
       <Map />
      
     </div>
