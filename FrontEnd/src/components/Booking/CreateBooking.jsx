@@ -7,16 +7,18 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import BookingForm from "../BookingForm/BookingForm";
 import { useCreateBookingMutation } from "../../features/bookings/bookingsApi";
+import BookingList from "./BookingList";
 
 const CreateBooking = () => {
   const [selectedRoomType, setSelectedRoomType] = useState("");
   const [selectedBedType, setSelectedBedType] = useState("");
   const [selectedMealPlan, setSelectedMealPlan] = useState("");
   const [guestSelectorOpen, setGuestSelectorOpen] = useState(false);
-  const [checkinDate, setCheckinDate] = useState(null);
-  const [checkoutDate, setCheckoutDate] = useState(null);
-  const [adults, setAdults] = useState(1); 
-  const [kids, setKids] = useState(0); 
+  const [checkinDate, setCheckinDate] = useState(new Date());
+  const [checkoutDate, setCheckoutDate] = useState(new Date());
+  const [adults, setAdults] = useState(1);
+  const [kids, setKids] = useState(0);
+  const [bookingData, setBookingData] = useState({});
 
   const schema = yup.object().shape({
     Name: yup.string().required("Name is required"),
@@ -27,6 +29,7 @@ const CreateBooking = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -43,17 +46,21 @@ const CreateBooking = () => {
   };
 
   const handleCheckinDateSelect = (date) => {
-    setCheckinDate(date);
-    console.log("date is", date);
+    console.log("passedDate", date);
+    const checkIn = date.toLocaleDateString();
+    setCheckinDate(checkIn);
+
+    console.log("date is", checkIn);
   };
   const handleCheckoutDateSelect = (date) => {
-    setCheckoutDate(date);
-    console.log("Checkout date is", date);
+    console.log("passedDate2: ", date);
+    const checkOut = date.toLocaleDateString();
+    setCheckoutDate(checkOut);
+    console.log("Checkout date is", checkOut);
   };
-const [createBooking]=useCreateBookingMutation()
-  const handleBooking = async() => {
-   
-    const response=await createBooking( {
+
+  const handleBooking = () => {
+    const bookingInfo = {
       selectedRoomType,
       selectedBedType,
       selectedMealPlan,
@@ -61,12 +68,13 @@ const [createBooking]=useCreateBookingMutation()
       checkoutDate,
       adults,
       kids,
-    })
-    console.log("These are feedback from the booking",response);
+    };
+    setBookingData(bookingInfo);
+    reset();
   };
 
   return (
-    <>
+    <div className="create-booking">
       <form className="select" onSubmit={handleSubmit(handleBooking)}>
         <div className="select-navbar">
           <div className="list">
@@ -76,7 +84,7 @@ const [createBooking]=useCreateBookingMutation()
               {...register("Name")}
               onChange={(e) => handleRoomTypeChange(e.target.value)}
             >
-              <option value="">Room Type</option>
+              <option value="Standard">Room Type</option>
               <option value="Standard">Standard</option>
               <option value="Superior">Superior</option>
               <option value="Deluxe">Deluxe</option>
@@ -91,7 +99,7 @@ const [createBooking]=useCreateBookingMutation()
                 {...register("Size")}
                 onChange={(e) => setSelectedBedType(e.target.value)}
               >
-                <option value="">Bed Type</option>
+                <option value="Standard">Bed Type</option>
                 {selectedRoomType === "Standard" && (
                   <>
                     <option value="Single">Single</option>
@@ -125,7 +133,7 @@ const [createBooking]=useCreateBookingMutation()
                 {...register("MealPlan")}
                 onChange={handleMealPlanSelect}
               >
-                <option value="">Meal Plan</option>
+                <option value="BB">Meal Plan</option>
                 {selectedBedType === "Double" && (
                   <>
                     <option value="BB">BB</option>
@@ -174,16 +182,23 @@ const [createBooking]=useCreateBookingMutation()
           </div>
           <div className="list">
             <div className="guest-selector-container">
-              <button type='button' onClick={() => setGuestSelectorOpen(!guestSelectorOpen)}>Guest</button>
+              <button
+                type="button"
+                onClick={() => setGuestSelectorOpen(!guestSelectorOpen)}
+              >
+                Guest
+              </button>
               {guestSelectorOpen && (
-               
-              <div className="guest-selector-modal">
-                <GuestSelector adults={adults} kids={kids} setGuestSelectorOpen={setGuestSelectorOpen} setAdults={setAdults} setKids={setKids} />
-              </div>
-            )}
-
-             
-            
+                <div className="guest-selector-modal">
+                  <GuestSelector
+                    adults={adults}
+                    kids={kids}
+                    setGuestSelectorOpen={setGuestSelectorOpen}
+                    setAdults={setAdults}
+                    setKids={setKids}
+                  />
+                </div>
+              )}
             </div>
           </div>
           <div className="list">
@@ -204,16 +219,16 @@ const [createBooking]=useCreateBookingMutation()
           onCheckoutDateSelect={handleCheckoutDateSelect}
         />
         <div className="button-container">
-          <button
-            type="submit"
-            className="confirm-button"
-          >
+          <button type="submit" className="confirm-button">
             Book
           </button>
         </div>
       </form>
-      <BookingForm />
-    </>
+      <div className="personal-details">
+        <BookingForm data={bookingData} />
+        <BookingList data={bookingData} />
+      </div>
+    </div>
   );
 };
 
