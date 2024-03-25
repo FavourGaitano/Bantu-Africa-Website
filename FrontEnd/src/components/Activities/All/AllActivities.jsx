@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useGetActivitiesQuery } from "../../../features/activities/activityApi";
-import "./AllActivities.scss";
+import "./AllActivities.scss"; // Import the shared stylesheet
 import Modal from "../ActivityModal/ActivityModal";
 
 const AllActivities = () => {
@@ -24,7 +24,7 @@ const AllActivities = () => {
   }
 
   return (
-    <div className="all-activites">
+    <div className="all-activities">
       <div className="all-activities-title">
         <h1>ALL ACTIVITIES</h1>
       </div>
@@ -50,6 +50,7 @@ const AllActivities = () => {
         ))}
       </div>
 
+      {/* Use the shared modal */}
       <Modal
         isOpen={selectedActivity !== null}
         onClose={handleCloseModal}
@@ -60,4 +61,3 @@ const AllActivities = () => {
 };
 
 export default AllActivities;
-

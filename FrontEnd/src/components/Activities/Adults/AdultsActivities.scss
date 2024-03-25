@@ -1,98 +1,166 @@
-.activities{
-    // background-color: blue;
-    height: 100%;
-    position: relative;
 
-    .activity-title {
-      position: absolute; 
-      top: 0;
-      left: 35%;
-      transform: translateX(-50%);
-      height: 20vh;
-      background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(54, 53, 53, 0.5));
-      width: 70vw;
-      margin-left: 40px;
-      margin-top: -150px;
-      z-index: 1; 
+
+
+.adult-activities{
+  height: 100%;
+  position: relative;
+// background-color: blue;
+
+  .adult-activity-title{
+    position: absolute;
+    top: 0;
+    left: 35%;
+    transform: translateX(-50%);
+    height: 20vh;
+    background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(54, 53, 53, 0.5));
+    width: 70vw;
+    margin-left: 40px;
+    margin-top: -150px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+
+    h1 {
+      font-size: 50px;
+      color: white;
+      margin-left: 30px;
+    }
+  }
+
+
+  .adult-activity-section {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+
+    .adult-activity {
+      background-color: white;
+      height: 50vh;
       display: flex;
+      justify-content: center;
       align-items: center;
+      gap: 80px;
+      width: 100%;
 
-      h1{
-        font-size: 50px;      
-        color: white;
-        margin-left: 30px;
+      &:nth-child(odd) {
+        background-color: #f0efef;
+      }
+
+      &:nth-child(even) {
+        background-color: white;
+      }
+
+      .adult-activity-image {
+        overflow: hidden;
+        height: 45vh;
+        width: 35vw;
+        background-color: inherit;
+
+        img {
+          width: 100%;
+          height: auto;
+          transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        &:hover img{
+          transform: scale(1.1);
+        }
+      }
+
+      .adult-activity-description {
+        background-color: white;
+        overflow: hidden;
+        height: 45vh;
+        width: 35vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        background-color: inherit;
+
+        .adult-description-name {
+          font-size: 1.5em;
+          font-weight: bold;
+          margin-bottom: 0.5em;
+          text-align: center;
+          color: #ccae10;
+
+          h3 {
+            margin: 0;
+          }
+        }
+
+        .adult-description-text {
+          line-height: 1.4;
+          margin-bottom: 1em;
+          text-align: center;
+        }
+
+        .adult-desc-btn {
+          display: flex;
+          justify-content: center;
+          margin-top: 30px;
+
+          button {
+            background-color: white;
+            color: #ccae10;
+            padding: 10px 20px;
+            border: 1px solid #ccae10;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+          }
+
+          button:hover {
+            background-color: #5e292f;
+            color: white;
+            border: none;
+          }
+        }
+      }
+
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+
+        .adult-activity-description {
+          justify-content: center; 
+        }
       }
     }
-
-    .activity-section{
-        background-color: white;
-        height: 50vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 80px;
-
-        .activity-image{
-            overflow: hidden;
-            height: 45vh;
-            width: 35vw;
-
-        }
-
-        .activity-description{
-            background-color: white;
-            overflow: hidden;
-            height: 45vh;
-            width: 35vw;
-            // padding: 140px;
-
-            .description-name {
-                font-size: 1.5em; 
-                font-weight: bold;
-                margin-bottom: 0.5em;
-                margin-top: 25px;
-
-                h3{
-                  text-align: center;
-                  margin-top: 10px;
-                  color: #CCAE10;
-                  font-weight: 40px;
-                  font-size: 25px;
-                }
-              }
-            
-              .description-text {
-                line-height: 1.4;
-                margin-bottom: 1em;
-                text-align: center;
-                margin-top: 20px;
-              }
-
-              .desc-btn{
-                display: flex;
-                justify-content: center;
-                margin-top: 30px;
-                button {
-                  // background-color: white; 
-                  color: #CCAE10;
-                  padding: 10px 20px;
-                  // border: 1px solid #CCAE10;
-                  border-radius: 5px; 
-                  cursor: pointer;
-                  font-size: 16px;
-                  
-                }
-
-              }
-            
-              /* Style hover effect for the button */
-              .desc-btn button:hover {
-                background-color: #5E292F; 
-                color: white;
-                border: none;
-              }
-        }
-
-    }
-
+  }
 }
+
+
+// @media screen and (max-width: 768px) and (max-height: 1024px) {
+//   .adult-activity-title {
+//     left: 50%;
+//     transform: translateX(-50%);
+//   }
+
+//   .adult-activity-section {
+//     padding: 10px; /* Adjust padding for smaller screens */
+//     gap: 20px; /* Reduce the gap between activities */
+//   }
+
+//   .adult-activity {
+//     height: auto;
+//     flex-direction: column; /* Stack activities vertically */
+//     align-items: center; /* Center activities vertically */
+//   }
+
+//   .adult-activity:nth-child(even) {
+//     flex-direction: column-reverse; /* Reverse order for even-indexed activities */
+//   }
+
+//   .adult-activity-image,
+//   .adult-activity-description {
+//     width: 100%; /* Take full width of the container */
+//   }
+
+//   .adult-activity-description {
+//     padding: 10px; /* Adjust padding for description */
+//   }
+// }
+

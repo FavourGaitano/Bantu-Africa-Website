@@ -3,7 +3,7 @@ POST http://localhost:8000/api/offer
 Content-Type: application/json
 
 {
-    "OfferImageUrl": "https://img.freepik.com/free-vector/gradient-hotel-banner-with-photo_23-2148917525.jpg"
+    "OfferImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5VXdiHMYhkxkG7mEb2CaJ9WCn3dTHozLych5PUmUmLA&s"
 }
 
 ### get all offers
@@ -14,7 +14,7 @@ GET http://localhost:8000/api/offer
 GET http://localhost:8000/api/offer/single/45cf4a93-0fe3-4310-b649-eaf3fce55396
 
 ### Update offer
-PUT http://localhost:8000/api/offer/update/45cf4a93-0fe3-4310-b649-eaf3fce55396
+PUT http://localhost:8000/api/offer/update/4cf5f118-a385-4978-9d57-a9ada1ec4b54
 Content-Type: application/json
 
 {
@@ -22,4 +22,4 @@ Content-Type: application/json
 }
 
 ### Delete offer
-DELETE http://localhost:8000/api/offer/delete/45cf4a93-0fe3-4310-b649-eaf3fce55396
+DELETE http://localhost:8000/api/offer/delete/4cf5f118-a385-4978-9d57-a9ada1ec4b54
