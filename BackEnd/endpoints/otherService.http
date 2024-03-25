@@ -9,9 +9,9 @@ Content-Type: application/json
 
 
 {
-    "OtherServiceName": "Spa & Barber Shop",
-    "Description": "Relax & kick your feet up at the spa.",
-    "ImageUrl": "https://images.pexels.com/photos/3230236/pexels-photo-3230236.jpeg?auto=compress&cs=tinysrgb&w=400"
+    "OtherServiceName": "Kids' Fun Park",
+    "Description": "The epitome of fun for the little ones.",
+    "ImageUrl": "https://images.pexels.com/photos/12576346/pexels-photo-12576346.jpeg?auto=compress&cs=tinysrgb&w=400"
 
 }
 
