@@ -53,7 +53,6 @@ export const createBooking = async (req, res) => {
       const BookingId = v4();
       const CreatedAt = new Date();
 
-      const totalOccupants = AdultsNo + KidsNo;
       const availableRooms = await getRoomsAvailableForBookingService({
         Name,
         Size,
@@ -79,6 +78,7 @@ export const createBooking = async (req, res) => {
         return;
       }
 
+      const totalOccupants = AdultsNo + KidsNo;
       if (totalOccupants > roomToBook[0].Occupants) {
         // console.log("Check reached");
         res
@@ -98,7 +98,7 @@ export const createBooking = async (req, res) => {
         return;
       }
       const Total = category.Price;
-      console.log("Total is: ", Total);
+      // console.log("Total is: ", Total);
       const newBooking = {
         BookingId,
         Email,

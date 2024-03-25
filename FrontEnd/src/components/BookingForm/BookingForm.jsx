@@ -14,7 +14,7 @@ const BookingForm = (roomBookedData) => {
     FirstName: yup.string().required("FirstName is required"),
     LastName: yup.string().required("LastName is required"),
     Email: yup.string().email().required("Email is required"),
-    SpecialRequirements: yup.string().default("None"),
+    SpecialRequirements: yup.string(),
   });
 
   const {
@@ -24,6 +24,9 @@ const BookingForm = (roomBookedData) => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      SpecialRequirements: "None",
+    },
   });
 
   const onSubmit = async (data) => {
@@ -53,12 +56,12 @@ const BookingForm = (roomBookedData) => {
       };
       //   console.log("Form data is: ", newBooking);
       const response = await createBooking(newBooking).unwrap();
-      //   console.log("Response ni: ", response);
+      console.log("Response ni: ", response);
       LoadingToast(false);
       SuccessToast(response.message);
       reset();
     } catch (error) {
-      ErrorToast(error);
+      ErrorToast(error?.data?.message);
       return (
         <div>
           <h4>Oops, an error occured!</h4>

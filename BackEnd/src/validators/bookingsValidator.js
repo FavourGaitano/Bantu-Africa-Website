@@ -7,7 +7,7 @@ export const bookingsValidator = (booking) => {
     LastName: joi.string().required(),
     StartDate: joi.date(),
     EndDate: joi.date(),
-    SpecialRequirements: joi.string().default("None"),
+    SpecialRequirements: joi.string(),
     AdultsNo: joi.number().required(),
     KidsNo: joi.number(),
     MealPlan: joi.string().required(),

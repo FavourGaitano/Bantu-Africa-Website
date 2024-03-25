@@ -11,10 +11,10 @@ Content-Type: application/json
     "FirstName": "Beyonce",
     "LastName": "Knowles",
     "SpecialRequirements": "Put up a huge picture of me on the wall.",
-    "StartDate": "2024-04-04",
-    "EndDate": "2024-04-05",
+    "StartDate": "3/21/2024",
+    "EndDate": "3/23/2024",
     "AdultsNo": 2,
-    "KidsNo": 2,
+    "KidsNo": 1,
     "MealPlan": "BB",
     "Name": "Deluxe",
     "Size": "Double"

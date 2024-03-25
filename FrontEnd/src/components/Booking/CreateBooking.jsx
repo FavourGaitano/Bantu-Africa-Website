@@ -14,11 +14,11 @@ const CreateBooking = () => {
   const [selectedBedType, setSelectedBedType] = useState("");
   const [selectedMealPlan, setSelectedMealPlan] = useState("");
   const [guestSelectorOpen, setGuestSelectorOpen] = useState(false);
-  const [checkinDate, setCheckinDate] = useState(null);
-  const [checkoutDate, setCheckoutDate] = useState(null);
+  const [checkinDate, setCheckinDate] = useState(new Date());
+  const [checkoutDate, setCheckoutDate] = useState(new Date());
   const [adults, setAdults] = useState(1);
   const [kids, setKids] = useState(0);
-  const [bookingData, setBookingData] = useState(null);
+  const [bookingData, setBookingData] = useState({});
 
   const schema = yup.object().shape({
     Name: yup.string().required("Name is required"),
@@ -84,7 +84,7 @@ const CreateBooking = () => {
               {...register("Name")}
               onChange={(e) => handleRoomTypeChange(e.target.value)}
             >
-              <option value="">Room Type</option>
+              <option value="Standard">Room Type</option>
               <option value="Standard">Standard</option>
               <option value="Superior">Superior</option>
               <option value="Deluxe">Deluxe</option>
@@ -99,7 +99,7 @@ const CreateBooking = () => {
                 {...register("Size")}
                 onChange={(e) => setSelectedBedType(e.target.value)}
               >
-                <option value="">Bed Type</option>
+                <option value="Standard">Bed Type</option>
                 {selectedRoomType === "Standard" && (
                   <>
                     <option value="Single">Single</option>
@@ -133,7 +133,7 @@ const CreateBooking = () => {
                 {...register("MealPlan")}
                 onChange={handleMealPlanSelect}
               >
-                <option value="">Meal Plan</option>
+                <option value="BB">Meal Plan</option>
                 {selectedBedType === "Double" && (
                   <>
                     <option value="BB">BB</option>
