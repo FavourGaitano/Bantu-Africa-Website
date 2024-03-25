@@ -16,6 +16,7 @@ import galleryRouter from "./src/routes/galleryRoute.js";
 import meetingRouter from "./src/routes/meetingRoute.js";
 import meetingpackageRouter from "./src/routes/meetingPackageroute.js";
 import upCommingEventRouter from "./src/routes/upcommingEventRoute.js";
+import otherServiceRouter from "./src/routes/otherServiceRoute.js";
 
 dotenv.config();
 const PORT = process.env.API_PORT || 3000;
@@ -42,6 +43,7 @@ app.use("/api", restaurantRouter);``
 app.use("/api", bookingsRouter);
 app.use("/api", inquiriesRouter);
 app.use("/api", serviceRouter);
+app.use("/api", otherServiceRouter);
 app.use("/api", activityRouter);
 app.use("/api/category", roomCategoryRouter);
 app.use("/api", offerRouter);

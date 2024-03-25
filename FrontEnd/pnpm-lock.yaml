@@ -45,7 +45,7 @@ dependencies:
     specifier: ^3.2.23
     version: 3.2.23
   react-router-dom:
-    specifier: ^6.22.1
+    specifier: ^6.22.3
     version: 6.22.3(react-dom@18.2.0)(react@18.2.0)
   react-spinners:
     specifier: ^0.13.8

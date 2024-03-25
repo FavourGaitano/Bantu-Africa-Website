@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Calender.scss";
+import { IoChevronBackCircleOutline, IoChevronForwardCircleOutline } from "react-icons/io5";
 import BookingForm from "../BookingForm/BookingForm";
 
 const Calender = ({ onDateSelect,onCheckoutDateSelect }) => {
