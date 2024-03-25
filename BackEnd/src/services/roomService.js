@@ -63,14 +63,13 @@ export const getRoomByCategoryService = async (Name) => {
         FROM Room 
         INNER JOIN RoomCategory ON Room.RoomCategoryId = RoomCategory.RoomCategoryId
         WHERE RoomCategory.Name = @Name`);
-        
+
     return singleReturnedRoom.recordset;
   } catch (error) {
     console.error("Error fetching single room:", error);
     throw error;
   }
 };
-
 
 export const getRoomByRoomNumberService = async (RoomNumber) => {
   try {
@@ -126,9 +125,9 @@ export const getRoomsAvailableForBookingService = async (Booking) => {
               SELECT 1
               FROM Bookings b
               WHERE b.RoomId = r.RoomId
-              AND NOT (
-                  b.EndDate < @StartDate OR
-                  b.StartDate > @EndDate
+              AND (
+                  b.EndDate >= @StartDate AND
+                  b.StartDate <= @EndDate
               )
           )
           `);

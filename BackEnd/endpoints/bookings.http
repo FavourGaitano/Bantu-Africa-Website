@@ -1,6 +1,7 @@
 ### GET All Bookings
 GET http://localhost:8000/api/bookings
 
+
 ### Create a Booking
 POST http://localhost:8000/api/new/booking
 Content-Type: application/json
@@ -9,18 +10,18 @@ Content-Type: application/json
     "Email": "polijo5454@irnini.com",
     "FirstName": "Beyonce",
     "LastName": "Knowles",
-    "RoomId": "58c47eeb-c132-4fd5-a893-b180b635c524",
     "SpecialRequirements": "Put up a huge picture of me on the wall.",
-    "StartDate": "2025-04-05",
-    "EndDate": "2025-04-06",
-    "AdultsNo": 0,
-    "KidsNo": 0,
-    "Total": 25700,
-    "IsReserved": true,
-    "IsPaid": false,
+    "StartDate": "3/21/2024",
+    "EndDate": "3/23/2024",
+    "AdultsNo": 2,
+    "KidsNo": 1,
+    "MealPlan": "BB",
     "Name": "Deluxe",
     "Size": "Double"
 }
+
+### Get Booking Price
+GET http://localhost:8000/api/booking/Deluxe/Double/BB
 
 ### Get Booking By ID
 GET http://localhost:8000/api/bookings/237c31a-3a00-4445-b764-cc50ecb5c829
@@ -54,4 +55,4 @@ Content-Type: application/json
 }
 
 ### Delete Booking
-DELETE http://localhost:3000/api/booking/delete/46167e0e-6610-4986-9aaa-3377cc1e5fa5
+DELETE http://localhost:8000/api/booking/delete/6f8cccde-f462-41db-8966-c7c6720b1b3a

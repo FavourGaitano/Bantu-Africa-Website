@@ -9,6 +9,7 @@ import { offerApi } from "../features/offers/offerApi";
 import { inquiryApi } from "../features/inquiries/inquiryApi";
 import { galleryApi } from "../features/gallery/galleryApi";
 import { meetingsApi } from "../features/meetings/meetingsApi";
+import { otherServiceApi } from "../features/otherServices/otherServices";
 import { userApi } from "../features/users/userApi";
 import { bookingsApi } from "../features/bookings/bookingsApi";
 import { restaurantApi } from "../features/restaurant/restaurantApi";
@@ -22,6 +23,7 @@ export const store = configureStore({
     [offerApi.reducerPath]: offerApi.reducer,
     [galleryApi.reducerPath]: galleryApi.reducer,
     [meetingsApi.reducerPath]: meetingsApi.reducer,
+    [otherServiceApi.reducerPath]: otherServiceApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [bookingsApi.reducerPath]: bookingsApi.reducer,
     [restaurantApi.reducerPath]: restaurantApi.reducer,
@@ -37,6 +39,7 @@ export const store = configureStore({
       offerApi.middleware,
       galleryApi.middleware,
       meetingsApi.middleware,
+      otherServiceApi.middleware,
       userApi.middleware,
       bookingsApi.middleware,
       restaurantApi.middleware,
@@ -46,3 +49,4 @@ export const store = configureStore({
   });
 
 setupListeners(store.dispatch);
+

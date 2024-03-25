@@ -3,7 +3,15 @@
 GET http://localhost:8000/health
 
 
+### Find category
+POST http://localhost:8000/api/category
+Content-Type: application/json
 
+{
+    "Name": "Deluxe",
+    "Size": "Double",
+    "MealPlan": "BB"
+}
 
 ### //get all rooms categories
 GET http://localhost:8000/api/category/rooms/category
