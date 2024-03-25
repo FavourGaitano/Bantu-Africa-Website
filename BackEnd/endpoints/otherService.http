@@ -9,20 +9,21 @@ Content-Type: application/json
 
 
 {
-    "OtherServiceName": "test 3",
-    "Description": "Hidden deep in the valley is the Chania River Slopes.",
-    "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaR632BI0nEvmOzYM0vRYr2FnOT074NYpULT8FbcIUzg&s"
+    "OtherServiceName": "Spa & Barber Shop",
+    "Description": "Relax & kick your feet up at the spa.",
+    "ImageUrl": "https://images.pexels.com/photos/3230236/pexels-photo-3230236.jpeg?auto=compress&cs=tinysrgb&w=400"
+
 }
 
 
 ###
-PUT http://localhost:8000/api/otherService/def84963-d2a1-402e-8a7a-269535ec35e5
+PUT http://localhost:8000/api/otherService/de75aa0d-f5a7-494e-931e-27c6099ddb72
 Content-Type: application/json
 
-{
-    "OtherServiceName": "New other service",
-    "Description": "Hidden deep in the valley is the Chania River Slopes.",
-    "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgNjKJtXg1Nc22b1nILSeT6TYTJvoRnK9_I5a31J_B-Q&s"
+{ 
+    "OtherServiceName": "Coffee",
+    "Description": "Savor fresh roasts from our barista",
+    "ImageUrl": "https://as2.ftcdn.net/v2/jpg/01/05/90/77/1000_F_105907729_4RzHYsHJ2UFt5koUI19fc6VzyFPEjeXe.jpg"
 }
 
 ###

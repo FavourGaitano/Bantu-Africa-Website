@@ -10,6 +10,7 @@ import {
   createupCommingEventService,
   deleteupCommingEventService,
   doesEventNameExist,
+  getAllUpcomingEventsService,
   getoneupCommingEventService,
   getupCommingEventsService,
   updateupCommingEventService,
@@ -23,12 +24,32 @@ export const getupCommingEvents = async (req, res) => {
     if (upCommingEvents.length === 0) {
       sendNotFound(res, "No upComming Events found");
     } else {
-      return res.status(200).json({ upCommingEvents: upCommingEvents });
+      return res.status(200).json(upCommingEvents );
     }
   } catch (error) {
     sendServerError(res, error);
   }
 };
+
+export const getAllUpcomingEventsController = async (req, res) => {
+  try {
+    const upCommingEvents = await getupCommingEventsService();
+    console.log(upCommingEvents);
+    const currentDateTime = new Date();
+    const upcomingEvents = upCommingEvents.filter(event => new Date(event.Date) > currentDateTime);
+    console.log("upcomingEvents",upcomingEvents);
+    if (upcomingEvents.length === 0) {
+      sendNotFound(res, "No upComming Events found");
+    } else {
+      return res.status(200).json(upcomingEvents);
+    }
+  } catch (error) {
+    sendServerError(res, error);
+  }
+};
+
+
+
 
 export const createupCommingEvent = async (req, res) => {
   const { Name, Description, PosterUrl, Date } = req.body;

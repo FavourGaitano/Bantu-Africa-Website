@@ -5,7 +5,7 @@ export const upcommingEventValidator = (upcommingEvent) => {
     Name: joi.string().required(),
     Description: joi.string().required(),
     PosterUrl: joi.string().required(),
-    Date: joi.number().required(),
+    Date: joi.date().required(),
   });
   return upcommingEventValidatorSchema.validate(upcommingEvent);
 };

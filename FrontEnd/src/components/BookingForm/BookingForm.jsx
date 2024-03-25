@@ -62,6 +62,7 @@ const BookingForm = (roomBookedData) => {
       reset();
     } catch (error) {
       ErrorToast(error?.data?.message);
+      console.log("Creation Error: ", error);
       return (
         <div>
           <h4>Oops, an error occured!</h4>

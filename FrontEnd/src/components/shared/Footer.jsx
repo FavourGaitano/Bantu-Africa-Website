@@ -6,8 +6,16 @@ import * as yup from "yup";
 import "./footer.scss";
 import { ErrorToast, LoadingToast, SuccessToast } from "./Toaster";
 import { useAddInquiryMutation } from "../../features/inquiries/inquiryApi.js";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const scrollToTopAndNavigate = (path) => {
+    window.scrollTo(0, 0);
+    navigate(path);
+  };
+
   const [addInquiry, { isLoading }] = useAddInquiryMutation();
   const schema = yup.object().shape({
     Name: yup.string().required("Please provide your name"),
@@ -64,12 +72,24 @@ const Footer = () => {
           </div>
           <div className="card two">
             <h4>QUICK LINKS</h4>
-            <span>Rooms & Suites</span>
-            <span>Restaurants</span>
-            <span>Activities</span>
-            <span>Meetings & Events</span>
-            <span>Gallery</span>
-            <span>About Us</span>
+            <span onClick={() => scrollToTopAndNavigate("/room")}>
+              Rooms & Suites
+            </span>
+            <span onClick={() => scrollToTopAndNavigate("/restaurant")}>
+              Restaurants
+            </span>
+            <span onClick={() => scrollToTopAndNavigate("/activities/adult")}>
+              Activities
+            </span>
+            <span onClick={() => scrollToTopAndNavigate("/event")}>
+              Meetings & Events
+            </span>
+            <span onClick={() => scrollToTopAndNavigate("/gallery")}>
+              Gallery
+            </span>
+            <span onClick={() => scrollToTopAndNavigate("/about")}>
+              About Us
+            </span>
           </div>
           <div className="card three">
             <form action="" className="" onSubmit={handleSubmit(onSubmit)}>

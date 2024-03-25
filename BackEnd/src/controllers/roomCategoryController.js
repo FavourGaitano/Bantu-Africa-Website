@@ -1,23 +1,7 @@
-import {
-  sendNotFound,
-  sendServerError,
-  sendCreated,
-  sendDeleteSuccess,
-} from "../helper/helperFunctions.js";
-import { v4 } from "uuid";
-import {
-  RoomCategorysoftDeleteService,
-  addRoomCategoryService,
-  deleteRoomCategoryService,
-  findRoomCategoryService,
-  getRoomCategoriesService,
-  getRoomCategoryByIdService,
-  updateRoomCategoryService,
-} from "../services/roomCategoryService.js";
-import {
-  roomCategoryValidator,
-  updateCategoryRoomValidator,
-} from "../validators/roomCategoryValidator.js";
+import { sendNotFound, sendServerError, sendCreated, sendDeleteSuccess } from '../helper/helperFunctions.js';
+import {v4} from 'uuid';
+import { RoomCategorysoftDeleteService, addRoomCategoryService, deleteRoomCategoryService, findRoomCategoryService, getPriceByNameMealPlanAndSize, getRoomCategoriesService, getRoomCategoryByIdService, updateRoomCategoryService } from '../services/roomCategoryService.js';
+import { roomCategoryValidator, updateCategoryRoomValidator } from '../validators/roomCategoryValidator.js';
 
 export const getCategoriesController = async (req, res) => {
   try {
@@ -25,13 +9,51 @@ export const getCategoriesController = async (req, res) => {
     if (roomsCategory.length === 0) {
       sendNotFound(res, "No room categories found");
     } else {
-      // let result=roomsCategory.recordset
-      return res.status(200).json(roomsCategory);
+        try {
+            const existingCategory = await findRoomCategoryService({ Name, MealPlan, Size });
+            
+            if (existingCategory) {
+                return res.status(400).send('Category already exists.');
+            }
+            const RoomCategoryId = v4();
+
+            const newRoomCategory = {
+                RoomCategoryId,
+                Name,
+                MealPlan,
+                Size,
+                Price            }
+            let response = await addRoomCategoryService(newRoomCategory);
+            if (response.message) {
+                sendServerError(res, response.message);
+            } else {
+                sendCreated(res, 'Room category created successfully');
+            }
+        } catch (error) {
+            sendServerError(res, error.message);
+        }
     }
-  } catch (error) {
-    sendServerError(res, error);
+}
+}
+
+export const getPriceController=async(req, res)=>{
+    try {
+      const { Name, MealPlan, Size } = req.body;
+  
+      if (!Name || !MealPlan || !Size) {
+        return res.status(400).json({ error: "Missing required parameters." });
+      }
+  
+      const price = await getPriceByNameMealPlanAndSize(Name, MealPlan, Size);
+  
+      return res.status(200).json({ price });
+    } catch (error) {
+      console.error("Error in getPriceController:", error);
+      return res.status(500).json({ error: "Internal server error." });
+    }
   }
-};
+ 
+ 
 
 export const findRoomCategory = async (req, res) => {
   const { Name, MealPlan, Size } = req.body;

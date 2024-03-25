@@ -16,19 +16,20 @@ Content-Type: application/json
 ### //get all rooms categories
 GET http://localhost:8000/api/category/rooms/category
 
+
 ### Create category
-POST http://localhost:3000/api/category/rooms/category
+POST http://localhost:8000/api/category/rooms/category
 Content-Type: application/json
 
 {
-    "Name": "Superior",
-    "Size": "Single",
+    "Name": "Presidential",
+    "Size": "single",
     "MealPlan": "FB",
-    "Price": 12000
+    "Price": 100000
 }
 
 ### //get all rooms categories
-GET http://localhost:3000/api/category/rooms/category/c48185a8-5762-4076-a1dd-85b0a12979e8
+GET http://localhost:8000/api/category/rooms/category/c48185a8-5762-4076-a1dd-85b0a12979e8
 
 
 ### Create category room
@@ -71,3 +72,14 @@ Content-Type: application/json
 ### Delete category
 DELETE http://localhost:8000/api/category/rooms/category/26a6bcca-7e0f-4490-9431-1e6371e71128
 
+
+
+### getting the price of a room
+POST http://localhost:8000/api/category/rooms/category/price
+Content-Type: application/json
+
+{
+    "Name": "Standar",
+    "Size": "Double",
+    "MealPlan": "FB"
+}

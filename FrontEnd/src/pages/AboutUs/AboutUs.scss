@@ -120,3 +120,92 @@
     }
   }
 }
+
+/* Small Screens: 375px - 768px */
+@media (max-width: 767px) {
+  .aboutusimage img {
+    height: 50vh;
+  }
+
+  .aboutusbanner {
+    width: 90vw;
+    height: 10vh;
+    padding-inline: 20px;
+    top: 46.5%;
+  }
+
+  .aboutusbanner .name {
+    font-size: 24px;
+    padding-top: 20px;
+  }
+  .aboutinfo {
+    padding-top: 4%;
+  }
+  .aboutBantu {
+    .aboutheader {
+      font-size: 24px !important;
+      align-content: center !important;
+      align-items: center !important;
+      margin-left: 4%;
+    }
+    .text {
+      padding: 4%;
+      font-size: medium;
+    }
+  }
+  .aboutinfo .aboutBantu .text {
+    max-width: 96%;
+  }
+
+  .aboutinfo .virtues {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .aboutinfo .virtues .mission,
+  .aboutinfo .virtues .vision,
+  .aboutinfo .virtues .values {
+    width: 96%;
+    padding: 4%;
+    margin-left: 2%;
+  }
+}
+
+/* Medium Screens: 768px - 1300px */
+@media (min-width: 768px) and (max-width: 1300px) {
+  .aboutusimage img {
+    height: 70vh;
+  }
+  .aboutheader {
+    margin-top: 10%;
+  }
+
+  .aboutusbanner {
+    width: 80vw;
+    height: 15vh;
+    top: 64%;
+  }
+
+  .aboutusbanner .name {
+    font-size: 28px;
+  }
+
+  .aboutinfo .aboutBantu .text {
+    max-width: 80%;
+  }
+  .virtues {
+    margin-top: 20% !important;
+  }
+
+  .aboutinfo .virtues {
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .aboutinfo .virtues .mission,
+  .aboutinfo .virtues .vision,
+  .aboutinfo .virtues .values {
+    width: 30%;
+    padding: 3%;
+  }
+}
