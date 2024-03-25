@@ -17,46 +17,51 @@ const Navbar = () => {
     setShowMenu(!showMenu);
   };
 
+  const scrollToTopAndNavigate = (path) => {
+    window.scrollTo(0, 0);
+    navigate(path);
+  };
+
   const navItems = [
     {
       path: "/",
-      text: "Home",
+      text: "HOME",
     },
     {
       path: "/room",
-      text: "Rooms & Suites",
+      text: "ROOMS & SUITES",
     },
     {
       path: "/restaurant",
-      text: "Restaurant",
+      text: "RESTAURANT",
     },
     {
       path: "/activities/adult",
-      text: "Activities",
+      text: "ACTIVITIES",
     },
     {
       path: "/activities/kid",
-      text: "kids",
+      text: "KIDS",
     },
     {
       path: "/event",
-      text: "Meetings & Events",
+      text: "MEETINGS & EVENTS",
     },
     {
       path: "/meetings",
-      text: "Meetings & Events",
+      text: "MEETINGS & EVENTS",
     },
     {
       path: "/gallery",
-      text: "Gallery",
+      text: "GALLERY",
     },
     {
       path: "/about",
-      text: "About Us",
+      text: "ABOUT US",
     },
     {
       path: "/contact",
-      text: "Contact Us",
+      text: "CONTACT US",
     },
   ];
   return (
@@ -101,13 +106,18 @@ const Navbar = () => {
         <div className="menu-items">
           {navItems &&
             navItems.map((item, index) => (
-              <NavLink key={index} to={item.path} style={{textDecorationLine:"none"}}>
-                <span style={{textDecorationLine:"none"}}>
-                  <h6 >
+              <div key={index}>
+                <span
+                  onClick={() => {
+                    scrollToTopAndNavigate(item.path);
+                  }}
+                  style={{ listStyle: "none", textDecoration: "none" }}
+                >
+                  <h6 style={{ listStyle: "none", textDecoration: "none" }}>
                     {item.text}
                   </h6>
                 </span>
-              </NavLink>
+              </div>
             ))}
         </div>
       </div>
