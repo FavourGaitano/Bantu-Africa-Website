@@ -5,7 +5,7 @@ import image from '../../assets/logo.png'
 
 const AdminNavbar = () => {
   return (
-    <div className="header">
+    <div className="Adminheader">
         <div className="header-logo">
         <img
                 src={image}
