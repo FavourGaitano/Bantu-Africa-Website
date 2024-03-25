@@ -8,6 +8,8 @@ import Menu from "./components/Menu/Menu";
 import AllActivitiesPage from "./pages/Activities/All/AllActivitiesPage";
 import KidsActivitiesPage from "./pages/Activities/Kids/KidsActivities";
 import AdultsActivitiesPage from "./pages/Activities/Adults/AdultsActivitiesPage";
+import AdminLogin from "./components/AdminLogin/AdminLogin";
+import AdminSidebar from "./components/AdminSidebar/AdminSidebar";
 
 function App() {
   return (
@@ -17,11 +19,9 @@ function App() {
         <Route path="*" element={<Main />} />
         <Route path="/menu" element={<Menu/>} />
       </Routes>
-      {/* <AllActivitiesPage /> */}
-      {/* <KidsActivitiesPage /> */}
-      {/* <AdultsActivitiesPage /> */}
+     
       <Footer />
-
+     
     </div>
   );
 }
