@@ -33,6 +33,8 @@ export const getCategoriesController = async (req, res) => {
             sendServerError(res, error.message);
         }
     }
+}catch (error) {
+  sendServerError(res, error.message);
 }
 }
 

@@ -20,10 +20,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .offers-modal-content {
-  background-color: rgb(227, 64, 64);
+//   background-color: rgb(227, 64, 64);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   padding: 20px;
@@ -32,6 +33,6 @@
   top: 8;
   left: 0;
   transform: translate(0, -50%);
-  margin-bottom: 0px;
-  margin-top: 450px;
+  margin-bottom: 70px;
+  margin-top: 10px;
 }

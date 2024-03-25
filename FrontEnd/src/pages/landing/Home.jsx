@@ -4,7 +4,6 @@ import "./home.scss";
 import Carousel2 from "../../components/shared/Carousel2";
 import Navbar from "../../components/shared/Navbar";
 import MarketingCards from "../../components/shared/MarketingCards";
-// import Offers from "../../components/home/Offers"; // Import the Offers component
 import Footer from "../../components/shared/Footer";
 import Map from "../../components/home/Map";
 import OtherServices from "../../components/OtherServices/OtherServices";
@@ -16,10 +15,14 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOffersModal(true);
-    }, 3000);
+    }, 30000);
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleCloseOffersModal = () => {
+    setShowOffersModal(false);
+  };
 
   return (
     <div className="home-page">
@@ -27,12 +30,13 @@ const Home = () => {
       <MarketingCards />
       <Map />
       {showOffersModal && (
-        <div className="offer-modal-background">
-          <div className="offer-modal-content">
-            <Offers />
+        <div key="offers-modal" className="offers-modal-background">
+          <div className="offers-modal-content">
+            <Offers onClose={handleCloseOffersModal} />
           </div>
         </div>
       )}
+
       <Footer />
     </div>
   );

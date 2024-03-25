@@ -132,49 +132,35 @@
   }
 }
 
-/* Media Query for 768 x 1024 Screens */
-@media screen and (max-width: 768px) and (max-height: 1024px) {
-  .adult-activity-title {
-    left: 50%;
-    transform: translateX(-50%);
-  }
 
-  .adult-activity {
-    flex-direction: column;
-    height: auto;
-  }
+// @media screen and (max-width: 768px) and (max-height: 1024px) {
+//   .adult-activity-title {
+//     left: 50%;
+//     transform: translateX(-50%);
+//   }
 
-  .adult-activity-image,
-  .adult-activity-description {
-    width: 90%;
-    margin: 0 auto;
-  }
+//   .adult-activity-section {
+//     padding: 10px; /* Adjust padding for smaller screens */
+//     gap: 20px; /* Reduce the gap between activities */
+//   }
 
-  .adult-activity:nth-child(even) {
-    flex-direction: column;
-  }
+//   .adult-activity {
+//     height: auto;
+//     flex-direction: column; /* Stack activities vertically */
+//     align-items: center; /* Center activities vertically */
+//   }
 
-  .adult-activity:nth-child(even) .adult-activity-description {
-    justify-content: flex-start;
-  }
-}
+//   .adult-activity:nth-child(even) {
+//     flex-direction: column-reverse; /* Reverse order for even-indexed activities */
+//   }
 
-/* Additional Styles for Desktop Layout */
-@media screen and (min-width: 769px) and (min-height: 1025px) {
-  .adult-activity {
-    display: flex;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .adult-activity-image {
-    width: 40%;
-    max-width: 40%;
-  }
+//   .adult-activity-image,
+//   .adult-activity-description {
+//     width: 100%; /* Take full width of the container */
+//   }
 
-  .adult-activity-description {
-    width: 55%;
-    max-width: 55%;
-  }
-}
+//   .adult-activity-description {
+//     padding: 10px; /* Adjust padding for description */
+//   }
+// }
+

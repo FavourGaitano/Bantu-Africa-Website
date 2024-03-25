@@ -11,7 +11,7 @@ const Offers = ({ onClose }) => {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    onClose(); // Call the onClose function provided by the parent component
+    onClose(); 
   };
 
   if (isLoading) {
@@ -47,7 +47,10 @@ const Offers = ({ onClose }) => {
               {offers.map((offer) => (
                 <div key={offer.id}>
                   <div className="offer-card">
-                    <img src={offer.OfferImageUrl} alt={`Offer ${offer.id}`} />
+                    <img
+                      src={offer.OfferImageUrl}
+                      alt={`Offer ${offer.OfferId}`}
+                    />
                   </div>
                 </div>
               ))}
@@ -60,3 +63,4 @@ const Offers = ({ onClose }) => {
 };
 
 export default Offers;
+
