@@ -24,6 +24,21 @@ export const getoneupCommingEventService = async (upcommingEventId) => {
   }
 };
 
+export const getAllUpcomingEventsService = async () => {
+  try {
+    const result = await poolRequest()
+      .query(
+        "SELECT * FROM upCommingEvent WHERE Date > GETDATE()"
+      );
+console.log(result);
+    return result.recordset;
+  } catch (error) {
+    console.log("Error fetching upcoming events:", error);
+    throw error;
+  }
+};
+
+
 export const deleteupCommingEventService = async (upcommingEventId) => {
   try {
     const result = await poolRequest().input(
@@ -62,7 +77,7 @@ export const updateupCommingEventService = async (upcommingEventId, updatedField
             .input("Name", sql.VarChar, updatedFields.Name)
             .input("Description", sql.VarChar, updatedFields.Description)
             .input("PosterUrl", sql.VarChar, updatedFields.PosterUrl)
-            .input("Date", sql.VarChar, updatedFields.Date)
+            .input("Date", sql.DateTime, updatedFields.Date)
             .query(`UPDATE upCommingEvent 
                 SET Name = @Name,
                 Description = @Description,
@@ -125,7 +140,7 @@ export const createupCommingEventService = async (upCommingEvent) => {
       .input("Name", sql.VarChar, upCommingEvent.Name)
       .input("Description", sql.VarChar, upCommingEvent.Description)
       .input("PosterUrl", sql.VarChar, upCommingEvent.PosterUrl)
-      .input("Date", sql.VarChar, upCommingEvent.Date)
+      .input("Date", sql.DateTime, upCommingEvent.Date)
       .query(
         "INSERT INTO upCommingEvent (upcommingEventId, Description, Name, PosterUrl, Date) VALUES (@upcommingEventId, @Description, @Name, @PosterUrl, @Date)"
       );

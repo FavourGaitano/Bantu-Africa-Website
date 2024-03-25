@@ -10,21 +10,26 @@ POST http://localhost:8000/api/rooms
 Content-Type: application/json
 
 {
-    "RoomPhotoUrl": "https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "RoomNumber": 25,
-    "Description": "A beautiful, spacious room well suited for friends and small families",
-    "RoomCategoryId": "a515d485-f643-4469-8b85-db7af1845a1c",
-    "Occupants": 4
+    "RoomPhotoUrl": "https://thumbs.dreamstime.com/b/living-room-presidential-suite-five-star-hotel-32794047.jpg",
+    "RoomNumber": 1,
+    "Description": "The focal point of the VIP wing, the Presidential Suite offers exceptional comfort and security. A one-bedroom suite overlooking the protected natural wetland.",
+    "RoomCategoryId": "f148bf24-666e-4409-b2cf-a8c526755fc8",
+    "Occupants": 8
 }
 
 ### //get available rooms
 GET http://localhost:8000/api/rooms/room/available
 
 ### //get single rooms
-GET http://localhost:8000/api/rooms/bda1453a-d5c2-4409-8a4b-0e9c77843317
+GET http://localhost:8000/api/rooms/all/category/Superior
 
 
 ### //get single rooms
+GET http://localhost:8000/api/rooms/bda1453a-d5c2-4409-8a4b-0e9c77843317
+
+# 
+
+### //update single rooms
 
 PUT http://localhost:8000/api/rooms/update/95bd179b-7dc1-4de7-9fab-6bac9ed2f285/15b15ff5-1994-407b-a6fe-97e3525ba56f
 Content-Type: application/json

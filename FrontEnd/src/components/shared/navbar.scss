@@ -1,4 +1,5 @@
 .navbar {
+  box-sizing: border-box;
   font-family: "Futura Std", sans-serif;
   display: flex;
   flex-direction: column;
@@ -80,7 +81,8 @@
         height: 100vh;
         background-color: #5e292f;
         z-index: 1;
-        padding-top: 10vh; // Adjust as needed
+        padding-top: 10vh;
+
         // span {
         // }
       }
@@ -109,11 +111,11 @@
     }
     .menu-items {
       display: flex;
-      width: 65%;
+      width: 80%;
       justify-content: space-between;
       align-items: center;
+      // border: 2px solid black;
       span {
-        // border: 2px solid black;
         font-size: 20px;
         color: #6f6f74;
         text-decoration: underline;
@@ -126,8 +128,14 @@
     }
   }
   @media screen and (max-width: 768px) {
+    // width: 100%;
+    // border: 2px solid red;
     .top-banner {
-      padding-right: 10%;
+      // padding-right: 10%;
+      max-width: 100vw;
+      overflow: hidden;
+      margin: 0;
+      align-content: space-between;
 
       .menu-toggle {
         display: flex;
@@ -139,19 +147,21 @@
       }
       .call {
         margin-left: 10px;
-        width: 12%;
+        width: 11%;
       }
       .book {
-        margin-right: 20px; // Adjusted margin for smaller screens
-        width: 15%;
+        width: 14%;
+        align-self: flex-end;
       }
       .socials {
         width: 12%;
-        margin-right: 20px; // Adjusted margin for smaller screens
+        margin-right: 20px;
+        display: none;
       }
     }
     .nav {
       height: 100vh;
+
       // position: relative;
       // right: -10px;
       display: flex;
@@ -160,7 +170,7 @@
       position: fixed;
       top: 0;
       bottom: 0;
-      width: 70%;
+      width: 9rem;
       max-width: 300px;
       background-color: white;
       transition: transform 0.3s ease;
@@ -182,30 +192,50 @@
       }
       .menu-items {
         display: none;
+        color: white;
+        padding-bottom: 20px;
+        text-decoration: none;
+        align-items: flex-start;
+        padding-left: 20px;
+        width: 10rem !important;
+        // border: 2px solid blue;
+        // border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        // opacity: 90%;
+        span {
+          color: white;
+        }
       }
     }
   }
 
   // Media query for small screens (375px)
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 425px) {
     .top-banner {
       .call {
         margin-left: 5px;
-        width: 17%;
+        width: 20%;
+        // border: 2px solid blue;
+        font-size: 12px;
       }
       .book {
-        margin-right: 10px; // Further adjusted margin for smaller screens
-        width: 25%;
+        margin-right: 10px;
+        font-size: 12px;
+        width: 27%;
       }
       .socials {
-        margin-right: 10px; // Further adjusted margin for smaller screens
+        margin-right: 10px;
       }
     }
     .nav {
       .logo {
         .image img {
-          margin-right: 30px; // Further adjusted margin for smaller screens
+          margin-right: 30px;
         }
+      }
+      .menu-items {
+        align-items: flex-start;
+        padding-left: 10px;
       }
     }
   }

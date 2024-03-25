@@ -1,7 +1,13 @@
-.select {
+.create-booking {
+  // border: 2px solid black;
+  display: flex;
+  gap: 2%;
+
+  .select {
     margin-top: 50px;
+
     // height: 10vh;
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
     width: 100%;
     border: 2px solid rgb(218, 217, 217);
     display: flex;
@@ -27,8 +33,8 @@
 
         .calendar-dropdown {
           display: flex;
-          gap: .8rem;
-          .input-group{
+          gap: 0.8rem;
+          .input-group {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -36,12 +42,11 @@
             cursor: pointer;
             padding: 5px;
             font-size: 1rem;
-            input{
+            input {
               border: none;
               outline: none;
               cursor: pointer;
             }
-          
           }
 
           .cal {
@@ -50,8 +55,7 @@
             left: -75px;
             width: calc(100% + 10px);
             z-index: 2;
-        }
-        
+          }
         }
 
         &:hover .dropdown {
@@ -142,8 +146,6 @@
     }
   }
 
-
-
   .select-navbar select {
     width: 100%;
     padding: 8px;
@@ -158,36 +160,39 @@
     /* Ensure dropdown options overflow is hidden */
     overflow: hidden;
   }
-  
+
   .select-navbar select:focus {
     outline: none;
   }
   .guest-selector-modal {
     position: absolute;
     width: 20vw;
-    // max-width: 300px; 
-    background-color: white; 
+    // max-width: 300px;
+    background-color: white;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    margin-top: 10px; 
+    margin-top: 10px;
   }
-  
+
   .guest-selector-container {
     position: relative;
   }
-  .button-container{
+  .button-container {
     display: flex;
     justify-content: end;
     width: 100%;
-    margin: 1rem ;
-    button{
-        background-color: white;
-        color: #5E292F;
-        border-radius: 5px;
-        padding: 7px 15px;
-        border: 2px solid #CCAE10;
+    margin: 1rem;
+    button {
+      background-color: white;
+      color: #5e292f;
+      border-radius: 5px;
+      padding: 7px 15px;
+      border: 2px solid #ccae10;
     }
+  }
+  .personal-details {
+    margin-top: 4%;
+  }
 }
-

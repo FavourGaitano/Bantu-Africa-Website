@@ -9,6 +9,7 @@ import {
   addRoomService,
   deleteRoomService,
   getAvailableRoomService,
+  getRoomByCategoryService,
   getRoomByIdService,
   getRoomByRoomNumberService,
   getRoomsService,
@@ -88,6 +89,22 @@ export const getRoomByIdController = async (req, res) => {
   try {
     const { RoomId } = req.params;
     const singleroom = await getRoomByIdService(RoomId);
+    console.log("singleroom", singleroom);
+    if (singleroom.length === 0) {
+      sendNotFound(res, "Room not found");
+    } else {
+      console.log("singleroom", singleroom);
+      res.status(200).json(singleroom);
+    }
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+export const getRoomByCategoryController = async (req, res) => {
+  try {
+    const { Name } = req.params;
+    const singleroom = await getRoomByCategoryService(Name);
     console.log("singleroom", singleroom);
     if (singleroom.length === 0) {
       sendNotFound(res, "Room not found");

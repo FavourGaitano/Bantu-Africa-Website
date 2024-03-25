@@ -2,7 +2,6 @@ import React from "react";
 import image2 from "../../assets/Images/Conference/Meetings.jpg";
 import "./meeting.scss";
 import EventCard from "../../components/event/EventCard";
-// import EventImage from "../../assets/event-image.png";
 import EventImageCard from "../../components/event/EventImageCard";
 
 import EventImage from "../../assets/Images/Conference/meetingrm.jpg";

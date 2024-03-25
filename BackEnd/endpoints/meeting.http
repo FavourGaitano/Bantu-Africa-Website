@@ -16,22 +16,23 @@ Content-Type: application/json
 }
 
 ### Get one meeting
-Get http://localhost:8000/api/meeting/
+Get http://localhost:8000/api/meeting/single/470740a7-2e27-4321-aa3c-8e4cfa4cf402
 
 ### Delete Meeting
 
 Delete http://localhost:8000/api/meeting/f1ee2b42-9200-4f49-8ce4-433b20da1b66
 
 ### Update meeting
-PUT http://localhost:8000/api/meeting/40a8192f-c4c4-494e-b7cb-bc0dec42180a
+PUT http://localhost:8000/api/meeting/470740a7-2e27-4321-aa3c-8e4cfa4cf402
 
 Content-Type: application/json
 
 {
-    "Description": "very small",
-    "ConferenceRoomName": "smaller",
-    "Image": "/path/to/image.jpg",
-    "Price": "45",
+    "Description": "Our expansive and elegantly appointed meeting rooms render the hotel a perfect venue for a variety of business conferences and gatherings of all sizes. Whether it's corporate seminars, training sessions, chama get-togethers, product launches, exhibitions, and more, we have ample capacity to accommodate your needs. This Conference Room can hold up-to 300 members.",
+    "ConferenceRoomName": "Large-Sized Conference Room",
+    "Image": "https://cdn.pixabay.com/photo/2019/10/21/10/34/meeting-4565702_1280.jpg",
+    "Price": "15000",
     "PackageId": "2f424c65-3a63-4075-8c73-534ebbd20300",
-    "Quantity": "3"
+    "Quantity": "1"
 }
+

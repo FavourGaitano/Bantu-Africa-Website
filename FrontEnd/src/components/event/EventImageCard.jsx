@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
+import "./EventImageCard.scss";
 
-function EventImageCard({roomImg,onClick}) {
+function EventImageCard({ roomImg, onClick }) {
   return (
-    
-    <div className='room-image'>
-      <img style={{width:"45rem",height:"27rem"}} onClick={onClick} src={roomImg} alt="" />
+    <div className="room-image">
+      <img onClick={onClick} src={roomImg} alt="" className="meetingimage" />
     </div>
-  )
+  );
 }
 
 export default EventImageCard;
