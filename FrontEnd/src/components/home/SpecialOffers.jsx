@@ -9,38 +9,6 @@ import "./specialOffers.scss";
 import { useGetOtherServicesQuery } from "../../features/otherServices/otherServices";
 
 const SpecialOffers = () => {
-  // const offers = [
-  //   {
-  //     title: "Presidential Suite",
-  //     img: accom,
-  //     caption: "Discover the opulence of royal living",
-  //   },
-  //   {
-  //     title: "Helipad",
-  //     img: helipad,
-  //     caption: "The only helipad in the county",
-  //   },
-  //   {
-  //     title: "Ziplining",
-  //     img: ziplining,
-  //     caption: "The adrenaline rush you've always craved",
-  //   },
-  //   {
-  //     title: "Sports Bar",
-  //     img: drink,
-  //     caption: "Only the finest wining and dining",
-  //   },
-  //   {
-  //     title: "Swimming Pool",
-  //     img: swimming,
-  //     caption: "Take a dip in our infinity pool",
-  //   },
-  //   {
-  //     title: "Coffee",
-  //     img: coffee,
-  //     caption: "Savor fresh roasts from our barista",
-  //   },
-  // ];
   const { data: otherServices } = useGetOtherServicesQuery();
   console.log(otherServices);
 
