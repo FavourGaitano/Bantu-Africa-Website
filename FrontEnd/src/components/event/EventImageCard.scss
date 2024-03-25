@@ -1,0 +1,19 @@
+.meetingimage {
+  width: 45rem;
+  height: 27rem;
+}
+
+@media screen and (max-width: 768px) {
+  .meetingimage {
+    width: 94vw !important;
+    height: auto !important;
+    margin-left: -5%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1300px) {
+  .meetingimage {
+    width: 20rem;
+    height: 12rem;
+  }
+}

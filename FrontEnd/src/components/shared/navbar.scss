@@ -127,10 +127,11 @@
   }
   @media screen and (max-width: 768px) {
     .top-banner {
-      padding-right: 10%;
+      // padding-right: 10%;
       max-width: 100vw;
       overflow: hidden;
       margin: 0;
+      align-content: space-between;
 
       .menu-toggle {
         display: flex;
@@ -142,15 +143,16 @@
       }
       .call {
         margin-left: 10px;
-        width: 12%;
+        width: 22%;
       }
       .book {
-        margin-right: 20px; // Adjusted margin for smaller screens
-        width: 15%;
+        width: 35%;
+        align-self: flex-end;
       }
       .socials {
         width: 12%;
-        margin-right: 20px; // Adjusted margin for smaller screens
+        margin-right: 20px;
+        display: none;
       }
     }
     .nav {
@@ -197,17 +199,17 @@
         width: 17%;
       }
       .book {
-        margin-right: 10px; // Further adjusted margin for smaller screens
+        margin-right: 10px;
         width: 25%;
       }
       .socials {
-        margin-right: 10px; // Further adjusted margin for smaller screens
+        margin-right: 10px;
       }
     }
     .nav {
       .logo {
         .image img {
-          margin-right: 30px; // Further adjusted margin for smaller screens
+          margin-right: 30px;
         }
       }
     }

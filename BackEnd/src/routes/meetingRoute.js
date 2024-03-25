@@ -11,7 +11,7 @@ const meetingRouter = Router();
 
 meetingRouter.get("/meeting", getMeetings);
 meetingRouter.post("/meeting", createMeeting);
-meetingRouter.get("/meeting/:ConferenceId", getoneMeeting);
+meetingRouter.get("/meeting/single/:ConferenceId", getoneMeeting);
 meetingRouter.delete("/meeting/:ConferenceId", deleteMeeting);
 meetingRouter.put("/meeting/:ConferenceId", updateMeeting);
 
