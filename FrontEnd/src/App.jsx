@@ -6,7 +6,6 @@ import Menu from "./components/Menu/Menu";
 
 import Main from "./layout/Main";
 import AdminRoute from "./layout/AdminRoute";
-import Offers from "./components/Offers/Offers";
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
         <Route path='/admin/*' element={<AdminRoute/>} />
         <Route path="/menu" element={<Menu/>} />
       </Routes>
-      {/* <Offers /> */}
    
  
          </div>

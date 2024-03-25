@@ -7,44 +7,31 @@
   align-items: center;
 }
 
-.modal-background {
+/* Add these styles to your home.scss file */
+.offers-modal-background {
+  
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark translucent background */
-  z-index: 9999; /* Ensure the modal is on top of everything */
-  display: none;
+  background-color: black;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.modal-background.show {
-  display: block;
-}
-
-.modal-content {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
+.offers-modal-content {
+  background-color: rgb(227, 64, 64);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  z-index: 10000;
+  padding: 20px;
+  max-width: 60%;
+  position: relative;
+  top: 8;
+  left: 0;
+  transform: translate(0, -50%);
+  margin-bottom: 0px;
+  margin-top: 450px;
 }
-
-.close-icon {
-  position: absolute;
-  top: 30px;
-  right: 430px;
-  background: none;
-  border: none;
-  font-size: 30px;
-  font-weight: bolder;
-  cursor: pointer;
-  color: white;
-
-}
-
-
