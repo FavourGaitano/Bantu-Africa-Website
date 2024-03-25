@@ -55,7 +55,7 @@
 .event-superior-content {
   width: 90%;
   display: flex;
-  margin: auto;
+  margin: 4%;
   padding: 3rem 2.5rem;
   background-color: var(--gray-color);
   gap: 2rem;
@@ -65,7 +65,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0.2rem;
-    margin: 1rem 0;
+    margin: 4% 0;
     color: var(--light-gray);
     h2 {
       color: var(--primary-color);
@@ -73,6 +73,7 @@
       font-weight: 400;
       margin-bottom: 2%;
     }
+
     .event-desc {
       font-family: Gotham Book;
       width: 90%;
@@ -136,4 +137,131 @@
   background-color: #5e292f;
   color: white;
   border: none;
+}
+
+@media (max-width: 767px) {
+  .meetingsimage {
+    height: 55vh;
+  }
+  .banner {
+    width: 95vw;
+    height: auto;
+    padding-inline: 20px;
+    top: 47%;
+    .name {
+      font-size: 20px;
+    }
+  }
+
+  .banner .meetingheaderinfo {
+    font-size: 16px;
+    padding-top: 0.25%;
+    margin-top: 2.5%;
+    margin-bottom: 5%;
+  }
+
+  .event-superior-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: -4% !important;
+    width: 100vw;
+
+    .event-photo {
+      max-width: 90% !important;
+    }
+  }
+
+  .event-superior-content.reversed {
+    flex-direction: row-reverse;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .event-superior-content,
+  .event-deluxe-content {
+    flex-direction: column;
+  }
+
+  .event-superior-content .event-items h2,
+  .event-deluxe-content .event-items h2 {
+    font-size: 24px;
+  }
+
+  .event-superior-content .event-items .event-desc,
+  .event-deluxe-content .event-items .event-desc {
+    font-size: 1rem;
+  }
+
+  .desc-btn {
+    margin-top: 15px;
+    button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1300px) {
+  .meetingsimage {
+    height: 55vh;
+  }
+  .banner {
+    width: 95vw;
+    height: auto;
+    padding-inline: 20px;
+    top: 48%;
+    .name {
+      font-size: 20px;
+    }
+  }
+
+  .banner .meetingheaderinfo {
+    font-size: 16px;
+    padding-top: 0.25%;
+    margin-top: 2.5%;
+    margin-bottom: 5%;
+  }
+
+  .event-superior-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: -4% !important;
+    width: 100vw;
+
+    .event-photo {
+      max-width: 90% !important;
+    }
+  }
+
+  .event-superior-content.reversed {
+    flex-direction: row-reverse;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .event-superior-content,
+  .event-deluxe-content {
+    flex-direction: column;
+  }
+
+  .event-superior-content .event-items h2,
+  .event-deluxe-content .event-items h2 {
+    font-size: 24px;
+  }
+
+  .event-superior-content .event-items .event-desc,
+  .event-deluxe-content .event-items .event-desc {
+    font-size: 1rem;
+  }
+
+  .desc-btn {
+    margin-top: 15px;
+    button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+
 }
