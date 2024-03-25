@@ -9,9 +9,10 @@ Content-Type: application/json
 
 
 {
-    "OtherServiceName": "Presidential Suite",
-    "Description": "Discover the opulence of royal living",
-    "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmmA3W_0DH_A8IiQk5pzMFVzZ6ljhFErKcRf6rhlii8A&s"
+    "OtherServiceName": "Spa & Barber Shop",
+    "Description": "Relax & kick your feet up at the spa.",
+    "ImageUrl": "https://images.pexels.com/photos/3230236/pexels-photo-3230236.jpeg?auto=compress&cs=tinysrgb&w=400"
+
 }
 
 
