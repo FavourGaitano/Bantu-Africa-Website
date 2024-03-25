@@ -1,32 +1,63 @@
 import { poolRequest, closePool, sql } from "../utils/dbConnect.js";
 
 export const getRoomCategoriesService = async () => {
-  try {
-    const result = await poolRequest().query(`SELECT * FROM RoomCategory`);
-    return result.recordset;
-  } catch (error) {
-    console.error("Error fetching room categories:", error.error);
-    throw error;
-  }
-};
+    try {
+      const result = await poolRequest().query(`SELECT * FROM RoomCategory`);
+      return result.recordset;
+    } catch (error) {
+      console.error("Error fetching room categories:", error.error);
+      throw error;
+    }
+  };
+  
+  export const addRoomCategoryService = async (roomCategory) => {
+    try {
+      const result = await poolRequest()
+        .input("RoomCategoryId", sql.VarChar, roomCategory.RoomCategoryId)
+        .input("Name", sql.VarChar, roomCategory.Name)
+        .input("Price", sql.Int, roomCategory.Price)
+        .input("Size", sql.VarChar, roomCategory.Size)
+        .input("MealPlan", sql.VarChar, roomCategory.MealPlan)
+        .query(
+          "INSERT INTO RoomCategory (RoomCategoryId, Name, Price, Size, MealPlan) VALUES (@RoomCategoryId, @Name, @Price, @Size, @MealPlan)"
+        );
+      return result;
+    } catch (error) {
+      console.error("Error adding room category:", error);
+      throw error;
+    }
+  };
+  
 
-export const addRoomCategoryService = async (roomCategory) => {
-  try {
-    const result = await poolRequest()
-      .input("RoomCategoryId", sql.VarChar, roomCategory.RoomCategoryId)
-      .input("Name", sql.VarChar, roomCategory.Name)
-      .input("Price", sql.Int, roomCategory.Price)
-      .input("Size", sql.VarChar, roomCategory.Size)
-      .input("MealPlan", sql.VarChar, roomCategory.MealPlan)
-      .query(
-        "INSERT INTO RoomCategory (RoomCategoryId, Name, Price, Size, MealPlan) VALUES (@RoomCategoryId, @Name, @Price, @Size, @MealPlan)"
-      );
-    return result;
-  } catch (error) {
-    console.error("Error adding room category:", error);
-    throw error;
-  }
-};
+  
+  export const getPriceByNameMealPlanAndSize = async (Name, MealPlan, Size) => {
+    try {
+      const query = `
+        SELECT Price
+        FROM RoomCategory
+        WHERE Name = @Name
+          AND MealPlan = @MealPlan
+          AND Size = @Size;
+      `;
+  
+      const result = await poolRequest()
+        .input("Name", sql.VarChar, Name)
+        .input("MealPlan", sql.VarChar, MealPlan)
+        .input("Size", sql.VarChar, Size)
+        .query(query);
+  
+      if (result.recordset.length === 0) {
+        throw new Error("No price found for the specified room category, meal plan, and size.");
+      }
+  
+      return result.recordset[0].Price;
+    } catch (error) {
+      throw new Error(`Error retrieving price: ${error.message}`);
+    }
+  };
+  
+ 
+
 
 export const getRoomCategoryByIdService = async (RoomCategoryId) => {
   try {

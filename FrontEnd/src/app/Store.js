@@ -13,6 +13,7 @@ import { otherServiceApi } from "../features/otherServices/otherServices";
 import { userApi } from "../features/users/userApi";
 import { bookingsApi } from "../features/bookings/bookingsApi";
 import { restaurantApi } from "../features/restaurant/restaurantApi";
+import { eventApi } from "../features/events/eventApi";
 
 export const store = configureStore({
   reducer: {
@@ -26,6 +27,8 @@ export const store = configureStore({
     [userApi.reducerPath]: userApi.reducer,
     [bookingsApi.reducerPath]: bookingsApi.reducer,
     [restaurantApi.reducerPath]: restaurantApi.reducer,
+    [eventApi.reducerPath]: eventApi.reducer,
+    
   },
   
   middleware: (getDefaultMiddleware) =>
@@ -39,7 +42,8 @@ export const store = configureStore({
       otherServiceApi.middleware,
       userApi.middleware,
       bookingsApi.middleware,
-      restaurantApi.middleware
+      restaurantApi.middleware,
+      eventApi.middleware,
     ),
       
   });

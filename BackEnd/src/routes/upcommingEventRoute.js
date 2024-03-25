@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   createupCommingEvent,
   deleteupCommingEvent,
+  getAllUpcomingEventsController,
   getoneupCommingEvent,
   getupCommingEvents,
   updateupCommingEvent,
@@ -10,6 +11,7 @@ import {
 const upCommingEventRouter = Router();
 
 upCommingEventRouter.get("/events", getupCommingEvents);
+upCommingEventRouter.get("/events/upcoming/date", getAllUpcomingEventsController);
 upCommingEventRouter.post("/events", createupCommingEvent);
 upCommingEventRouter.get("/events/single/:upcommingEventId", getoneupCommingEvent);
 upCommingEventRouter.delete("/events/delete/:upcommingEventId", deleteupCommingEvent);

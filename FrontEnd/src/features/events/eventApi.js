@@ -2,14 +2,14 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const eventApi = createApi({
   reducerPath: "eventApi",
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/api/' }),
   tagTypes: ['events'],
   endpoints: (builder) => ({
     getEvents: builder.query({
       query: () => 'events',
       providesTags: ['events']
     }),
-
+    
     getSingleEvent: builder.query({
       query: (upcommingEventId) => `events/single${upcommingEventId}`,
       providesTags: ['events']

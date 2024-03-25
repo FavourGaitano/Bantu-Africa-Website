@@ -11,7 +11,7 @@ export const roomApi = createApi({
       providesTags: ['rooms']
     }),
     getRoomsByName: builder.query({
-      query: (room) => `/rooms/all/category/${room.Name}`,
+      query: (Name) => `/rooms/all/category/${Name}`,
       providesTags: ['rooms']
     }),
     getSingleRoom: builder.query({
