@@ -2,15 +2,18 @@
 ### get all Event
 GET http://localhost:8000/api/events
 
+### get all Event
+GET http://localhost:8000/api/events/upcoming/date
+
 ### create Event
 POST http://localhost:8000/api/events
 Content-Type: application/json
 
 {
-    "Name": "Mugithi",
-    "Description": "Party",
-    "PosterUrl": "/path/to/image.jpg",
-    "Date": "31012023"
+    "Name": "Muthigi Festival",
+    "Description": "This eveny will take place on January",
+    "PosterUrl": "https://images.pexels.com/photos/2608516/pexels-photo-2608516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "Date": "2023-01-31"
 }
 
 ### Get one Event
@@ -18,7 +21,7 @@ Get http://localhost:8000/api/events/single/255e16f4-f2a7-4255-9e51-98308826754e
 
 ### Delete Event
 
-Delete http://localhost:8000/api/events/delete/255e16f4-f2a7-4255-9e51-98308826754e
+Delete http://localhost:8000/api/events/delete/1b00743b-a407-4ee8-9bd7-f50e08c20b43
 
 ### Update Event
 
