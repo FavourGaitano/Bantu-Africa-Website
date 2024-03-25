@@ -4,7 +4,6 @@ import BookingList from "./BookingList";
 import CreateBooking from "./CreateBooking";
 import Calender from "../Calender/Calender";
 
-
 const Booking = () => {
   return (
     <div className="booking">
@@ -12,12 +11,10 @@ const Booking = () => {
         <h1>SELECT AND BOOK A ROOM</h1>
       </div>
       <div className="options">
-        <div className="booking-form" >
+        <div className="booking-form">
           <CreateBooking />
         </div>
-        <div className="booking-list" >
-          <BookingList />
-        </div>
+        <div className="booking-list"></div>
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ Content-Type: application/json
 GET http://localhost:8000/api/gallery/category/accommodation
 
 ### Get one gallery
-Get http://localhost:8000/api/gallery/f826f419-6637-47ca-b63d-983dd93693d4
+Get http://localhost:8000/api/gallery/0d8b5870-298f-4e96-98cf-45112b08e0cf
 
 ### Delete gallery
 

@@ -11,8 +11,25 @@ import "./carousel.scss";
 
 const Carousel = () => {
   const photoArray = [burger, cocktails, foodPlatter, fruitPlater, room];
+  const photoArray2 = [
+    {
+      link: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      link: "https://images.unsplash.com/photo-1438029071396-1e831a7fa6d8?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      link: "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    },
+    {
+      link: "https://images.pexels.com/photos/3054690/pexels-photo-3054690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    },
+    {
+      link: "https://images.unsplash.com/photo-1675259113512-db50297ce326?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+  ];
   const [currentPhoto, setCurrentPhoto] = useState(0);
-  const [photo, setPhoto] = useState(photoArray);
+  const [photo, setPhoto] = useState(photoArray2);
 
   const prevSlide = () => {
     setCurrentPhoto((oldPhoto) => {
@@ -41,20 +58,15 @@ const Carousel = () => {
 
   return (
     <div className="carousel-container">
-      {photoArray &&
-        photoArray.map((photo, index) => (
+      {photoArray2 &&
+        photoArray2.map((photo, index) => (
           <div
             className={`carousel-photo ${
               index === currentPhoto ? "active" : ""
             }`}
-            // style={{
-            //   transform: `translateX(${100 * (index - currentPhoto)}%)`,
-            //   opacity: index === currentPhoto ? 1 : 0,
-            //   visibility: index === currentPhoto ? "visible" : "hidden",
-            // }}
             key={index}
           >
-            <img src={photo} alt="slider-image" loading="lazy" />
+            <img src={photo.link} alt="slider-image" loading="lazy" />
             {/* <div className="buttons">
               <button onClick={prevSlide} className="left">
                 <img src={prev} alt="prev-icon" />

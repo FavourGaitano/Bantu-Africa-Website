@@ -71,6 +71,8 @@ export const createMeeting = async (req, res) => {
 
 export const getoneMeeting = async (req, res) => {
   const { ConferenceId } = req.params;
+  
+  console.log(ConferenceId);
 
   try {
     const meeting = await getoneMeetingservice(ConferenceId);
