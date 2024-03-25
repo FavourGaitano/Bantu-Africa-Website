@@ -1,6 +1,7 @@
 import React from 'react';
 import './Menu.scss';
 import { useGetRestaurantMenuQuery } from '../../features/restaurant/restaurantApi';
+import Navbar from '../shared/Navbar';
 
 const Menu = () => {
     const { data: response, isLoading, error } = useGetRestaurantMenuQuery();
@@ -12,7 +13,10 @@ const Menu = () => {
     const menuUrl = response?.restaurant?.[0]?.MenuUrl;
 
     return (
+        <div className="mainMenu">
+        <Navbar />
         <div className="menu">
+            
             <h1></h1>
             <p></p>
             {menuUrl ? (
@@ -26,6 +30,7 @@ const Menu = () => {
                 <p>Menu PDF is not available at the moment.</p>
             )}
             
+        </div>
         </div>
     );
 };
