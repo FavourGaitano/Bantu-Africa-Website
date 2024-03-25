@@ -13,8 +13,8 @@ const Menu = () => {
 
     return (
         <div className="menu">
-            <h1>Our Menu</h1>
-            <p>Welcome to our menu page. Here's a selection of our finest dishes.</p>
+            <h1></h1>
+            <p></p>
             {menuUrl ? (
                 
                 menuUrl.startsWith('http') ? (
