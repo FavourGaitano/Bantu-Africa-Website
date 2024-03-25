@@ -1,5 +1,8 @@
 .booking {
   background-color: white;
+  // border: 2px solid red;
+  display: flex;
+  flex-direction: column;
 
   .booking-title {
     position: absolute;
@@ -23,13 +26,15 @@
   }
 
   .options {
-    height: 100vh;
+    // height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+
+    align-items: center;
     gap: 4rem;
-    .booking-form{
-      width: 55%;
+    margin-bottom: 5%;
+    .booking-form {
+      width: 95%;
     }
-      
   }
 }
