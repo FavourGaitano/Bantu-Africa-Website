@@ -5,14 +5,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Offers.scss";
 
-const Offers = () => {
+const Offers = ({ onClose }) => {
   const { data: offers, error, isLoading } = useGetOffersQuery();
   const [showModal, setShowModal] = useState(true);
 
   const handleCloseModal = () => {
     setShowModal(false);
+    onClose(); // Call the onClose function provided by the parent component
   };
-
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -35,21 +35,27 @@ const Offers = () => {
   };
 
   return (
-    <div className="slide-offers">
-      <button className="close-button" onClick={handleCloseModal}>
-        x
-      </button>
+    <>
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="slide-offers">
+            <button className="close-button" onClick={handleCloseModal}>
+              x
+            </button>
 
-      <Slider {...settings}>
-        {offers.map((offer) => (
-          <div key={offer.id}>
-            <div className="offer-card">
-              <img src={offer.OfferImageUrl} alt={`Offer ${offer.id}`} />
-            </div>
+            <Slider {...settings}>
+              {offers.map((offer) => (
+                <div key={offer.id}>
+                  <div className="offer-card">
+                    <img src={offer.OfferImageUrl} alt={`Offer ${offer.id}`} />
+                  </div>
+                </div>
+              ))}
+            </Slider>
           </div>
-        ))}
-      </Slider>
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 
