@@ -41,7 +41,33 @@ export const getRoomCategoriesService = async () => {
     }
   };
   
-
+  export const getPriceByNameMealPlanAndSize = async (Name, MealPlan, Size) => {
+    try {
+      const query = `
+        SELECT Price
+        FROM RoomCategory
+        WHERE Name = @Name
+          AND MealPlan = @MealPlan
+          AND Size = @Size;
+      `;
+  
+      const result = await poolRequest()
+        .input("Name", sql.VarChar, Name)
+        .input("MealPlan", sql.VarChar, MealPlan)
+        .input("Size", sql.VarChar, Size)
+        .query(query);
+  
+      if (result.recordset.length === 0) {
+        throw new Error("No price found for the specified room category, meal plan, and size.");
+      }
+  
+      return result.recordset[0].Price;
+    } catch (error) {
+      throw new Error(`Error retrieving price: ${error.message}`);
+    }
+  };
+  
+  
   export const findRoomCategoryService = async ({ Name, MealPlan, Size }) => {
     try {
         const existingCategory = await poolRequest()

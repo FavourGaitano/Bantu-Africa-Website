@@ -1,6 +1,6 @@
 import { sendNotFound, sendServerError, sendCreated, sendDeleteSuccess } from '../helper/helperFunctions.js';
 import {v4} from 'uuid';
-import { RoomCategorysoftDeleteService, addRoomCategoryService, deleteRoomCategoryService, findRoomCategoryService, getRoomCategoriesService, getRoomCategoryByIdService, updateRoomCategoryService } from '../services/roomCategoryService.js';
+import { RoomCategorysoftDeleteService, addRoomCategoryService, deleteRoomCategoryService, findRoomCategoryService, getPriceByNameMealPlanAndSize, getRoomCategoriesService, getRoomCategoryByIdService, updateRoomCategoryService } from '../services/roomCategoryService.js';
 import { roomCategoryValidator, updateCategoryRoomValidator } from '../validators/roomCategoryValidator.js';
 
 export const getCategoriesController = async (req, res) => {    
@@ -51,6 +51,22 @@ export const createRoomCategoryController = async (req, res) => {
     }
 }
 
+export const getPriceController=async(req, res)=>{
+    try {
+      const { Name, MealPlan, Size } = req.body;
+  
+      if (!Name || !MealPlan || !Size) {
+        return res.status(400).json({ error: "Missing required parameters." });
+      }
+  
+      const price = await getPriceByNameMealPlanAndSize(Name, MealPlan, Size);
+  
+      return res.status(200).json({ price });
+    } catch (error) {
+      console.error("Error in getPriceController:", error);
+      return res.status(500).json({ error: "Internal server error." });
+    }
+  }
  
   export const getRoomCategroryByIdController = async (req, res) => {
     try {

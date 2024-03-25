@@ -59,7 +59,7 @@ export const getRoomByCategoryService = async (Name) => {
     const singleReturnedRoom = await poolRequest()
       .input("Name", sql.VarChar, Name)
       .query(`
-        SELECT Room.*, RoomCategory.Name AS CategoryName, RoomCategory.Size, RoomCategory.MealPlan, RoomCategory.Price
+        SELECT Room.*, RoomCategory.Name , RoomCategory.Size, RoomCategory.MealPlan, RoomCategory.Price
         FROM Room 
         INNER JOIN RoomCategory ON Room.RoomCategoryId = RoomCategory.RoomCategoryId
         WHERE RoomCategory.Name = @Name`);

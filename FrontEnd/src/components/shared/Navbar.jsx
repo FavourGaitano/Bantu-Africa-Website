@@ -101,9 +101,9 @@ const Navbar = () => {
         <div className="menu-items">
           {navItems &&
             navItems.map((item, index) => (
-              <NavLink key={index} to={item.path}>
-                <span>
-                  <h6 style={{ listStyle: "none", textDecoration: "none" }}>
+              <NavLink key={index} to={item.path} style={{textDecorationLine:"none"}}>
+                <span style={{textDecorationLine:"none"}}>
+                  <h6 >
                     {item.text}
                   </h6>
                 </span>
