@@ -6,43 +6,77 @@
     .contact-form-items {
       width: 50%;
 
-      .info-card {
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 20px;
-        max-width: 400px;
-        margin: 4% 2% 4% 4%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        font-family: "Arial", sans-serif;
-
-        h2 {
-          color: #333;
-          margin-bottom: 16px;
-        }
-
-        h4 {
-          color: #555;
-          margin: 10px 0 5px;
-        }
-
-        p {
-          color: #666;
-          margin: 0;
-        }
-
-        .contact-method {
-          &:not(:last-child) {
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-          }
+      .contact-method {
+        &:not(:last-child) {
+          border-bottom: 1px solid #eee;
+          padding-bottom: 15px;
+          margin-bottom: 15px;
         }
       }
     }
-    .contact-items-right {
-      width: 50%;
-      margin-top: 2%;
+  }
+  .contact-items-right {
+    width: 50%;
+    margin-top: 2%;
+  }
+  .info-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 4% 2% 4% 4%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Arial", sans-serif;
+
+    h2 {
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    h4 {
+      color: #555;
+      margin: 10px 0 5px;
+    }
+
+    p {
+      color: #666;
+      margin: 0;
+    }
+  }
+}
+
+/* Small Screens: 375px - 767px */
+@media (max-width: 767px) {
+  .contact-container {
+    .contact-items {
+      flex-direction: column;
+
+      .contact-form-items,
+      .contact-items-right {
+        width: 100%;
+      }
+    }
+
+    .info-card {
+      margin: 20px auto;
+      max-width: 90%;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1300px) {
+  .contact-container {
+    .contact-items {
+      .contact-form-items,
+      .contact-items-right {
+        width: 50%;
+      }
+    }
+
+    .info-card {
+      max-width: 95%;
+      margin: 2% auto;
     }
   }
 }
