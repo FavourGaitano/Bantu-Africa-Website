@@ -1,50 +1,49 @@
-import React from 'react'
-import './AdminTable.scss'
+import React from "react";
+import "./AdminTable.scss";
 
-const AdminTable = () => {
+const AdminTable = ({tableNumber,thead1,thead2,thead3,thead4,tbody1,tbody2,tbody3,tbody4,tbody5}) => {
   return (
-    <div>AdminTable
-
-        <body>
-        <div class="cart">
-        
-
-            <table>
+    <div>
+      
+      <div className="admin-table-body">
+        <div className="admin-cart">
+          <table>
             <thead>
-                <tr>
-                <th>No.</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Created At</th>
+              <tr>
+                <th>{tableNumber}</th>
+                <th>{thead1}</th>
+                <th>{thead2}</th>
+                <th>{thead3}</th>
+                <th>{thead4}</th>
                 <th>Actions</th>
-                </tr>
+              </tr>
             </thead>
             <tbody>
-                <tr>
-                <td class="td-custom">1</td>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>Email</td>
-                <td>Created At</td>
-                
+              <tr>
+                <td className="admin-td-custom">{tbody1}</td>
+                <td>{tbody2}</td>
+                <td>{tbody3}</td>
+                <td>{tbody4}</td>
+                <td>{tbody5}</td>
+
                 <td>
-                    <span><button class="action-btn">Delete</button></span>
-                    &nbsp;
-                    <span><button class ="action-btn0">Edit</button></span>
+                  <span>
+                    <button className="action-btn">Delete</button>
+                  </span>
+                  &nbsp;
+                  <span>
+                    <button className="action-btn0">Edit</button>
+                  </span>
                 </td>
-                </tr>
-            
+              </tr>
             </tbody>
-            </table>
-
-           
-           
+          </table>
         </div>
-        </body>
-
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminTable
+export default AdminTable;
+
+
