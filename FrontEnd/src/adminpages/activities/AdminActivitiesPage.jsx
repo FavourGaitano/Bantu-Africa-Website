@@ -1,33 +1,54 @@
-// AdminActivitiesPage.js
-
-import React, { useEffect } from 'react';
-import AdminTable from '../../components/AdminTable/AdminTable';
+import React from 'react';
+import './AdminActivitiesPage.scss';
 import { useGetActivitiesQuery } from '../../features/activities/activityApi';
-import './AdminActivitiesPage.scss'
 
 const AdminActivitiesPage = () => {
-  const { data: activities, error, isLoading, refetch } = useGetActivitiesQuery();
+  const { data: activities, error, isLoading } = useGetActivitiesQuery();
 
-  useEffect(() => {
-    refetch();
-  }, [refetch]);
-
-  if (isLoading) return <div>Loading...</div>; 
+  if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+
+  console.log('Activities:', activities); 
 
   return (
     <div className='admin-activity-page'>
-      <h2 className="admin-activity-page-title">This is admin Activities page</h2> {/* Added class */}
-      <AdminTable
-        thead1="Activity Name"
-        thead2="Category"
-        thead3="Description"
-        thead4="Image Url"
-        // tbody1={activities.map(activity => activity.ActivityName)}
-        // tbody2={activities.map(activity => activity.Category)}
-        // tbody3={activities.map(activity => activity.Description)}
-        // tbody4={activities.map(activity => activity.ImageUrl)}
-      />
+      <div className="admin-add-activity-btn-sec">
+        <h1>Activities</h1>
+        <button className='admin-activity-btn'>Add Activity</button>
+      </div>
+      <div className="admin-table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Activity Name</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Image</th>
+              <th>Actions</th> {/* New column for Actions */}
+            </tr>
+          </thead>
+          <tbody>
+            {activities.map(activity => {
+              if (!activity.ActivityId) {
+                console.error('Activity missing ID:', activity);
+                return null;
+              }
+              return (
+                <tr key={activity.ActivityId}>
+                  <td>{activity.ActivityName}</td>
+                  <td>{activity.Description}</td>
+                  <td>{activity.Category}</td>
+                  <td>{activity.ImageUrl}</td>
+                  <td>
+                    <button className='act-delete'>Delete</button>
+                    <button className='act-update'>Update</button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

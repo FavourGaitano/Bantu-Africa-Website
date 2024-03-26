@@ -1,10 +1,87 @@
-
 .admin-activity-page {
-    padding: 20px;
-  }
+  margin-top: -40px;
   
-  .admin-activity-page-title {
-    font-size: 24px;
-    margin-bottom: 20px;
+  .admin-add-activity-btn-sec {
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 0px;
+    margin-top: 30px;
+    padding: 15px;
+
+    .admin-activity-btn {
+      padding: 8px;
+      border-radius: 7px;
+      color: white;
+      background-color: #5e292f;
+      border: none;
+    }
   }
-  
+
+  .admin-table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+    max-height: 400px;
+    position: relative;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th, td {
+        padding: 12px;
+        text-align: left;
+        word-break: break-word;
+      }
+
+      th {
+        background-color: #5e292f;
+        color: white;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      img {
+        max-width: 100px;
+        max-height: 100px;
+        width: auto;
+        height: auto;
+        border-radius: 4px;
+      }
+
+      tr {
+        border-bottom: 1px solid #a4a2a2;
+      }
+
+      /* Adjust column widths */
+      td:nth-child(1), th:nth-child(1) { width: 20%; } /* Activity Name */
+      td:nth-child(2), th:nth-child(2) { width: 25%; } /* Description */
+      td:nth-child(3), th:nth-child(3) { width: 15%; } /* Category */
+      td:nth-child(4), th:nth-child(4) { width: 20%; } /* Image */
+      td:nth-child(5), th:nth-child(5) { width: 20%; } /* Actions */
+    }
+
+    .admin-action-buttons {
+      display: flex;
+      gap: 8px; /* Add gap between buttons */
+    }
+
+    .act-delete{
+      background-color: red;
+      padding: 6px 10px;
+      border-radius: 7px;
+      border: none;
+      color: white;
+    }
+    .act-update{
+      background-color: greenyellow;
+      padding: 6px 10px;
+      margin-left: 4px;
+      border-radius: 7px;
+      border: none;
+      color: white;
+    }
+
+  }
+}
