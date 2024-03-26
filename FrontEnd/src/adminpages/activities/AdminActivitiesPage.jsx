@@ -4,6 +4,7 @@ import {
   useGetActivitiesQuery,
   useAddActivityMutation,
   useDeleteActivityMutation,
+  useUpdateActivityMutation,
 } from "../../features/activities/activityApi";
 
 const AdminActivitiesPage = () => {
@@ -15,6 +16,7 @@ const AdminActivitiesPage = () => {
     Category: "",
     ImageUrl: "",
   });
+  const [selectedActivity, setSelectedActivity] = useState(null); // State to hold details of the activity being edited
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -30,44 +32,46 @@ const AdminActivitiesPage = () => {
 
   const [addActivity, { isLoading: isAddingActivity }] =
     useAddActivityMutation();
+  const [deleteActivity] = useDeleteActivityMutation();
+  const [updateActivity] = useUpdateActivityMutation();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleDelete = async (activityId) => {
     try {
-      const { data: addedActivity, error } = await addActivity(newActivity);
-      if (error) {
-        console.error("Error adding activity:", error);
-        // Handle error
-      } else {
-        console.log("Activity added successfully:", addedActivity);
-        setNewActivity({
-          ActivityName: "",
-          Description: "",
-          Category: "",
-          ImageUrl: "",
-        });
-        toggleModal();
-      }
+      await deleteActivity(activityId);
     } catch (error) {
-      console.error("Error adding activity:", error);
+      console.error("Error deleting activity:", error);
       // Handle error
     }
   };
 
-  const [deleteActivity] = useDeleteActivityMutation();
+  const handleUpdate = (activity) => {
+    setSelectedActivity(activity);
+    setNewActivity({
+      ActivityName: activity.ActivityName,
+      Description: activity.Description,
+      Category: activity.Category,
+      ImageUrl: activity.ImageUrl,
+    });
+    toggleModal();
+  };
 
-  const handleDelete = async (activityId) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const { error } = await deleteActivity(activityId);
-      if (error) {
-        console.error("Error deleting activity:", error);
-        // Handle error
+      if (selectedActivity) {
+        await updateActivity({ ...selectedActivity, ...newActivity });
       } else {
-        console.log("Activity deleted successfully:", activityId);
-        // Update UI (if needed) to reflect the deletion
+        await addActivity(newActivity);
       }
+      setNewActivity({
+        ActivityName: "",
+        Description: "",
+        Category: "",
+        ImageUrl: "",
+      });
+      toggleModal();
     } catch (error) {
-      console.error("Error deleting activity:", error);
+      console.error("Error:", error);
       // Handle error
     }
   };
@@ -108,7 +112,12 @@ const AdminActivitiesPage = () => {
                   >
                     Delete
                   </button>
-                  <button className="act-update">Update</button>
+                  <button
+                    className="act-update"
+                    onClick={() => handleUpdate(activity)}
+                  >
+                    Update
+                  </button>
                 </td>
               </tr>
             ))}
@@ -121,7 +130,7 @@ const AdminActivitiesPage = () => {
             <span className="close" onClick={toggleModal}>
               &times;
             </span>
-            <h2>Add New Activity</h2>
+            <h2>{selectedActivity ? "Update" : "Add New"} Activity</h2>
             <form onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="ActivityName">Activity Name:</label>
@@ -169,7 +178,7 @@ const AdminActivitiesPage = () => {
                   type="submit"
                   disabled={isAddingActivity}
                 >
-                  {isAddingActivity ? "Adding..." : "Add Activity"}
+                  {isAddingActivity ? "Adding..." : "Save"}
                 </button>
               </div>
             </form>
@@ -181,5 +190,3 @@ const AdminActivitiesPage = () => {
 };
 
 export default AdminActivitiesPage;
-
-
