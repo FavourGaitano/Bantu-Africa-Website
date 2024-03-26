@@ -1,6 +1,8 @@
+/* Style for the admin activity page */
 .admin-activity-page {
   margin-top: -40px;
-  
+
+  /* Styles for the section containing the add activity button */
   .admin-add-activity-btn-sec {
     display: flex;
     justify-content: space-evenly;
@@ -8,6 +10,7 @@
     margin-top: 30px;
     padding: 15px;
 
+    /* Style for the add activity button */
     .admin-activity-btn {
       padding: 8px;
       border-radius: 7px;
@@ -17,17 +20,19 @@
     }
   }
 
+  /* Styles for the container of the table */
   .admin-table-container {
     margin-top: 20px;
     overflow-x: auto;
     max-height: 400px;
     position: relative;
 
-    table {
+    .activity-table {
       width: 100%;
       border-collapse: collapse;
 
-      th, td {
+      th,
+      td {
         padding: 12px;
         text-align: left;
         word-break: break-word;
@@ -55,26 +60,40 @@
       }
 
       /* Adjust column widths */
-      td:nth-child(1), th:nth-child(1) { width: 20%; } /* Activity Name */
-      td:nth-child(2), th:nth-child(2) { width: 25%; } /* Description */
-      td:nth-child(3), th:nth-child(3) { width: 15%; } /* Category */
-      td:nth-child(4), th:nth-child(4) { width: 20%; } /* Image */
-      td:nth-child(5), th:nth-child(5) { width: 20%; } /* Actions */
+      td:nth-child(1),
+      th:nth-child(1) {
+        width: 20%;
+      } /* Activity Name */
+      td:nth-child(2),
+      th:nth-child(2) {
+        width: 25%;
+      } /* Description */
+      td:nth-child(3),
+      th:nth-child(3) {
+        width: 15%;
+      } /* Category */
+      td:nth-child(4),
+      th:nth-child(4) {
+        width: 20%;
+      } /* Image */
+      td:nth-child(5),
+      th:nth-child(5) {
+        width: 20%;
+      } /* Actions */
     }
-
     .admin-action-buttons {
       display: flex;
-      gap: 8px; /* Add gap between buttons */
+      gap: 8px;
     }
-
-    .act-delete{
+    .act-delete {
       background-color: red;
       padding: 6px 10px;
       border-radius: 7px;
       border: none;
       color: white;
     }
-    .act-update{
+
+    .act-update {
       background-color: greenyellow;
       padding: 6px 10px;
       margin-left: 4px;
@@ -82,6 +101,82 @@
       border: none;
       color: white;
     }
-
   }
+
+  .activity-modal {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    z-index: 9999; 
+    background-color: rgba(0, 0, 0, 0.5); 
+  }
+  
+  .activity-modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 350px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  }
+  
+  .activity-modal-content h2 {
+    margin-bottom: 20px;
+  }
+  
+  .activity-modal-content label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .activity-modal-content input[type="text"],
+  .activity-modal-content input[type="url"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s; 
+  }
+  .close{
+    color: black;
+    font-size: 40px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+  }
+  
+  .activity-modal-content input[type="text"]:focus,
+  .activity-modal-content input[type="url"]:focus {
+    border-color: #5e292f; 
+    outline: none;
+  }
+  
+  .activity-modal-content input[type="submit"] {
+    background-color: #5e292f;
+    color: white;
+    border: none;
+    // padding: 12px 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: backgound-color 0.3s; 
+  }
+  
+  .activity-modal-content input[type="submit"]:hover {
+    background-color: #4a2125; 
+  }
+  
+  .activity-modal-content .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  
 }
