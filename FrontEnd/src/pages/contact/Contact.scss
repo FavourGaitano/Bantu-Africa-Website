@@ -49,12 +49,20 @@
 /* Small Screens: 375px - 767px */
 @media (max-width: 767px) {
   .contact-container {
+    Hero {
+      height: 50vh !important;
+    }
     .contact-items {
       flex-direction: column;
 
       .contact-form-items,
       .contact-items-right {
         width: 100%;
+      }
+
+      .contact-items-right {
+        padding-left: -12% !important;
+        margin-left: 8% !important;
       }
     }
 
