@@ -18,6 +18,7 @@
         border-radius: 10px;
         box-sizing: border-box;
         padding: 30px 40px;
+        position:fixed;
 
         .Admintitle{
             
@@ -78,7 +79,7 @@
                 color: white;
                 cursor: pointer;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-                height:5vh;
+                height:38px;
                 font-size:22.5px;
 
                 &:active{
@@ -87,7 +88,7 @@
 
                 p{
                     position:fixed;
-                    top:68vh;
+                    top:435px;
                     left:48vw;
                     // left: 50vw;
                 }
@@ -107,7 +108,7 @@
 
             .Admingoogle-login-button{
                 position:fixed;
-                width:32.5%;
+                width:520px;
                 border-radius: 20px;
                 box-sizing: border-box;
                 padding: 10px 15px;
@@ -123,7 +124,7 @@
                 background:#281C10;
                 color:white;
                 margin-top:10px;
-                height:5vh;
+                height:40px;
             
                 .google-icon{
                     font-size: 18px;
