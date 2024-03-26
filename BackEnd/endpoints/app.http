@@ -10,10 +10,17 @@ POST http://localhost:8000/api/users
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "FirstName": "Emmanuel",
     "LastName": "Kipsang",
     "Email": "emmqnuelkipsqng@gmail.com",
     "Password": "@Emmanuel123"
+=======
+    "FirstName": "Favour",
+    "LastName": "Gaitano",
+    "Email": "favourgaitano@gmail.com",
+    "Password": "Fa7!"
+>>>>>>> 8807f6b4f8fa49a75c8da0a5ac13d4ecf5bd957c
 }
 
 ### Login user

@@ -39,6 +39,7 @@ const AdminNavbar = () => {
                    
                     <li><a onClick={handledLoggedOut}>Logout</a></li>
                    
+                   
 
 
 
@@ -46,7 +47,7 @@ const AdminNavbar = () => {
             </nav>
             <div className="header-list-icon">
                 <a><i className="fa-solid fa-bell"></i></a>
-                <a><i class="fa-regular fa-user"></i></a>
+                <a><i className="fa-regular fa-user"></i></a>
                 
 
             </div>

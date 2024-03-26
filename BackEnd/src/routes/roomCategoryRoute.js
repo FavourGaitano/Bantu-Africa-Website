@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import { createRoomCategoryController, deleteRoomCategoryController, findRoomCategory, getPriceController, getRoomCategroryByIdController, softDeleteRoomCategoryController, updateRoomCategoryController } from '../controllers/roomCategoryController.js';
-
 const roomCategoryRouter = Router();
 
 roomCategoryRouter.post("/category", findRoomCategory);
