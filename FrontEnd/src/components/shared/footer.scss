@@ -9,7 +9,7 @@
   .content {
     display: flex;
     flex-direction: column;
-    // width: 90vw;
+    // width: 100%;
     margin: 0 auto;
     margin-top: 3%;
     .cards {
@@ -98,11 +98,11 @@
       }
     }
   }
-  @media (max-width: 768px) {
+  @media (min-width: 768px) and (max-width: 1000px) {
     .content {
       // border: 2px solid red;
       display: flex;
-      max-width: 768px;
+      width: 100%;
       .cards {
         // border: 2px solid blue;
         flex-wrap: wrap;
@@ -114,7 +114,7 @@
       }
     }
   }
-  @media (max-width: 375px) {
+  @media (min-width: 320px) and (max-width: 767px) {
     .content {
       // max-width: 375px;
       // border: 2px solid red;

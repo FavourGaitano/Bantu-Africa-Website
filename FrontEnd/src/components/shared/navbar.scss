@@ -38,7 +38,8 @@
     .book {
       font-family: "Futura Std", sans-serif;
       margin-right: 40px;
-      width: 9%;
+      width: 12%;
+      max-width: 120px;
       height: 70%;
       display: flex;
       border-radius: 5px;
@@ -111,7 +112,7 @@
     }
     .menu-items {
       display: flex;
-      width: 80%;
+      width: 75%;
       justify-content: space-between;
       align-items: center;
       // border: 2px solid black;
@@ -127,7 +128,7 @@
       }
     }
   }
-  @media screen and (max-width: 768px) {
+  @media (min-width: 768px) and (max-width: 1000px) {
     // width: 100%;
     // border: 2px solid red;
     .top-banner {
@@ -210,18 +211,20 @@
   }
 
   // Media query for small screens (375px)
-  @media screen and (max-width: 425px) {
+  @media (min-width: 320px) and (max-width: 767px) {
     .top-banner {
       .call {
         margin-left: 5px;
         width: 20%;
+        max-width: 65px;
         // border: 2px solid blue;
-        font-size: 12px;
+        font-size: 10px;
       }
       .book {
         margin-right: 10px;
-        font-size: 12px;
-        width: 27%;
+        font-size: 10px;
+        width: 30%;
+        max-width: 90px;
       }
       .socials {
         margin-right: 10px;
@@ -240,5 +243,3 @@
     }
   }
 }
-
-
