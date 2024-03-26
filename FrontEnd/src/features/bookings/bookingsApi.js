@@ -25,10 +25,18 @@ export const bookingsApi = createApi({
       query: (RoomId) => `booking/room/${RoomId}`,
       providesTags: ["Bookings"],
     }),
+    getPriceOfBooking: builder.mutation({
+      query: (Booking) => ({
+        url: "category/rooms/category/price",
+        method: "POST",
+        body: Booking,
+      }),
+      invalidatesTags: ["Bookings"],
+    }),
     createBooking: builder.mutation({
       query: (newBooking) => ({
         url: "new/booking",
-        method: 'POST',
+        method: "POST",
         body: newBooking,
       }),
       invalidatesTags: ["Bookings"],
@@ -36,7 +44,7 @@ export const bookingsApi = createApi({
     updateBooking: builder.mutation({
       query: (updatedBooking, BookingId) => ({
         url: `booking/update/${BookingId}`,
-        method: 'PUT',
+        method: "PUT",
         body: updatedBooking,
       }),
       invalidatesTags: ["Bookings"],
@@ -44,7 +52,7 @@ export const bookingsApi = createApi({
     deleteBooking: builder.mutation({
       query: (BookingId) => ({
         url: `booking/delete/${BookingId}`,
-        method: 'DELETE',
+        method: "DELETE",
       }),
       invalidatesTags: ["Bookings"],
     }),
@@ -60,4 +68,5 @@ export const {
   useGetBookingsByEmailQuery,
   useGetBookingsByNameQuery,
   useGetBookingsByRoomIdQuery,
+  useGetPriceOfBookingMutation,
 } = bookingsApi;

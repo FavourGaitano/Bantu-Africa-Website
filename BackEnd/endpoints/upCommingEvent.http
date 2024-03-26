@@ -10,7 +10,7 @@ POST http://localhost:8000/api/events
 Content-Type: application/json
 
 {
-    "Name": "Muthigi Festival",
+    "Name": "Mugithi Festival",
     "Description": "This eveny will take place on January",
     "PosterUrl": "https://images.pexels.com/photos/2608516/pexels-photo-2608516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "Date": "2023-01-31"

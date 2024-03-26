@@ -10,11 +10,11 @@ POST http://localhost:8000/api/rooms
 Content-Type: application/json
 
 {
-    "RoomPhotoUrl": "https://thumbs.dreamstime.com/b/living-room-presidential-suite-five-star-hotel-32794047.jpg",
-    "RoomNumber": 1,
-    "Description": "The focal point of the VIP wing, the Presidential Suite offers exceptional comfort and security. A one-bedroom suite overlooking the protected natural wetland.",
-    "RoomCategoryId": "f148bf24-666e-4409-b2cf-a8c526755fc8",
-    "Occupants": 8
+    "RoomPhotoUrl": "https://images.pexels.com/photos/3659683/pexels-photo-3659683.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "RoomNumber": 2,
+    "Description": "The Superior Room offers exceptional comfort and security to the travelling businessman. A one-bedroom suite overlooking the protected natural wetland.",
+    "RoomCategoryId": "46eb9bef-1e92-4635-9be1-85a45134f948",
+    "Occupants": 2
 }
 
 ### //get available rooms

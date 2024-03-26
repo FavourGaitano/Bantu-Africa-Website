@@ -12,21 +12,22 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
   const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
   const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
   const [calendarOpen, setCalendarOpen] = useState(false);
+  const [checkInClicked, setCheckInClicked] = useState(false);
 
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
   const handleDateClick = (day) => {
     const clickedDate = new Date(currentYear, currentMonth, day);
-    console.log("Clicked date:", clickedDate);
+    // console.log("Clicked date:", clickedDate);
     if (!checkInDate) {
       setCheckInDate(clickedDate);
       onDateSelect(clickedDate);
-      console.log("Check-in date selected:", clickedDate);
+      // console.log("Check-in date selected:", clickedDate);
     } else if (!checkOutDate && clickedDate > checkInDate) {
       setCheckOutDate(clickedDate);
       onCheckoutDateSelect(clickedDate);
-      console.log("Check-out date selected:", clickedDate);
+      // console.log("Check-out date selected:", clickedDate);
     }
   };
 
@@ -50,6 +51,7 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
 
   const handleCheckinClick = () => {
     setCalendarOpen(true);
+    setCheckInClicked(true);
   };
 
   return (
@@ -116,10 +118,10 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
                     ? "check-out"
                     : ""
                 }`}
-                onClick={() => handleDateClick(day + 1)}
+                onClick={() => handleDateClick(day)}
                 disabled={!calendarOpen}
               >
-                {day + 1}
+                {day}
               </button>
             ))}
           </div>

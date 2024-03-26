@@ -79,7 +79,7 @@ const Navbar = () => {
         <button
           className="book"
           onClick={() => {
-            navigate("/booking");
+            scrollToTopAndNavigate("/booking");
           }}
         >
           <img src={calendar} alt="no-icon" />

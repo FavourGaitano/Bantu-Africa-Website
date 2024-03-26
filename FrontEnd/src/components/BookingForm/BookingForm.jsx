@@ -56,13 +56,14 @@ const BookingForm = (roomBookedData) => {
       };
       //   console.log("Form data is: ", newBooking);
       const response = await createBooking(newBooking).unwrap();
-      console.log("Response ni: ", response);
+      // console.log("Response ni: ", response);
       LoadingToast(false);
       SuccessToast(response.message);
       reset();
     } catch (error) {
+      LoadingToast(false);
       ErrorToast(error?.data?.message);
-      console.log("Creation Error: ", error);
+      // console.log("Creation Error: ", error);
       return (
         <div>
           <h4>Oops, an error occured!</h4>
@@ -72,7 +73,8 @@ const BookingForm = (roomBookedData) => {
   };
 
   if (isLoading) {
-    return LoadingToast();
+    LoadingToast();
+    return;
   }
   return (
     <div className="BookingForm">
