@@ -84,16 +84,16 @@ const AdminLogin = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="form-container">
-        <p className="title">Welcome back</p>
+      <div className="Adminform-container">
+        <p className="Admintitle">Welcome back</p>
         <div>
           <ToasterContainer />
         </div>
-        <form className="form" onSubmit={handleSubmit(loginUser)}>
+        <form className="Adminform" onSubmit={handleSubmit(loginUser)}>
           <p>Email</p>
           <input
             type="email"
-            className="input"
+            className="Admininput"
             id="Email"
             name="Email"
             {...register("Email")}
@@ -105,7 +105,7 @@ const AdminLogin = () => {
 
           <input
             type="password"
-            className="input"
+            className="Admininput"
             id="Password"
             name="Password"
             {...register("Password")}
@@ -113,13 +113,13 @@ const AdminLogin = () => {
           />
           <p className="errors">{errors.Password?.message}</p>
 
-          <p className="page-link">
-            <span className="page-link-label">Forgot Password?</span>
+          <p className="Adminpage-link">
+            <span className="Adminpage-link-label">Forgot Password?</span>
           </p>
-          <button className="form-btn">Log in</button>
+          <button className="Adminform-btn">Log in</button>
         </form>
-        <div className="buttons-container">
-          <div className="google-login-button">
+        <div className="Adminbuttons-container">
+          <div className="Admingoogle-login-button">
             <svg
               stroke="currentColor"
               fill="currentColor"

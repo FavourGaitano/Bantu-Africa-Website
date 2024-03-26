@@ -7,7 +7,7 @@
 .AdminLogin{
 
 
-    .form-container{
+    .Adminform-container{
 
         width: 600px;
         height: 570px;
@@ -17,7 +17,7 @@
         box-sizing: border-box;
         padding: 30px 40px;
 
-        .title{
+        .Admintitle{
             
             text-align: center;
             margin: 10px 0 30px 0;
@@ -27,7 +27,7 @@
 
         }
 
-        .form{
+        .Adminform{
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -38,7 +38,7 @@
                 font-size:22px; 
             }
             
-            .input{
+            .Admininput{
                 border-radius: 20px;
                 border: 1px solid #c0c0c0;
                 outline: 0 !important;
@@ -47,7 +47,7 @@
                 font-size:19px;
             }
 
-            .page-link{
+            .Adminpage-link{
                 text-decoration: underline;
                 margin: 0;
                 text-align: end;
@@ -56,7 +56,7 @@
                 font-size:29px;
             }
 
-            .page-link-label{
+            .Adminpage-link-label{
                 cursor: pointer;
                 font-size: 17px;
                 font-weight: 500;
@@ -66,8 +66,9 @@
                 }
             }
 
-            .form-btn{
-                padding: 10px 15px;
+            .Adminform-btn{
+                // padding: 10px 15px;
+                padding-inline:15px;
                 border-radius: 20px;
                 border: 0 !important;
                 outline: 0 !important;
@@ -75,7 +76,7 @@
                 color: white;
                 cursor: pointer;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-                height:4.9vh;
+                height:5vh;
                 font-size:22.5px;
 
                 &:active{
@@ -86,7 +87,7 @@
             
         }
 
-        .buttons-container{
+        .Adminbuttons-container{
 
             width: 100%;
             display: flex;
@@ -95,7 +96,7 @@
             margin-top: 20px;
             gap: 15px;  
 
-            .google-login-button{
+            .Admingoogle-login-button{
                 border-radius: 20px;
                 box-sizing: border-box;
                 padding: 10px 15px;
@@ -111,7 +112,7 @@
                 background:#281C10;
                 color:white;
                 margin-top:10px;
-                height:4.9vh;
+                height:5vh;
             
                 .google-icon{
                     font-size: 18px;
