@@ -10,10 +10,10 @@ POST http://localhost:8000/api/rooms
 Content-Type: application/json
 
 {
-    "RoomPhotoUrl": "https://images.pexels.com/photos/3659683/pexels-photo-3659683.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "RoomNumber": 2,
-    "Description": "The Superior Room offers exceptional comfort and security to the travelling businessman. A one-bedroom suite overlooking the protected natural wetland.",
-    "RoomCategoryId": "46eb9bef-1e92-4635-9be1-85a45134f948",
+    "RoomPhotoUrl": "https://images.pexels.com/photos/279746/pexels-photo-279746.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "RoomNumber": 3,
+    "Description": "The Deluxe Room offers exceptional comfort and security to the travelling businessman. A one-bedroom suite overlooking the protected natural wetland.",
+    "RoomCategoryId": "0634f68a-ab25-4872-81e9-4917cbf97b6f",
     "Occupants": 2
 }
 

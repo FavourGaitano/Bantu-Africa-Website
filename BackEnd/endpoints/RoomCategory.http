@@ -38,9 +38,9 @@ Content-Type: application/json
 
 {
     "Name": "Deluxe",
-    "Size": "Double",
-    "MealPlan": "BH",
-    "Price": 80000
+    "Size": "F/Room",
+    "MealPlan": "BB",
+    "Price": 18000
 
 }
 

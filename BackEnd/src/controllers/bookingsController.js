@@ -43,7 +43,7 @@ export const createBooking = async (req, res) => {
     Name,
     Size,
   } = req.body;
-  console.log("Frontend inputs: ", req.body);
+  // console.log("Frontend inputs: ", req.body);
   const { error } = bookingsValidator(req.body);
   if (error) {
     console.log("validation error:", error);
@@ -81,11 +81,10 @@ export const createBooking = async (req, res) => {
       const totalOccupants = AdultsNo + KidsNo;
       if (totalOccupants > roomToBook[0].Occupants) {
         // console.log("Check reached");
-        res
-          .status(400)
-          .send(
-            "The total number of guests exceeds the maximum occupancy for this room. Please select another room."
-          );
+        sendBadRequest(
+          res,
+          "The total number of guests exceeds the maximum occupancy for this room. Please select another room."
+        );
         return;
       }
 
@@ -97,8 +96,11 @@ export const createBooking = async (req, res) => {
         sendNotFound("No room fitting the bill found");
         return;
       }
-      const Total = category.Price;
-      // console.log("Total is: ", Total);
+
+      const stayDuration = Math.abs(new Date(EndDate)) - new Date(StartDate);
+      const days = Math.ceil(stayDuration / (1000 * 60 * 60 * 24));
+      const Total = category.Price * days;
+      console.log("Total is: ", Total);
       const newBooking = {
         BookingId,
         Email,
