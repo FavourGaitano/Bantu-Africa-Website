@@ -10,10 +10,10 @@ POST http://localhost:8000/api/events
 Content-Type: application/json
 
 {
-    "Name": "Mugithi Festival",
-    "Description": "This eveny will take place on January",
+    "Name": "Muthigi Festival 3",
+    "Description": "An upcoming event for Mugithi Night promises an evening filled with vibrant music, lively entertainment, and a celebration of Kenyan culture. Mugithi, a popular music genre originating from the Kikuyu community in Kenya, is characterized by its rhythmic beats, energetic performances, and soulful melodies.",
     "PosterUrl": "https://images.pexels.com/photos/2608516/pexels-photo-2608516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "Date": "2023-01-31"
+    "Date": "2023-05-22"
 }
 
 ### Get one Event

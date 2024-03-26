@@ -40,14 +40,6 @@
       gap: 80px;
       width: 100%;
 
-      &:nth-child(odd) {
-        background-color: #f0efef;
-      }
-
-      &:nth-child(even) {
-        background-color: white;
-      }
-
       .activity-image {
         overflow: hidden;
         height: 45vh;
@@ -97,6 +89,7 @@
           display: flex;
           justify-content: center;
           margin-top: 30px;
+          background-color: inherit;
 
           button {
             background-color: white;
@@ -116,11 +109,50 @@
         }
       }
 
-      &:nth-child(even) {
-        flex-direction: row-reverse;
+      &:nth-child(odd) {
+        background-color: #f0efef;
 
         .activity-description {
           justify-content: center; 
+        }
+      }
+
+      &:nth-child(even) {
+        background-color: white;
+
+        .activity-description {
+          justify-content: center; 
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .activity-section {
+      flex-direction: column;
+
+      .activity {
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+
+        .activity-image,
+        .activity-description {
+          width: 100%;
+          height: auto;
+        }
+
+        .activity-description {
+          padding: 20px;
+        }
+
+        .activity-description .description-name {
+          font-size: 1.2em;
+        }
+
+        .activity-description .desc-btn {
+          margin-top: 20px;
         }
       }
     }
