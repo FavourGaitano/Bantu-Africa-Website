@@ -168,6 +168,23 @@
     cursor: pointer;
     transition: backgound-color 0.3s; 
   }
+
+  .act-btn{
+    display: flex;
+    justify-content: center;
+
+    .activity-add-button{
+      background-color: #5e292f;
+      border-radius: 7px;
+      padding: 8px 11px;
+      display: flex;
+      align-items: center;
+      border: none;
+      color: white;
+    }
+  }
+
+
   
   .activity-modal-content input[type="submit"]:hover {
     background-color: #4a2125; 

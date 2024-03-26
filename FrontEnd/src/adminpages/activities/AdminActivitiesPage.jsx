@@ -27,18 +27,18 @@ const AdminActivitiesPage = () => {
     });
   };
 
-  const [addActivity] = useAddActivityMutation();
+  const [addActivity, { isLoading: isAddingActivity }] =
+    useAddActivityMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("New activity:", newActivity);
     try {
-      const { data, error } = await addActivity(newActivity);
+      const { data: addedActivity, error } = await addActivity(newActivity);
       if (error) {
         console.error("Error adding activity:", error);
         // Handle error
       } else {
-        console.log("Activity added successfully:", data);
+        console.log("Activity added successfully:", addedActivity);
         setNewActivity({
           ActivityName: "",
           Description: "",
@@ -130,14 +130,23 @@ const AdminActivitiesPage = () => {
                 />
               </div>
               <div>
-                <label htmlFor="Category">Image Url:</label>
+                <label htmlFor="ImageUrl">Image Url:</label>
                 <input
                   type="text"
-                  id="Category"
-                  name="Category"
-                  value={newActivity.Category}
+                  id="ImageUrl"
+                  name="ImageUrl"
+                  value={newActivity.ImageUrl}
                   onChange={handleInputChange}
                 />
+              </div>
+              <div className="act-btn">
+                <button
+                  className="activity-add-button"
+                  type="submit"
+                  disabled={isAddingActivity}
+                >
+                  {isAddingActivity ? "Adding..." : "Add Activity"}
+                </button>
               </div>
             </form>
           </div>
