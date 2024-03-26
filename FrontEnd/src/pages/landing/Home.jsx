@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOffersModal(true);
-    }, 30000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
