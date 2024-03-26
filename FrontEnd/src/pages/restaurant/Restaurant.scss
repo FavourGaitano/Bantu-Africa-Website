@@ -1,16 +1,18 @@
 *{
     padding:0;
     margin:0;
+    overflow-x:hidden;
 
     .mainRestaurant{
         padding:0;
         margin:0;
-        width:98.96vw;
+        width:100%;
         overflow-x: hidden;
         position:relative;
+        height:100%;
         
 
-        .image{
+        .restaurant-image{
             margin:0;
             padding:0;
             
@@ -24,14 +26,17 @@
             }
         }
 
-        .descr{
+        .restaurant-descr{
             border:1px solid black;
-            height:82vh;
+            height:83%;
             background-color: #5E292F;
             margin-top:-10px;
             padding:0;
+            overflow-x: hidden;
+            width:100%;
+            padding-bottom:3%;
 
-            .words{
+            .restaurant-words{
                 font-family: "Montserrat";
                 text-align: center;
                 color:#F1F1F1;
@@ -40,9 +45,10 @@
                 font-size:19px;
                 line-height:30px;
                 font-weight:400;
+                overflow-x: hidden;
             }
 
-            .buttons{
+            .restaurant-buttons{
                 
                 display:flex;
                 flex-wrap: wrap;
@@ -64,7 +70,7 @@
                                  
                     cursor: pointer;
                     margin: 35px 0;
-                    width:10%;
+                    width:12%;
                     height:6.5vh;
                 }
                   
@@ -100,18 +106,19 @@
         
     }
     
-    .openhours{
+    .restaurant-openhours{
         background-color: rgba(204, 174, 16, 0.65);
         width: 75vw; 
-        height: 21vh; 
+        height: 15%; 
         position: absolute;
-        top: 51%;
+        top: 47%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 1; 
         padding-inline:50px;
+        overflow-x: hidden;
 
-        .name{
+        .restaurant-name{
             font-family: 'Futura Std';                                                                       
             color:#5B0017;
             font-size:34px;
@@ -119,13 +126,16 @@
             font-weight:400;
             padding-top:58px;
             padding-bottom:35px;
+            overflow-x:hidden;
         }
-        .time{
+        .restaurant-time{
             font-family: 'Futura Std';
             color:#5E292F;
             font-size:20px;
             font-weight:400;
             line-height:19px;
+            overflow-x:hidden;
+            height:15%;
         }
     }
 }
