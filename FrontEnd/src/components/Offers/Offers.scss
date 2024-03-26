@@ -8,6 +8,10 @@
   height: 500px;
   padding: 20px;
 
+  // .offer-main-card{
+  //   background-color: rgb(255, 255, 255);
+  // }
+
   .close-button {
       font-size: 40px;
       font-weight: bolder;
@@ -34,17 +38,19 @@
 
 @media screen and (max-width: 768px) {
   .slide-offers {
-      width: 90%; /* Adjusted width for smaller screens */
-      height: 90%; /* Adjusted height for smaller screens */
-      padding: 10px; /* Adjusted padding for smaller screens */
-      top: 50%; /* Ensure modal is vertically centered */
-      left: 50%; /* Ensure modal is horizontally centered */
-      transform: translate(-50%, -50%); /* Center the modal */
+      width: 90%; 
+      height: 90%; 
+      padding: 10px;
+      top: 50%; 
+      left: 50%;
+      transform: translate(-50%, -50%);
   }
 
   .slide-offers .close-button {
-      top: 5px; /* Adjusted top position for close button */
-      right: 5px; /* Adjusted right position for close button */
-      font-size: 30px; /* Adjusted font size for close button */
+      top: 5px;
+      right: 5px;
+      font-size: 30px;
   }
 }
+
+
