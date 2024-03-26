@@ -1,19 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './AdminNavbar.scss'
 import image from '../../assets/logo.png'
+import { useNavigate } from 'react-router-dom';
 
 
 const AdminNavbar = () => {
+    const navigate = useNavigate();
+
+    const [isLoggedOut,setIsLoggedOut]=useState(false)
+  
+    const handledLoggedOut=()=>{
+      setIsLoggedOut(true)
+      localStorage.removeItem('loggedInUser')
+      navigate('/admin')
+    }
   return (
-    <div className="header">
-        <div className="header-logo">
+    <div className="admin-header">
+        <div className="admin-header-logo">
         <img
                 src={image}
 
                 alt="ola" 
             />
         </div>
-        <div className="container">
+        <div className="admin-container">
             <div className="search-container">
                 <input type="text" className="search-bar" placeholder="Search..."/>
             </div>
@@ -26,10 +36,9 @@ const AdminNavbar = () => {
                     <li><a className="active">Home</a></li>
                     
 
-                    {/* <li ><a>Login</a></li> */}
-                    {/* <li><a>Register</a></li> */}
-                    <li><a>Logout</a></li>
-                    {/* <li><a>Orders</a></li> */}
+                   
+                    <li><a onClick={handledLoggedOut}>Logout</a></li>
+                   
 
 
 

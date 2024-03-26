@@ -8,6 +8,7 @@ import { BsInstagram } from "react-icons/bs";
 import "./navbar.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import NavbarDropdown from "./NavbarDropdown";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -59,6 +60,7 @@ const Navbar = () => {
       text: "Contact Us",
     },
   ];
+
   return (
     <div className="navbar">
       <div className="top-banner">
@@ -99,18 +101,16 @@ const Navbar = () => {
           </div>
         </div>
         <div className="menu-items">
-          {navItems &&
-            navItems.map((item, index) => (
-              <NavLink key={index} to={item.path} style={{textDecorationLine:"none"}}>
-                <span style={{textDecorationLine:"none"}}>
-                  <h6 >
-                    {item.text}
-                  </h6>
-                </span>
-              </NavLink>
-            ))}
+          {navItems.map((item, index) => (
+            <NavLink key={index} to={item.path} style={{ textDecorationLine: "none" }}>
+              <span style={{ textDecorationLine: "none" }}>
+                <h6>{item.text}</h6>
+              </span>
+            </NavLink>
+          ))}
         </div>
       </div>
+      {/* <NavbarDropdown text1={"All Activities"} text2={"Adults"} text3={"Kids"} /> */}
     </div>
   );
 };

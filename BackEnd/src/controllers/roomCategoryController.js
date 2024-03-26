@@ -33,8 +33,12 @@ export const getCategoriesController = async (req, res) => {
             sendServerError(res, error.message);
         }
     }
+
+} catch (error) {
+  sendServerError(res, error.message);
 }
 }
+
 
 export const getPriceController=async(req, res)=>{
     try {

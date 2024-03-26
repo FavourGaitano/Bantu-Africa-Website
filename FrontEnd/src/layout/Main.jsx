@@ -15,6 +15,7 @@ import Contact from "../pages/contact/Contact";
 import Meeting from "../pages/Meetings/Meeting";
 import Footer from "../components/shared/Footer";
 import Navbar from "../components/shared/Navbar";
+import AllActivitiesPage from "../pages/Activities/All/AllActivitiesPage";
 
 const Main = () => {
   return (
@@ -27,6 +28,7 @@ const Main = () => {
         <Route path="/restaurant" element={<Restaurant />} />
         <Route path="/activities/adult" element={<AdultsActivitiesPage />} />
         <Route path="/activities/kid" element={<KidsActivitiesPage />} />
+        <Route path="/activities" element={<AllActivitiesPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/meetings" element={<Meeting />} />
         <Route path="/event" element={<Event />} />
