@@ -34,15 +34,9 @@ const AdminNavbar = () => {
                 <ul>
 
                     <li><a className="active">Home</a></li>
-                    
-
-                   
+              
                     <li><a onClick={handledLoggedOut}>Logout</a></li>
                    
-                   
-
-
-
                 </ul>
             </nav>
             <div className="header-list-icon">

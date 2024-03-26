@@ -1,3 +1,4 @@
+// AdminActivitiesPage.js
 
 import React, { useEffect } from 'react';
 import AdminTable from '../../components/AdminTable/AdminTable';
@@ -16,12 +17,16 @@ const AdminActivitiesPage = () => {
 
   return (
     <div className='admin-activity-page'>
-      <h2 className="admin-activity-page-title">This is admin Activities page</h2>
+      <h2 className="admin-activity-page-title">This is admin Activities page</h2> {/* Added class */}
       <AdminTable
-        thead2="Activity Name"
-        thead3="Category"
-        thead4="Description"
-        thead5="Image Url"
+        thead1="Activity Name"
+        thead2="Category"
+        thead3="Description"
+        thead4="Image Url"
+        // tbody1={activities.map(activity => activity.ActivityName)}
+        // tbody2={activities.map(activity => activity.Category)}
+        // tbody3={activities.map(activity => activity.Description)}
+        // tbody4={activities.map(activity => activity.ImageUrl)}
       />
     </div>
   );
