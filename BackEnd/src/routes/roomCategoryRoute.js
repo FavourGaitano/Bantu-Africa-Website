@@ -1,22 +1,9 @@
-<<<<<<< HEAD
 import { Router } from 'express';
-import { createRoomCategoryController, deleteRoomCategoryController, findRoomCategory, getCategoriesController, getPriceController, getRoomCategroryByIdController, softDeleteRoomCategoryController, updateRoomCategoryController } from '../controllers/roomCategoryController.js';
-=======
-import { Router } from "express";
-import {
-  createRoomCategoryController,
-  deleteRoomCategoryController,
-  findRoomCategory,
-  getCategoriesController,
-  getRoomCategroryByIdController,
-  softDeleteRoomCategoryController,
-  updateRoomCategoryController,
-} from "../controllers/roomCategoryController.js";
->>>>>>> c335ed8f217674c353f55063c4c8d53047078678
+import { createRoomCategoryController, deleteRoomCategoryController, findRoomCategory, getPriceController, getRoomCategroryByIdController, softDeleteRoomCategoryController, updateRoomCategoryController } from '../controllers/roomCategoryController.js';
 const roomCategoryRouter = Router();
 
 roomCategoryRouter.post("/category", findRoomCategory);
-roomCategoryRouter.get("/rooms/category", getCategoriesController);
+// roomCategoryRouter.get("/rooms/category", getCategoriesController);
 roomCategoryRouter.post("/rooms/category", createRoomCategoryController);
 roomCategoryRouter.post('/rooms/category/price', getPriceController);
 
@@ -37,11 +24,4 @@ roomCategoryRouter.delete(
   deleteRoomCategoryController
 );
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> c335ed8f217674c353f55063c4c8d53047078678
 export default roomCategoryRouter;

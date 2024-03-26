@@ -39,7 +39,7 @@ export const getPriceController=async(req, res)=>{
       return res.status(500).json({ error: "Internal server error." });
     }
   }
-};
+
 
 export const findRoomCategory = async (req, res) => {
   const { Name, MealPlan, Size } = req.body;
