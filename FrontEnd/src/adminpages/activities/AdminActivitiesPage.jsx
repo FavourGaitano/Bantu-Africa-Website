@@ -3,6 +3,7 @@ import "./AdminActivitiesPage.scss";
 import {
   useGetActivitiesQuery,
   useAddActivityMutation,
+  useDeleteActivityMutation,
 } from "../../features/activities/activityApi";
 
 const AdminActivitiesPage = () => {
@@ -53,6 +54,24 @@ const AdminActivitiesPage = () => {
     }
   };
 
+  const [deleteActivity] = useDeleteActivityMutation();
+
+  const handleDelete = async (activityId) => {
+    try {
+      const { error } = await deleteActivity(activityId);
+      if (error) {
+        console.error("Error deleting activity:", error);
+        // Handle error
+      } else {
+        console.log("Activity deleted successfully:", activityId);
+        // Update UI (if needed) to reflect the deletion
+      }
+    } catch (error) {
+      console.error("Error deleting activity:", error);
+      // Handle error
+    }
+  };
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
@@ -83,7 +102,12 @@ const AdminActivitiesPage = () => {
                 <td>{activity.Category}</td>
                 <td>{activity.ImageUrl}</td>
                 <td>
-                  <button className="act-delete">Delete</button>
+                  <button
+                    className="act-delete"
+                    onClick={() => handleDelete(activity.ActivityId)}
+                  >
+                    Delete
+                  </button>
                   <button className="act-update">Update</button>
                 </td>
               </tr>
@@ -157,3 +181,5 @@ const AdminActivitiesPage = () => {
 };
 
 export default AdminActivitiesPage;
+
+
