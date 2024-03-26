@@ -21,7 +21,7 @@ Get http://localhost:8000/api/events/single/255e16f4-f2a7-4255-9e51-98308826754e
 
 ### Delete Event
 
-Delete http://localhost:8000/api/events/delete/1b00743b-a407-4ee8-9bd7-f50e08c20b43
+Delete http://localhost:8000/api/events/delete/255e16f4-f2a7-4255-9e51-98308826754e
 
 ### Update Event
 

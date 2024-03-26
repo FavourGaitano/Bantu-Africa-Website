@@ -6,7 +6,7 @@
 .main {
   .form-container {
     max-width: 600px;
-    margin: 30px;
+    margin: 8% 0 8% 4%;
     background-color: #5e292f;
     padding: 30px;
     border-left: 5px solid #ccae10;
@@ -22,8 +22,8 @@
       .heading {
         display: block;
         color: white;
-        font-size: 1.5rem;
-        font-weight: 800;
+        font-size: 34px;
+        font-weight: 400;
         margin-bottom: 20px;
       }
 
@@ -121,6 +121,17 @@
           color: #3f2024;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .form-container {
+    width: 92%;
+    margin: 10% 3% 8% 3%;
+
+    .form {
+      width: 100% !important;
     }
   }
 }
