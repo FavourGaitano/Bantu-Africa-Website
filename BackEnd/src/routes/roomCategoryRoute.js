@@ -3,7 +3,7 @@ import {
   createRoomCategoryController,
   deleteRoomCategoryController,
   findRoomCategory,
-  getCategoriesController,
+  // getCategoriesController,
   getRoomCategroryByIdController,
   softDeleteRoomCategoryController,
   updateRoomCategoryController,
@@ -11,7 +11,7 @@ import {
 const roomCategoryRouter = Router();
 
 roomCategoryRouter.post("/category", findRoomCategory);
-roomCategoryRouter.get("/rooms/category", getCategoriesController);
+// roomCategoryRouter.get("/rooms/category", getCategoriesController);
 roomCategoryRouter.post("/rooms/category", createRoomCategoryController);
 roomCategoryRouter.put(
   "/rooms/category/update/:RoomCategoryId",
