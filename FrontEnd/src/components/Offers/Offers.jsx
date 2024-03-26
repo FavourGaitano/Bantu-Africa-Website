@@ -45,7 +45,7 @@ const Offers = ({ onClose }) => {
 
             <Slider {...settings}>
               {offers.map((offer) => (
-                <div key={offer.id}>
+                <div className="offer-main-card" key={offer.id}>
                   <div className="offer-card">
                     <img
                       src={offer.OfferImageUrl}
