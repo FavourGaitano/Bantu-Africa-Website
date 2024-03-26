@@ -33,12 +33,13 @@
     .admin-container{
 
         font-family: 'Futura Std';  
-        margin: 0;
+        // margin: 0;
         display: flex;
         justify-content: flex;
         align-items: center;
         height: 27px;
-        margin-left:-7vw;
+        // margin-right:-10vw;
+        margin-top:-4.5vh;
 
         .Adminsearch-container{
 
@@ -53,6 +54,8 @@
                 border-radius: 20px;
                 background-color: rgba(255, 255, 255, 0.9);
                 outline: none;
+                position:fixed;
+               
                 
 
 
@@ -64,14 +67,15 @@
 
     }
 
-    .header-list{
+    .admin-header-list{
+        
 
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
 
-        .header-list-nav{
+        .admin-header-list-nav{
 
             font-family: 'Futura Std';
 
