@@ -55,4 +55,4 @@ Content-Type: application/json
 }
 
 ### Delete Booking
-DELETE http://localhost:8000/api/booking/delete/6f8cccde-f462-41db-8966-c7c6720b1b3a
+DELETE http://localhost:8000/api/booking/delete/171846a2-b2a9-45d9-8195-486635bd2e12

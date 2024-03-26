@@ -3,16 +3,14 @@ import "./Restaurant.scss";
 import RestaurantContent from "../../components/restaurant/RestaurantContent";
 import image from "../../assets/Restaurant/image 8.png";
 import Navbar from "../../components/shared/Navbar";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Restaurant = () => {
-
   const navigate = useNavigate();
 
   const handleMenuClick = () => {
-    navigate('/Menu'); 
+    navigate("/Menu");
   };
-
 
   return (
     <div className="mainRestaurant">
@@ -33,7 +31,9 @@ const Restaurant = () => {
         </div>
         <div className="restaurant-buttons">
           <button className="btn1">Offers</button>
-          <button className="btn2" onClick={handleMenuClick}>Our Menu</button>
+          <button className="btn2" onClick={handleMenuClick}>
+            Our Menu
+          </button>
           <button className="btn1">Enquiries</button>
         </div>
       </div>
