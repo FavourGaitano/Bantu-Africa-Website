@@ -56,9 +56,11 @@ export const getRoomByIdService = async (RoomId) => {
 
 export const getRoomByCategoryService = async (Name) => {
   try {
-    const singleReturnedRoom = await poolRequest()
-      .input("Name", sql.VarChar, Name)
-      .query(`
+    const singleReturnedRoom = await poolRequest().input(
+      "Name",
+      sql.VarChar,
+      Name
+    ).query(`
         SELECT Room.*, RoomCategory.Name , RoomCategory.Size, RoomCategory.MealPlan, RoomCategory.Price
         FROM Room 
         INNER JOIN RoomCategory ON Room.RoomCategoryId = RoomCategory.RoomCategoryId
@@ -126,12 +128,12 @@ export const getRoomsAvailableForBookingService = async (Booking) => {
               FROM Bookings b
               WHERE b.RoomId = r.RoomId
               AND (
-                  b.EndDate >= @StartDate AND
-                  b.StartDate <= @EndDate
+                  b.EndDate > @StartDate AND
+                  b.StartDate < @EndDate
               )
           )
           `);
-    console.log(availableRooms.recordset);
+    console.log("Available: ", availableRooms.recordset);
     return availableRooms.recordset;
   } catch (error) {
     console.error("Error fetching available rooms:", error);

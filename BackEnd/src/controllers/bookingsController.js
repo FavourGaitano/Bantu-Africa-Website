@@ -46,7 +46,7 @@ export const createBooking = async (req, res) => {
   console.log("Frontend inputs: ", req.body);
   const { error } = bookingsValidator(req.body);
   if (error) {
-    console.log("validation error:", error);
+    // console.log("validation error:", error);
     return res.status(400).send("Invalid inputs");
   } else {
     try {
@@ -81,23 +81,25 @@ export const createBooking = async (req, res) => {
       const totalOccupants = AdultsNo + KidsNo;
       if (totalOccupants > roomToBook[0].Occupants) {
         // console.log("Check reached");
-        res
-          .status(400)
-          .send(
-            "The total number of guests exceeds the maximum occupancy for this room. Please select another room."
-          );
+        sendBadRequest(
+          res,
+          "The total number of guests exceeds the maximum occupancy for this room. Please select another room."
+        );
         return;
       }
 
       const IsReserved = true;
       const IsPaid = false;
       const category = await findRoomCategoryService({ Name, MealPlan, Size });
-      console.log("Category is: ", category);
+      // console.log("Category is: ", category);
       if (!category) {
         sendNotFound("No room fitting the bill found");
         return;
       }
-      const Total = category.Price;
+
+      const stayDuration = Math.abs(new Date(EndDate)) - new Date(StartDate);
+      const days = Math.ceil(stayDuration / (1000 * 60 * 60 * 24));
+      const Total = category.Price * days;
       // console.log("Total is: ", Total);
       const newBooking = {
         BookingId,
@@ -116,6 +118,8 @@ export const createBooking = async (req, res) => {
         IsReserved,
         IsPaid,
       };
+
+      console.log("Service will get: ", newBooking);
 
       const response = await createBookingService(newBooking);
       if (response.message) {
@@ -256,15 +260,18 @@ export const getBookingByRoomId = async (req, res) => {
   //   console.log(req.params);
   try {
     const data = await getBookingsByRoomIdService(RoomId);
-    console.log("data ni: ", data);
+    // console.log("data ni: ", data);
     if (!data || data === undefined) {
       sendNotFound(res, "No booking found");
     } else {
       res.status(200).json(data);
     }
   } catch (error) {
-    console.log(error);
-    sendServerError(res, error);
+    // console.log(error);
+    sendServerError(
+      res,
+      "Our systems are under maintenance at the moment. Please try again later"
+    );
   }
 };
 
@@ -347,7 +354,7 @@ export const updateBooking = async (req, res) => {
         if (IsPaid) {
           updatedBooking.IsPaid = IsPaid;
           if (IsPaid == true) {
-            console.log("Room id is:", RoomId);
+            // console.log("Room id is:", RoomId);
             await isAvailableService(RoomId);
           }
         }
@@ -365,7 +372,7 @@ export const updateBooking = async (req, res) => {
           return;
         }
         if (!roomToBook.isAvailable) {
-          console.log("Entered date check");
+          // console.log("Entered date check");
           res
             .status(400)
             .send(
