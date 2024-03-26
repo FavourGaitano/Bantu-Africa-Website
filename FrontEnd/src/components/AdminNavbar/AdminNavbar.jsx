@@ -28,9 +28,9 @@ const AdminNavbar = () => {
                 <input type="text" className="Adminsearch-bar" placeholder="Search..."/>
             </div>
         </div>
-        <div className="header-list">
+        <div className="admin-header-list">
 
-            <nav className="header-list-nav">
+            <nav className="admin-header-list-nav">
                 <ul>
 
                     <li><a className="active">Home</a></li>
