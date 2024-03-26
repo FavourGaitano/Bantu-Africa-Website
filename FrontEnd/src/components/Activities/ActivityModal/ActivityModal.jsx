@@ -1,11 +1,11 @@
 // Modal.jsx
 import React from "react";
-
-const Modal = ({ isOpen, onClose, activity }) => {
+import './ActivityModal.scss'
+const ActivityModal = ({ isOpen, onClose, activity }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
+    <div className="activity-modal-overlay">
       <div className="modal-content">
         <button className="close-button" onClick={onClose}>
           &times;
@@ -22,4 +22,4 @@ const Modal = ({ isOpen, onClose, activity }) => {
   );
 };
 
-export default Modal;
+export default ActivityModal;

@@ -12,6 +12,11 @@ const MarketingCards = () => {
   const links = ["/restaurant", "/room", "/activities/adult"];
   const navigate = useNavigate();
 
+  const scrollToTopAndNavigate = (path) => {
+    window.scrollTo(0, 0);
+    navigate(path);
+  };
+
   if (Loading || isLoading) {
     return LoadingToast();
   }
@@ -40,23 +45,12 @@ const MarketingCards = () => {
             <div className="desc">
               <h4>{item.ServiceName}</h4>
               <p>{item.Description}</p>
-              <button onClick={() => navigate(`${links[index]}`)}>
+              <button onClick={() => scrollToTopAndNavigate(`${links[index]}`)}>
                 FIND OUT MORE
               </button>
             </div>
           </div>
         ))}
-
-      {/* <div className="cuisine-card">
-        <div className="image">
-          <img src={food} alt="no-img" loading="lazy" />
-        </div>
-        <div className="desc">
-          <h4>Cuisine</h4>
-          <p>{cuisineDesc}</p>
-          <button>FIND OUT MORE</button>
-        </div>
-      </div> */}
     </div>
   );
 };

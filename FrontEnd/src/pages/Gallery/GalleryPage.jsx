@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./GalleryPage.scss";
+import LazyLoad from 'react-lazyload';
+
 import {
   useGetPicturesQuery,
   useGetPictureByCategoryQuery,
@@ -67,6 +69,7 @@ const GalleryPage = () => {
                   <p>{image.Description}</p>
                 </div>
               </div>
+               
             ))}
         </div>
       </div>
