@@ -20,20 +20,24 @@ import {
   updateCategoryRoomValidator,
 } from "../validators/roomCategoryValidator.js";
 
-export const getPriceController = async (req, res) => {
-  try {
-    const { Name, MealPlan, Size } = req.body;
 
-    if (!Name || !MealPlan || !Size) {
-      return res.status(400).json({ error: "Missing required parameters." });
+
+
+export const getPriceController=async(req, res)=>{
+    try {
+      const { Name, MealPlan, Size } = req.body;
+  
+      if (!Name || !MealPlan || !Size) {
+        return res.status(400).json({ error: "Missing required parameters." });
+      }
+  
+      const price = await getPriceByNameMealPlanAndSize(Name, MealPlan, Size);
+  
+      return res.status(200).json({ price });
+    } catch (error) {
+      console.error("Error in getPriceController:", error);
+      return res.status(500).json({ error: "Internal server error." });
     }
-
-    const price = await getPriceByNameMealPlanAndSize(Name, MealPlan, Size);
-
-    return res.status(200).json({ price });
-  } catch (error) {
-    console.error("Error in getPriceController:", error);
-    return res.status(500).json({ error: "Internal server error." });
   }
 };
 
