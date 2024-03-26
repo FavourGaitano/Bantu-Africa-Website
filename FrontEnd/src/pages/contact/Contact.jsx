@@ -12,20 +12,20 @@ const Contact = () => {
       <div className="contact-items">
         <div className="contact-form-items">
           <ContactUsForm />
-          <div class="info-card">
-            <h2>REACH US THROUGH:</h2>
-            <div class="contact-method">
-              <h4>PHONE</h4>
-              <p>+254 768497841 / 0768497840</p>
-            </div>
-            <div class="contact-method">
-              <h4>Email</h4>
-              <p>reservations@bantuafrica.co.ke</p>
-            </div>
-          </div>
         </div>
         <div className="contact-items-right">
           <EventImageCard roomImg={EventImage} />
+        </div>
+      </div>
+      <div class="info-card">
+        <h2>REACH US THROUGH:</h2>
+        <div class="contact-method">
+          <h4>PHONE</h4>
+          <p>+254 768497841 / 0768497840</p>
+        </div>
+        <div class="contact-method">
+          <h4>Email</h4>
+          <p>reservations@bantuafrica.co.ke</p>
         </div>
       </div>
     </div>

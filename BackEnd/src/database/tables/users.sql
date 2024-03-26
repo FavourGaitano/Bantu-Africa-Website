@@ -8,3 +8,7 @@ CREATE TABLE Users (
 	CreatedAt datetime NOT NULL DEFAULT GETDATE(),
 	IsConfirmed BIT NOT NULL DEFAULT 0
 ); 
+
+SELECT * FROM Users
+
+DROP table Users
