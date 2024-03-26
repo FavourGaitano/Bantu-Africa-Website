@@ -3,9 +3,9 @@
     margin:0;
     font-family: 'Futura Std';
 }
-.Adminheader{
+.admin-header{
     
-    height:5vh;
+    // height:5vh;
     // width:90vw;
 
     display: flex;
@@ -21,7 +21,7 @@
     right: 0;
     flex-wrap: wrap;
     
-    .header-logo{
+    .admin-header-logo{
         img{
             width:60px;
             padding-left:30px;
@@ -30,7 +30,7 @@
 
     }
 
-    .container{
+    .admin-container{
 
         font-family: 'Futura Std';  
         margin: 0;
@@ -51,7 +51,7 @@
                 padding: 10px;
                 border: none;
                 border-radius: 20px;
-                background-color: rgba(255, 255, 255, 0.9); /* Use rgba for transparent background */
+                background-color: rgba(255, 255, 255, 0.9);
                 outline: none;
                 
 

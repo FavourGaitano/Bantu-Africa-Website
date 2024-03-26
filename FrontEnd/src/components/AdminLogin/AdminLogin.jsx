@@ -55,7 +55,7 @@ const AdminLogin = () => {
         // setLoginSuccess("Logged In successfully!");
 
         setTimeout(() => {
-          navigate("/dashboard");
+          navigate("dash/");
         }, 2000);
       } else {
         setLoginSuccess("");

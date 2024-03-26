@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./AdultsActivities.scss";
 import { useGetAdultsActivitiesQuery } from "../../../features/activities/activityApi";
-import Modal from "../ActivityModal/ActivityModal";
+import ActivityModal from "../ActivityModal/ActivityModal";
 
 const AdultsActivities = () => {
   const {
@@ -29,24 +29,24 @@ const AdultsActivities = () => {
   }
 
   return (
-    <div className="activities">
-      <div className="activity-title">
+    <div className="adult-activities">
+      <div className="adult-activity-title">
         <h1>ADULTS ACTIVTIES</h1>
       </div>
-      <div className="activity-section">
+      <div className="adult-activity-section">
         {adultsActivities.map((activity) => (
-          <div key={activity.ActivityId} className="activity">
-            <div className="activity-image">
+          <div key={activity.ActivityId} className="adult-activity">
+            <div className="adult-activity-image">
               <img src={activity.ImageUrl} alt="No image found" />
             </div>
-            <div className="activity-description">
-              <div className="description-name">
+            <div className="adult-activity-description">
+              <div className="adult-description-name">
                 <h3>{activity.ActivityName}</h3>
               </div>
-              <div className="description-text">
+              <div className="adult-description-text">
                 <p>{activity.Description}</p>
               </div>
-              <div className="desc-btn">
+              <div className="adult-desc-btn">
                 <button onClick={() => handleOpenModal(activity)}>
                   FIND MORE
                 </button>
@@ -56,7 +56,7 @@ const AdultsActivities = () => {
         ))}
       </div>
 
-      <Modal
+      <ActivityModal
         isOpen={selectedActivity !== null}
         onClose={handleCloseModal}
         activity={selectedActivity}

@@ -20,10 +20,9 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-
     .room-superior-content,
     .room-deluxe-content {
-      width: 90%;
+      width: 100%;
       display: flex;
       margin: auto;
       padding: 1rem 2.5rem;
@@ -66,9 +65,8 @@
         gap: 1rem;
         margin: 3rem 0;
         opacity: 0; 
-  
         animation: fadeIn 1s ease-in-out forwards;
-  
+        width: 35vw;
         @keyframes fadeIn {
           from {
             opacity: 0;
