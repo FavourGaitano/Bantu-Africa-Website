@@ -1,16 +1,20 @@
 *{
     padding:0;
     margin:0;
+    
 
 }
 .mainSideBar{
-    height:100vh;
+    
     width:20%;
-    position:fixed;
+    // position:fixed;
     top:0.4px;
         
     .admin-sidebar{
-        overflow: hidden;
+        height:100%;
+        position:fixed;
+        overflow-y:auto;
+        // overflow: hidden;
         top: 0;
         left: 0;
         background-color: #3D3327;
@@ -28,6 +32,7 @@
         .admin-sidebar-content{
 
             a{
+                
                 font-family: 'Futura Std';
                 font-weight:400;
                 padding: 7px 30px;
