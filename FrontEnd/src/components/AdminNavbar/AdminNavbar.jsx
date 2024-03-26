@@ -24,8 +24,8 @@ const AdminNavbar = () => {
             />
         </div>
         <div className="admin-container">
-            <div className="search-container">
-                <input type="text" className="search-bar" placeholder="Search..."/>
+            <div className="Adminsearch-container">
+                <input type="text" className="Adminsearch-bar" placeholder="Search..."/>
             </div>
         </div>
         <div className="header-list">
