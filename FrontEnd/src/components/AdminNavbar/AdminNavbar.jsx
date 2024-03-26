@@ -26,10 +26,9 @@ const AdminNavbar = () => {
                     <li><a className="active">Home</a></li>
                     
 
-                    {/* <li ><a>Login</a></li> */}
-                    {/* <li><a>Register</a></li> */}
+                 
                     <li><a>Logout</a></li>
-                    {/* <li><a>Orders</a></li> */}
+                    
 
 
 
@@ -37,7 +36,7 @@ const AdminNavbar = () => {
             </nav>
             <div className="header-list-icon">
                 <a><i className="fa-solid fa-bell"></i></a>
-                <a><i class="fa-regular fa-user"></i></a>
+                <a><i className="fa-regular fa-user"></i></a>
                 
 
             </div>
