@@ -113,7 +113,7 @@ const Event = () => {
           </Carousel>
 
           <div className="participate-event">
-            <h2>PARTICIPATE IN OUR EVENTS</h2>
+            <h3>PARTICIPATE IN OUR EVENTS</h3>
 
             <div>
               <ParticipateEvent />

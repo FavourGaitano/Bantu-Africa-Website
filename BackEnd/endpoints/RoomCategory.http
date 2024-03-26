@@ -23,7 +23,7 @@ Content-Type: application/json
 
 {
     "Name": "Presidential",
-    "Size": "single",
+    "Size": "F/Room",
     "MealPlan": "FB",
     "Price": 100000
 }
@@ -38,9 +38,9 @@ Content-Type: application/json
 
 {
     "Name": "Deluxe",
-    "Size": "Double",
-    "MealPlan": "BH",
-    "Price": 80000
+    "Size": "F/Room",
+    "MealPlan": "BB",
+    "Price": 18000
 
 }
 
@@ -79,7 +79,7 @@ POST http://localhost:8000/api/category/rooms/category/price
 Content-Type: application/json
 
 {
-    "Name": "Standar",
-    "Size": "Double",
+    "Name": "Presidential",
+    "Size": "F/Room",
     "MealPlan": "FB"
 }
