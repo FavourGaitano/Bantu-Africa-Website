@@ -8,6 +8,7 @@ import { ErrorToast, LoadingToast, SuccessToast } from "../shared/Toaster";
 import { useNavigate } from "react-router-dom";
 
 const BookingForm = (roomBookedData) => {
+  console.log("Booking form receives: ", roomBookedData);
   const navigate = useNavigate();
   const [createBooking, { isLoading }] = useCreateBookingMutation();
   const schema = yup.object().shape({
@@ -47,14 +48,15 @@ const BookingForm = (roomBookedData) => {
       const newBooking = {
         ...data,
         AdultsNo,
-        StartDate,
-        EndDate,
+        StartDate: StartDate,
+        EndDate: EndDate,
         KidsNo,
         Size,
         MealPlan,
         Name,
       };
-      //   console.log("Form data is: ", newBooking);
+
+      console.log("Form data is: ", newBooking);
       const response = await createBooking(newBooking).unwrap();
       // console.log("Response ni: ", response);
       LoadingToast(false);

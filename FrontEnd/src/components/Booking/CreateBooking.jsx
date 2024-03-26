@@ -218,6 +218,10 @@ const CreateBooking = () => {
           onDateSelect={handleCheckinDateSelect}
           onCheckoutDateSelect={handleCheckoutDateSelect}
         />
+        {console.log("CheckIn: ", checkinDate)}
+        {console.log("CheckIn: ", checkinDate)}
+
+        {console.log(handleCheckoutDateSelect)}
         <div className="button-container">
           <button type="submit" className="confirm-button">
             Book
@@ -225,7 +229,7 @@ const CreateBooking = () => {
         </div>
       </form>
       <div className="personal-details">
-        <BookingForm data={bookingData} />
+        {bookingData && <BookingForm data={bookingData} />}
         {bookingData && <BookingList data={bookingData} />}
       </div>
     </div>

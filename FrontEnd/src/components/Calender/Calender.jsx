@@ -4,6 +4,7 @@ import {
   IoChevronBackCircleOutline,
   IoChevronForwardCircleOutline,
 } from "react-icons/io5";
+import { ErrorToast } from "../shared/Toaster";
 
 const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
   const currentDate = new Date();
@@ -12,22 +13,26 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
   const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
   const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
   const [calendarOpen, setCalendarOpen] = useState(false);
-  const [checkInClicked, setCheckInClicked] = useState(false);
 
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
   const handleDateClick = (day) => {
     const clickedDate = new Date(currentYear, currentMonth, day);
-    // console.log("Clicked date:", clickedDate);
+    console.log("Clicked date:", clickedDate);
+    const today = new Date();
+    if (new Date(clickedDate) < today) {
+      ErrorToast("You cannot select a past date");
+      return;
+    }
     if (!checkInDate) {
       setCheckInDate(clickedDate);
       onDateSelect(clickedDate);
-      // console.log("Check-in date selected:", clickedDate);
+      console.log("Check-in date selected:", clickedDate);
     } else if (!checkOutDate && clickedDate > checkInDate) {
       setCheckOutDate(clickedDate);
       onCheckoutDateSelect(clickedDate);
-      // console.log("Check-out date selected:", clickedDate);
+      console.log("Check-out date selected:", clickedDate);
     }
   };
 
@@ -51,7 +56,6 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
 
   const handleCheckinClick = () => {
     setCalendarOpen(true);
-    setCheckInClicked(true);
   };
 
   return (
@@ -92,6 +96,10 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
             <span className="day">Fri</span>
             <span className="day">Sat</span>
             <span className="day">Sun</span>
+            {console.log("Current Year:", currentYear)}
+            {console.log("Current Month:", currentMonth)}
+            {console.log("Days in Month:", daysInMonth)}
+            {console.log("First Day of Month:", firstDayOfMonth)}
             {[...Array(firstDayOfMonth).keys()].map((_, index) => (
               <button
                 type="button"
@@ -118,10 +126,10 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
                     ? "check-out"
                     : ""
                 }`}
-                onClick={() => handleDateClick(day)}
+                onClick={() => handleDateClick(day + 1)}
                 disabled={!calendarOpen}
               >
-                {day}
+                {day + 1}
               </button>
             ))}
           </div>
