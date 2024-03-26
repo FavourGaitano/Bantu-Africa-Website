@@ -1,16 +1,9 @@
-import { Router } from "express";
-import {
-  createRoomCategoryController,
-  deleteRoomCategoryController,
-  findRoomCategory,
-  getPriceController,
-  getRoomCategroryByIdController,
-  softDeleteRoomCategoryController,
-  updateRoomCategoryController,
-} from "../controllers/roomCategoryController.js";
+import { Router } from 'express';
+import { createRoomCategoryController, deleteRoomCategoryController, findRoomCategory, getPriceController, getRoomCategroryByIdController, softDeleteRoomCategoryController, updateRoomCategoryController } from '../controllers/roomCategoryController.js';
 const roomCategoryRouter = Router();
 
 roomCategoryRouter.post("/category", findRoomCategory);
+// roomCategoryRouter.get("/rooms/category", getCategoriesController);
 roomCategoryRouter.post("/rooms/category", createRoomCategoryController);
 roomCategoryRouter.post("/rooms/category/price", getPriceController);
 

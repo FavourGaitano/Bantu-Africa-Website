@@ -33,26 +33,29 @@
     .admin-container{
 
         font-family: 'Futura Std';  
-        margin: 0;
+        // margin: 0;
         display: flex;
         justify-content: flex;
         align-items: center;
         height: 27px;
-        margin-left:-30vw;
+        // margin-right:-10vw;
+        margin-top:-4.5vh;
 
-        .search-container{
+        .Adminsearch-container{
 
             position: relative;
 
-            .search-bar{
+            .Adminsearch-bar{
 
-                height:2.5vh;
+                height:3vh;
                 width: 400px;
-                padding: 10px;
+                padding: 17px 12px;
                 border: none;
                 border-radius: 20px;
                 background-color: rgba(255, 255, 255, 0.9);
                 outline: none;
+                position:fixed;
+               
                 
 
 
@@ -64,23 +67,25 @@
 
     }
 
-    .header-list{
+    .admin-header-list{
+        
 
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
 
-        .header-list-nav{
+        .admin-header-list-nav{
 
             font-family: 'Futura Std';
+            position:fixed;
 
             ul{
                 display: flex;  
 
                 li{
                     list-style-type: none;
-                    padding: 0 20px;
+                    padding: 0 5px;
                     position: relative;
                     cursor: pointer;  
                 }
@@ -128,16 +133,19 @@
 
     .header-list-icon{
         color: white;
+        padding-left: 195px;
+        
         
         font-size: 25px;
         transition: 0.3s ease;
 
         a{
             padding-left: 20px;
-
             i{
                 .fas fa-user{
                     width:50px;
+
+                    position:fixed;
                 }
             }
 

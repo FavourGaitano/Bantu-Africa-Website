@@ -1,204 +1,152 @@
 .all-activities {
   height: 100%;
   position: relative;
+}
 
-  .all-activities-title {
-    position: absolute;
-    top: 0;
-    left: 35%;
-    transform: translateX(-50%);
-    height: 20vh;
-    background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(54, 53, 53, 0.5));
-    width: 70vw;
-    margin-left: 40px;
-    margin-top: -150px;
-    z-index: 1;
-    display: flex;
-    align-items: center;
+.all-activities-title {
+  position: absolute;
+  top: 0;
+  left: 35%;
+  transform: translateX(-50%);
+  height: 20vh;
+  background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(54, 53, 53, 0.5));
+  width: 70vw;
+  margin-left: 40px;
+  margin-top: -150px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
 
-    h1 {
-      font-size: 50px;
-      color: white;
-      margin-left: 30px;
-    }
-  }
-
-  .all-activity-section {
-    background-color: white;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    padding: 20px;
-
-    .activity {
-      background-color: white;
-      height: 50vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 80px;
-      width: 100%;
-
-      &:nth-child(odd) {
-        background-color: #f0efef;
-      }
-
-      &:nth-child(even) {
-        background-color: white;
-      }
-
-      .activity-image {
-        overflow: hidden;
-        height: 45vh;
-        width: 35vw;
-        background-color: inherit;
-
-        img {
-          width: 100%;
-          height: auto;
-          transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-
-        &:hover img {
-          transform: scale(1.1);
-        }
-      }
-
-      .activity-description {
-        background-color: white;
-        overflow: hidden;
-        height: 45vh;
-        width: 35vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background-color: inherit;
-        
-
-        .description-name {
-          font-size: 1.5em;
-          font-weight: bold;
-          margin-bottom: 0.5em;
-          text-align: center;
-          color: #ccae10;
-
-          h3 {
-            margin: 0;
-          }
-        }
-
-        .description-text {
-          line-height: 1.4;
-          margin-bottom: 1em;
-          text-align: center;
-        }
-
-        .desc-btn {
-          display: flex;
-          justify-content: center;
-          margin-top: 30px;
-          background-color: inherit;
-
-          button {
-            background-color: white;
-            color: #ccae10;
-            padding: 10px 20px;
-            border: 1px solid #ccae10;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-          }
-
-          button:hover {
-            background-color: #5e292f;
-            color: white;
-            border: none;
-          }
-        }
-      }
-
-      &:nth-child(even) {
-        flex-direction: row-reverse;
-
-        .activity-description {
-          justify-content: center;
-        }
-      }
-    }
+  h1 {
+    font-size: 50px;
+    color: white;
+    margin-left: 30px;
   }
 }
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+.all-activity-section {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+}
+
+.activity {
+  background-color: white;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 80px;
+  width: 100%;
+
+  .activity-image {
+    overflow: hidden;
+    height: 45vh;
+    width: 35vw;
+    background-color: inherit;
+
+    img {
+      width: 100%;
+      height: auto;
+      transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+  }
+
+  .activity-description {
+    background-color: white;
+    overflow: hidden;
+    height: 45vh;
+    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: inherit;
+
+    .description-name {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+      text-align: center;
+      color: #ccae10;
+
+      h3 {
+        margin: 0;
+      }
+    }
+
+    .description-text {
+      line-height: 1.4;
+      margin-bottom: 1em;
+      text-align: center;
+    }
+
+    .desc-btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      background-color: inherit;
+
+      button {
+        background-color: white;
+        color: #ccae10;
+        padding: 10px 20px;
+        border: 1px solid #ccae10;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: #5e292f;
+        color: white;
+        border: none;
+      }
+    }
+  }
+
+  &:nth-child(odd) {
+    background-color: #f0efef;
+  }
+
+  &:nth-child(even) {
+    background-color: white;
+  }
+
+  &:nth-child(even) .activity-description {
+    justify-content: center;
+  }
 }
 
-.modal-content {
-  width: 800px; /* Adjusted width for both image and description */
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align items to the start */
-}
+@media screen and (max-width: 768px) {
+  .activity {
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
 
-.close-button {
-  position: relative;
-  top: -10px;
-  right: -13rem;
-  cursor: pointer;
-  font-size: 24px;
-  color: #333;
-  z-index: 2;
-  padding: 1px 3px;
-}
+    .activity-image,
+    .activity-description {
+      width: 100%;
+      height: auto;
+    }
 
-.close-button:hover {
-  color: #000;
-}
+    .activity-description {
+      padding: 20px;
+    }
 
-.modal-body {
-  display: flex;
-  align-items: flex-start; /* Align items to the start */
-  gap: 20px;
-  flex: 1; /* Let the flex container grow to fill the space */
-}
+    .activity-description .description-name {
+      font-size: 1.2em;
+    }
 
-.modal-body img {
-  max-width: 50%; /* Image takes 50% of the width */
-  max-height: 500px; /* Max height for image */
-  object-fit: cover; 
-}
-
-.modal-body div {
-  flex: 1; /* Let the description div take the remaining space */
-}
-
-.description-text {
-  text-align: center;
-  max-height: 100px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: #333;
-  cursor: pointer;
+    .activity-description .desc-btn {
+      margin-top: 20px;
+    }
+  }
 }
