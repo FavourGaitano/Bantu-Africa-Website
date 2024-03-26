@@ -1,13 +1,13 @@
 *{
     padding:0;
     margin:0;
-    overflow-x:hidden;
+    // overflow-x:hidden;
 
     .mainRestaurant{
         padding:0;
         margin:0;
         width:100%;
-        overflow-x: hidden;
+        // overflow-x: hidden;
         position:relative;
         height:100%;
         
@@ -32,7 +32,7 @@
             background-color: #5E292F;
             margin-top:-10px;
             padding:0;
-            overflow-x: hidden;
+            // overflow-x: hidden;
             width:100%;
             padding-bottom:3%;
 
@@ -45,7 +45,7 @@
                 font-size:19px;
                 line-height:30px;
                 font-weight:400;
-                overflow-x: hidden;
+                // overflow-x: hidden;
             }
 
             .restaurant-buttons{
@@ -116,7 +116,7 @@
         transform: translate(-50%, -50%);
         z-index: 1; 
         padding-inline:50px;
-        overflow-x: hidden;
+        // overflow-x: hidden;
 
         .restaurant-name{
             font-family: 'Futura Std';                                                                       
@@ -126,7 +126,7 @@
             font-weight:400;
             padding-top:58px;
             padding-bottom:35px;
-            overflow-x:hidden;
+            // overflow-x:hidden;
         }
         .restaurant-time{
             font-family: 'Futura Std';
@@ -134,7 +134,7 @@
             font-size:20px;
             font-weight:400;
             line-height:19px;
-            overflow-x:hidden;
+            // overflow-x:hidden;
             height:15%;
         }
     }
