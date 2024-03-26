@@ -10,7 +10,7 @@
 
 
     .Adminform-container{
-
+        position:fixed;
         width: 600px;
         height: 570px;
         background-color: rgba(255, 255, 255, 0.35);
@@ -84,6 +84,13 @@
                 &:active{
                     box-shadow: none; 
                 }
+
+                p{
+                    position:fixed;
+                    top:68vh;
+                    left:48vw;
+                    // left: 50vw;
+                }
             }
 
             
@@ -99,6 +106,8 @@
             gap: 15px;  
 
             .Admingoogle-login-button{
+                position:fixed;
+                width:32.5%;
                 border-radius: 20px;
                 box-sizing: border-box;
                 padding: 10px 15px;

@@ -116,7 +116,9 @@ const AdminLogin = () => {
           <p className="Adminpage-link">
             <span className="Adminpage-link-label">Forgot Password?</span>
           </p>
-          <button className="Adminform-btn">Log in</button>
+          <button className="Adminform-btn">
+            <p>Log in</p>
+          </button>
         </form>
         <div className="Adminbuttons-container">
           <div className="Admingoogle-login-button">
