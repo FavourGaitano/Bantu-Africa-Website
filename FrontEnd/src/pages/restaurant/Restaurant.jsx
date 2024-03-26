@@ -15,14 +15,15 @@ const Restaurant = () => {
 
 
   return (
+    <div className="BantuRestaurant">
     <div className="mainRestaurant">
    
-      <div className="image">
+      <div className="restaurant-image">
         <img src={image} alt="ola" />
       </div>
 
-      <div className="descr">
-        <div className="words">
+      <div className="restaurant-descr">
+        <div className="restaurant-words">
           <p>
             Savour the spirit of Africa at Bantu Africa's restaurant, where
             local, organic ingredients meet the art of open flame grilling,
@@ -31,18 +32,19 @@ const Restaurant = () => {
             Mount Kenya.
           </p>
         </div>
-        <div className="buttons">
+        <div className="restaurant-buttons">
           <button className="btn1">Offers</button>
           <button className="btn2" onClick={handleMenuClick}>Our Menu</button>
           <button className="btn1">Enquiries</button>
         </div>
       </div>
 
-      <div className="openhours">
-        <p className="name">BANTU AFRICA RESTAURANT</p>
-        <p className="time">Opening Hours: 6:00am to 1:00am</p>
+      <div className="restaurant-openhours">
+        <p className="restaurant-name">BANTU AFRICA RESTAURANT</p>
+        <p className="restaurant-time">Opening Hours: 6:00am to 1:00am</p>
       </div>
       <RestaurantContent />
+    </div>
     </div>
   );
 };
