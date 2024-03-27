@@ -1,6 +1,8 @@
 .contact-container {
   width: 100vw;
+  overflow-x: hidden;
   .contact-items {
+    width: 100%;
     display: flex;
     overflow: hidden;
     .contact-form-items {

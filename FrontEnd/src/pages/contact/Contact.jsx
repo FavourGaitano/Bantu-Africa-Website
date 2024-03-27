@@ -4,11 +4,12 @@ import Event3 from "../../assets/events.jpg";
 import ContactUsForm from "../../components/ContactUsForm/ContactUsForm";
 import EventImageCard from "../../components/event/EventImageCard";
 import EventImage from "../../assets/event-image.png";
+import contactImg from "../../assets/contact3.jpg";
 import "./Contact.scss";
 const Contact = () => {
   return (
-    <div className="contact-container">
-      <Hero heroImgUrl={Event3} msg="Contact Us" />
+    <div className="contact-container" >
+      <Hero heroImgUrl={contactImg} msg="Contact Us" />
       <div className="contact-items">
         <div className="contact-form-items">
           <ContactUsForm />

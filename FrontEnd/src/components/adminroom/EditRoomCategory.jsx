@@ -9,8 +9,8 @@ import * as yup from 'yup';
 
 const EditRoomCategory = ({ setEditRoomModalOpen,roomCategory}) => {
   const navigate = useNavigate();
-
-  const [updateRoomCategory, { isLoading }] = useUpdateRoomCategoryMutation();
+console.log(roomCategory.RoomCategoryId);
+  const [updateRoomCategory, { isLoading }] = useUpdateRoomCategoryMutation(roomCategory.RoomCategoryId);
   const schema = yup.object().shape({
     Name: yup.string().required("Room name is required"),
     Price: yup.number().required("Price is required"),
@@ -31,13 +31,13 @@ const EditRoomCategory = ({ setEditRoomModalOpen,roomCategory}) => {
   const updateRoomsCategory = async (data) => {
     LoadingToast();
     try {
-      const response = await updateRoomCategory({RoomCategoryId:roomCategory.RooomCategoryId,...data});
+      const response = await updateRoomCategory({RoomCategoryId:roomCategory.RoomCategoryId,...data});
 
       if (response.data && response.data.message) {
         SuccessToast(response.data.message);
         reset();
         setTimeout(() => {
-          navigate("/");
+          setEditRoomModalOpen(false);
         }, 2000);
       } else {
         console.error('Error during room category creation');

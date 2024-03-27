@@ -24,6 +24,36 @@ export const roomCategoryApi = createApi({
       }),
       invalidatesTags: ['roomCategories']
     }),
+    getCategoriesByName: builder.query({
+      query: (name) => `category/rooms/category/name/${name}`,
+      providesTags: ['roomCategories']
+    }),
+    
+    getCategoriesByNameSizeAndMealPlan: builder.query({
+      query: ({ name, size, mealPlan }) => ({
+        url: 'category/rooms/category/mealplan',
+        method: 'POST',
+        body: { name, size, mealPlan }
+      }),
+      providesTags: ['roomCategories']
+    }),
+    
+    getPriceByNameSizeAndMealPlan: builder.query({
+      query: ({ name, size, mealPlan }) => ({
+        url: 'category/rooms/category/name/price',
+        method: 'POST',
+        body: { name, size, mealPlan }
+      })
+    }),
+    
+    getCategoriesByNameAndSize: builder.query({
+      query: ({ name, size }) => ({
+        url: 'category/rooms/category/size',
+        method: 'POST',
+        body: { name, size }
+      }),
+      providesTags: ['roomCategories']
+    }),  
 
     updateRoomCategory: builder.mutation({
       query: (roomCategory) => ({
@@ -45,9 +75,17 @@ export const roomCategoryApi = createApi({
 });
 
 export const {
+  
   useGetRoomCategoriesQuery,
   useGetSingleRoomCategoryQuery,
   useAddRoomCategoryMutation,
   useUpdateRoomCategoryMutation,
-  useDeleteRoomCategoryMutation
+  useDeleteRoomCategoryMutation,
+  useGetCategoriesByNameQuery,
+  useGetCategoriesByNameSizeAndMealPlanQuery,
+  useGetPriceByNameSizeAndMealPlanQuery,
+  useGetCategoriesByNameAndSizeQuery
 } = roomCategoryApi;
+
+
+
