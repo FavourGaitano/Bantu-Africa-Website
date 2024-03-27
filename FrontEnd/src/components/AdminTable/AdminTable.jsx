@@ -1,7 +1,8 @@
 import React from "react";
 import "./AdminTable.scss";
 
-const AdminTable = ({tableNumber,thead1,thead2,thead3,thead4,tbody1,tbody2,tbody3,tbody4,tbody5}) => {
+const AdminTable = ({tableNumber,thead1,thead2,thead3,thead4,tbody1,tbody2,tbody3,tbody4,tbody5,onDeleteClick,
+  onEditClick}) => {
   return (
     <div>
       
@@ -28,11 +29,11 @@ const AdminTable = ({tableNumber,thead1,thead2,thead3,thead4,tbody1,tbody2,tbody
 
                 <td>
                   <span>
-                    <button className="action-btn">Delete</button>
+                    <button className="action-btn" onClick={onDeleteClick} >Delete</button>
                   </span>
                   &nbsp;
                   <span>
-                    <button className="action-btn0">Edit</button>
+                    <button className="action-btn0" onClick={onEditClick}>Edit</button>
                   </span>
                 </td>
               </tr>
