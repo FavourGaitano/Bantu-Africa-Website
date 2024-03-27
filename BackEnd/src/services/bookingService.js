@@ -82,7 +82,9 @@ export const getBookingsByEmailService = async (Email) => {
 
 export const getBookingsService = async () => {
   try {
-    const result = await poolRequest().query("SELECT * FROM Bookings");
+    const result = await poolRequest().query(
+      "SELECT Bookings.*, Room.RoomNumber FROM Bookings INNER JOIN Room ON Bookings.RoomId = Room.RoomId"
+    );
     return result.recordset;
   } catch (error) {
     return error;
