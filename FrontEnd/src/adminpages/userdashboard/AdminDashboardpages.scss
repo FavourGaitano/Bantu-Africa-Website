@@ -1,0 +1,11 @@
+.scrollable-table-container {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 80vh;
+    padding-bottom:40px;
+  }
+  th {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
