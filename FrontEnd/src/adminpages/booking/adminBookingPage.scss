@@ -1,0 +1,92 @@
+.the-table-body {
+  font-family: "Futura Std";
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  //   height: 80vh;
+  width: 100%;
+  margin: 0;
+  position: relative;
+  //   border: 2px solid red;
+  overflow-y: scroll !important;
+  .admin-cart {
+    overflow-y: scroll !important;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      padding-left: 30px;
+      tr:hover {
+        background-color: #d8d6d4;
+      }
+
+      th,
+      td {
+        padding: 22px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        transition: background-color 0.3s;
+      }
+
+      th {
+        background: linear-gradient(to bottom, #3d3327 0%, #000000 100%);
+        color: #fff;
+      }
+
+      img {
+        max-width: 80px;
+        max-height: 80px;
+        border-radius: 4px;
+      }
+
+      input {
+        width: 50px;
+        padding: 6px;
+
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .action-buttons {
+        display: flex;
+        flex-direction: column-reverse;
+        // border: 2px solid salmon;
+        align-items: center;
+        border-left: 1px solid #ddd;
+      }
+      .action-btn {
+        background-color: #e74c3c;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .action-btn:hover {
+        background-color: #c0392b;
+      }
+
+      .action-btn0 {
+        background-color: green;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 5px;
+        transition: background-color 0.3s;
+      }
+      .action-btn0:hover {
+        background-color: rgb(4, 102, 4);
+      }
+    }
+  }
+}

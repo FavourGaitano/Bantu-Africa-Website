@@ -1,152 +1,142 @@
-*{
-    padding:0;
-    margin:0;
-    // overflow-x:hidden;
+* {
+  padding: 0;
+  margin: 0;
+  // overflow-x:hidden;
 
+  // .BantuRestaurant{
+  //     position:fixed;
 
-    // .BantuRestaurant{
-    //     position:fixed;
+  // }
 
-    // }
+  .mainRestaurant {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    // overflow-x: hidden;
+    position: relative;
+    height: 100%;
 
-    
+    .restaurant-image {
+      margin: 0;
+      padding: 0;
 
-    .mainRestaurant{
-        padding:0;
-        margin:0;
-        width:100%;
-        // overflow-x: hidden;
-        position:relative;
-        height:100%;
-        
-
-        .restaurant-image{
-            margin:0;
-            padding:0;
-            
-            img{
-                width:100%;
-                height:84vh;
-                object-fit:cover;
-                margin:0;
-                padding:0;
-                
-            }
-        }
-
-        .restaurant-descr{
-            border:1px solid black;
-            height:83%;
-            background-color: #5E292F;
-            margin-top:-10px;
-            padding:0;
-            // overflow-x: hidden;
-            width:100%;
-            padding-bottom:3%;
-
-            .restaurant-words{
-                font-family: "Montserrat";
-                text-align: center;
-                color:#F1F1F1;
-                padding-inline:15vw;
-                margin-top:35vh;
-                font-size:19px;
-                line-height:30px;
-                font-weight:400;
-                // overflow-x: hidden;
-            }
-
-            .restaurant-buttons{
-                
-                display:flex;
-                flex-wrap: wrap;
-                align-items:center;
-                justify-content:center;
-                gap:20vw;
-                margin-top:11vw;
-                // position:fixed;
-                top:50%;
-                // left:10%;
-
-                .btn2 {
-                    font-family: 'Futura Std';  
-                    font-size: 25px;
-                    line-height:12px;
-                    font-weight:600;
-                    color: #5E292F;
-                    padding: 10px 20px;
-                    border: 2px solid #5E292F;
-                    background: #CCAE10;;
-                    box-shadow: -10px 10px #CCAE10;
-                                 
-                    cursor: pointer;
-                    margin: 35px 0;
-                    width:12%;
-                    height:6.5vh;
-                }
-                  
-                  .btn2:active {
-                    box-shadow: none;
-                    transform: translate(3px, 3px);
-                }
-
-                .btn1 {
-                    font-family: 'Futura Std';  
-                    font-size: 25px;
-                    line-height:12px;
-                    font-weight:600;
-                    color: #CCAE10;
-                    padding: 10px 20px;
-                    border: 3.5px solid #CCAE10;
-                    background: #5E292F;
-                    cursor: pointer;
-                    margin: 35px 0;
-                    width:10%;
-                    height:6.5vh;
-                }
-                  
-                .btn1:active {
-                    box-shadow: none;
-                    transform: translate(3px, 3px);
-                }
-                
-
-
-            }
-        }
-        
+      img {
+        width: 100%;
+        height: 84vh;
+        object-fit: cover;
+        margin: 0;
+        padding: 0;
+      }
     }
-    
-    .restaurant-openhours{
-        background-color: rgba(204, 174, 16, 0.65);
-        width: 75vw; 
-        height: 15%; 
-        position: absolute;
+
+    .restaurant-descr {
+      border: 1px solid black;
+      height: 83%;
+      background-color: #5e292f;
+      margin-top: -10px;
+      padding: 0;
+      // overflow-x: hidden;
+      width: 100%;
+      padding-bottom: 3%;
+
+      .restaurant-words {
+        font-family: "Montserrat";
+        text-align: center;
+        color: #f1f1f1;
+        padding-inline: 15vw;
+        margin-top: 35vh;
+        font-size: 19px;
+        line-height: 30px;
+        font-weight: 400;
+        // overflow-x: hidden;
+      }
+
+      .restaurant-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 20vw;
+        margin-top: 11vw;
+        // position:fixed;
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1; 
-        padding-inline:50px;
-        // overflow-x: hidden;
+        // left:10%;
 
-        .restaurant-name{
-            font-family: 'Futura Std';                                                                       
-            color:#5B0017;
-            font-size:34px;
-            line-height:41px;
-            font-weight:400;
-            padding-top:58px;
-            padding-bottom:35px;
-            // overflow-x:hidden;
+        .btn2 {
+          font-family: "Futura Std";
+          font-size: 25px;
+          line-height: 12px;
+          font-weight: 600;
+          color: #5e292f;
+          padding: 10px 20px;
+          border: 2px solid #5e292f;
+          background: #ccae10;
+          box-shadow: -10px 10px #ccae10;
+
+          cursor: pointer;
+          margin: 35px 0;
+          width: 12%;
+          height: 6.5vh;
         }
-        .restaurant-time{
-            font-family: 'Futura Std';
-            color:#5E292F;
-            font-size:20px;
-            font-weight:400;
-            line-height:19px;
-            // overflow-x:hidden;
-            height:15%;
+
+        .btn2:active {
+          box-shadow: none;
+          transform: translate(3px, 3px);
         }
+
+        .btn1 {
+          font-family: "Futura Std";
+          font-size: 25px;
+          line-height: 12px;
+          font-weight: 600;
+          color: #ccae10;
+          padding: 10px 20px;
+          border: 3.5px solid #ccae10;
+          background: #5e292f;
+          cursor: pointer;
+          margin: 35px 0;
+          width: 10%;
+          height: 6.5vh;
+        }
+
+        .btn1:active {
+          box-shadow: none;
+          transform: translate(3px, 3px);
+        }
+      }
     }
+  }
+
+  .restaurant-openhours {
+    background-color: rgba(204, 174, 16, 0.65);
+    width: 75vw;
+    height: 15%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    padding-inline: 50px;
+    // overflow-x: hidden;
+
+    .restaurant-name {
+      font-family: "Futura Std";
+      color: #5b0017;
+      font-size: 34px;
+      line-height: 41px;
+      font-weight: 400;
+      padding-top: 58px;
+      padding-bottom: 35px;
+      // overflow-x:hidden;
+    }
+    .restaurant-time {
+      font-family: "Futura Std";
+      color: #5e292f;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 19px;
+      // overflow-x:hidden;
+      height: 15%;
+    }
+  }
 }

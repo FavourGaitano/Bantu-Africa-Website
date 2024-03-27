@@ -31,6 +31,23 @@ export const userApi=createApi({
             invalidatesTags:['Users']
         }),
 
+        updatePicture: builder.mutation({
+            query: ({ UserId, ...user }) => ({
+              url: `gallery/${PictureId}`, // Use the rest of the picture object as the body
+              method: 'PUT',
+              body: picture,
+            }),
+            invalidatesTags: ['Gallery'],
+          }),
+      
+          deletePicture: builder.mutation({
+            query: (PictureId) => ({
+              url: `gallery/${PictureId}`,
+              method: 'DELETE',
+            }),
+            invalidatesTags: ['Gallery'],
+          }),
+
    
      
     })

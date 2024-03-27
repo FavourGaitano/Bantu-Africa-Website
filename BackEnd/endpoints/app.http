@@ -10,19 +10,20 @@ POST http://localhost:8000/api/users
 Content-Type: application/json
 
 {
-    "FirstName": "Emmanuel",
-    "LastName": "Kipsang",
-    "Email": "emmanuel@gmail.com",
-    "Password": "@Emmanuel123"
-}
+    "FirstName": "Francis",
+    "LastName": "Mwangi",
+    "Email": "kungofrank@gmail.com",
+    "Password": "312111"
+
 
 ### Login user
 POST http://localhost:8000/api/users/login
 Content-Type: application/json
 
 {
-    "Email": "jameskw2605@gmail.com",
-    "Password": "Gyaat@1234"
+    "Email": "kungofrank@gmail.com",
+    "Password": "312111"
+
 }
 
 
@@ -31,11 +32,7 @@ Content-Type: application/json
 
 
 
-<<<<<<< HEAD
-PUT http://localhost:8000/api/users/update/645c4357-13de-4d43-a28d-42761737ef0a
-=======
-PUT http://localhost:8000/api/users/update/b2fae24b-3862-4ce8-a65f-222701301982
->>>>>>> 0233e43ba3e25bf1dfaaf361f9049212eb946704
+PUT http://localhost:8000/api/users/update/bc8c9ffc-efd0-47c4-9c7a-0224b4b4ef90
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxZDNkODU4My04OGRlLTRhOWYtYjc1MC1lYTY1NDc0YTM4MDkiLCJQYXNzd29yZCI6IiQyYiQwOCR0TXVZMjBZaERvNzN3TmtPT1N1LjllRXZmY2pLNzEzWnlCTDdKYU0wYmZRVkRTZVNxSE1MSyIsIkVtYWlsIjoidGl0dXMzQGdtYWlsLmNvbSIsImlhdCI6MTcwODk3NzY3NCwiZXhwIjoxNzA5MDY0MDc0fQ.pBE7xA_6CPnuTVTXYENwAruzraBeZNB2jyaYMzSmxys
 
@@ -47,11 +44,11 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxZDNkODU4
 
 
 ### update the user password
-PATCH http://localhost:8000/api/users/645c4357-13de-4d43-a28d-42761737ef0a
+PATCH http://localhost:8000/api/users/patch/7e77b394-8dd5-4d22-8bcd-658cba2a9a69
 Content-Type: application/json
 
 {
-    "Password": "Fa7!"
+    "Password": "#Frankie312111"
 }
 
 ### getting single user
@@ -59,4 +56,4 @@ GET http://localhost:8000/api/users/single/677fb9b4-635a-4944-8908-e02a848a0e5a
 
 
 ### Deleting a single user
-DELETE http://localhost:8000/api/users/delete/b2fae24b-3862-4ce8-a65f-222701301982
+DELETE http://localhost:8000/api/users/delete/7e77b394-8dd5-4d22-8bcd-658cba2a9a69

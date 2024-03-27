@@ -19,7 +19,6 @@ const Restaurant = () => {
   return (
     <div className="BantuRestaurant">
     <div className="mainRestaurant">
-   
       <div className="restaurant-image">
         <img src={image} alt="ola" />
       </div>

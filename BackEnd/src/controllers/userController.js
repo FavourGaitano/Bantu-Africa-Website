@@ -22,7 +22,7 @@ export const getUsers = async (req, res) => {
         if (users.length === 0) {
             sendNotFound(res, 'No users found');
         } else {
-            return res.status(200).json({users:users})
+            return res.status(200).json(users)
         }
     } catch (error) {
         sendServerError(res, error);
