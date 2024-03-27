@@ -11,17 +11,17 @@ POST http://localhost:8000/api/service
 Content-Type: application/json
 
 {
-    "ServiceName": "Camping",
+    "ServiceName": "Camping2",
     "Description": "Hidden deep in the valley is the Chania River Slopes and Camp Site. It combines a camping ground for the adventurous, an informal outdoor bar & barbeque for the fun-seeking, and soon-to-come water sports like canoeing and fresh water rafting for the daring.",
     "ImageUrl": "https://images.pexels.com/photos/6271630/pexels-photo-6271630.jpeg?auto=compress&cs=tinysrgb&w=600"
 }
 
 ###
-PUT http://localhost:8000/api/service/758005f9-fcc0-4f78-acec-166855bb1461
+PUT http://localhost:8000/api/service/ec266b5e-68ec-4bb6-8438-a716eb9d9c58
 Content-Type: application/json
 
 {
-    "ServiceName": "Camping",
+    "ServiceName": "Camp Dundaing",
     "Description": "Hidden deep in the valley is the Chania River Slopes and Camp Site. It combines a camping ground for the adventurous, an informal outdoor bar & barbeque for the fun-seeking, and soon-to-come water sports like canoeing and fresh water rafting for the daring.",
     "ImageUrl": "https://images.pexels.com/photos/6271630/pexels-photo-6271630.jpeg?auto=compress&cs=tinysrgb&w=600"
 }

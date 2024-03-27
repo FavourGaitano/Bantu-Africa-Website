@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import {
   useDeleteServiceMutation,
   useGetServicesQuery,
@@ -9,19 +10,23 @@ import {
   SuccessToast,
 } from "../../components/shared/Toaster";
 import "./adminServices.scss";
+import EditServicesForm from "./EditServices";
 
 const AdminServicesPage = () => {
   const { data: services, error, isLoading } = useGetServicesQuery();
   const [deleteService, { isLoading: loading, isError }] =
     useDeleteServiceMutation();
-  console.log(
-    "services: ",
-    services,
-    "error: ",
-    error,
-    "isLoading: ",
-    isLoading
-  );
+  const [showModal, setShowModal] = useState(false);
+  const [selectedService, setSelectedService] = useState({});
+
+  // console.log(
+  //   "services: ",
+  //   services,
+  //   "error: ",
+  //   error,
+  //   "isLoading: ",
+  //   isLoading
+  // );
 
   const handleDelete = async (ServiceId) => {
     try {
@@ -65,7 +70,10 @@ const AdminServicesPage = () => {
             <tbody>
               {services &&
                 [...services]
-                  .sort((a, b) => b.CreatedAt - a.CreatedAt)
+                  .sort(
+                    (a, b) =>
+                      b.CreatedAt.split("T")[0] - a.CreatedAt.split("T")[0]
+                  )
                   .map((service, index) => (
                     <tr key={index}>
                       <td className="admin-td-custom">{index + 1}</td>
@@ -85,12 +93,29 @@ const AdminServicesPage = () => {
                         </span>
                         &nbsp;
                         <span>
-                          <button className="action-btn0">Edit</button>
+                          {/* {console.log("Service: ", service)} */}
+                          <button
+                            className="action-btn0"
+                            onClick={() => {
+                              setSelectedService(service);
+                              setShowModal(true);
+                            }}
+                          >
+                            Edit
+                          </button>
                         </span>
                       </td>
                     </tr>
                   ))}
             </tbody>
+            {showModal &&
+              createPortal(
+                <EditServicesForm
+                  service={selectedService}
+                  setShowModal={setShowModal}
+                />,
+                document.body
+              )}
           </table>
         </div>
       </div>
