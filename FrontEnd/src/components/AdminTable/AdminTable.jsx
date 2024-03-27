@@ -1,8 +1,7 @@
 import React from "react";
 import "./AdminTable.scss";
 
-const AdminTable = ({tableNumber,thead1,thead2,thead3,thead4,tbody1,tbody2,tbody3,tbody4,tbody5,onDeleteClick,
-  onEditClick}) => {
+const AdminTable = ({tableNumber,thead1,thead2,thead3,thead4,tbody1,tbody2,tbody3,tbody4,tbody5,menuImg, Img}) => {
   return (
     <div>
       
@@ -16,6 +15,7 @@ const AdminTable = ({tableNumber,thead1,thead2,thead3,thead4,tbody1,tbody2,tbody
                 <th>{thead2}</th>
                 <th>{thead3}</th>
                 <th>{thead4}</th>
+                <th>{Img}</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -26,6 +26,7 @@ const AdminTable = ({tableNumber,thead1,thead2,thead3,thead4,tbody1,tbody2,tbody
                 <td>{tbody3}</td>
                 <td>{tbody4}</td>
                 <td>{tbody5}</td>
+                <td><img src={menuImg} alt="" /></td>
 
                 <td>
                   <span>

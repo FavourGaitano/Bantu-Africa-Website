@@ -56,7 +56,7 @@ const AdminSidebar = () => {
       Icon: <i className="fa-solid fa-bell-concierge"></i>,
       subItems: [
         { path: "/admin/restaurant/menu", text: "Restaurant Menu" },
-        { path: "/admin/restaurant/offers", text: "Menu Offers" },
+        { path: "/admin/restaurant/restaurant-offers", text: "Menu Offers" },
       ],
     },
     {

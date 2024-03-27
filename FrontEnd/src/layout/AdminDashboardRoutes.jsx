@@ -18,6 +18,7 @@ import AdminDashboardPage from "../adminpages/userdashboard/AdminDashboardPage";
 import AddRoom from "../components/adminroom/AddRoom";
 import ViewRoomPage from "../components/adminroom/ViewRoomCategory";
 import AdminMenuPages from "../adminpages/menu/AdminMenuPages";
+import AdminOffers from "../adminpages/RestaurantOffers/AdminOffers";
 
 const AdminDashboardRoutes = () => {
   return (
@@ -46,7 +47,7 @@ const AdminDashboardRoutes = () => {
             <Route path="/viewroom" element={<ViewRoomPage/>} />
             <Route path="/addroom" element={<AddRoom/>} />
             <Route path="/restaurant/menu" element={<AdminMenuPages/>} />
-            <Route path="/restaurant/offers" element={<AdminOffersPage/>} />
+            <Route path="/restaurant/restaurant-offers" element={<AdminOffers/>} />
           </Routes>
         </div>
       </div>
