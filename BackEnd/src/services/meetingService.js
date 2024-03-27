@@ -2,9 +2,7 @@ import { poolRequest, closePool, sql } from "../utils/dbConnect.js";
 
 export const getMeetingsService = async () => {
   try {
-    const result = await poolRequest().query(
-      "SELECT Meetings. *, MeetingPackages.PackageName AS PackageName FROM Meetings JOIN MeetingPackages ON Meetings.PackageId = MeetingPackages.PackageId"
-    );
+    const result = await poolRequest().query("SELECT * FROM Meetings");
     return result.recordset;
   } catch (error) {
     return error.message;
@@ -63,14 +61,8 @@ export const updateMeetingService = async (
   updatedMeetingData
 ) => {
   try {
-    const {
-      Description,
-      ConferenceRoomName,
-      Image,
-      Price,
-      PackageId,
-      Quantity,
-    } = updatedMeetingData;
+    const { Description, ConferenceRoomName, Image, Price, Quantity } =
+      updatedMeetingData;
 
     const result = await poolRequest()
       .input("ConferenceId", sql.VarChar, ConferenceId)
@@ -78,14 +70,12 @@ export const updateMeetingService = async (
       .input("ConferenceRoomName", sql.VarChar, ConferenceRoomName)
       .input("Image", sql.VarChar, Image)
       .input("Price", sql.Decimal, Price)
-      .input("PackageId", sql.VarChar, PackageId)
       .input("Quantity", sql.VarChar, Quantity).query(`
           UPDATE Meetings
           SET Description = @Description,
               ConferenceRoomName = @ConferenceRoomName,
               Image = @Image,
               Price = @Price,
-              PackageId = @PackageId,
               Quantity = @Quantity
           WHERE ConferenceId = @ConferenceId
         `);
@@ -105,10 +95,9 @@ export const createMeetingservice = async (meeting) => {
       .input("ConferenceRoomName", sql.VarChar, meeting.ConferenceRoomName)
       .input("Image", sql.VarChar, meeting.Image)
       .input("Price", sql.Decimal, meeting.Price)
-      .input("PackageId", sql.VarChar, meeting.PackageId)
       .input("Quantity", sql.Int, meeting.Quantity)
       .query(
-        "INSERT INTO Meetings (ConferenceId, Description, ConferenceRoomName, Image, Price, PackageId, Quantity) VALUES (@ConferenceId, @Description, @ConferenceRoomName, @Image, @Price, @PackageId, @Quantity)"
+        "INSERT INTO Meetings (ConferenceId, Description, ConferenceRoomName, Image, Price, Quantity) VALUES (@ConferenceId, @Description, @ConferenceRoomName, @Image, @Price, @Quantity)"
       );
     return result;
   } catch (error) {

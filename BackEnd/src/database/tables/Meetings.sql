@@ -4,15 +4,13 @@ CREATE TABLE Meetings (
     ConferenceRoomName VARCHAR(100),
     Image VARCHAR(255),
     Price DECIMAL(10, 2),
-    PackageId VARCHAR(255),
-    Quantity INT, 
-    CONSTRAINT fk_meeting_package FOREIGN KEY (PackageId) REFERENCES MeetingPackages(PackageId)
+    Quantity INT
 );
 
 ALTER TABLE Meetings
 ADD Quantity INT;
 
-
+DROP TABLE Meetings
 SELECT Meetings. *, MeetingPackages.PackageName AS PackageName
 FROM Meetings
 JOIN MeetingPackages ON Meetings.PackageId = MeetingPackages.PackageId

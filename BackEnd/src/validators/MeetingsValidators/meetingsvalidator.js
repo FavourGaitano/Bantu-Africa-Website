@@ -6,7 +6,6 @@ export const meetingValidator = (meeting) => {
     ConferenceRoomName: joi.string().required(),
     Image: joi.string().required(),
     Price: joi.string().required(),
-    PackageId: joi.string().required(),
     Quantity: joi.string().optional(),
   });
   return meetingValidatorSchema.validate(meeting);
