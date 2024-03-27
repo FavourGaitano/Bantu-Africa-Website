@@ -12,7 +12,12 @@ const Restaurant = () => {
     navigate("/Menu");
   };
 
+  const handleEnquiryClick = () => {
+    navigate("/contact");
+  }
+
   return (
+    <div className="BantuRestaurant">
     <div className="mainRestaurant">
    
       <div className="restaurant-image">
@@ -34,7 +39,7 @@ const Restaurant = () => {
           <button className="btn2" onClick={handleMenuClick}>
             Our Menu
           </button>
-          <button className="btn1">Enquiries</button>
+          <button className="btn1" onClick={handleEnquiryClick}>Enquiries</button>
         </div>
       </div>
 
@@ -43,6 +48,7 @@ const Restaurant = () => {
         <p className="restaurant-time">Opening Hours: 6:00am to 1:00am</p>
       </div>
       <RestaurantContent />
+    </div>
     </div>
   );
 };

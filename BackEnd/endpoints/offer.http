@@ -3,7 +3,7 @@ POST http://localhost:8000/api/offer
 Content-Type: application/json
 
 {
-    "OfferImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5VXdiHMYhkxkG7mEb2CaJ9WCn3dTHozLych5PUmUmLA&s"
+    "OfferImageUrl": "https://images.pexels.com/photos/20150611/pexels-photo-20150611/free-photo-of-in-red.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 }
 
 ### get all offers

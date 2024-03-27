@@ -15,6 +15,7 @@ import AdminInquriesPage from "../adminpages/inquery/AdminInquriesPage";
 import AdminActivitiesPage from "../adminpages/activities/AdminActivitiesPage";
 import AdminOffersPage from "../adminpages/offers/AdminOffersPage";
 import AdminDashboardPage from "../adminpages/userdashboard/AdminDashboardPage";
+import AdminMenuPages from "../adminpages/menu/AdminMenuPages";
 
 const AdminDashboardRoutes = () => {
   return (
@@ -40,6 +41,8 @@ const AdminDashboardRoutes = () => {
             <Route path="/inquery" element={<AdminInquriesPage />} />
             <Route path="/activities" element={<AdminActivitiesPage />} />
             <Route path="/offers" element={<AdminOffersPage />} />
+            <Route path="/restaurant/menu" element={<AdminMenuPages/>} />
+            <Route path="/restaurant/offers" element={<AdminOffersPage/>} />
           </Routes>
         </div>
       </div>

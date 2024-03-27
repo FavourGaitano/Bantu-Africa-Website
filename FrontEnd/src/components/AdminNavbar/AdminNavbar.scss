@@ -79,6 +79,7 @@
 
             font-family: 'Futura Std';
             position:fixed;
+            
 
             ul{
                 display: flex;  
@@ -88,6 +89,7 @@
                     padding: 0 5px;
                     position: relative;
                     cursor: pointer;  
+                    overflow-y: hidden;
                 }
 
                 a{

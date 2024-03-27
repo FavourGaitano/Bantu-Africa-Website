@@ -63,6 +63,7 @@
                 cursor: pointer;
                 font-size: 17px;
                 font-weight: 500;
+                margin-right:5px;
 
                 &:hover{
                     color: #000;
@@ -81,6 +82,11 @@
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                 height:38px;
                 font-size:22.5px;
+                position:fixed;
+                top:61.5%;
+                // left:48vw;
+                width:520px;
+                margin-top:5px;
 
                 &:active{
                     box-shadow: none; 
@@ -88,7 +94,7 @@
 
                 p{
                     position:fixed;
-                    top:75%;
+                    top:62.5%;
                     left:48vw;
                     // left: 50vw;
                 }
