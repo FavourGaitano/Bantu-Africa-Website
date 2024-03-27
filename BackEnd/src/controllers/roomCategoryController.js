@@ -23,6 +23,20 @@ import {
 
 
 
+
+
+export const getCategoriesController = async (req, res) => {
+  try {
+    const allCategory = await getRoomCategoriesService();
+    if (allCategory.length === 0) {
+      sendNotFound(res, "Room category not found");
+    } else {
+      res.status(200).json(allCategory);
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching all room category" });
+  }
+};
 export const getPriceController=async(req, res)=>{
     try {
       const { Name, MealPlan, Size } = req.body;
@@ -39,7 +53,7 @@ export const getPriceController=async(req, res)=>{
       return res.status(500).json({ error: "Internal server error." });
     }
   }
-};
+
 
 export const findRoomCategory = async (req, res) => {
   const { Name, MealPlan, Size } = req.body;
