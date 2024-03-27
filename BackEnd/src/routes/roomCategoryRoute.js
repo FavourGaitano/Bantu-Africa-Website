@@ -3,7 +3,7 @@ import { createRoomCategoryController, deleteRoomCategoryController, findRoomCat
 const roomCategoryRouter = Router();
 
 roomCategoryRouter.post("/category", findRoomCategory);
-// roomCategoryRouter.get("/rooms/category", getCategoriesController);
+roomCategoryRouter.get("/rooms/category", getCategoriesController);
 roomCategoryRouter.post("/rooms/category", createRoomCategoryController);
 roomCategoryRouter.post("/rooms/category/price", getPriceController);
 
