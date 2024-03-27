@@ -11,14 +11,13 @@ import { useGetRoomCategoriesQuery } from '../../features/roomCategory/roomCateg
 const ViewRoomPage = () => {
   const [isAddRoomModalOpen, setIsAddRoomModalOpen] = useState(false);
   const [editRoomModalOpen, setEditRoomModalOpen] = useState(false);
-  const [editRoomCategoryId, setEditRoomCategoryId] = useState(null); // State to hold the ID of the room category to be edited
+  const [editRoomCategoryId, setEditRoomCategoryId] = useState(null); 
   const navigate = useNavigate();
   const { data } = useGetRoomCategoriesQuery();
 console.log("category data",data);
-  // Function to handle edit click
   const handleEditClick = (categoryId) => {
-    setEditRoomCategoryId(categoryId); // Set the ID of the room category to be edited
-    setEditRoomModalOpen(true); // Open the edit modal
+    setEditRoomCategoryId(categoryId); 
+    setEditRoomModalOpen(true); 
   };
 
   return (
@@ -32,12 +31,7 @@ console.log("category data",data);
               className="btn-add-room"
               msg="Add Category"
             />
-            <Button
-              btnIcon={<FaRegSquarePlus />}
-              onClick={() => setEditRoomModalOpen(true)}
-              className="btn-add-room"
-              msg="View Room Category"
-            />
+        
           </div>
         </div>
         {data && data.map((roomCategory) => (
@@ -54,12 +48,20 @@ console.log("category data",data);
               tbody5={roomCategory.Price}
               onEditClick={() => handleEditClick(roomCategory.RoomCategoryId)} 
             />
+            {isAddRoomModalOpen && createPortal(
+        <div className="room-category-modal-container">
+          <div className="room-category-modal">
+            <AddRoomCategory setIsAddRoomModalOpen={setIsAddRoomModalOpen} />
+          </div>
+        </div>,
+        document.body
+      )}
             {editRoomModalOpen && createPortal(
               <div className="room-category-modal-container">
                 <div className="room-category-modal">
                   <EditRoomCategory
                     categoryId={editRoomCategoryId}
-                    roomCategory={roomCategory} // Pass roomCategory as a prop
+                    roomCategory={roomCategory}
                     setEditRoomModalOpen={setEditRoomModalOpen}
                   />
                 </div>
