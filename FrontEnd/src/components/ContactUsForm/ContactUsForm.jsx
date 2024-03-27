@@ -37,10 +37,12 @@ const ContactUsForm = () => {
         SuccessToast("Inquiry sent successfully");
         reset();
       } else {
+        LoadingToast(false);
         ErrorToast("Error sending inquiry. Please try again later.");
         reset();
       }
     } catch (error) {
+      console.log(error);
       LoadingToast(false);
       ErrorToast("An error occurred. Please try again later.");
     }

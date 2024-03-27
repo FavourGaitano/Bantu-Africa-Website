@@ -9,11 +9,13 @@ import {
   SuccessToast,
 } from "../../components/shared/Toaster";
 import "./adminBookingPage.scss";
+import { useNavigate } from "react-router-dom";
 
 const AdminBookingPage = () => {
   const { data: Bookings, error, isLoading } = useGetBookingsQuery();
   const [deleteBooking, { isLoading: loading, isError }] =
     useDeleteBookingMutation();
+  const navigate = useNavigate();
 
   const handleDelete = async (BookingId) => {
     // console.log("BookingId: ", BookingId);
@@ -56,7 +58,7 @@ const AdminBookingPage = () => {
   return (
     <div>
       {/* {console.log("Response admin: ", response)} */}
-
+      <button onClick={() => navigate("/admin/addbooking")}>Add Booking</button>
       <div className="the-table-body">
         <div className="admin-cart">
           <table>
