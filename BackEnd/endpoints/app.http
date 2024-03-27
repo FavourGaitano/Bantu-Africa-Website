@@ -10,17 +10,10 @@ POST http://localhost:8000/api/users
 Content-Type: application/json
 
 {
-<<<<<<< HEAD
     "FirstName": "Emmanuel",
     "LastName": "Kipsang",
-    "Email": "emmqnuelkipsqng@gmail.com",
+    "Email": "emmanuel@gmail.com",
     "Password": "@Emmanuel123"
-=======
-    "FirstName": "Favour",
-    "LastName": "Gaitano",
-    "Email": "favourgaitano@gmail.com",
-    "Password": "Fa7!"
->>>>>>> 8807f6b4f8fa49a75c8da0a5ac13d4ecf5bd957c
 }
 
 ### Login user
@@ -28,8 +21,8 @@ POST http://localhost:8000/api/users/login
 Content-Type: application/json
 
 {
-    "Email": "emmqnuelkipsqng@gmail.com",
-    "Password": "@Emmanuel123"
+    "Email": "jameskw2605@gmail.com",
+    "Password": "Gyaat@1234"
 }
 
 
@@ -38,7 +31,7 @@ Content-Type: application/json
 
 
 
-PUT http://localhost:8000/api/users/update/bc8c9ffc-efd0-47c4-9c7a-0224b4b4ef90
+PUT http://localhost:8000/api/users/update/b2fae24b-3862-4ce8-a65f-222701301982
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxZDNkODU4My04OGRlLTRhOWYtYjc1MC1lYTY1NDc0YTM4MDkiLCJQYXNzd29yZCI6IiQyYiQwOCR0TXVZMjBZaERvNzN3TmtPT1N1LjllRXZmY2pLNzEzWnlCTDdKYU0wYmZRVkRTZVNxSE1MSyIsIkVtYWlsIjoidGl0dXMzQGdtYWlsLmNvbSIsImlhdCI6MTcwODk3NzY3NCwiZXhwIjoxNzA5MDY0MDc0fQ.pBE7xA_6CPnuTVTXYENwAruzraBeZNB2jyaYMzSmxys
 
@@ -63,4 +56,4 @@ GET http://localhost:8000/api/users/single/6bdca77d-fa32-42f8-85f9-c1d06d3cafca
 
 
 ### Deleting a single user
-DELETE http://localhost:8000/api/users/delete/6bdca77d-fa32-42f8-85f9-c1d06d3cafca
+DELETE http://localhost:8000/api/users/delete/b2fae24b-3862-4ce8-a65f-222701301982

@@ -8,7 +8,7 @@ export const SuccessToast = (message) => {
 
 export const ErrorToast = (message) => {
   toast.error(message, {
-    duration: 2000,
+    duration: 4000,
   });
 };
 

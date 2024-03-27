@@ -1,41 +1,46 @@
 .stay {
-    margin-top: 50px;
-    height: 40vh;
-    width: 30vw;
-    border: 2px solid rgb(230, 229, 229);
+  margin-top: 50px;
+  margin-bottom: 5%;
+  padding-bottom: 5%;
+  // height: 40vh;
+  width: 100%;
+  box-shadow: 2px 2px 2px gray;
+  border-radius: 7px;
+  padding: 0 20px;
+  border: 2px solid rgb(230, 229, 229);
 
-    h2 {
-      text-align: center;
-      margin-top: 10px;
-    }
+  h2 {
+    text-align: center;
+    margin-top: 10px;
+  }
 
-    .check {
+  .check {
+    display: flex;
+    justify-content: space-between;
+
+    .check-in,
+    .check-out {
       display: flex;
-      justify-content: space-around;
-
-      .check-in,
-      .check-out {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-
-    .details {
-      margin-top: 20px;
-
-      .people-no {
-        span {
-          font-size: 20px;
-          font-weight: bolder;
-          margin-left: 50px;
-        }
-      }
-
-      .total {
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-around;
-      }
+      flex-direction: column;
+      gap: 10px;
     }
   }
+
+  .details {
+    margin-top: 20px;
+
+    .people-no {
+      span {
+        font-size: 20px;
+        font-weight: bolder;
+        margin-left: 50px;
+      }
+    }
+
+    .total {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}
