@@ -3,9 +3,9 @@ import { createRoomCategoryController, deleteRoomCategoryController, findRoomCat
 const roomCategoryRouter = Router();
 
 roomCategoryRouter.post("/category", findRoomCategory);
-roomCategoryRouter.get("/rooms/category", getCategoriesController);
+// roomCategoryRouter.get("/rooms/category", getCategoriesController);
 roomCategoryRouter.post("/rooms/category", createRoomCategoryController);
-roomCategoryRouter.post('/rooms/category/price', getPriceController);
+roomCategoryRouter.post("/rooms/category/price", getPriceController);
 
 roomCategoryRouter.put(
   "/rooms/category/update/:RoomCategoryId",
@@ -23,6 +23,5 @@ roomCategoryRouter.delete(
   "/rooms/category/:RoomCategoryId",
   deleteRoomCategoryController
 );
-
 
 export default roomCategoryRouter;

@@ -1,6 +1,24 @@
 import { poolRequest, sql } from "../utils/dbConnect.js";
 
 export const createBookingService = async (newBooking) => {
+  // console.log("Service imeget: ", newBooking);
+  let startDate = newBooking.StartDate;
+  let endDate = newBooking.EndDate;
+
+  const dateFormatter = (date) => {
+    let parts = new Date(date).toLocaleDateString("es-GB").split("/").reverse();
+    let year = parts[0];
+    let month = parts[1];
+    let day = parts[2];
+
+    month = month.padStart(2, "0");
+    day = day.padStart(2, "0");
+    let formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+  };
+  const checkinDate = dateFormatter(startDate);
+  const checkoutDate = dateFormatter(endDate);
+
   try {
     const result = await poolRequest()
       .input("BookingId", sql.VarChar(255), newBooking.BookingId)
@@ -14,8 +32,8 @@ export const createBookingService = async (newBooking) => {
         newBooking.SpecialRequirements
       )
       .input("CreatedAt", sql.DateTime, newBooking.CreatedAt)
-      .input("StartDate", sql.Date, newBooking.StartDate)
-      .input("EndDate", sql.Date, newBooking.EndDate)
+      .input("StartDate", sql.Date, checkinDate)
+      .input("EndDate", sql.Date, checkoutDate)
       .input("AdultsNo", sql.Int, newBooking.AdultsNo)
       .input("KidsNo", sql.Int, newBooking.KidsNo)
       .input("MealPlan", sql.VarChar(255), newBooking.MealPlan)

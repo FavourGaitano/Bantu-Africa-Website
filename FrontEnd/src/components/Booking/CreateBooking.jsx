@@ -18,7 +18,7 @@ const CreateBooking = () => {
   const [checkoutDate, setCheckoutDate] = useState(new Date());
   const [adults, setAdults] = useState(1);
   const [kids, setKids] = useState(0);
-  const [bookingData, setBookingData] = useState({});
+  const [bookingData, setBookingData] = useState("");
 
   const schema = yup.object().shape({
     Name: yup.string().required("Name is required"),
@@ -46,17 +46,17 @@ const CreateBooking = () => {
   };
 
   const handleCheckinDateSelect = (date) => {
-    console.log("passedDate", date);
+    // console.log("passedDate", date);
     const checkIn = date.toLocaleDateString();
     setCheckinDate(checkIn);
 
-    console.log("date is", checkIn);
+    // console.log("date is", checkIn);
   };
   const handleCheckoutDateSelect = (date) => {
-    console.log("passedDate2: ", date);
+    // console.log("passedDate2: ", date);
     const checkOut = date.toLocaleDateString();
     setCheckoutDate(checkOut);
-    console.log("Checkout date is", checkOut);
+    // console.log("Checkout date is", checkOut);
   };
 
   const handleBooking = () => {
@@ -218,6 +218,10 @@ const CreateBooking = () => {
           onDateSelect={handleCheckinDateSelect}
           onCheckoutDateSelect={handleCheckoutDateSelect}
         />
+        {console.log("CheckIn: ", checkinDate)}
+        {console.log("CheckIn: ", checkinDate)}
+
+        {console.log(handleCheckoutDateSelect)}
         <div className="button-container">
           <button type="submit" className="confirm-button">
             Book
@@ -225,8 +229,8 @@ const CreateBooking = () => {
         </div>
       </form>
       <div className="personal-details">
-        <BookingForm data={bookingData} />
-        <BookingList data={bookingData} />
+        {bookingData && <BookingForm data={bookingData} />}
+        {bookingData && <BookingList data={bookingData} />}
       </div>
     </div>
   );

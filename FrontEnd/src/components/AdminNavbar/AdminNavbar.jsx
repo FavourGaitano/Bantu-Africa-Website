@@ -24,29 +24,24 @@ const AdminNavbar = () => {
             />
         </div>
         <div className="admin-container">
-            <div className="search-container">
-                <input type="text" className="search-bar" placeholder="Search..."/>
+            <div className="Adminsearch-container">
+                <input type="text" className="Adminsearch-bar" placeholder="Search..."/>
             </div>
         </div>
-        <div className="header-list">
+        <div className="admin-header-list">
 
-            <nav className="header-list-nav">
+            <nav className="admin-header-list-nav">
                 <ul>
 
                     <li><a className="active">Home</a></li>
-                    
-
-                   
+              
                     <li><a onClick={handledLoggedOut}>Logout</a></li>
                    
-
-
-
                 </ul>
             </nav>
             <div className="header-list-icon">
                 <a><i className="fa-solid fa-bell"></i></a>
-                <a><i class="fa-regular fa-user"></i></a>
+                <a><i className="fa-regular fa-user"></i></a>
                 
 
             </div>

@@ -4,6 +4,7 @@ import {
   IoChevronBackCircleOutline,
   IoChevronForwardCircleOutline,
 } from "react-icons/io5";
+import { ErrorToast } from "../shared/Toaster";
 
 const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
   const currentDate = new Date();
@@ -19,6 +20,11 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
   const handleDateClick = (day) => {
     const clickedDate = new Date(currentYear, currentMonth, day);
     console.log("Clicked date:", clickedDate);
+    const today = new Date();
+    if (new Date(clickedDate) < today) {
+      ErrorToast("You cannot select a past date");
+      return;
+    }
     if (!checkInDate) {
       setCheckInDate(clickedDate);
       onDateSelect(clickedDate);
@@ -90,6 +96,10 @@ const Calender = ({ onDateSelect, onCheckoutDateSelect }) => {
             <span className="day">Fri</span>
             <span className="day">Sat</span>
             <span className="day">Sun</span>
+            {console.log("Current Year:", currentYear)}
+            {console.log("Current Month:", currentMonth)}
+            {console.log("Days in Month:", daysInMonth)}
+            {console.log("First Day of Month:", firstDayOfMonth)}
             {[...Array(firstDayOfMonth).keys()].map((_, index) => (
               <button
                 type="button"

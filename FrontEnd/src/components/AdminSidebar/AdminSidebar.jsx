@@ -80,8 +80,8 @@ const AdminSidebar = () => {
 
   return (
     <div className="mainSideBar">
-      <div className="sidebar">
-        <div className="sidebar-content">
+      <div className="admin-sidebar">
+        <div className="admin-sidebar-content">
           {sideNavItems.map((item, index) => (
             <NavLink
               key={index}
@@ -97,7 +97,7 @@ const AdminSidebar = () => {
             </NavLink>
           ))}
         </div>
-        <div className="sidebar-footer">
+        <div className="admin-sidebar-footer">
           <a onClick={handledLoggedOut} className="logout-btn">
             Logout
           </a>
