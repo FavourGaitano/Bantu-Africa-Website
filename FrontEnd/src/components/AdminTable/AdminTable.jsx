@@ -12,8 +12,8 @@ const AdminTable = ({
   tbody3,
   tbody4,
   tbody5,
-  onDeleteClick,
-  onEditClick,
+  menuImg,
+  Img,
 }) => {
   return (
     <div>
@@ -27,6 +27,7 @@ const AdminTable = ({
                 <th>{thead2}</th>
                 <th>{thead3}</th>
                 <th>{thead4}</th>
+                <th>{Img}</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -37,6 +38,9 @@ const AdminTable = ({
                 <td>{tbody3}</td>
                 <td>{tbody4}</td>
                 <td>{tbody5}</td>
+                <td>
+                  <img src={menuImg} alt="" />
+                </td>
 
                 <td>
                   <span>

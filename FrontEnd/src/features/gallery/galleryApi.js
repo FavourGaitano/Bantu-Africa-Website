@@ -1,58 +1,58 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const galleryApi = createApi({
-  reducerPath: "galleryApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/api/" }),
-  tagTypes: ["gallery"],
+  reducerPath: 'galleryApi',
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/api/' }),
+  tagTypes: ['Gallery'],
   endpoints: (builder) => ({
     getPictures: builder.query({
-      query: () => "gallery",
-      providesTags: ["gallery"],
+      query: () => 'gallery',
+      providesTags: ['Gallery'],
     }),
 
     getPicture: builder.query({
-      query: (id) => `gallery/find/${id}`,
-      providesTags: ["gallery"],
+      query: (PictureId) => `gallery/onePicture/${PictureId}`, // Corrected to match the API path
+      providesTags: ['Gallery'],
     }),
 
     getPictureByCategory: builder.query({
       query: (category) => `gallery/category/${category}`,
-      providesTags: ["gallery"],
+      providesTags: ['Gallery'],
     }),
 
     addPicture: builder.mutation({
       query: (picture) => ({
-        url: "gallery",
-        method: "POST",
+        url: 'gallery',
+        method: 'POST',
         body: picture,
       }),
-      invalidatesTags: ["gallery"],
+      invalidatesTags: ['Gallery'],
     }),
 
     updatePicture: builder.mutation({
-      query: (picture) => ({
-        url: `gallery/${picture.id}`,
-        method: "PUT",
+      query: ({ PictureId, ...picture }) => ({
+        url: `gallery/${PictureId}`, // Use the rest of the picture object as the body
+        method: 'PUT',
         body: picture,
       }),
-      invalidatesTags: ["gallery"],
+      invalidatesTags: ['Gallery'],
     }),
 
     deletePicture: builder.mutation({
-      query: (id) => ({
-        url: `/gallery//${id}`,
-        method: "DELETE",
+      query: (PictureId) => ({
+        url: `gallery/${PictureId}`,
+        method: 'DELETE',
       }),
-      invalidatesTags: ["gallery"],
+      invalidatesTags: ['Gallery'],
     }),
   }),
 });
 
 export const {
   useGetPicturesQuery,
-  useGetSinglepictureQuery,
-  useAddpictureMutation,
-  useUpdatepictureMutation,
-  useDeletepictureMutation,
+  useGetPictureQuery,
   useGetPictureByCategoryQuery,
+  useAddPictureMutation, 
+  useUpdatePictureMutation, 
+  useDeletePictureMutation, 
 } = galleryApi;
