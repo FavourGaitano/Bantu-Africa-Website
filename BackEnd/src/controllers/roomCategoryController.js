@@ -22,9 +22,6 @@ import {
 
 
 
-
-
-
 export const getCategoriesController = async (req, res) => {
   try {
     const allCategory = await getRoomCategoriesService();

@@ -16,6 +16,7 @@ import AdminActivitiesPage from "../adminpages/activities/AdminActivitiesPage";
 import AdminOffersPage from "../adminpages/offers/AdminOffersPage";
 import AdminDashboardPage from "../adminpages/userdashboard/AdminDashboardPage";
 import AddRoom from "../components/adminroom/AddRoom";
+import ViewRoomPage from "../components/adminroom/ViewRoomCategory";
 
 const AdminDashboardRoutes = () => {
   return (
@@ -41,6 +42,7 @@ const AdminDashboardRoutes = () => {
             <Route path="/inquery" element={<AdminInquriesPage />} />
             <Route path="/activities" element={<AdminActivitiesPage />} />
             <Route path="/offers" element={<AdminOffersPage />} />
+            <Route path="/viewroom" element={<ViewRoomPage/>} />
             <Route path="/addroom" element={<AddRoom/>} />
           </Routes>
         </div>
