@@ -1,0 +1,111 @@
+.admin-add-form {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+#contact {
+  background: #F9F9F9;
+  padding: 25px;
+}
+
+#contact h3 {
+  color: var(--primary-color);
+  font-size: 30px;
+  font-weight: 400;
+}
+
+#contact h4 {
+  margin: 5px 0 15px;
+  font-size: 13px;
+}
+
+.form-wrapper {
+  margin-bottom: 20px;
+}
+
+fieldset {
+  border: none !important;
+  margin: 0 0 10px;
+  padding: 0;
+  width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+  width: calc(100% - 22px); // Adjusted width to account for padding and border
+  border: 1px solid #CCC;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+input[type="url"]:hover,
+textarea:hover,
+select:hover {
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #AAA;
+}
+
+input[type="number"] {
+  width: 100%; // Make input fields with numbers take full width
+}
+
+textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}
+
+button[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: var(--secondary-color);
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+button[type="submit"]:hover {
+  background: "#763940";
+  transition: background-color 0.3s ease-in-out;
+}
+
+button[type="submit"]:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 0;
+  border: 1px solid #999;
+}
+
+::-webkit-input-placeholder {
+  color: #888;
+}
+
+:-moz-placeholder {
+  color: #888;
+}
+
+::-moz-placeholder {
+  color: #888;
+}
+
+:-ms-input-placeholder {
+  color: #888;
+}

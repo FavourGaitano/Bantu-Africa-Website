@@ -93,13 +93,13 @@ const AdminBookingPage = () => {
                             className="action-btn"
                             onClick={() => handleDelete(item.BookingId)}
                           >
-                            Delete
+                            Cancel
                           </button>
                         </span>
                         &nbsp;
-                        <span>
+                        {/* <span>
                           <button className="action-btn0">Edit</button>
-                        </span>
+                        </span> */}
                       </td>
                     </tr>
                   ))}

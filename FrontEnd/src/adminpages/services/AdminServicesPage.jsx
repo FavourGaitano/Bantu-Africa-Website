@@ -11,6 +11,7 @@ import {
 } from "../../components/shared/Toaster";
 import "./adminServices.scss";
 import EditServicesForm from "./EditServices";
+import CreateServicesForm from "./CreateService";
 
 const AdminServicesPage = () => {
   const { data: services, error, isLoading } = useGetServicesQuery();
@@ -18,6 +19,7 @@ const AdminServicesPage = () => {
     useDeleteServiceMutation();
   const [showModal, setShowModal] = useState(false);
   const [selectedService, setSelectedService] = useState({});
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
   // console.log(
   //   "services: ",
@@ -54,16 +56,24 @@ const AdminServicesPage = () => {
     <div>
       {LoadingToast(false)}
       {SuccessToast("Fetch success! Here are your services")}
+      <button className="add-service" onClick={() => setShowCreateModal(true)}>
+        Add Service
+      </button>
+      {showCreateModal &&
+        createPortal(
+          <CreateServicesForm setShowCreateModal={setShowCreateModal} />,
+          document.body
+        )}
       <div className="admin-table-body">
         <div className="admin-cart">
           <table>
             <thead>
               <tr>
                 <th>No</th>
+                <th>Image</th>
                 <th>Service ID</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Image URL</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -77,10 +87,12 @@ const AdminServicesPage = () => {
                   .map((service, index) => (
                     <tr key={index}>
                       <td className="admin-td-custom">{index + 1}</td>
+                      <td>
+                        <img src={service.ImageUrl} alt="" />
+                      </td>
                       <td>{service.ServiceId}</td>
                       <td>{service.ServiceName}</td>
                       <td>{service.Description.slice(0, 16) + "..."}</td>
-                      <td>{service.ImageUrl.slice(0, 16) + "..."}</td>
 
                       <td className="action-buttons">
                         <span>

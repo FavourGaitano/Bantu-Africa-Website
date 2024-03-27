@@ -1,61 +1,44 @@
-.add-service {
-  padding: 7px;
-  margin-bottom: 3%;
-  margin-left: 3%;
-  background-color: #3d3327;
-  color: white;
-  // font-weight: bold;
-  font-size: 20px;
-  border-radius: 7px;
-  width: 8rem;
-  height: 4rem;
-  &:hover {
-    background-color: black;
-  }
-}
-.admin-table-body {
-  font-family: "Futura Std";
-  display: flex;
-  // align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  // border: 2px solid red;
-  overflow-y: scroll;
-  .admin-cart {
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+.admin-table-body{
+    font-family: 'Futura Std';
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    height: 80vh;
     width: 100%;
-    table {
+    margin: 0;
+    .admin-cart {
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
       width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
       padding-left: 30px;
       tr:hover {
-        background-color: #d8d6d4;
+        background-color: #d8d6d4; 
       }
-
-      th,
-      td {
+      
+      th, td {
         padding: 22px;
         text-align: left;
         border-bottom: 1px solid #ddd;
         transition: background-color 0.3s;
       }
-
+      
       th {
-        background: linear-gradient(to bottom, #3d3327 0%, #000000 100%);
+        background: linear-gradient(to bottom, #3D3327 0%, #000000 100%);
         color: #fff;
       }
-
+      
       img {
         max-width: 80px;
         max-height: 80px;
         border-radius: 4px;
       }
-
+      
       input {
         width: 50px;
         padding: 6px;
@@ -63,15 +46,7 @@
         border-radius: 4px;
         cursor: pointer;
       }
-
-      .action-buttons {
-        display: flex;
-        flex-direction: column-reverse;
-        border-left: 1px solid #ddd;
-        align-items: center;
-        justify-content: center;
-      }
-
+      
       .action-btn {
         background-color: #e74c3c;
         color: #fff;
@@ -82,12 +57,12 @@
         margin-right: 5px;
         transition: background-color 0.3s;
       }
-
+      
       .action-btn:hover {
         background-color: #c0392b;
       }
-
-      .action-btn0 {
+    
+      .action-btn0{
         background-color: green;
         color: #fff;
         padding: 8px 16px;
@@ -100,6 +75,12 @@
       .action-btn0:hover {
         background-color: rgb(4, 102, 4);
       }
+      }
+
     }
+    
+
   }
-}
+  
+
+ 

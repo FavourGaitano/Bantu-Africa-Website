@@ -218,10 +218,10 @@ const CreateBooking = () => {
           onDateSelect={handleCheckinDateSelect}
           onCheckoutDateSelect={handleCheckoutDateSelect}
         />
-        {console.log("CheckIn: ", checkinDate)}
-        {console.log("CheckIn: ", checkinDate)}
+        {/* {console.log("CheckIn: ", checkinDate)} */}
+        {/* {console.log("CheckIn: ", checkinDate)} */}
 
-        {console.log(handleCheckoutDateSelect)}
+        {/* {console.log(handleCheckoutDateSelect)} */}
         <div className="button-container">
           <button type="submit" className="confirm-button">
             Book

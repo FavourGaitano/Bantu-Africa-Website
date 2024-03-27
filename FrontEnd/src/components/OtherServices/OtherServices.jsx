@@ -1,7 +1,6 @@
-
-import React from 'react';
-import { useGetOtherServicesQuery } from '../../features/otherServices/otherServices';
-import './OtherServices.scss'
+import React from "react";
+import { useGetOtherServicesQuery } from "../../features/otherServices/otherServices";
+import "./OtherServices.scss";
 
 const OtherServices = () => {
   const { data, error, isLoading } = useGetOtherServicesQuery();
@@ -19,7 +18,7 @@ const OtherServices = () => {
   }
 
   return (
-    <div className='other-services'>
+    <div className="other-services">
       <h1>Other Services</h1>
       <div className="other-services-container">
         {data.map((activity, index) => (
@@ -35,4 +34,3 @@ const OtherServices = () => {
 };
 
 export default OtherServices;
-

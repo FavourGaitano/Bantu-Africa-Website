@@ -12,6 +12,8 @@ const AdminTable = ({
   tbody3,
   tbody4,
   tbody5,
+  onDeleteClick,
+  onEditClick,
 }) => {
   return (
     <div>
@@ -38,11 +40,15 @@ const AdminTable = ({
 
                 <td>
                   <span>
-                    <button className="action-btn">Delete</button>
+                    <button className="action-btn" onClick={onDeleteClick}>
+                      Delete
+                    </button>
                   </span>
                   &nbsp;
                   <span>
-                    <button className="action-btn0">Edit</button>
+                    <button className="action-btn0" onClick={onEditClick}>
+                      Edit
+                    </button>
                   </span>
                 </td>
               </tr>

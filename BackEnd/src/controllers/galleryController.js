@@ -60,8 +60,6 @@ export const uploadPicture = async (req, res) => {
 
 export const getonepicture = async (req, res) => {
   const { PictureId } = req.params;
-  const activity = await getSingleActivityService(ActivityId);
-
 
   try {
     const galleryPicture = await getonepictureService(PictureId);

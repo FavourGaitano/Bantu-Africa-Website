@@ -145,6 +145,7 @@ export const updateBookingService = async (BookingId, updatedBooking) => {
     IsReserved,
     IsPaid,
   } = updatedBooking;
+  console.log("Service input: ", updatedBooking);
   try {
     const result = await poolRequest()
       .input("BookingId", sql.VarChar(255), BookingId)

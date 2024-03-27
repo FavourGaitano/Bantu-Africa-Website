@@ -27,7 +27,10 @@ import {
   getRoomsAvailableForBookingService,
   isAvailableService,
 } from "../services/roomService.js";
-import { findRoomCategoryService } from "../services/roomCategoryService.js";
+import {
+  findRoomCategoryService,
+  getPriceByNameMealPlanAndSize,
+} from "../services/roomCategoryService.js";
 
 export const createBooking = async (req, res) => {
   const {
@@ -287,102 +290,87 @@ export const updateBooking = async (req, res) => {
           Email,
           FirstName,
           LastName,
-          RoomId,
+          Total,
+          BookingId,
           SpecialRequirements,
           StartDate,
           EndDate,
           AdultsNo,
           KidsNo,
           MealPlan,
-          Total,
           IsReserved,
           IsPaid,
         } = req.body;
-        const CreatedAt = new Date();
+        console.log(req.body);
+        const CreatedAt = { CreatedAt: new Date() };
+        console.log(CreatedAt);
         const updatedBooking = {
-          Email,
-          FirstName,
-          LastName,
-          RoomId,
-          SpecialRequirements,
-          CreatedAt,
-          StartDate,
-          EndDate,
-          AdultsNo,
-          KidsNo,
-          MealPlan,
-          Total,
-          IsReserved,
-          IsPaid,
+          ...req.body,
+          ...CreatedAt,
+          // Email,
+          // FirstName,
+          // LastName,
+          // RoomId,
+          // SpecialRequirements,
+          // CreatedAt,
+          // StartDate,
+          // EndDate,
+          // AdultsNo,
+          // KidsNo,
+          // MealPlan,
+          // Total,
+          // IsReserved,
+          // IsPaid,
         };
-        if (Email) {
-          updatedBooking.Email = Email;
-        }
-        if (FirstName) {
-          updatedBooking.FirstName = FirstName;
-        }
-        if (LastName) {
-          updatedBooking.LastName = LastName;
-        }
-        if (RoomId) {
-          updatedBooking.RoomId = RoomId;
-        }
-        if (SpecialRequirements) {
-          updatedBooking.SpecialRequirements = SpecialRequirements;
-        }
-        if (StartDate) {
-          updatedBooking.StartDate = StartDate;
-        }
-        if (EndDate) {
-          updatedBooking.EndDate = EndDate;
-        }
-        if (AdultsNo) {
-          updatedBooking.AdultsNo = AdultsNo;
-        }
-        if (KidsNo) {
-          updatedBooking.KidsNo = KidsNo;
-        }
-        if (MealPlan) {
-          updatedBooking.MealPlan = MealPlan;
-        }
-        if (Total) {
-          updatedBooking.Total = Total;
-        }
-        if (IsReserved) {
-          updatedBooking.IsReserved = IsReserved;
-        }
-        if (IsPaid) {
-          updatedBooking.IsPaid = IsPaid;
-          if (IsPaid == true) {
-            // console.log("Room id is:", RoomId);
-            await isAvailableService(RoomId);
-          }
-        }
-        const totalOccupants = AdultsNo + KidsNo;
-        const roomToBook = await getRoomByIdService(RoomId);
-        // console.log(roomToBook);
+        console.log("updated: ", updatedBooking);
 
-        if (totalOccupants > roomToBook.Occupants) {
-          // console.log("Check reached");
-          res
-            .status(400)
-            .send(
-              "The total number of guests exceeds the maximum occupancy for this room. Please select another room."
-            );
-          return;
-        }
-        if (!roomToBook.isAvailable) {
-          // console.log("Entered date check");
-          res
-            .status(400)
-            .send(
-              "This room is already booked for these dates. Please select another."
-            );
-          return;
-        } else {
-          await updateBookingService(BookingId, updatedBooking);
-          sendCreated(res, "Booking updated successfully");
-        }
+        // if (Email) {
+        //   updatedBooking.Email = Email;
+        // }
+        // if (FirstName) {
+        //   updatedBooking.FirstName = FirstName;
+        // }
+        // if (LastName) {
+        //   updatedBooking.LastName = LastName;
+        // }
+        // if (RoomId) {
+        //   updatedBooking.RoomId = RoomId;
+        // }
+        // if (SpecialRequirements) {
+        //   updatedBooking.SpecialRequirements = SpecialRequirements;
+        // }
+        // if (StartDate) {
+        //   updatedBooking.StartDate = StartDate;
+        // }
+        // if (EndDate) {
+        //   updatedBooking.EndDate = EndDate;
+        // }
+        // if (AdultsNo) {
+        //   updatedBooking.AdultsNo = AdultsNo;
+        // }
+        // if (KidsNo) {
+        //   updatedBooking.KidsNo = KidsNo;
+        // }
+        // if (MealPlan) {
+        //   updatedBooking.MealPlan = MealPlan;
+        // }
+        // if (Total) {
+        //   updatedBooking.Total = Total;
+        // }
+        // if (IsReserved) {
+        //   updatedBooking.IsReserved = IsReserved;
+        // }
+        // if (IsPaid) {
+        //   updatedBooking.IsPaid = IsPaid;
+        // // }
+        // if (updatedBooking.IsPaid == true) {
+        //   // console.log("Room id is:", RoomId);
+        //   const change = await isAvailableService(RoomId);
+        //   console.log("reached ", change);
+        // }
+        const reply = await updateBookingService(BookingId, updatedBooking);
+        console.log(reply);
+        sendCreated(res, "Booking updated successfully");
       } else {
         sendBadRequest(res, "Please provide a complete field");
       }

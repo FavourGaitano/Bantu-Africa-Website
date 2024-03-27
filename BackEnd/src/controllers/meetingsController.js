@@ -16,7 +16,6 @@ import {
 } from "../services/meetingService.js";
 import { meetingValidator } from "../validators/MeetingsValidators/meetingsvalidator.js";
 
-
 export const getMeetings = async (req, res) => {
   try {
     const meetings = await getMeetingsService();
@@ -31,8 +30,7 @@ export const getMeetings = async (req, res) => {
 };
 
 export const createMeeting = async (req, res) => {
-  const { Description, ConferenceRoomName, Image, Price, PackageId, Quantity } =
-    req.body;
+  const { Description, ConferenceRoomName, Image, Price, Quantity } = req.body;
   const { error } = meetingValidator(req.body);
 
   if (error) {
@@ -53,7 +51,6 @@ export const createMeeting = async (req, res) => {
         ConferenceRoomName,
         Image,
         Price,
-        PackageId,
         Quantity,
       };
 
@@ -71,7 +68,7 @@ export const createMeeting = async (req, res) => {
 
 export const getoneMeeting = async (req, res) => {
   const { ConferenceId } = req.params;
-  
+
   console.log(ConferenceId);
 
   try {
@@ -118,7 +115,8 @@ export const deleteMeeting = async (req, res) => {
 export const updateMeeting = async (req, res) => {
   try {
     const { ConferenceId } = req.params;
-    const updatedMeetingData = req.body;
+    const { Description, ConferenceRoomName, Image, Price, Quantity } = req.body;
+    console.log('requested body', req.body)
 
     // Check if the Meeting Exists
     const existingMeeting = await getoneMeetingservice(ConferenceId);
@@ -128,7 +126,13 @@ export const updateMeeting = async (req, res) => {
       });
     }
 
-    const result = await updateMeetingService(ConferenceId, updatedMeetingData);
+    const result = await updateMeetingService(ConferenceId, {
+      Description,
+      ConferenceRoomName,
+      Image,
+      Price,
+      Quantity,
+    });
 
     if (result instanceof Error) {
       console.error("Error updating Meeting:", result);

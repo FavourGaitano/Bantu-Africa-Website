@@ -8,6 +8,7 @@ import Footer from "../../components/shared/Footer";
 import Map from "../../components/home/Map";
 import OtherServices from "../../components/OtherServices/OtherServices";
 import Offers from "../../components/Offers/Offers";
+import SpecialOffers from "../../components/home/SpecialOffers";
 
 const Home = () => {
   const [showOffersModal, setShowOffersModal] = useState(false);
@@ -28,14 +29,15 @@ const Home = () => {
     <div className="home-page">
       <Carousel />
       <MarketingCards />
+      <SpecialOffers />
       <Map />
-      {showOffersModal && (
+      {/* {showOffersModal && (
         <div key="offers-modal" className="offers-modal-background">
           <div className="offers-modal-content">
             <Offers onClose={handleCloseOffersModal} />
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

@@ -39,7 +39,7 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxZDNkODU4
 {
     "FirstName": "Favour",
     "LastName": "Oyewumi53",
-    "Email": "favourbuyanzi34@gmail.com"
+    "Email": "devbuyanzi@gmail.com"
 }
 
 
@@ -47,13 +47,12 @@ Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxZDNkODU4
 PATCH http://localhost:8000/api/users/patch/7e77b394-8dd5-4d22-8bcd-658cba2a9a69
 Content-Type: application/json
 
-
 {
     "Password": "#Frankie312111"
 }
 
 ### getting single user
-GET http://localhost:8000/api/users/single/6bdca77d-fa32-42f8-85f9-c1d06d3cafca
+GET http://localhost:8000/api/users/single/677fb9b4-635a-4944-8908-e02a848a0e5a
 
 
 ### Deleting a single user
