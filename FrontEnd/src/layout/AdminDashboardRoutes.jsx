@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AdminSidebar from "../components/AdminSidebar/AdminSidebar";
 import AdminNavbar from "../components/AdminNavbar/AdminNavbar";
-import AdminRoomPage from '../adminpages/rooms/AdminRoomPage'
-import './AdminDashboardRoutes.scss';
+import AdminRoomPage from "../adminpages/rooms/AdminRoomPage";
+import "./AdminDashboardRoutes.scss";
 import AdminBookingPage from "../adminpages/booking/AdminBookingPage";
 import AdminEventPage from "../adminpages/events/AdminEventPage";
 import AdminMeetingPage from "../adminpages/meetings/AdminMeetingPage";
@@ -19,6 +19,7 @@ import AddRoom from "../components/adminroom/AddRoom";
 import ViewRoomPage from "../components/adminroom/ViewRoomCategory";
 import AdminMenuPages from "../adminpages/menu/AdminMenuPages";
 import AdminOffers from "../adminpages/RestaurantOffers/AdminOffers";
+import AdminCreateBooking from "../adminpages/booking/AdminCreateBooking";
 
 const AdminDashboardRoutes = () => {
   return (
@@ -35,6 +36,7 @@ const AdminDashboardRoutes = () => {
             <Route path="/dash" element={<AdminDashboardPage />} />
             <Route path="/room" element={<AdminRoomPage />} />
             <Route path="/booking" element={<AdminBookingPage />} />
+            <Route path="/addbooking" element={<AdminCreateBooking />} />
             <Route path="/event" element={<AdminEventPage />} />
             <Route path="/meeting" element={<AdminMeetingPage />} />
             <Route path="/restaraunt" element={<AdminRestarauntPage />} />
@@ -44,10 +46,13 @@ const AdminDashboardRoutes = () => {
             <Route path="/inquery" element={<AdminInquriesPage />} />
             <Route path="/activities" element={<AdminActivitiesPage />} />
             <Route path="/offers" element={<AdminOffersPage />} />
-            <Route path="/viewroom" element={<ViewRoomPage/>} />
-            <Route path="/addroom" element={<AddRoom/>} />
-            <Route path="/restaurant/menu" element={<AdminMenuPages/>} />
-            <Route path="/restaurant/restaurant-offers" element={<AdminOffers/>} />
+            <Route path="/viewroom" element={<ViewRoomPage />} />
+            <Route path="/addroom" element={<AddRoom />} />
+            <Route path="/restaurant/menu" element={<AdminMenuPages />} />
+            <Route
+              path="/restaurant/restaurant-offers"
+              element={<AdminOffers />}
+            />
           </Routes>
         </div>
       </div>

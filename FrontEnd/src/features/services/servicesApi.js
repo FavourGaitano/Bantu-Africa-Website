@@ -16,7 +16,7 @@ export const servicesApi = createApi({
     createService: builder.mutation({
       query: (newService) => ({
         url: "service",
-        method: POST,
+        method: "POST",
         body: newService,
       }),
       invalidatesTags: ["Services"],
@@ -24,7 +24,7 @@ export const servicesApi = createApi({
     updateService: builder.mutation({
       query: (updatedService) => ({
         url: `service/${updatedService.ServiceId}`,
-        method: PUT,
+        method: "PUT",
         body: updatedService,
       }),
       invalidatesTags: ["Services"],
@@ -32,7 +32,7 @@ export const servicesApi = createApi({
     deleteService: builder.mutation({
       query: (ServiceId) => ({
         url: `service/${ServiceId}`,
-        method: DELETE,
+        method: "DELETE",
       }),
       invalidatesTags: ["Services"],
     }),

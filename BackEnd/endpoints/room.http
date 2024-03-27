@@ -11,7 +11,7 @@ Content-Type: application/json
 
 {
     "RoomPhotoUrl": "https://images.pexels.com/photos/279746/pexels-photo-279746.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "RoomNumber": 3,
+    "RoomNumber": 5,
     "Description": "The Deluxe Room offers exceptional comfort and security to the travelling businessman. A one-bedroom suite overlooking the protected natural wetland.",
     "RoomCategoryId": "0634f68a-ab25-4872-81e9-4917cbf97b6f",
     "Occupants": 2

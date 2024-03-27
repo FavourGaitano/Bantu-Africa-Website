@@ -3,17 +3,16 @@ import "./AdminSidebar.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const AdminSidebar = () => {
-
   const navigate = useNavigate();
 
-  const [isLoggedOut,setIsLoggedOut]=useState(false)
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
   const [openDropdown, setOpenDropdown] = useState("");
 
-  const handledLoggedOut=()=>{
-    setIsLoggedOut(true)
-    localStorage.removeItem('loggedInUser')
-    navigate('/admin')
-  }
+  const handledLoggedOut = () => {
+    setIsLoggedOut(true);
+    localStorage.removeItem("loggedInUser");
+    navigate("/admin");
+  };
 
   const toggleDropdown = (itemName) => {
     if (openDropdown === itemName) {
@@ -95,40 +94,57 @@ const AdminSidebar = () => {
     <div className="mainSideBar">
       <div className="admin-sidebar">
         <div className="admin-sidebar-content">
-          {sideNavItems.map((item, index) => (
+          {sideNavItems.map((item, index) =>
             item.subItems ? (
               <React.Fragment key={index}>
-              <div onClick={() => toggleDropdown(item.text)} className={item.text === "Restaurant" ? "sidebar-item-restaurant" : ""}>
-                {item.Icon}
-                {item.text}
-              </div>
-              {openDropdown === item.text && (
-                <div style={{ paddingLeft: "60px" }} className={item.text === "Restaurant" ? "sidebar-subitems-restaurant" : ""}>
-                  {item.subItems.map((subItem, subIndex) => (
-                    <NavLink key={subIndex} to={subItem.path} style={{ textDecorationLine: "none" }}>
-                      <span>{subItem.text}</span>
-                    </NavLink>
-                  ))}
-                </div>
-              )}
-            </React.Fragment>
-          ) : ( 
-            
-            <NavLink
-              key={index}
-              to={item.path}
-              style={{ textDecorationLine: "none" }}
-              className={`sidebar-item ${item.text === "Restaurant" ? "sidebar-item-restaurant" : ""}`}
-            >
-              <span style={{ textDecorationLine: "none" }}>
-                <a>
+                <div
+                  onClick={() => toggleDropdown(item.text)}
+                  className={
+                    item.text === "Restaurant" ? "sidebar-item-restaurant" : ""
+                  }
+                >
                   {item.Icon}
                   {item.text}
-                </a>
-              </span>
-            </NavLink>
+                </div>
+                {openDropdown === item.text && (
+                  <div
+                    style={{ paddingLeft: "60px" }}
+                    className={
+                      item.text === "Restaurant"
+                        ? "sidebar-subitems-restaurant"
+                        : ""
+                    }
+                  >
+                    {item.subItems.map((subItem, subIndex) => (
+                      <NavLink
+                        key={subIndex}
+                        to={subItem.path}
+                        style={{ textDecorationLine: "none" }}
+                      >
+                        <span>{subItem.text}</span>
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
+              </React.Fragment>
+            ) : (
+              <NavLink
+                key={index}
+                to={item.path}
+                style={{ textDecorationLine: "none" }}
+                className={`sidebar-item ${
+                  item.text === "Restaurant" ? "sidebar-item-restaurant" : ""
+                }`}
+              >
+                <span style={{ textDecorationLine: "none" }}>
+                  <a>
+                    {item.Icon}
+                    {item.text}
+                  </a>
+                </span>
+              </NavLink>
             )
-          ))}
+          )}
         </div>
         <div className="admin-sidebar-footer">
           <a onClick={handledLoggedOut} className="logout-btn">

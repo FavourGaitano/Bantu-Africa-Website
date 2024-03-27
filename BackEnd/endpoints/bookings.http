@@ -14,14 +14,14 @@ Content-Type: application/json
     "StartDate": "3/21/2024",
     "EndDate": "3/23/2024",
     "AdultsNo": 2,
-    "KidsNo": 1,
+    "KidsNo": 0,
     "MealPlan": "BB",
     "Name": "Deluxe",
-    "Size": "Double"
+    "Size": "Single"
 }
 
 ### Get Booking Price
-GET http://localhost:8000/api/booking/Deluxe/Double/BB
+GET http://localhost:8000/api/booking/Standard/Single/BB
 
 ### Get Booking By ID
 GET http://localhost:8000/api/bookings/237c31a-3a00-4445-b764-cc50ecb5c829
@@ -36,23 +36,26 @@ GET http://localhost:8000/api/Beyonce/Knowles
 GET http://localhost:8000/api/booking/room/58c47eeb-c132-4fd5-a893-b180b635c524
 
 ### Update Booking
-PUT http://localhost:3000/api/booking/update/46167e0e-6610-4986-9aaa-3377cc1e5fa5
+PUT http://localhost:8000/api/booking/update/1e143c81-ad84-4669-8034-99dcb6d6fbaf
 Content-Type: application/json
 
 {
     "Email": "polijo5454@irnini.com",
     "FirstName": "Beyonce",
     "LastName": "Knowles",
-    "RoomId": "123",
-    "SpecialRequirements": "Put up a huge picture of me on the wall.",
-    "StartDate": "2025-04-02",
-    "EndDate": "2025-04-03",
-    "AdultsNo": 2,
-    "KidsNo": 0,
-    "Total": 125700,
+    "SpecialRequirements": "Champagne in plenty, please.",
+    "StartDate": "3/21/2024",
+    "EndDate": "3/23/2024",
+    "AdultsNo": 1,
+    "KidsNo": 1,
+    "Total": 9000,
+    "RoomId": "sample",
+    "MealPlan": "BB",
+    "Name": "Deluxe",
+    "Size": "Single",
     "IsReserved": true,
-    "IsPaid": true
+    "IsPaid": false
 }
 
 ### Delete Booking
-DELETE http://localhost:8000/api/booking/delete/171846a2-b2a9-45d9-8195-486635bd2e12
+DELETE http://localhost:8000/api/booking/delete/1e143c81-ad84-4669-8034-99dcb6d6fbaf
