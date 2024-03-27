@@ -1,10 +1,20 @@
 import React from "react";
 import "./AdminTable.scss";
 
-const AdminTable = ({tableNumber,thead1,thead2,thead3,thead4,tbody1,tbody2,tbody3,tbody4,tbody5}) => {
+const AdminTable = ({
+  tableNumber,
+  thead1,
+  thead2,
+  thead3,
+  thead4,
+  tbody1,
+  tbody2,
+  tbody3,
+  tbody4,
+  tbody5,
+}) => {
   return (
     <div>
-      
       <div className="admin-table-body">
         <div className="admin-cart">
           <table>
@@ -45,5 +55,3 @@ const AdminTable = ({tableNumber,thead1,thead2,thead3,thead4,tbody1,tbody2,tbody
 };
 
 export default AdminTable;
-
-

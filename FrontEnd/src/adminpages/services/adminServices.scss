@@ -1,19 +1,16 @@
-.the-table-body {
+.admin-table-body {
   font-family: "Futura Std";
   display: flex;
   // align-items: center;
   justify-content: center;
-  //   height: 80vh;
+  height: 80vh;
   width: 100%;
   margin: 0;
-  position: relative;
-  //   border: 2px solid red;
-  overflow-y: scroll !important;
   .admin-cart {
-    overflow-y: scroll !important;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    overflow: hidden;
     width: 100%;
     table {
       width: 100%;
@@ -46,7 +43,6 @@
       input {
         width: 50px;
         padding: 6px;
-
         border: 1px solid #ddd;
         border-radius: 4px;
         cursor: pointer;
@@ -55,10 +51,11 @@
       .action-buttons {
         display: flex;
         flex-direction: column-reverse;
-        // border: 2px solid salmon;
-        align-items: center;
         border-left: 1px solid #ddd;
+        align-items: center;
+        justify-content: center;
       }
+
       .action-btn {
         background-color: #e74c3c;
         color: #fff;
@@ -66,7 +63,7 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        margin: 5px;
+        margin-right: 5px;
         transition: background-color 0.3s;
       }
 

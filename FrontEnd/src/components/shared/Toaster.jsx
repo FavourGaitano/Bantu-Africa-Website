@@ -1,13 +1,13 @@
 import { Toaster, toast } from "sonner";
 
 export const SuccessToast = (message) => {
-  toast.success(message, {
+  toast.success(`${message} 😃`, {
     duration: 2000,
   });
 };
 
 export const ErrorToast = (message) => {
-  toast.error(message, {
+  toast.error(`${message} 😔`, {
     duration: 4000,
   });
 };
