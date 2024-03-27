@@ -21,7 +21,7 @@ Get http://localhost:8000/api/gallery/onePicture/0d8b5870-298f-4e96-98cf-45112b0
 
 ### Delete gallery
 
-Delete http://localhost:8000/api/gallery/8c23436b-d736-4a98-aa86-71d5dbdafdf7
+Delete http://localhost:8000/api/gallery/0d8b5870-298f-4e96-98cf-45112b08e0cf
 
 ### Update gallery
 PUT http://localhost:8000/api/gallery/0d8b5870-298f-4e96-98cf-45112b08e0cf
@@ -32,3 +32,5 @@ Content-Type: application/json
         "Category": "Conferences",
         "PictureUrl": "https://cdn.pixabay.com/photo/2017/03/28/12/16/chairs-2181980_960_720.jpg"  
 }
+
+
