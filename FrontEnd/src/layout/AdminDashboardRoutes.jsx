@@ -16,6 +16,7 @@ import AdminActivitiesPage from "../adminpages/activities/AdminActivitiesPage";
 import AdminOffersPage from "../adminpages/offers/AdminOffersPage";
 import AdminDashboardPage from "../adminpages/userdashboard/AdminDashboardPage";
 import AdminMenuPages from "../adminpages/menu/AdminMenuPages";
+import AdminOffers from "../adminpages/RestaurantOffers/AdminOffers";
 
 const AdminDashboardRoutes = () => {
   return (
@@ -42,7 +43,7 @@ const AdminDashboardRoutes = () => {
             <Route path="/activities" element={<AdminActivitiesPage />} />
             <Route path="/offers" element={<AdminOffersPage />} />
             <Route path="/restaurant/menu" element={<AdminMenuPages/>} />
-            <Route path="/restaurant/offers" element={<AdminOffersPage/>} />
+            <Route path="/restaurant/restaurant-offers" element={<AdminOffers/>} />
           </Routes>
         </div>
       </div>
