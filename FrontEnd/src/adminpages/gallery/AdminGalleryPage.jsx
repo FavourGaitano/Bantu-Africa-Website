@@ -7,6 +7,7 @@ const AdminGalleryPage = () => {
     error: allImagesError,
     isLoading: allImagesLoading,
   } = useGetPicturesQuery();
+  console.log(allImages);
 
   const isLoading = allImagesLoading;
   const error = allImagesError;
@@ -23,17 +24,23 @@ const AdminGalleryPage = () => {
   return (
     <div>
       <h2>This is Admin Gallery Page</h2>
-      {images &&
-        images.map((image) => (
-          <div className="admin-gallery">
+      {allImages &&
+        allImages.map((image, index) => (
+          <div className="admin-gallery" key={image.PictureId}>
             <AdminTable
-              tableNumber="No."
+              tableNumber={index + 1 + "."}
               thead1="Image"
               thead2="Description"
-              thead3="Catetegory"
+              thead3="Category"
               thead4="Created At"
-              tbody1={""}
-              tbody2=<img src={image.PictureUrl}></img> //picture Url
+              tbody1={index + 1}
+              tbody2={
+                <img
+                  src={image.PictureUrl}
+                  alt={image.Description}
+                  style={{ width: "12vw", height: "auto" }}
+                />
+              }
               tbody3={image.Description}
               tbody4={image.Category}
               tbody5={image.CreatedAt}
