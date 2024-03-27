@@ -10,7 +10,11 @@ import {
   addRoomCategoryService,
   deleteRoomCategoryService,
   findRoomCategoryService,
+  getCategoriesByName,
+  getCategoriesByNameAndSize,
+  getCategoriesByNameSizeAndMealPlan,
   getPriceByNameMealPlanAndSize,
+  getPriceByNameSizeAndMealPlan,
   getRoomCategoriesService,
   getRoomCategoryByIdService,
   updateRoomCategoryService,
@@ -50,6 +54,56 @@ export const getPriceController=async(req, res)=>{
       return res.status(500).json({ error: "Internal server error." });
     }
   }
+
+
+
+
+export const getCategoriesByNameController=async(req, res)=> {
+  try {
+    const { name } = req.params;
+    const categories = await getCategoriesByName(name);
+    res.json(categories);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+// roomCategor
+
+export const getCategoriesByNameAndSizeController=async(req, res)=> {
+  try {
+    const { Name, Size } = req.body;
+    console.log(req.body);
+    const categories = await getCategoriesByNameAndSize(Name, Size);
+console.log(categories);
+    res.json(categories);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+export const getPriceByNameSizeAndMealPlanController=async(req, res)=> {
+  try {
+    const { Name, Size, MealPlan } = req.body;
+    const price = await getPriceByNameSizeAndMealPlan(Name, Size, MealPlan);
+    res.json(price );
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+
+export const getCategoriesByNameSizeAndMealPlanController=async(req, res)=> {
+  try {
+    const { Name, Size, MealPlan } = req.body;
+    const categories = await getCategoriesByNameSizeAndMealPlan(Name, Size, MealPlan);
+    res.json(categories);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+
 
 
 export const findRoomCategory = async (req, res) => {
@@ -149,6 +203,7 @@ export const updateRoomCategoryController = async (req, res) => {
       RoomCategoryId,
       ...roomCategory,
     });
+    console.log(response);
 
     if (response.message) {
       sendServerError(res, response.message);
@@ -156,6 +211,7 @@ export const updateRoomCategoryController = async (req, res) => {
       sendCreated(res, "Room category updated successfully");
     }
   } catch (error) {
+    console.log(error.message);
     sendServerError(res, error.message);
   }
 };

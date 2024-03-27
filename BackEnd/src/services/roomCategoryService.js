@@ -56,7 +56,62 @@ export const getRoomCategoriesService = async () => {
     }
   };
   
- 
+//  categories based on the name
+  export const getCategoriesByName=async(Name)=>{
+    try {
+      const result = await poolRequest()
+        .input('Name', sql.VarChar, Name)
+        .query('SELECT * FROM RoomCategory WHERE Name = @Name');
+      return result.recordset;
+    } catch (error) {
+      return (`Error getting categories by name: ${error.message}`);
+    }
+  }
+
+// categories based on the name and size
+// roomCategoryService.js
+
+export const getCategoriesByNameAndSize=async(Name, Size)=> {
+  try {
+    const result = await poolRequest()
+      .input('Name', sql.VarChar, Name)
+      .input('Size', sql.VarChar, Size)
+      .query('SELECT * FROM RoomCategory WHERE Name = @Name AND Size = @Size');
+    return result.recordset;
+  } catch (error) {
+    throw new Error(`Error getting categories by name and size: ${error.message}`);
+  }
+}
+
+// roomCategoryService.js
+
+export const getCategoriesByNameSizeAndMealPlan=async(Name, Size, MealPlan)=> {
+  try {
+    const result = await poolRequest()
+      .input('Name', sql.VarChar, Name)
+      .input('Size', sql.VarChar, Size)
+      .input('MealPlan', sql.VarChar, MealPlan)
+      .query('SELECT * FROM RoomCategory WHERE Name = @Name AND Size = @Size AND MealPlan = @MealPlan');
+    return result.recordset;
+  } catch (error) {
+    throw new Error(`Error getting categories by name, size, and meal plan: ${error.message}`);
+  }
+}
+
+// roomCategoryService.js
+
+export const getPriceByNameSizeAndMealPlan=async(Name, Size, MealPlan)=>{
+  try {
+    const result = await poolRequest()
+      .input('Name', sql.VarChar, Name)
+      .input('Size', sql.VarChar, Size)
+      .input('MealPlan', sql.VarChar, MealPlan)
+      .query('SELECT Price FROM RoomCategory WHERE Name = @Name AND Size = @Size AND MealPlan = @MealPlan');
+    return result.recordset; 
+  } catch (error) {
+    throw new Error(`Error getting price by name, size, and meal plan: ${error.message}`);
+  }
+}
 
 
 export const getRoomCategoryByIdService = async (RoomCategoryId) => {
