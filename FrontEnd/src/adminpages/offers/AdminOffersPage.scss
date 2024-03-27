@@ -1,0 +1,24 @@
+.add-offer-top{
+    // background-color: blue;
+    display: flex;
+    padding: 15px;
+    justify-content: space-around;
+
+    .add-offer-button{
+        background-color: #5e292f;
+        padding: 10px 15px;
+        border-radius: 7px;
+        border: none;
+        color: white;
+    }
+}
+
+.admin-offer-table{
+    // background-color: red;
+
+    
+    .offer-del-button{
+        background-color: green;
+    }
+
+}

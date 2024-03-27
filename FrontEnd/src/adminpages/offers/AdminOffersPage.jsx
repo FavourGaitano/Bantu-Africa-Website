@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
-import { useGetOffersQuery, useAddOfferMutation, useDeleteOfferMutation, useUpdateOfferMutation } from '../../features/offers/offerApi.js';
-
+import React, { useState } from "react";
+import {
+  useGetOffersQuery,
+  useAddOfferMutation,
+  useDeleteOfferMutation,
+  useUpdateOfferMutation,
+} from "../../features/offers/offerApi.js";
+import "./AdminOffersPage.scss";
 const AdminOffersPage = () => {
   const { data: offers, error, isLoading } = useGetOffersQuery();
   const [showModal, setShowModal] = useState(false);
-  const [newOfferImageUrl, setNewOfferImageUrl] = useState('');
+  const [newOfferImageUrl, setNewOfferImageUrl] = useState("");
   const [selectedOffer, setSelectedOffer] = useState(null);
 
   const toggleModal = () => {
     setShowModal(!showModal);
-    setSelectedOffer(null); 
+    setSelectedOffer(null);
   };
 
   const handleInputChange = (e) => {
@@ -26,7 +31,7 @@ const AdminOffersPage = () => {
     try {
       await deleteOffer(OfferId);
     } catch (error) {
-      console.error('Error deleting offer:', error);
+      console.error("Error deleting offer:", error);
       // Handle error
     }
   };
@@ -39,14 +44,17 @@ const AdminOffersPage = () => {
     e.preventDefault();
     try {
       if (selectedOffer) {
-        await updateOffer({ OfferId: selectedOffer.OfferId, OfferImageUrl: newOfferImageUrl });
+        await updateOffer({
+          OfferId: selectedOffer.OfferId,
+          OfferImageUrl: newOfferImageUrl,
+        });
       } else {
         await addOffer({ OfferImageUrl: newOfferImageUrl });
       }
-      setNewOfferImageUrl(''); 
+      setNewOfferImageUrl("");
       toggleModal();
     } catch (error) {
-      console.error('Error adding/updating offer:', error);
+      console.error("Error adding/updating offer:", error);
       // Handle error
     }
   };
@@ -56,9 +64,11 @@ const AdminOffersPage = () => {
 
   return (
     <div>
-      <h2>Admin Offers Page</h2>
-      <button onClick={toggleModal}>Add Offer</button>
-      <table>
+      <div className="add-offer-top">
+        <h2>Admin Offers Page</h2>
+        <button className="add-offer-button" onClick={toggleModal}>Add Offer</button>
+      </div>
+      <table className="admin-offer-table">
         <thead>
           <tr>
             <th>Image URL</th>
@@ -70,7 +80,9 @@ const AdminOffersPage = () => {
             <tr key={offer.OfferId}>
               <td>{offer.OfferImageUrl}</td>
               <td>
-                <button onClick={() => handleDelete(offer.OfferId)}>Delete</button>
+                <button className="offer-del-button" onClick={() => handleDelete(offer.OfferId)}>
+                  Delete
+                </button>
                 <button onClick={() => handleUpdate(offer)}>Update</button>
               </td>
             </tr>
@@ -79,10 +91,17 @@ const AdminOffersPage = () => {
       </table>
       {showModal && (
         <div>
-          <h3>{selectedOffer ? 'Update Offer' : 'Add New Offer'}</h3>
+          <h3>{selectedOffer ? "Update Offer" : "Add New Offer"}</h3>
           <form onSubmit={handleSubmit}>
-            <input type="text" value={newOfferImageUrl} onChange={handleInputChange} placeholder="Offer Image URL" />
-            <button type="submit" disabled={isAddingOffer}>Submit</button>
+            <input
+              type="text"
+              value={newOfferImageUrl}
+              onChange={handleInputChange}
+              placeholder="Offer Image URL"
+            />
+            <button type="submit" disabled={isAddingOffer}>
+              Submit
+            </button>
           </form>
         </div>
       )}
