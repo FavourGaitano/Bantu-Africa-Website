@@ -12,6 +12,10 @@ const Restaurant = () => {
     navigate("/Menu");
   };
 
+  const handleEnquiryClick = () => {
+    navigate("/contact");
+  }
+
   return (
     <div className="BantuRestaurant">
     <div className="mainRestaurant">
@@ -35,7 +39,7 @@ const Restaurant = () => {
           <button className="btn2" onClick={handleMenuClick}>
             Our Menu
           </button>
-          <button className="btn1">Enquiries</button>
+          <button className="btn1" onClick={handleEnquiryClick}>Enquiries</button>
         </div>
       </div>
 
