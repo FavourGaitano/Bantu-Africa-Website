@@ -69,8 +69,8 @@ const AdminOffersPage = () => {
         <button className="add-offer-button" onClick={toggleModal}>Add Offer</button>
       </div>
       <table className="admin-offer-table">
-        <thead>
-          <tr>
+        <thead className="admin-table-header">
+          <tr className="admin-table-header-row">
             <th>Image URL</th>
             <th>Actions</th>
           </tr>
