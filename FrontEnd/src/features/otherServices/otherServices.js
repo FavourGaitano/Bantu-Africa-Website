@@ -28,7 +28,7 @@ export const otherServiceApi = createApi({
             invalidatesTags: ["OtherServices"]
         }),
 
-        deleteService: builder.mutation({
+        deleteOtherService: builder.mutation({
             query: (OtherServiceId) => ({
               url: `otherService/${OtherServiceId}`,
               method: "DELETE",
@@ -39,4 +39,10 @@ export const otherServiceApi = createApi({
     })
 });
 
-export const { useGetOtherServicesQuery } = otherServiceApi;
+export const {
+    useGetOtherServicesQuery,
+    useCreateOtherServiceMutation, // Corrected
+    useUpdateOtherServiceMutation, // Corrected
+    useDeleteOtherServiceMutation // Corrected
+  } = otherServiceApi;
+  

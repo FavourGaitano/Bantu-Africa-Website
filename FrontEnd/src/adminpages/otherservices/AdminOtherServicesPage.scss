@@ -1,0 +1,183 @@
+
+.admin-other-services-page {
+    margin-top: -40px;
+  
+    .admin-add-other-service-btn-sec {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      margin-top: 15px;
+  
+      .admin-other-service-btn {
+        padding: 8px 16px;
+        border-radius: 7px;
+        color: white;
+        background-color: #5e292f;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  
+    .admin-table-container {
+      margin-top: 20px;
+      overflow-x: auto;
+      max-height: 400px;
+      position: relative;
+  
+      .other-service-table {
+        width: 100%;
+        border-collapse: collapse;
+  
+        th,
+        td {
+          padding: 12px;
+          text-align: left;
+          word-break: break-word;
+        }
+  
+        th {
+          background-color: #5e292f;
+          color: white;
+          font-weight: bold;
+          position: sticky;
+          top: 0;
+          z-index: 1;
+        }
+  
+        tbody tr:hover {
+          background-color: #f2f2f2;
+        }
+  
+        tr {
+          border-bottom: 1px solid #a4a2a2;
+        }
+  
+        td {
+          width: 20%; 
+        }
+  
+        img {
+          max-width: 100px;
+          max-height: 100px;
+          width: auto;
+          height: auto;
+          border-radius: 4px;
+        }
+  
+        .admin-action-buttons {
+          display: flex;
+        }
+  
+        .other-service-delete,
+        .other-service-update {
+          padding: 6px 10px;
+          border-radius: 7px;
+          border: none;
+          color: white;
+          cursor: pointer;
+        }
+  
+        .other-service-delete {
+          background-color: red;
+        }
+  
+        .other-service-update {
+          background-color: greenyellow;
+          margin-left: 4px;
+        }
+      }
+    }
+  
+    .other-service-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  
+    .other-service-modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 350px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+  
+    .other-service-modal-content h2 {
+      margin-bottom: 20px;
+    }
+  
+    .other-service-modal-content label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+  
+    .other-service-modal-content input[type="text"],
+    .other-service-modal-content input[type="url"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+  
+    .close {
+      color: black;
+      font-size: 40px;
+      font-weight: bolder;
+      display: flex;
+      justify-content: end;
+      cursor: pointer;
+    }
+  
+    .other-service-modal-content input[type="text"]:focus,
+    .other-service-modal-content input[type="url"]:focus {
+      border-color: #5e292f;
+      outline: none;
+    }
+  
+    .other-service-modal-content input[type="submit"] {
+      background-color: #5e292f;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: backgound-color 0.3s;
+    }
+  
+    .act-btn {
+      display: flex;
+      justify-content: center;
+  
+      .other-service-add-button {
+        background-color: #5e292f;
+        border-radius: 7px;
+        padding: 8px 11px;
+        display: flex;
+        align-items: center;
+        border: none;
+        color: white;
+      }
+    }
+  
+    .other-service-modal-content input[type="submit"]:hover {
+      background-color: #4a2125;
+    }
+  
+    .other-service-modal-content .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+  }
+  
