@@ -15,6 +15,8 @@ import AdminInquriesPage from "../adminpages/inquery/AdminInquriesPage";
 import AdminActivitiesPage from "../adminpages/activities/AdminActivitiesPage";
 import AdminOffersPage from "../adminpages/offers/AdminOffersPage";
 import AdminDashboardPage from "../adminpages/userdashboard/AdminDashboardPage";
+import AddRoom from "../components/adminroom/AddRoom";
+import ViewRoomPage from "../components/adminroom/ViewRoomCategory";
 import AdminMenuPages from "../adminpages/menu/AdminMenuPages";
 
 const AdminDashboardRoutes = () => {
@@ -41,6 +43,8 @@ const AdminDashboardRoutes = () => {
             <Route path="/inquery" element={<AdminInquriesPage />} />
             <Route path="/activities" element={<AdminActivitiesPage />} />
             <Route path="/offers" element={<AdminOffersPage />} />
+            <Route path="/viewroom" element={<ViewRoomPage/>} />
+            <Route path="/addroom" element={<AddRoom/>} />
             <Route path="/restaurant/menu" element={<AdminMenuPages/>} />
             <Route path="/restaurant/offers" element={<AdminOffersPage/>} />
           </Routes>
