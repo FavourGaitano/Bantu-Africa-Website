@@ -9,7 +9,7 @@ userRouter.post('/users', createUser);
 userRouter.post('/users/login' , loginUserController)
 userRouter.get('/users/single/:UserId' , getSingleUserController)
 userRouter.put('/users/update/:UserId' , updateUserControllers)
-userRouter.patch('/users/patch/:UserId', updateUserPasswordControllers)
+userRouter.patch('/users/:UserId', updateUserPasswordControllers)
 userRouter.delete('/users/delete/:UserId', deleteUserController)
 
 

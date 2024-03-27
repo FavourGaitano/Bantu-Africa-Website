@@ -7,12 +7,21 @@ const AdminSidebar = () => {
   const navigate = useNavigate();
 
   const [isLoggedOut,setIsLoggedOut]=useState(false)
+  const [openDropdown, setOpenDropdown] = useState("");
 
   const handledLoggedOut=()=>{
     setIsLoggedOut(true)
     localStorage.removeItem('loggedInUser')
     navigate('/admin')
   }
+
+  const toggleDropdown = (itemName) => {
+    if (openDropdown === itemName) {
+      setOpenDropdown("");
+    } else {
+      setOpenDropdown(itemName);
+    }
+  };
 
   const sideNavItems = [
     {
@@ -45,6 +54,10 @@ const AdminSidebar = () => {
       path: "/admin/restaraunt",
       text: "Restaurant",
       Icon: <i className="fa-solid fa-bell-concierge"></i>,
+      subItems: [
+        { path: "/admin/restaurant/menu", text: "Restaurant Menu" },
+        { path: "/admin/restaurant/offers", text: "Menu Offers" },
+      ],
     },
     {
       path: "/admin/gallery",
@@ -83,10 +96,29 @@ const AdminSidebar = () => {
       <div className="admin-sidebar">
         <div className="admin-sidebar-content">
           {sideNavItems.map((item, index) => (
+            item.subItems ? (
+              <React.Fragment key={index}>
+              <div onClick={() => toggleDropdown(item.text)} className={item.text === "Restaurant" ? "sidebar-item-restaurant" : ""}>
+                {item.Icon}
+                {item.text}
+              </div>
+              {openDropdown === item.text && (
+                <div style={{ paddingLeft: "60px" }} className={item.text === "Restaurant" ? "sidebar-subitems-restaurant" : ""}>
+                  {item.subItems.map((subItem, subIndex) => (
+                    <NavLink key={subIndex} to={subItem.path} style={{ textDecorationLine: "none" }}>
+                      <span>{subItem.text}</span>
+                    </NavLink>
+                  ))}
+                </div>
+              )}
+            </React.Fragment>
+          ) : ( 
+            
             <NavLink
               key={index}
               to={item.path}
               style={{ textDecorationLine: "none" }}
+              className={`sidebar-item ${item.text === "Restaurant" ? "sidebar-item-restaurant" : ""}`}
             >
               <span style={{ textDecorationLine: "none" }}>
                 <a>
@@ -95,6 +127,7 @@ const AdminSidebar = () => {
                 </a>
               </span>
             </NavLink>
+            )
           ))}
         </div>
         <div className="admin-sidebar-footer">

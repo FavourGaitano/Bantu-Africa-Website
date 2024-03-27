@@ -12,7 +12,7 @@ const galleryRouter = Router();
 
 galleryRouter.get("/gallery", getGallery);
 galleryRouter.post("/gallery", uploadPicture);
-galleryRouter.get("/gallery/:PictureId", getonepicture);
+galleryRouter.get("/gallery/onePicture/:PictureId", getonepicture);
 galleryRouter.get("/gallery/category/:Category", getPictureByCategory);
 galleryRouter.delete("/gallery/:PictureId", deletePicture);
 galleryRouter.put("/gallery/:PictureId", updateGalleryController);

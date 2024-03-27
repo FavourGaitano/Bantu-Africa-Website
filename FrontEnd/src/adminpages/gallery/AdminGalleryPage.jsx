@@ -7,6 +7,7 @@ const AdminGalleryPage = () => {
     error: allImagesError,
     isLoading: allImagesLoading,
   } = useGetPicturesQuery();
+  console.log(allImages);
 
   const isLoading = allImagesLoading;
   const error = allImagesError;
@@ -20,26 +21,54 @@ const AdminGalleryPage = () => {
     return <div>Error loading images.</div>;
   }
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  const sortedImages = allImages
+    .slice()
+    .sort((a, b) => new Date(b.CreatedAt) - new Date(a.CreatedAt));
+
   return (
-    <div>
-      <h2>This is Admin Gallery Page</h2>
-      {images &&
-        images.map((image) => (
-          <div className="admin-gallery">
-            <AdminTable
-              tableNumber="No."
-              thead1="Image"
-              thead2="Description"
-              thead3="Catetegory"
-              thead4="Created At"
-              tbody1={""}
-              tbody2=<img src={image.PictureUrl}></img> //picture Url
-              tbody3={image.Description}
-              tbody4={image.Category}
-              tbody5={image.CreatedAt}
-            />
-          </div>
-        ))}
+    <div className="admin-table-body">
+      <div className="admin-cart">
+        <h1>Image Gallery</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Created At</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedImages.map((image, index) => (
+              <tr key={image.PictureId}>
+                <td className="admin-td-custom">{index + 1}</td>
+                <td>
+                  <img
+                    src={image.PictureUrl}
+                    alt={image.Description}
+                    style={{ width: "100px", height: "auto" }}
+                  />
+                </td>
+                <td>{image.Description}</td>
+                <td>{image.Category}</td>
+                <td>{formatDate(image.CreatedAt)}</td>
+                <td>
+                  <button className="action-btn">Delete</button>
+                  &nbsp;
+                  <button className="action-btn0">Edit</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

@@ -14,7 +14,7 @@ const ViewRoomPage = () => {
   const [editRoomCategoryId, setEditRoomCategoryId] = useState(null); 
   const navigate = useNavigate();
   const { data } = useGetRoomCategoriesQuery();
-console.log("category data",data);
+
   const handleEditClick = (categoryId) => {
     setEditRoomCategoryId(categoryId); 
     setEditRoomModalOpen(true); 
@@ -31,45 +31,62 @@ console.log("category data",data);
               className="btn-add-room"
               msg="Add Category"
             />
-        
           </div>
         </div>
-        {data && data.map((roomCategory) => (
-          <div key={roomCategory.RoomCategoryId}>
-            <AdminTable
-              thead1="Room Name"
-              thead2="Size"
-              thead3="Meal Plan"
-              thead4="Price"
-              thead5="Actions"
-              tbody2={roomCategory.Name}
-              tbody3={roomCategory.Size}
-              tbody4={roomCategory.MealPlan}
-              tbody5={roomCategory.Price}
-              onEditClick={() => handleEditClick(roomCategory.RoomCategoryId)} 
-            />
-            {isAddRoomModalOpen && createPortal(
-        <div className="room-category-modal-container">
-          <div className="room-category-modal">
-            <AddRoomCategory setIsAddRoomModalOpen={setIsAddRoomModalOpen} />
+        <div className="admin-table-body">
+          <div className="admin-cart">
+            <table>
+              <thead>
+                <tr>
+                  <th>Room Name</th>
+                  <th>Size</th>
+                  <th>Meal Plan</th>
+                  <th>Price</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              {data && data.map((roomCategory) => (
+                <tbody key={roomCategory.RoomCategoryId}>
+                  <tr>
+                    <td className="admin-td-custom">{roomCategory.Name}</td>
+                    <td>{roomCategory.Size}</td>
+                    <td>{roomCategory.MealPlan}</td>
+                    <td>{roomCategory.Price}</td>
+                    <td>
+                      <span>
+                        <button className="action-btn">Delete</button>
+                      </span>
+                      &nbsp;
+                      <span>
+                        <button className="action-btn0" onClick={() => handleEditClick(roomCategory.RoomCategoryId)}>Edit</button>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              ))}
+            </table>
           </div>
-        </div>,
-        document.body
-      )}
-            {editRoomModalOpen && createPortal(
-              <div className="room-category-modal-container">
-                <div className="room-category-modal">
-                  <EditRoomCategory
-                    categoryId={editRoomCategoryId}
-                    roomCategory={roomCategory}
-                    setEditRoomModalOpen={setEditRoomModalOpen}
-                  />
-                </div>
-              </div>,
-              document.body
-            )}
-          </div>
-        ))}
+        </div>
+        {isAddRoomModalOpen && createPortal(
+          <div className="room-category-modal-container">
+            <div className="room-category-modal">
+              <AddRoomCategory setIsAddRoomModalOpen={setIsAddRoomModalOpen} />
+            </div>
+          </div>,
+          document.body
+        )}
+        {editRoomModalOpen && createPortal(
+          <div className="room-category-modal-container">
+            <div className="room-category-modal">
+              <EditRoomCategory
+                categoryId={editRoomCategoryId}
+                roomCategory={data.find(category => category.RoomCategoryId === editRoomCategoryId)} 
+                setEditRoomModalOpen={setEditRoomModalOpen}
+              />
+            </div>
+          </div>,
+          document.body
+        )}
       </div>
     </>
   );
