@@ -1,10 +1,11 @@
 import React from 'react';
 import { useGetUsersQuery } from '../../features/users/userApi';
+import './AdminDashboardpages.scss';
 
 const AdminDashboardPage = () => {
   const { data: users } = useGetUsersQuery();
 
-  // Helper function to format dates, similar to the formatDate function
+  
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
@@ -13,7 +14,8 @@ const AdminDashboardPage = () => {
   return (
     <div className="admin-table-body">
       <div className="admin-cart">
-        <h1>User List</h1>
+        <h1>List of Admins</h1>
+        <div className="scrollable-table-container">
         <table>
           <thead>
             <tr>
@@ -43,6 +45,7 @@ const AdminDashboardPage = () => {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   );
