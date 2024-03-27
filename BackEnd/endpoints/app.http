@@ -31,11 +31,7 @@ Content-Type: application/json
 
 
 
-<<<<<<< HEAD
 PUT http://localhost:8000/api/users/update/645c4357-13de-4d43-a28d-42761737ef0a
-=======
-PUT http://localhost:8000/api/users/update/b2fae24b-3862-4ce8-a65f-222701301982
->>>>>>> 0233e43ba3e25bf1dfaaf361f9049212eb946704
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxZDNkODU4My04OGRlLTRhOWYtYjc1MC1lYTY1NDc0YTM4MDkiLCJQYXNzd29yZCI6IiQyYiQwOCR0TXVZMjBZaERvNzN3TmtPT1N1LjllRXZmY2pLNzEzWnlCTDdKYU0wYmZRVkRTZVNxSE1MSyIsIkVtYWlsIjoidGl0dXMzQGdtYWlsLmNvbSIsImlhdCI6MTcwODk3NzY3NCwiZXhwIjoxNzA5MDY0MDc0fQ.pBE7xA_6CPnuTVTXYENwAruzraBeZNB2jyaYMzSmxys
 

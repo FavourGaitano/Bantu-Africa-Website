@@ -14,6 +14,7 @@ import { userApi } from "../features/users/userApi";
 import { bookingsApi } from "../features/bookings/bookingsApi";
 import { restaurantApi } from "../features/restaurant/restaurantApi";
 import { eventApi } from "../features/events/eventApi";
+import { roomCategoryApi } from "../features/roomCategory/roomCategoryApi";
 
 export const store = configureStore({
   reducer: {
@@ -28,6 +29,7 @@ export const store = configureStore({
     [bookingsApi.reducerPath]: bookingsApi.reducer,
     [restaurantApi.reducerPath]: restaurantApi.reducer,
     [eventApi.reducerPath]: eventApi.reducer,
+    [roomCategoryApi.reducerPath]: roomCategoryApi.reducer,
     
   },
   
@@ -44,6 +46,7 @@ export const store = configureStore({
       bookingsApi.middleware,
       restaurantApi.middleware,
       eventApi.middleware,
+      roomCategoryApi.middleware,
     ),
       
   });

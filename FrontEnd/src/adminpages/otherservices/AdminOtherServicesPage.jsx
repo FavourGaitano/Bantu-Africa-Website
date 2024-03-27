@@ -53,26 +53,28 @@ const AdminOtherServicesPage = () => {
     toggleModal();
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    if (selectedOtherService) {
-      await updateOtherService({ ...selectedOtherService, ...newOtherService });
-    } else {
-      await addOtherService(newOtherService);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (selectedOtherService) {
+        await updateOtherService({
+          ...selectedOtherService,
+          ...newOtherService,
+        });
+      } else {
+        await addOtherService(newOtherService);
+      }
+      setNewOtherService({
+        OtherServiceName: "",
+        Description: "",
+        ImageUrl: "",
+      });
+      toggleModal();
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle error
     }
-    setNewOtherService({
-      OtherServiceName: "",
-      Description: "",
-      ImageUrl: "",
-    });
-    toggleModal();
-  } catch (error) {
-    console.error("Error:", error);
-    // Handle error
-  }
-};
-
+  };
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;

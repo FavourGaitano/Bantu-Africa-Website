@@ -30,11 +30,11 @@ const AdminTable = ({tableNumber,thead1,thead2,thead3,thead4,tbody1,tbody2,tbody
 
                 <td>
                   <span>
-                    <button className="action-btn">Delete</button>
+                    <button className="action-btn" onClick={onDeleteClick} >Delete</button>
                   </span>
                   &nbsp;
                   <span>
-                    <button className="action-btn0">Edit</button>
+                    <button className="action-btn0" onClick={onEditClick}>Edit</button>
                   </span>
                 </td>
               </tr>
