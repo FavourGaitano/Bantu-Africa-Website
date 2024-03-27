@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetEventsQuery } from "../../features/events/eventApi";
+import { useGetEventsQuery, useAddEventMutation } from "../../features/events/eventApi";
 import "./AdminEventPage.scss";
 
 const AdminEventPage = () => {
@@ -11,6 +11,9 @@ const AdminEventPage = () => {
     PosterUrl: "",
     Date: "",
   });
+
+  // Mutation hook for adding an event
+  const [addEvent, { isLoading: isAddingEvent }] = useAddEventMutation();
 
   const openModal = () => {
     setShowModal(true);
@@ -28,11 +31,23 @@ const AdminEventPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add logic to submit new event here
-    console.log("New Event:", newEvent);
-    closeModal();
+    try {
+      // Call the addEvent mutation with the new event data
+      await addEvent(newEvent);
+      // Reset the form state
+      setNewEvent({
+        Name: "",
+        Description: "",
+        PosterUrl: "",
+        Date: "",
+      });
+      // Close the modal after successful addition
+      closeModal();
+    } catch (error) {
+      console.error("Error adding event:", error);
+    }
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -114,8 +129,8 @@ const AdminEventPage = () => {
                 required
               />
               <div className="event-sub-btn">
-                <button className="submit-ebent" type="submit">
-                  Add
+                <button className="submit-ebent" type="submit" disabled={isAddingEvent}>
+                  {isAddingEvent ? "Adding..." : "Add"}
                 </button>
               </div>
             </form>
