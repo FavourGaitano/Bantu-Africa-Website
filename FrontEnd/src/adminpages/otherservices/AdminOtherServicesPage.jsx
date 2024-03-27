@@ -100,7 +100,7 @@ const handleSubmit = async (e) => {
               <tr key={otherService.OtherServiceId}>
                 <td>{otherService.OtherServiceName}</td>
                 <td>{otherService.Description}</td>
-                <td>{otherService.ImageUrl}</td>
+                <td>{<img src= {otherService.ImageUrl} alt= {otherService.OtherServiceName}/>}</td>
                 <td>
                   <button
                     className="other-service-delete"

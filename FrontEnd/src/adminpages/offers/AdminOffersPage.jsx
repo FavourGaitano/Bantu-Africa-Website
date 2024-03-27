@@ -6,6 +6,7 @@ import {
   useUpdateOfferMutation,
 } from "../../features/offers/offerApi.js";
 import "./AdminOffersPage.scss";
+
 const AdminOffersPage = () => {
   const { data: offers, error, isLoading } = useGetOffersQuery();
   const [showModal, setShowModal] = useState(false);
@@ -66,7 +67,9 @@ const AdminOffersPage = () => {
     <div>
       <div className="add-offer-top">
         <h2>Admin Offers Page</h2>
-        <button className="add-offer-button" onClick={toggleModal}>Add Offer</button>
+        <button className="add-offer-button" onClick={toggleModal}>
+          Add Offer
+        </button>
       </div>
       <table className="admin-offer-table">
         <thead className="admin-table-header">
@@ -75,34 +78,57 @@ const AdminOffersPage = () => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="admin-offer-table-body">
           {offers.map((offer) => (
-            <tr key={offer.OfferId}>
-              <td>{offer.OfferImageUrl}</td>
-              <td>
-                <button className="offer-del-button" onClick={() => handleDelete(offer.OfferId)}>
+            <tr className="admin-table-row" key={offer.OfferId}>
+              <td>{<img src={offer.OfferImageUrl} alt="" />}</td>
+              <td className="offer-action-buttons">
+                <button
+                  className="offer-del-button"
+                  onClick={() => handleDelete(offer.OfferId)}
+                >
                   Delete
                 </button>
-                <button onClick={() => handleUpdate(offer)}>Update</button>
+                <button
+                  className="offer-up-button"
+                  onClick={() => handleUpdate(offer)}
+                >
+                  Update
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       {showModal && (
-        <div>
-          <h3>{selectedOffer ? "Update Offer" : "Add New Offer"}</h3>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={newOfferImageUrl}
-              onChange={handleInputChange}
-              placeholder="Offer Image URL"
-            />
-            <button type="submit" disabled={isAddingOffer}>
-              Submit
-            </button>
-          </form>
+        <div className="offer-modal">
+          <div className="offer-modal-content">
+            <span className="close" onClick={toggleModal}>
+              &times;
+            </span>
+            <h3>{selectedOffer ? "Update Offer" : "Add New Offer"}</h3>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label htmlFor="OfferImageUrl">Offer Image URL:</label>
+                <input
+                  type="text"
+                  id="OfferImageUrl"
+                  value={newOfferImageUrl}
+                  onChange={handleInputChange}
+                  placeholder="Offer Image URL"
+                />
+              </div>
+              <div className="offer-btn">
+                <button
+                  className="offer-add-button"
+                  type="submit"
+                  disabled={isAddingOffer}
+                >
+                  {isAddingOffer ? "Adding..." : "Save"}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
     </div>

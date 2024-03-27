@@ -1,0 +1,111 @@
+
+.admin-event-page {
+    // Other styles for the admin event page...
+    .admin-add-event-btn-sec{
+        background-color: red;
+        display: flex;
+        justify-content: space-around;
+        padding: 13px;
+    
+        .admin-add-event-buton{
+            background-color: aqua;
+            padding: 7px 10px;
+            border: none;
+            border-radius: 7px;
+            color: white;
+        }
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+  
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 350px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+
+      .event-sub-btn{
+        display: flex;
+        justify-content: center;
+
+        .submit-ebent{
+            background-color: #4a2125;
+            color: white;
+            padding: 8px 10px;
+            border-radius: 7px;
+            border: none;
+            
+          }
+      }
+
+      .close{
+        color: black;
+        display: flex;
+        justify-content: end;
+        font-size: 35px;
+        font-weight: 30px;
+      }
+    }
+  
+    .modal-content h2 {
+      margin-bottom: 20px;
+    }
+  
+    .modal-content label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+  
+    .modal-content input[type="text"],
+    .modal-content input[type="url"],
+    .modal-content input[type="date"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+  
+    .modal-content input[type="text"]:focus,
+    .modal-content input[type="url"]:focus,
+    .modal-content input[type="date"]:focus {
+      border-color: #5e292f;
+      outline: none;
+    }
+  
+    .modal-content input[type="submit"] {
+      background-color: #5e292f;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      padding: 12px 0;
+    }
+  
+    .modal-content input[type="submit"]:hover {
+      background-color: #4a2125;
+    }
+  
+    .modal-content .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+  }
+
+

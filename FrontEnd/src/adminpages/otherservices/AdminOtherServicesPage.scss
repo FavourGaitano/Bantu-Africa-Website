@@ -13,7 +13,7 @@
         padding: 8px 16px;
         border-radius: 7px;
         color: white;
-        background-color: #5e292f;
+        background-color: #191112;
         border: none;
         cursor: pointer;
       }
@@ -22,7 +22,7 @@
     .admin-table-container {
       margin-top: 20px;
       overflow-x: auto;
-      max-height: 400px;
+      max-height: 80vh;
       position: relative;
   
       .other-service-table {
@@ -37,7 +37,7 @@
         }
   
         th {
-          background-color: #5e292f;
+          background-color: #13090a;
           color: white;
           font-weight: bold;
           position: sticky;
@@ -79,11 +79,11 @@
         }
   
         .other-service-delete {
-          background-color: red;
+          background-color: #fa5c5c;
         }
   
         .other-service-update {
-          background-color: greenyellow;
+          background-color: #339e3d;
           margin-left: 4px;
         }
       }

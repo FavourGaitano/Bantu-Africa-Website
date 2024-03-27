@@ -16,7 +16,7 @@ const AdminActivitiesPage = () => {
     Category: "",
     ImageUrl: "",
   });
-  const [selectedActivity, setSelectedActivity] = useState(null); // State to hold details of the activity being edited
+  const [selectedActivity, setSelectedActivity] = useState(null); 
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -32,7 +32,9 @@ const AdminActivitiesPage = () => {
 
   const [addActivity, { isLoading: isAddingActivity }] =
     useAddActivityMutation();
+
   const [deleteActivity] = useDeleteActivityMutation();
+  
   const [updateActivity] = useUpdateActivityMutation();
 
   const handleDelete = async (activityId) => {

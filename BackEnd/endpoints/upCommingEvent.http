@@ -10,8 +10,8 @@ POST http://localhost:8000/api/events
 Content-Type: application/json
 
 {
-    "Name": "Muthigi Festival 3",
-    "Description": "An upcoming event for Mugithi Night promises an evening filled with vibrant music, lively entertainment, and a celebration of Kenyan culture. Mugithi, a popular music genre originating from the Kikuyu community in Kenya, is characterized by its rhythmic beats, energetic performances, and soulful melodies.",
+    "Name": "Shusha nyavu festival",
+    "Description": "An upcoming event for Shusha nyavu at garden city",
     "PosterUrl": "https://images.pexels.com/photos/2608516/pexels-photo-2608516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "Date": "2023-05-22"
 }
@@ -29,8 +29,9 @@ PUT http://localhost:8000/api/events/update/255e16f4-f2a7-4255-9e51-98308826754e
 Content-Type: application/json
 
 {
-    "Name": "Mugithi Night",
-    "Description": "Party",
-    "PosterUrl": "/path/to/image.jpg",
+    "Name": "ShushaNyavu Night",
+    "Description": "Party at Garden city Mal",
+    "PosterUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7iqi31sz9mNDc-LJ-kdy86XwaXAO9F-fam86TBbs8lg&s",
     "Date": "31012023"
 }
+
